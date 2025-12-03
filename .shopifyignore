@@ -1,0 +1,6 @@
+templates/*.json
+templates/*/*.json
+config/settings_data.json
+locales/*
+assets/.vite/manifest.json
+sections/*.json

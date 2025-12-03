@@ -1,0 +1,90 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_page-content.scss' -%}
+{% comment %} {%- render 'vite' with '@@/components/page-content.js' -%} {% endcomment %}
+
+<div class="wrap wrap--large wrap--{{ section_id }}">
+
+    {% if section.settings.page != blank %}
+
+    <h2 class="small">{{ section.settings.page.title }}</h2>
+
+    {{ section.settings.page.content }}
+
+    {% else %}
+
+    {{ page.content }}
+
+    {% endif %}
+
+</div>
+
+{% schema %}
+{
+    "name": "Page Content",
+    "tag": "section",
+    "class": "section-page-content",
+    "settings": [
+        {
+            "type": "page",
+            "id": "page",
+            "label": "Page",
+            "info": "Optional"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Page Content"
+        }
+    ]
+}
+{% endschema %}

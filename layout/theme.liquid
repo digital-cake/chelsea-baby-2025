@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="h-full" lang="{{ request.locale.iso_code }}">
+  <head>
+    {%- render 'meta-tags' %}
+    {%- render 'meta-social' %}
+    {%- render "meta-colors" %}
+
+    <title>{{ shop.name }}</title>
+
+    <meta name="description" content="">
+
+    <!-- global scripts & styles -->
+    {%- liquid
+      render 'vite' with 'theme.scss'
+      render 'vite' with 'theme.js'
+    -%}
+
+    <!-- SEO -->
+    {% if settings.favicon != blank -%}
+          <link rel="icon" type="image/png" sizes="32x32" href="{{ settings.favicon | img_url: "32x32", crop: "center" }}">
+          <link rel="icon" type="image/png" sizes="48x48" href="{{ settings.favicon | img_url: "48x48", crop: "center" }}">
+          <link rel="icon" type="image/png" sizes="64x64" href="{{ settings.favicon | img_url: "64x64", crop: "center" }}">
+          <link rel="icon" type="image/png" sizes="128x128" href="{{ settings.favicon | img_url: "128x128", crop: "center" }}">
+          {% else %}
+          <link rel="icon" type="image/png" sizes="16x16" href="{{ "placeholder-favicon.png" | asset_url }}">
+    {%- endif %}
+
+    {{ content_for_header }}
+
+    <!-- global variables -->
+    <script>
+        Shopify.money_format = '{{ shop.money_format }}';
+        {% if request.page_type == "product" %}
+        const variant_stock = [
+            {% for variant in product.variants %}
+            {"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}},
+            {% endfor %}
+        ]
+        {% endif %}
+    </script>
+  </head>
+
+  <body class="template-{{ template | handleize }}">
+
+    {% sections 'header-group' %}
+    {% section "cart-drawer" %}
+  
+    <main>
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+  </body>
+</html>

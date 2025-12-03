@@ -1,0 +1,57 @@
+@use "../abstracts/variables.scss" as *;
+
+main {
+	background-color: $color-white;
+	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+}
+.wrap {
+	width: 100%;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 0 2.125em;
+	@media (max-width: $w-l) {
+		padding: 0 2em;
+	}
+	@media (max-width: $w-m) {
+		padding: 0 0.9375em;
+	}
+	&--xxx-large {
+		max-width: $w-xxxl;
+	}
+	&--xx-large {
+		max-width: $w-xxl;
+	}
+	&--x-large {
+		max-width: $w-xl;
+	}
+	&--large {
+		max-width: $w-l;
+	}
+	&--medium {
+		max-width: $w-m;
+	}
+	&--s-medium {
+		max-width:$w-ms;
+	}
+	&--small {
+		max-width: $w-s;
+	}
+	&--x-small {
+		max-width: $w-xs;
+	}
+	&--no-padding {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	&--no-padding-right {
+		padding-right: 0;
+	}
+	&--no-padding-left {
+		padding-left: 0;
+	}
+	&--full {
+		max-width: none;
+	}
+}

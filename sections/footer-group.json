@@ -1,0 +1,14 @@
+{
+  "name": "Footer Group",
+  "type": "footer",
+  "sections": {
+    "footer": {
+        "type": "footer",
+        "settings": {},
+        "blocks": {}
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

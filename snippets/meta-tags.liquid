@@ -1,0 +1,50 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=1">
+
+{%- assign canonicalUrl = canonical_url -%}
+{%- assign canonicalUrl = canonicalUrl | split: '?' | first %}
+<link rel="canonical" href="{{ canonicalUrl }}" />
+{%- if canonicalUrl contains "tagged" %}
+<meta name="robots" content="noindex">
+{%- endif %}
+
+{%- if settings.shop_name != blank -%}
+{%- assign store = settings.shop_name -%}
+{%- else -%}
+{%- assign store = shop.name -%}
+{%- endif -%}
+
+{%- if template == "index" -%}
+<title>{{ store }}{% if settings.short_description != blank %} &dash; {{ settings.short_description | escape }}{% endif %}</title>
+{%- else -%}
+<title>{{ page_title }} &dash; {{ store }}</title>
+{%- endif -%}
+    
+{%- if template contains "collection" %}
+<meta name="description" content="{{ collection.description | escape }}">
+{%- elsif template == "index" %}
+{%- if settings.long_description != blank %}
+<meta name="description" content="{{ settings.long_description | escape }}">
+{%- else %}
+<meta name="description" content="{{ page_description | escape }}">
+{%- endif %}
+{%- else %}
+<meta name="description" content="{{ page_description | escape }}">
+{%- endif %}
+
+{%- if settings.keywords != blank -%}
+<meta name="keywords" content="{{ settings.keywords | escape }}">
+{%- endif %}
+    
+<link rel="preconnect" href="https://stats.g.doubleclick.net">
+<link rel="preconnect" href="https://www.google.com">
+<link rel="preconnect" href="https://connect.facebook.net">
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://fast.a.klaviyo.com">
+<link rel="preconnect" href="https://www.facebook.com">
+<link rel="preconnect" href="https://ajax.googleapis.com">
+<link rel="preconnect" href="https://productreviews.shopifycdn.com">
+<link rel="preconnect" href="https://telemetrics.klaviyo.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,0 +1,3 @@
+1. Test JS / SCSS
+2. Linter?
+3. structure resources folder

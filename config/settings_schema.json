@@ -1,0 +1,155 @@
+[
+    {
+        "name": "theme_info",
+        "theme_name": "Cake Vite",
+        "theme_version": "1.0.1",
+        "theme_author": "Cake Agency",
+        "theme_documentation_url": "https://shopify.dev/docs/storefronts/themes/tools/cli",
+        "theme_support_url": "https://shopify.dev/docs/storefronts/themes/tools/cli"
+    },
+    {
+        "name": "Colours",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Base colours"
+            },
+            {
+                "type": "color",
+                "id": "color_white",
+                "label": "White",
+                "default": "#FFFDFA"
+            },
+            {
+                "type": "color",
+                "id": "color_off_white",
+                "label": "Off White",
+                "default": "#F7F8F8"
+            },
+            {
+                "type": "color",
+                "id": "color_black",
+                "label": "Black",
+                "default": "#1F100A"
+            },
+            {
+                "type": "color",
+                "id": "color_grey",
+                "label": "Grey",
+                "default": "#1F100A0D"
+            },
+            {
+                "type": "header",
+                "content": "Brand colours"
+            },
+            {
+                "type": "color",
+                "id": "color_primary",
+                "label": "Primary",
+                "default": "#589C7D"
+            },
+            {
+                "type": "color",
+                "id": "color_secondary",
+                "label": "Secondary",
+                "default": "#336946"
+            },
+            {
+                "type": "color",
+                "id": "color_tertiary",
+                "label": "Tertiary",
+                "default": "#B4DDC0"
+            },
+            {
+                "type": "color",
+                "id": "color_transactional",
+                "label": "Transactional",
+                "default": "#F26822"
+            },
+            {
+                "type": "color",
+                "id": "color_transactional_hover",
+                "label": "Transactional Hover",
+                "default": "#BC3712"
+            },
+            {
+                "type": "header",
+                "content": "Additional colours"
+            },
+            {
+                "type": "color",
+                "id": "color_success",
+                "label": "Success",
+                "default": "#32C079"
+            },
+            {
+                "type": "color",
+                "id": "color_warning",
+                "label": "Warning",
+                "default": "#FFAA33"
+            },
+            {
+                "type": "color",
+                "id": "color_failure",
+                "label": "Failure",
+                "default": "#E23A3A"
+            }
+        ]
+    },
+    {
+      "name": "Product Grid",
+      "settings": [
+        {
+          "type": "range",
+          "id": "products_per_page",
+          "label": "Products Per Page",
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "default": 12
+        }
+      ]
+    },
+    {
+        "name": "SEO",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "favicon",
+            "label": "Favicon",
+            "info": "Min. size: 128x128"
+          },
+          {
+            "type": "image_picker",
+            "id": "share_image",
+            "label": "Share Image",
+            "info": "This image will appear as the thumbnail when a non-product\/non-article page is shared on social media (size: 1200x1200)."
+          },
+          {
+            "type": "text",
+            "id": "shop_name",
+            "label": "Shop Name",
+            "info": "This will appear next to the shop name on the homepage browser tab."
+          },
+          {
+            "type": "text",
+            "id": "short_description",
+            "label": "Shop Short Description",
+            "info": "This will appear next to the shop name on the homepage browser tab."
+          },
+          {
+            "type": "textarea",
+            "id": "long_description",
+            "label": "Shop Long Description",
+            "info": "This will appear on search results that return the homepage, should contain common keywords and be limited to 150 - 160 characters."
+          },
+          {
+            "type": "textarea",
+            "id": "keywords",
+            "label": "SEO Keywords",
+            "info": "This should be a commma separated list of no more than 10 keywords."
+          }
+        ]
+    }
+]
+  

@@ -1,0 +1,23 @@
+@use "../abstracts/variables.scss" as *;
+
+.button {
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.875em;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    border: none;
+    appearance: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: $weight-regular;
+    color: $color-white;
+    font-family: $font-base;
+    &--full-width {
+        width: 100%;
+    }
+}

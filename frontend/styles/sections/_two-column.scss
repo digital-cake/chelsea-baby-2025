@@ -1,0 +1,7 @@
+.section-two-column {
+    &__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25em;
+    }
+}

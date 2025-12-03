@@ -1,0 +1,14 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<div class="section-footer__inner"></div>
+
+{% schema %}
+    {
+        "name": "Footer",
+        "tag": "footer",
+        "class": "section-footer",
+        "settings": [],
+        "blocks": []
+    }
+{% endschema %}

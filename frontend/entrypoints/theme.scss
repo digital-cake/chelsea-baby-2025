@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+/** CRITICAL CSS */
+@use '../styles/abstracts/reset.scss';
+@use '../styles/abstracts/variables.scss';
+
+/** GLOBAL CSS */
+@use '../styles/global/base.scss';
+@use '../styles/global/buttons';
+@use '../styles/global/footer';
+@use '../styles/global/form-elements';
+@use '../styles/global/header';
+@use '../styles/global/layout';
+@use '../styles/global/drawers';
+@use '../styles/global/cart-items';
+@use '../styles/global/fonts.scss';

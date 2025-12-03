@@ -1,0 +1,43 @@
+// font families
+$font-base: 'Montserrat', sans-serif;
+$font-display: 'Souvenir', arial, sans-serif;
+
+// font-weights
+$weight-regular: 300;
+$weight-bold: 500;
+$weight-display: 700;
+
+// Radius
+$radius-xsmall: 6px;
+$radius-small: 8px;
+$radius-medium: 10px;
+$radius-large: 16px;
+
+// theme colours
+$color-black: var(--color-black);
+$color-white: var(--color-white);
+$color-off-white: var(--color-off-white);
+$color-grey: var(--color-grey);
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-tertiary: var(--color-tertiary);
+$color-transactional: var(--color-transactional);
+$color-transactional-hover: var(--color-transactional-hover);
+
+// additional colours
+$color-success: var(--color-success);
+$color-failure: var(--color-failure);
+$color-warning: var(--color-warning);
+
+// desktop breakpoints
+$w-xxxl: 1920px;
+$w-xxl: 1680px;
+$w-xl: 1440px;
+$w-ml: 1280px;
+// tablet breakpoints
+$w-l: 1024px;
+$w-m: 768px;
+$w-ms: 520px;
+//mobile breakpoints
+$w-s: 440px;
+$w-xs: 360px;
