@@ -4,4 +4,22 @@
     &__header {
         @include section_header_center;
     }
+    &__feature {
+        border-radius: $radius-small;
+        position: relative;
+        overflow: hidden;
+        img {
+            object-fit: cover;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    }
+    &__inner {
+        display: grid;
+        grid-template-columns: 562px 1fr;
+        gap: 2.5em;
+    }
 }

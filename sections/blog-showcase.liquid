@@ -5,16 +5,26 @@
     {%- render 'vite' with '@sectionStyles/_blog-showcase.scss' -%}
 
     <div class="wrap wrap--x-large wrap--{{ section_id }}">
+        <div class="section-blog-showcase__header">
+            {% if section.settings.title != blank %}
+                <{{ section.settings.tag }} class="medium">{{ section.settings.title }}</{{ section.settings.tag }}>
+            {% else %}
+                <{{ section.settings.tag }} class="medium">{{ section.settings.blog.title }}</{{ section.settings.tag }}>
+            {% endif %}
+        </div>
         <div class="section-blog-showcase__inner">
-            <div class="section-blog-showcase__header">
-                {% if section.settings.title != blank %}
-                    <{{ section.settings.tag }} class="medium">{{ section.settings.title }}</{{ section.settings.tag }}>
-                {% else %}
-                    <{{ section.settings.tag }} class="medium">{{ section.settings.blog.title }}</{{ section.settings.tag }}>
-                {% endif %}
-            </div>
             <div class="section-blog-showcase__feature">
-
+                {% if section.settings.feature_title != blank and section.settings.feature_text != blank %}
+                    <h4 style="color: {{ section.settings.feature_text_color }}" class="medium">{{ section.settings.feature_title }}</h4>
+                    <div style="color: {{ section.settings.feature_text_color }}">{{ section.settings.feature_text }}</div>
+                    {% if section.settings.feature_link != blank and section.settings.feature_link_label != blank %}
+                        <a class="{{ section.settings.feature_link_style }}{{ section.settings.feature_link_color }}" href="{{ section.settings.feature_link }}"><span>{{ section.settings.feature_link_label }}</span></a>
+                    {% endif %}
+                    {% if section.settings.feature_image != blank %}
+                        {{ section.settings.feature_image.src | image_url: width: 1400, crop: "center" | image_tag: class: 'section-blog-showcase__feature-image', alt: section.settings.feature_image.alt, width: 562 }}
+                        <div class="section-blog-showcase__feature-overlay"></div>
+                    {% endif %}
+                {% endif %}
             </div>
             <div class="section-blog-showcase__articles">
                 
@@ -83,6 +93,48 @@
             "id": "feature_text",
             "label": "Text",
             "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        },
+        {
+            "type": "select",
+            "id": "feature_text_color",
+            "label": "Text Colour",
+            "options": [
+                {
+                    "label": "Primary",
+                    "value": "primary"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "secondary"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "tertiary"
+                },
+                {
+                    "label": "Transactional",
+                    "value": "transactional"
+                },
+                {
+                    "label": "Black",
+                    "value": "black"
+                },
+                {
+                    "label": "White",
+                    "value": "white"
+                }
+            ],
+            "default": "white"
+        },
+        {
+            "type": "image_picker",
+            "id": "feature_image",
+            "label": "Feature Image"
+        },
+        {
+            "type": "color_background",
+            "id": "feature_image_overlay",
+            "label": "Image Overlay"
         },
         {
             "type": "url",
