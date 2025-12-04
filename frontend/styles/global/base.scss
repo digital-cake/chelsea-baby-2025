@@ -8,7 +8,7 @@ body {
 }
 body {
 	font: 16px $font-base;
-	font-weight: $weight-regular;
+	font-weight: $weight-bold;
 	color: $color-black;
 	position: relative;
 	line-height: 1;
@@ -174,4 +174,17 @@ h6:empty {
 #WebPixelsManagerContainer,
 #WebPixelsManagerSandboxContainer {
 	display: none;
+}
+
+.swiper-pagination {
+	.swiper-pagination-bullet {
+		opacity: 1;
+		width: 10px;
+		height: 10px;
+		background-color: transparent;
+		border: 1px solid $color-black;
+		&-active {
+			background-color: $color-black;
+		}
+	}
 }

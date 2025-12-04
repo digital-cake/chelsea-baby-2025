@@ -1,0 +1,81 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_newsletter-signup.scss' -%}
+
+<div class="wrap wrap--{{ section_id }}">
+    <div class="section-newsletter-signup__inner">
+        {% if section.settings.text != blank %}
+            <div class="section-newsletter-signup__text">{{ section.settings.text }}</div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Page Content",
+    "tag": "section",
+    "class": "section-newsletter-signup",
+    "settings": [
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "Sign up to the Mailing List and save 10% Off Your First Order"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 26
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 22
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 48
+        }
+    ],
+    "presets": [
+        {
+            "name": "Newsletter Signup"
+        }
+    ]
+}
+{% endschema %}

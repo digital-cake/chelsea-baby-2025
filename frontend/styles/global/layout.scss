@@ -26,6 +26,9 @@ main {
 	&--x-large {
 		max-width: $w-xl;
 	}
+	&--medium-large {
+		max-width: $w-ml;
+	}
 	&--large {
 		max-width: $w-l;
 	}

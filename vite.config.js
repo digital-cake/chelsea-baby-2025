@@ -34,7 +34,7 @@ export default defineConfig({
     cors: {
       origin: [
         /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/,
-        'https://chelsea-baby-dev.myshopify.com',
+        'https://7f1ae8-3.myshopify.com',
       ],
     },
   },

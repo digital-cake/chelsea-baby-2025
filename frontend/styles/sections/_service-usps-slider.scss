@@ -1,0 +1,42 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-service-usps-slider {
+    &__inner {
+        padding: 2.875em 3.25em;
+        background-color: $color-grey;
+        border-radius: $radius-small;
+        @media (max-width: $w-m) {
+            padding: 1.875em 1em 1.375em 1em; 
+        }
+    }
+    .swiper {
+        .swiper-wrapper {
+            align-items: center;
+            .swiper-slide {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .service-usp {
+                    width: 100%;
+                    max-width: 270px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1.25em;
+                    span {
+                        font-size: 0.625em;
+                        line-height: 140%;
+                        text-transform: uppercase;
+                        font-weight: $weight-display;
+                    }
+                }
+            }
+        }
+        .swiper-pagination {
+            position: relative;
+            bottom: 0;
+            top: 0;
+            margin-top: 1.625em;
+        }
+    }
+}

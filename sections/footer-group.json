@@ -11,19 +11,30 @@
   "name": "Footer Group",
   "type": "footer",
   "sections": {
+    "newsletter": {
+      "type": "newsletter-signup",
+      "settings": {
+        "page": "",
+        "padding_top": 26,
+        "padding_bottom": 32,
+        "mobile_padding_top": 22,
+        "mobile_padding_bottom": 48
+      }
+    },
     "footer": {
       "type": "footer",
       "settings": {
-        "logo": "shopify://shop_images/white-logo.svg",
+        "logo": "shopify://shop_images/new-logo-white.svg",
         "stamp_logo": "shopify://shop_images/footer-stamp.png",
-        "menu_one_title": "Menu Title",
-        "menu_one": "footer-menu-company",
-        "menu_two_title": "Menu Title",
-        "menu_two": "footer-menu-information"
+        "menu_one_title": "Company",
+        "menu_one": "footer-menu-2025-company",
+        "menu_two_title": "Information",
+        "menu_two": "footer-menu-2025-information"
       }
     }
   },
   "order": [
+    "newsletter",
     "footer"
   ]
 }

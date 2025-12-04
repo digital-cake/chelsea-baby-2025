@@ -1,0 +1,145 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{% if section.settings.service_usps != blank %}
+    {%- render 'vite' with '@sectionStyles/_service-usps-slider.scss' -%}
+    {%- render 'vite' with '@@/components/service-usps-slider.js' -%}
+
+    <div class="wrap wrap--x-large wrap--{{ section_id }}">
+        <div class="section-service-usps-slider__inner">
+            <div class="swiper swiper-{{ section_id }}">
+                <div class="swiper-wrapper">
+                    {% for usp in section.settings.service_usps.usps.value %}
+                        <div class="swiper-slide">
+                            <div class="service-usp">
+                                {{ usp.icon | image_url: width: 90, crop: "center" | image_tag: alt: usp.text, width: 30 }}
+                                <span>{{ usp.text }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination swiper-pagination-{{ section_id }}"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const swiperServiceUspsSliderData = {
+            section_id: {{ section_id | json }},
+            size: {{ section.settings.service_usps.size | json }},
+            autoplay: {{ section.settings.autoplay | json }},
+            delay: {{ section.settings.delay | json }},
+            speed: {{ section.settings.speed | json }},
+            enable_pagination: {{ section.settings.enable_pagination | json }},
+        };
+
+        window.addEventListener('DOMContentLoaded', function() {
+            window.init_service_usps_slider(swiperServiceUspsSliderData);
+        });
+        if (Shopify.designMode) {
+            document.addEventListener('shopify:section:load', function() {
+                window.init_service_usps_slider(swiperServiceUspsSliderData);
+            });
+        };
+    </script>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Service USPS Slider",
+    "tag": "section",
+    "class": "section-service-usps-slider",
+    "settings": [
+        {
+          "type": "metaobject",
+          "id": "service_usps",
+          "label": "Service USPs",
+          "metaobject_type": "service_usps_group"
+        },
+        {
+            "type": "header",
+            "content": "Swiper Settings"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pagination",
+            "label": "Enable Pagination",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Autoplay",
+            "default": true
+        },
+        {
+            "type": "number",
+            "id": "delay",
+            "label": "Autoplay Delay",
+            "default": 3,
+            "info": "Time delay between slide transitions, in seconds."
+        },
+        {
+            "type": "range",
+            "min": 1,
+            "max": 10,
+            "default": 7,
+            "id": "speed",
+            "label": "Autoplay Speed"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Service USPS Slider"
+        }
+    ]
+}
+{% endschema %}

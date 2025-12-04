@@ -1,0 +1,17 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-newsletter-signup {
+    background: #54697F;
+    padding: 1.75em 4em;
+    border-top-left-radius: $radius-small;
+    border-top-right-radius: $radius-small;
+    &__inner {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 5.75em;
+    }
+    &__text {
+        color: $color-white;
+        line-height: 140%;
+    }
+}

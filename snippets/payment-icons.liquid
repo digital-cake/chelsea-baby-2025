@@ -1,0 +1,9 @@
+{%- render 'vite' with '@snippetStyles/_payment-icons.scss' -%}
+
+<div class="payment-icons">
+    <ul>
+        {%- for type in shop.enabled_payment_types -%}
+        <li>{{ type | payment_type_svg_tag: class: 'icon' }}</li>
+        {%- endfor -%}
+    </ul>
+</div>
