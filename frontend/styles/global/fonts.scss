@@ -55,33 +55,9 @@
 }
 
 @font-face {
-    font-family: 'Souvenir';
-    src: url('@/fonts/Souvenir.woff') format('woff'),
-         url('@/fonts/Souvenir.woff2') format('woff2');
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'SouvenirItalic';
-    src: url('@/fonts/SouvenirI.woff') format('woff'),
-         url('@/fonts/SouvenirI.woff2') format('woff2');
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'SouvenirBold';
-    src: url('@/fonts/SouvenirB.woff') format('woff'),
-         url('@/fonts/SouvenirB.woff2') format('woff2');
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'SouvenirBoldItalic';
-    src: url('@/fonts/SouvenirBI.woff') format('woff'),
-         url('@/fonts/SouvenirBI.woff2') format('woff2');
+    font-family: 'Waden';
+    src: url('@/fonts/Waden-Regular.woff') format('woff'),
+         url('@/fonts/Waden-Regular.woff2') format('woff2');
     font-style: normal;
     font-display: swap;
 }

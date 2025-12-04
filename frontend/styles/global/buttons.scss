@@ -1,23 +1,100 @@
 @use "../abstracts/variables.scss" as *;
 
 .button {
-    padding: 0.5em 1em;
-    border-radius: 4px;
+    padding: 0.75em 1.625em;
+    border-radius: 25px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.875em;
     transition: all 0.3s ease-in-out;
-    text-transform: uppercase;
     border: none;
     appearance: none;
     outline: none;
     background-color: transparent;
     cursor: pointer;
-    font-weight: $weight-regular;
-    color: $color-white;
-    font-family: $font-base;
+    span {
+        font-size: 0.75em;
+        font-weight: 600;
+        color: $color-black;
+        font-family: $font-base;
+        letter-spacing: 0.6px;
+    }
     &--full-width {
         width: 100%;
     }
+    &--primary {
+        background-color: $color-primary;
+        span {
+            color: $color-white;
+        }
+        &:hover {
+            background-color: $color-primary-hover;
+        }
+    }
+    &--secondary {
+        background-color: $color-secondary;
+        span {
+            color: $color-white;
+        }
+    }
+    &--tertiary {
+        background-color: $color-tertiary;
+        span {
+            color: $color-white;
+        }
+    }
+    &--transactional {
+        background-color: $color-transactional;
+        span {
+            color: $color-white;
+        }
+        &:hover {
+            background-color: $color-transactional-hover;
+        }
+    }
+}
+
+.button-text {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    appearance: none;
+    outline: none;
+    background-color: transparent;
+    span {
+        font-size: 0.75em;
+        font-weight: 400;
+        letter-spacing: 0.6px;
+    }
+    &--primary {
+        span {
+            color: $color-primary;
+        }
+    }
+    &--secondary {
+        span {
+            color: $color-secondary;
+        }
+    }
+    &--tertiary {
+        span {
+            color: $color-tertiary;
+        }
+    }
+    &--transactional {
+        span {
+            color: $color-transactional;
+        }
+    }
+}
+
+.tag {
+    padding: 3px 6px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-secondary;
+    color: $color-black;
+    border-radius: 2px;
 }

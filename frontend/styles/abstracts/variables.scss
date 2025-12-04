@@ -43,3 +43,12 @@ $w-ms: 520px;
 //mobile breakpoints
 $w-s: 440px;
 $w-xs: 360px;
+
+@mixin section_header_center {
+	padding-bottom: 2em;
+    text-align: center;
+}
+
+@mixin section_header {
+	padding-bottom: 2em;
+}

@@ -13,11 +13,28 @@
       "type": "hero-banner",
       "settings": {}
     },
+    "blog_showcase_mKG4me": {
+      "type": "blog-showcase",
+      "name": "Blog Showcase",
+      "settings": {
+        "title": "The Parents Hub",
+        "tag": "h3",
+        "blog": "news",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
     "service_usps_slider_VnDTdM": {
       "type": "service-usps-slider",
       "name": "Service USPS Slider",
       "settings": {
         "service_usps": "service-usps-test",
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
         "padding_top": 64,
         "padding_bottom": 64,
         "mobile_padding_top": 32,
@@ -27,6 +44,7 @@
   },
   "order": [
     "hero-banner",
+    "blog_showcase_mKG4me",
     "service_usps_slider_VnDTdM"
   ]
 }

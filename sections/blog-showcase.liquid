@@ -1,0 +1,201 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{% if section.settings.blog != blank %}
+    {%- render 'vite' with '@sectionStyles/_blog-showcase.scss' -%}
+
+    <div class="wrap wrap--x-large wrap--{{ section_id }}">
+        <div class="section-blog-showcase__inner">
+            <div class="section-blog-showcase__header">
+                {% if section.settings.title != blank %}
+                    <{{ section.settings.tag }} class="medium">{{ section.settings.title }}</{{ section.settings.tag }}>
+                {% else %}
+                    <{{ section.settings.tag }} class="medium">{{ section.settings.blog.title }}</{{ section.settings.tag }}>
+                {% endif %}
+            </div>
+            <div class="section-blog-showcase__feature">
+
+            </div>
+            <div class="section-blog-showcase__articles">
+                
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Blog Showcase",
+    "tag": "section",
+    "class": "section-blog-showcase",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Section Title Here"
+        },
+        {
+            "type": "select",
+            "id": "tag",
+            "label": "Tag",
+            "options": [
+                {
+                    "value": "h2",
+                    "label": "H2"
+                },
+                {
+                    "value": "h3",
+                    "label": "H3"
+                },
+                {
+                    "value": "h4",
+                    "label": "H4"
+                },
+                {
+                    "value": "h5",
+                    "label": "H5"
+                },
+                {
+                    "value": "h6",
+                    "label": "H6"
+                }
+            ],
+            "default": "h3"
+        },
+        {
+            "type": "blog",
+            "id": "blog",
+            "label": "Blog"
+        },
+        {
+            "type": "header",
+            "content": "Feature"
+        },
+        {
+            "type": "text",
+            "id": "feature_title",
+            "label": "Title",
+            "default": "Your title here"
+        },
+        {
+            "type": "textarea",
+            "id": "feature_text",
+            "label": "Text",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        },
+        {
+            "type": "url",
+            "id": "feature_link",
+            "label": "Link"
+        },
+        {
+            "type": "text",
+            "id": "feature_link_label",
+            "label": "Link Label",
+            "default": "Label"
+        },
+        {
+            "type": "select",
+            "id": "feature_link_style",
+            "label": "Link Style",
+            "options": [
+                {
+                    "label": "Solid",
+                    "value": "solid"
+                },
+                {
+                    "label": "text",
+                    "value": "Text"
+                }
+            ],
+            "default": "solid"
+        },
+        {
+            "type": "select",
+            "id": "feature_link_color",
+            "label": "Link Colour",
+            "options": [
+                {
+                    "label": "Primary",
+                    "value": "primary"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "secondary"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "tertiary"
+                },
+                {
+                    "label": "Transactional",
+                    "value": "transactional"
+                },
+                {
+                    "label": "Black",
+                    "value": "black"
+                },
+                {
+                    "label": "White",
+                    "value": "white"
+                }
+            ],
+            "default": "primary"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Blog Showcase"
+        }
+    ]
+}
+{% endschema %}

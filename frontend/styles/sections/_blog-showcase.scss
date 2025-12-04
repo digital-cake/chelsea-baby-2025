@@ -1,0 +1,7 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-blog-showcase {
+    &__header {
+        @include section_header_center;
+    }
+}
