@@ -16,7 +16,7 @@ export default defineConfig({
   plugins: [
     cleanup(),
     shopify({
-      tunnel: true,
+      tunnel: 'https://maxdev.ngrok.app:5173',
       snippetFile: 'vite.liquid',
       additionalEntrypoints: [
         'frontend/theme.js', // relative to sourceCodeDir
@@ -34,7 +34,7 @@ export default defineConfig({
     cors: {
       origin: [
         /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/,
-        'https://your_store_name.myshopify.com',
+        'https://chelsea-baby-dev.myshopify.com',
       ],
     },
   },

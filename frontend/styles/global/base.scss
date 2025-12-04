@@ -31,55 +31,55 @@ h3,
 h4,
 h5,
 h6 {
-	font: 1.75em $font-display; //24px
+	font: 1em $font-display; //24px
 	font-weight: $weight-display;
 	line-height: 1;
     font-style: normal;
 	color: $color-black;
     text-transform: uppercase;
 	&.display {
-		font-size: 3.75em; //60px
+		font-size: 4em; //64px
         font-weight: $weight-display;
 		@media (max-width: $w-l) {
-            font-size: 2.75em; //44px
+            font-size: 2.5em; //40px
 		}
 	}
     &.large {
-		font-size: 2.75em; //44px
+		font-size: 2.5em; //40px
 		font-weight: $weight-display;
 		@media (max-width: $w-l) {
-            font-size: 2.25em; //36px
+            font-size: 1.75em; //28px
 		}
 	}
     &.medium {
-		font-size: 2em; //32px
+		font-size: 1.75em; //28px
 		font-weight: $weight-display;
 		@media (max-width: $w-l) {
-            font-size: 1.875em; //30px
+            font-size: 1.25em; //20px
 		}
 	}
     &.small {
-		font-size: 1.625em; //26px
+		font-size: 1.375em; //22px
         font-weight: $weight-display;
 		@media (max-width: $w-l) {
-            font-size: 1.5em; //24px
+            font-size: 1.125em; //18px
 		}
 	}
 	&.x-small {
-		font-size: 1.25em; //20px
+		font-size: 1.125em; //18px
         font-weight: $weight-display;
+		@media (max-width: $w-l) {
+            font-size: 0.875em; //14px
+		}
 	}
 }
-.body-lrg {
-	font-size: 18px;
+.body-large {
+	font-size: 1.25em;
 }
-.body-sml {
-	font-size: 14px;
+.body-small {
+	font-size: 0.875em;
 }
 .detail {
-	font-size: 12px;
-}
-.caption {
 	font-size: 10px;
 }
 p {
@@ -121,7 +121,6 @@ ins {
 	ins {
 		border: none;
 		font-size: 14px;
-		color: $color-sale-red;
 	
 	}
 }
@@ -144,7 +143,7 @@ input::-webkit-inner-spin-button {
 	margin: 0;
 }
 input[type='radio'] {
-	accent-color: $color-brass;
+	//accent-color: $color-brass;
 }
 input[type='number'] {
 	-webkit-appearance: textfield;

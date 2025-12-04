@@ -1,14 +1,128 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 {% render "section-styles", section_id: section_id, section: section %}
 
-<div class="section-footer__inner"></div>
+<div class="section-footer__inner">
+    <div class="section-footer__top">
+        <div class="section-footer__branding">
+            {% if section.settings.logo != blank %}
+                <a aria-label="logo" href="{{ routes.root_url }}">
+                    {{ section.settings.logo.src | image_url: width: 540 | image_tag: alt: section.settings.logo.alt, width: 270 }}
+                </a>
+            {% endif %}
+        </div>
+        <div class="section-footer__menus">
+            {% if section.settings.menu_one != blank %}
+               <div class="section-footer__menus-menu">
+                    {% if section.settings.menu_one_title != blank %}<span class="menu-title">{{ section.settings.menu_one_title }}</span>{% endif %}
+                    <ul>
+                        {% for link in section.settings.menu_one.links %}
+                            <li><a href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+                        {% endfor %}
+                    </ul>
+               </div>
+            {% endif %}
+            {% if section.settings.menu_two != blank %}
+                <div class="section-footer__menus-menu">
+                    {% if section.settings.menu_two_title != blank %}<span class="menu-title">{{ section.settings.menu_two_title }}</span>{% endif %}
+                    <ul>
+                        {% for link in section.settings.menu_two.links %}
+                            <li><a href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if settings.store_address != blank %}
+                <div class="section-footer__address">
+                    {% if settings.address_title != blank %}<span class="menu-title">{{ settings.address_title }}</span>{% endif %}
+                    <div>{{ settings.store_address }}</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="section-footer__bottom">
+         {% if settings.show_social_links %}
+            <div>
+                <span class="social-title">{{ 'general.footer.follow_us' | t }}</span>
+                <ul class="section-footer__social">
+                    {% if settings.facebook_link != blank %}
+                        <li><a href="{{ settings.facebook_link }}" aria-label="Facebook">{% render 'icon-facebook.svg' %}</a></li>
+                    {% endif %}
+                    {% if settings.x_link != blank %}
+                        <li><a href="{{ settings.x_link }}" aria-label="X">{% render 'icon-x.svg' %}</a></li>
+                    {% endif %}
+                    {% if settings.instagram_link != blank %}
+                        <li><a href="{{ settings.instagram_link }}" aria-label="Instagram">{% render 'icon-instagram.svg' %}</a></li>
+                    {% endif %}
+                    {% if settings.youtube_link != blank %}
+                        <li><a href="{{ settings.youtube_link }}" aria-label="Youtube">{% render 'icon-youtube.svg' %}</a></li>
+                    {% endif %}
+                    {% if settings.pinterest_link != blank %}
+                        <li><a href="{{ settings.pinterest_link }}" aria-label="Pinterest">{% render 'icon-pinterest.svg' %}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if settings.show_payment_icons == true %}
+            {% render 'payment-icons' %}
+        {% endif %}
+    </div>
+    <div class="section-footer__legal">
+        <span>&copy; {{ "now" | date: "%Y" }} {{ shop.name }} - {{ 'general.footer.all_rights_reserved' | t }}</span>
+        <span>{{ 'general.footer.site_by' | t }} - <a aria-label="{{ 'general.footer.agency_name' | t }}" target="_blank" href="https://www.cake.agency/">{{ 'general.footer.agency_name' | t }}</a></span>
+    </div>
+</div>
+
+{% if section.settings.stamp_logo != blank %}
+    <span class="stamp-logo">
+        {{ section.settings.stamp_logo.src | image_url: width: 540 | image_tag: alt: section.settings.stamp_logo.alt, width: 270 }}
+    </span>
+{% endif %}
 
 {% schema %}
     {
         "name": "Footer",
         "tag": "footer",
         "class": "section-footer",
-        "settings": [],
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Logo",
+                "info": "Width: 540px"
+            },
+            {
+                "type": "image_picker",
+                "id": "stamp_logo",
+                "label": "Stamp Logo",
+                "info": "Width: 540px"
+            },
+            {
+                "type": "header",
+                "content" : "Menus"
+            },
+            {
+                "type": "text",
+                "id": "menu_one_title",
+                "label": "Menu One Title",
+                "default": "Menu Title"
+            },
+            {
+                "type": "link_list",
+                "id": "menu_one",
+                "label": "Menu One"
+            },
+            {
+                "type": "text",
+                "id": "menu_two_title",
+                "label": "Menu Two Title",
+                "default": "Menu Title"
+            },
+            {
+                "type": "link_list",
+                "id": "menu_two",
+                "label": "Menu Two"
+            }
+        ],
         "blocks": []
     }
 {% endschema %}

@@ -11,15 +11,15 @@
     "vite-plugin-shopify": "^3.2.0"
   },
   "type": "module",
-  "scripts": {
+   "scripts": {
     "dev": "run-p -sr \"shopify:dev -- {@}\" \"vite:dev\" --",
-    "deploy": "run-s \"vite:build\" \"shopify:push -- {@}\" --",
-    "shopify:dev": "shopify theme dev",
+    "deploy": "run-s \"vite:build\" \"shopify:push -- {@}\" -- --environment=staging",
+    "shopify:dev": "shopify theme dev --environment=staging --theme-editor-sync",
     "shopify:push": "shopify theme push",
     "vite:dev": "vite",
     "vite:build": "vite build",
-    "deploy:staging": "npm run deploy",
-    "deploy:production": "npm run deploy"
+    "deploy:staging": "npm run deploy -- --environment=staging",
+    "deploy:production": "npm run deploy -- --environment=production"
   },
   "dependencies": {
     "axios": "^1.9.0",

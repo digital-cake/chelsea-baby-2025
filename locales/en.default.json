@@ -1,1 +1,210 @@
-{}
+{
+    "general": {
+        "404": {
+            "title": "404: Page not found",
+            "text": "The page you were looking for does not exist."
+        },
+        "tools_menu": {
+            "search": "Search",
+            "account": "Account",
+            "wishlist": "Wishlist",
+            "cart": "Basket"
+        },
+        "breadcrumbs": {
+            "home": "Home"
+        },
+        "menu": {
+            "search": "Search",
+            "account": "Account",
+            "cart": "Basket",
+            "wishlist": "Wishlist",
+            "open": "Open",
+            "location_selector": "Location Selector",
+            "currency": "Currency"
+        },
+        "footer": {
+            "site_by": "Site by Shopify Premier Agency",
+            "agency_name": "Cake Agency",
+            "all_rights_reserved": "Main, All rights reserved.",
+            "follow_us": "Follow us"
+        },
+        "newsletter": {
+            "label": "Newsletter Sign Up",
+            "sign_up": "Sign Up",
+            "success": "Thank you for signing up. Please keep an eye on your email for news and offers.",
+            "placeholder": "Email Address"
+        },
+        "recently_viewed": {
+            "title": "Recently viewed"
+        },
+        "market_selector": {
+            "select_location": "Select your location",
+            "select_language": "Select your language",
+            "select_location_button_label": "Select this location",
+            "country_region": "Country\/region",
+            "language": "Language",
+            "continue": "Continue"
+        }
+    },
+    "accessibility": {
+        "home": "Home",
+        "view": "View",
+        "view_all": "View all",
+        "all": "All",
+        "show": "Show",
+        "show_more": "Show More",
+        "previous": "Previous",
+        "next": "Next",
+        "open": "Open",
+        "close": "Close",
+        "toggle": "Toggle",
+        "loading": "Loading...",
+        "load_more": "Load more",
+        "sort": "Sort",
+        "clear": "Clear",
+        "clear_all": "Clear Filter",
+        "back_action": "Back",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "remove": "Remove",
+        "reset": "Reset",
+        "save": "Save",
+        "submit": "Submit",
+        "confirm": "Confirm",
+        "learn_more": "Learn more",
+        "read": "Read",
+        "read_more": "Read More",
+        "payment_options": "Payment Options",
+        "error": "Error",
+        "update_filters": "Update Filters",
+        "apply_filters": "Apply Filters",
+        "applied_filters": "Applied Filters"
+    },
+    "sections": {
+        "list_collections": {
+            "title": "All Collections"
+        },
+        "collection": {
+            "drawer": {
+                "continue": "Continue",
+                "close": "Close"
+            }
+        },
+        "search": {
+            "results_count": "results",
+            "results": "Search Results",
+            "start_search": "Start your search above!",
+            "drawer": {
+                "title": "Filter by",
+                "placeholder": "Search Products...",
+                "label": "Search",
+                "apply": "Apply",
+                "price_from": "From",
+                "price_to": "To",
+                "show_all": "View all search results",
+                "no_results": "No results for",
+                "heading": "Suggestions",
+                "resources": "Resources",
+                "blogs": "Blogs",
+                "collections": "Collections",
+                "products": "Products"
+            }
+        }
+    },
+    "search": {
+        "title": "Search",
+        "placeholder": "Enter your search term...",
+        "submit": "Search",
+        "no_results": "No results.",
+        "no_results_for": "No results for '{{ terms }}'.",
+        "show_all": "See all search results",
+        "clear_search": "Clear Search"
+    },
+    "cart": {
+        "title": "Basket",
+        "title_review": "Review Basket",
+        "empty": "Your basket is empty.",
+        "total": "Total",
+        "subtotal": "Subtotal",
+        "discount": "Discount",
+        "update": "Update",
+        "checkout": "Checkout securely",
+        "item_added": "Item added to basket",
+        "remove_item": "Remove",
+        "view_cart": "Go to Basket",
+        "continue_shopping": "Continue shopping",
+        "payment_label": "We Accept",
+        "shipping_label_cost": "Shipping",
+        "shipping_label_calculated": "Calculated at checkout",
+        "preorder_label": "Pre-order",
+        "request_label": "Available on Request",
+        "notification_message": "You’ll receive an email when shipped",
+        "terms_and_conditions": "I have read and agree to the Terms and Conditions",
+        "preorder_message": "You have [quantity] pre-order item — we’ll keep you updated on delivery times."
+    },
+    "products": {
+        "product": {
+            "add_to_cart": "Add to Basket",
+            "preorder": "Pre-order",
+            "preorder_label": "Pre-order Now",
+            "total_price": "Total Price",
+            "add_bundle_to_basket": "Add Bundle to Basket",
+            "sold_out": "Sold Out",
+            "on_sale": "On Sale",
+            "no_stock": "Out of stock",
+            "choose_options": "Choose options",
+            "select": "Select {{ variant }}",
+            "quantity_label": "Quantity",
+            "none_selected": "No product selected.",
+            "low_in_stock": "Low in stock",
+            "added_to_wishlist": "Added to Saved Items",
+            "added_to_cart": "Added to Basket",
+            "view_size_guide": "View Size Guide",
+            "please_select": "Please select a {{ variant }}",
+            "wishlist": "Add to Wishlist",
+            "bundle": "Complete the Look",
+            "notify_me": "Notify Me When Available",
+            "add": "Add",
+            "more_info": "More Info",
+            "pre_order": "Pre-Order",
+            "select_options": "Select Options",
+            "select_size": "Select Size",
+            "sale": "Sale",
+            "join_the_waitlist": "Join the Waitlist",
+            "estimated_arrival": "Estimated Shipping: ",
+            "select_variant": "Select variant",
+            "colour": "Colour",
+            "free_shipping": "This Item Qualifies For Free Shipping"
+        },
+        "gift_voucher": {
+            "name": "Recipient Name",
+            "email": "Recipient Email",
+            "message": "Gift Message",
+            "send_on": "Send on",
+            "for_me": "Me",
+            "for_them": "A Gift",
+            "date": "Date to send",
+            "email_alert": "Please enter a valid email address",
+            "title": "Who's it for?",
+            "date_alert": "Your gift card will be sent to the recipient on the chosen date. Please choose a date within the next 90 days."
+        }
+    },
+    "blogs": {
+        "blog": {
+            "view_all": "View all",
+            "view_blog": "View Blog",
+            "read_blog": "Read blog"
+        }
+    },
+    "filter_and_sort": {
+        "sort": "Sort By",
+        "filter": "Filters",
+        "filter_and_sort": "Filter Results",
+        "filter_and_sort_alt": "Filter & Sort",
+        "price_from": "From",
+        "price_to": "To",
+        "active": "Active Filters",
+        "product_flatlay": "Flatlay",
+        "product_model": "Model"
+    }
+}

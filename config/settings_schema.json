@@ -11,32 +11,26 @@
         "name": "Colours",
         "settings": [
             {
-                "type": "header",
-                "content": "Base colours"
+              "type": "header",
+              "content": "Base colours"
             },
             {
                 "type": "color",
                 "id": "color_white",
                 "label": "White",
-                "default": "#FFFDFA"
-            },
-            {
-                "type": "color",
-                "id": "color_off_white",
-                "label": "Off White",
-                "default": "#F7F8F8"
+                "default": "#FFFEF9"
             },
             {
                 "type": "color",
                 "id": "color_black",
                 "label": "Black",
-                "default": "#1F100A"
+                "default": "#000000"
             },
             {
                 "type": "color",
                 "id": "color_grey",
                 "label": "Grey",
-                "default": "#1F100A0D"
+                "default": "#F4F3EF"
             },
             {
                 "type": "header",
@@ -46,31 +40,43 @@
                 "type": "color",
                 "id": "color_primary",
                 "label": "Primary",
-                "default": "#589C7D"
+                "default": "#1F2535"
+            },
+            {
+                "type": "color",
+                "id": "color_primary_hover",
+                "label": "Primary Hover",
+                "default": "#38496C"
             },
             {
                 "type": "color",
                 "id": "color_secondary",
                 "label": "Secondary",
-                "default": "#336946"
+                "default": "#89ADC9"
             },
             {
                 "type": "color",
                 "id": "color_tertiary",
                 "label": "Tertiary",
-                "default": "#B4DDC0"
+                "default": "#C6D8EC"
             },
             {
                 "type": "color",
                 "id": "color_transactional",
                 "label": "Transactional",
-                "default": "#F26822"
+                "default": "#A48B62"
             },
             {
                 "type": "color",
                 "id": "color_transactional_hover",
                 "label": "Transactional Hover",
-                "default": "#BC3712"
+                "default": "#69513F"
+            },
+            {
+                "type": "color",
+                "id": "color_heritage",
+                "label": "Heritage",
+                "default": "#692218"
             },
             {
                 "type": "header",
@@ -107,6 +113,67 @@
           "max": 50,
           "step": 1,
           "default": 12
+        }
+      ]
+    },
+     {
+      "name": "Global",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_payment_icons",
+          "label": "Show Payment Icons",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Contact Information"
+        },
+        {
+          "type": "text",
+          "id": "address_title",
+          "label": "Address Title",
+          "default": "Visit us"
+        },
+        {
+          "type": "richtext",
+          "id": "store_address",
+          "label": "Address"
+        },
+        {
+          "type": "header",
+          "content": "Social links"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social_links",
+          "label": "Show Social Links",
+          "default": true
+        },
+        {
+          "type": "url",
+          "label": "Facebook Link",
+          "id": "facebook_link"
+        },
+        {
+          "type": "url",
+          "label": "X Link",
+          "id": "x_link"
+        },
+        {
+          "type": "url",
+          "label": "Instagram Link",
+          "id": "instagram_link"
+        },
+        {
+          "type": "url",
+          "label": "Youtube Link",
+          "id": "youtube_link"
+        },
+        {
+          "type": "url",
+          "label": "Pinterest Link",
+          "id": "pinterest_link"
         }
       ]
     },

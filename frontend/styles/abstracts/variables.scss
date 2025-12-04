@@ -1,6 +1,6 @@
 // font families
-$font-base: 'Montserrat', sans-serif;
-$font-display: 'Souvenir', arial, sans-serif;
+$font-base: 'Nunito', sans-serif;
+$font-display: 'Waden', arial, sans-serif;
 
 // font-weights
 $weight-regular: 300;
@@ -8,19 +8,21 @@ $weight-bold: 500;
 $weight-display: 700;
 
 // Radius
-$radius-xsmall: 6px;
-$radius-small: 8px;
-$radius-medium: 10px;
-$radius-large: 16px;
+$radius-xsmall: 2px;
+$radius-small: 4px;
+$radius-medium: 6px;
+$radius-large: 8px;
+$radius-xlarge: 10px;
 
 // theme colours
 $color-black: var(--color-black);
 $color-white: var(--color-white);
-$color-off-white: var(--color-off-white);
 $color-grey: var(--color-grey);
 $color-primary: var(--color-primary);
+$color-primary-hover: var(--color-primary-hover);
 $color-secondary: var(--color-secondary);
 $color-tertiary: var(--color-tertiary);
+$color-tertiary: var(--color-heritage);
 $color-transactional: var(--color-transactional);
 $color-transactional-hover: var(--color-transactional-hover);
 
