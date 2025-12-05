@@ -45,10 +45,10 @@ $w-s: 440px;
 $w-xs: 360px;
 
 @mixin section_header_center {
-	padding-bottom: 2em;
+	padding-bottom: 32px;
     text-align: center;
 }
 
 @mixin section_header {
-	padding-bottom: 2em;
+	padding-bottom: 32px;
 }

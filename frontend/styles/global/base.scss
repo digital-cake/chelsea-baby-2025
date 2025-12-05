@@ -11,7 +11,7 @@ body {
 	font-weight: $weight-bold;
 	color: $color-black;
 	position: relative;
-	line-height: 1;
+	line-height: 140%;
 	-webkit-font-smoothing: antialiased;
 	@media screen and (max-width: $w-s) {
 		font-size: 3.636363636vw; // 16px at 440 breakpoint
@@ -33,7 +33,7 @@ h5,
 h6 {
 	font: 1em $font-display; //24px
 	font-weight: $weight-display;
-	line-height: 1;
+	line-height: 140%;
     font-style: normal;
 	color: $color-black;
 	&.display {
@@ -74,12 +74,15 @@ h6 {
 }
 .body-large {
 	font-size: 1.25em;
+	line-height: 140%;
 }
 .body-small {
 	font-size: 0.875em;
+	line-height: 140%;
 }
 .detail {
 	font-size: 10px;
+	line-height: 140%;
 }
 p {
 	font-size: 1em; //16px

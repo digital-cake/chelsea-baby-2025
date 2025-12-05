@@ -1,0 +1,15 @@
+{%- render 'vite' with '@snippetStyles/_card-article-condensed.scss' -%}
+
+<article class="card-article-condensed">
+    <div class="card-article-condensed__image">
+        {% if article.image != blank %}
+            {{ article.image.src | image_url: width: 636 | image_tag: alt: article.image.alt, width: 212 }}
+        {% endif %}
+    </div>
+    <div class="card-article-condensed__content">
+        <span>{{ article.published_at | date: "%Y-%m-%d" }}</span>
+        <h3 class="small">{{ article.title | truncatewords: 6 }}</h3>
+        <div class="detail">{{ article.excerpt_or_content | strip_html | truncatewords: 30 }}</div>
+        <a href="{{ article.url }}" aria-label="{{ article.title }}" class="button-text button-text--black"><span>{{ 'blogs.blog.read_blog' | t }}</span></a>
+    </div>
+</article>

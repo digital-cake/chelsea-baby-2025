@@ -52,6 +52,18 @@
             background-color: $color-transactional-hover;
         }
     }
+    &--white {
+        background-color: $color-white;
+        span {
+            color: $color-primary;
+        }
+    }
+    &--black {
+        background-color: $color-black;
+        span {
+            color: $color-primary;
+        }
+    }
 }
 
 .button-text {

@@ -7,27 +7,34 @@
     <div class="wrap wrap--x-large wrap--{{ section_id }}">
         <div class="section-blog-showcase__header">
             {% if section.settings.title != blank %}
-                <{{ section.settings.tag }} class="medium">{{ section.settings.title }}</{{ section.settings.tag }}>
+                <{{ section.settings.tag }}>{{ section.settings.title }}</{{ section.settings.tag }}>
             {% else %}
-                <{{ section.settings.tag }} class="medium">{{ section.settings.blog.title }}</{{ section.settings.tag }}>
+                <{{ section.settings.tag }}>{{ section.settings.blog.title }}</{{ section.settings.tag }}>
             {% endif %}
         </div>
         <div class="section-blog-showcase__inner">
-            <div class="section-blog-showcase__feature">
+            <div class="section-blog-showcase__feature" style="background-color: {{ section.settings.feature_background_color }};">
                 {% if section.settings.feature_title != blank and section.settings.feature_text != blank %}
-                    <h4 style="color: {{ section.settings.feature_text_color }}" class="medium">{{ section.settings.feature_title }}</h4>
+                    <h4 style="color: {{ section.settings.feature_text_color }}">{{ section.settings.feature_title }}</h4>
                     <div style="color: {{ section.settings.feature_text_color }}">{{ section.settings.feature_text }}</div>
                     {% if section.settings.feature_link != blank and section.settings.feature_link_label != blank %}
-                        <a class="{{ section.settings.feature_link_style }}{{ section.settings.feature_link_color }}" href="{{ section.settings.feature_link }}"><span>{{ section.settings.feature_link_label }}</span></a>
+                        <a class="button button--{{ section.settings.feature_link_style }} button--{{ section.settings.feature_link_color }}" href="{{ section.settings.feature_link }}"><span>{{ section.settings.feature_link_label }}</span></a>
                     {% endif %}
                     {% if section.settings.feature_image != blank %}
                         {{ section.settings.feature_image.src | image_url: width: 1400, crop: "center" | image_tag: class: 'section-blog-showcase__feature-image', alt: section.settings.feature_image.alt, width: 562 }}
-                        <div class="section-blog-showcase__feature-overlay"></div>
+                        <div class="image-overlay" style="background:{{ section.settings.feature_image_overlay }}"></div>
                     {% endif %}
                 {% endif %}
             </div>
-            <div class="section-blog-showcase__articles">
-                
+            <div class="section-blog-showcase__wrap">
+                <div class="section-blog-showcase__articles">
+                    {% for article in section.settings.blog.articles limit: 3 %}
+                        {% render 'card-article-condensed', article: article %}
+                    {% endfor %}
+                </div>
+                <div class="section-blog-showcase__action">
+                    <a class="button-text button-text--black" aria-label="{{ section.settings.blog.title }}" href="{{ section.settings.blog.url }}">{{ section.settings.blog_link_title }}</a>
+                </div>
             </div>
         </div>
     </div>
@@ -77,6 +84,12 @@
             "type": "blog",
             "id": "blog",
             "label": "Blog"
+        },
+        {
+            "type": "text",
+            "id": "blog_link_title",
+            "label": "Blog Link Title",
+            "default": "Blog Link Label"
         },
         {
             "type": "header",
@@ -129,12 +142,46 @@
         {
             "type": "image_picker",
             "id": "feature_image",
-            "label": "Feature Image"
+            "label": "Feature Image",
+            "info": "If set will override background colour"
+        },
+        {
+            "type": "select",
+            "id": "feature_background_color",
+            "label": "Feature Background Color",
+            "options": [
+                {
+                    "label": "Black",
+                    "value": "var(--color-black)"
+                },
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                }
+            ],
+            "default": "var(--color-grey)"
         },
         {
             "type": "color_background",
             "id": "feature_image_overlay",
-            "label": "Image Overlay"
+            "label": "Image Overlay",
+            "default": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)"
         },
         {
             "type": "url",
@@ -157,8 +204,8 @@
                     "value": "solid"
                 },
                 {
-                    "label": "text",
-                    "value": "Text"
+                    "label": "Text",
+                    "value": "text"
                 }
             ],
             "default": "solid"
@@ -193,7 +240,7 @@
                     "value": "white"
                 }
             ],
-            "default": "primary"
+            "default": "white"
         },
         {
             "type": "header",
