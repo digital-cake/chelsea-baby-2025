@@ -189,4 +189,27 @@ h6:empty {
 			background-color: $color-black;
 		}
 	}
+	&--white {
+		.swiper-pagination-bullet {
+			border: 1px solid $color-white;
+			&-active {
+				background-color: $color-white;
+			}
+		}
+	}
+}
+
+.swiper-navigation {
+	.swiper-button-next,.swiper-button-prev {
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		border: 1px solid $color-black;
+		background-color: $color-white;
+		opacity: 0.8;
+		&::after {
+			font-size: 12px;
+			color: $color-black;
+		}
+	}
 }

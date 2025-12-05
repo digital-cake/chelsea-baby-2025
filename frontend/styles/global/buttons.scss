@@ -80,23 +80,39 @@
         letter-spacing: 0.6px;
     }
     &--primary {
+        text-decoration-color: $color-primary;
         span {
             color: $color-primary;
         }
     }
     &--secondary {
+        text-decoration-color: $color-secondary;
         span {
             color: $color-secondary;
         }
     }
     &--tertiary {
+        text-decoration-color: $color-tertiary;
         span {
             color: $color-tertiary;
         }
     }
     &--transactional {
+        text-decoration-color: $color-transactional;
         span {
             color: $color-transactional;
+        }
+    }
+    &--white {
+        text-decoration-color: $color-white;
+        span {
+            color: $color-white;
+        }
+    }
+    &--black {
+        text-decoration-color: $color-black;
+        span {
+            color: $color-black;
         }
     }
 }

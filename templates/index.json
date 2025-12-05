@@ -13,6 +13,56 @@
       "type": "hero-banner",
       "settings": {}
     },
+    "two_column_text_media_NzaULp": {
+      "type": "two-column-text-media",
+      "blocks": {
+        "image_HCyTmX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/store-placeholder.png"
+          }
+        },
+        "video_FrptkG": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/CC_Ada_1600x1600_3pc_15.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "image_HCyTmX",
+        "video_FrptkG"
+      ],
+      "name": "Two Column Text Media",
+      "settings": {
+        "hide_illustration": false,
+        "overall_background_color": "var(--color-grey)",
+        "image_overlay": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)",
+        "label": "VISIT OUR STORE",
+        "title": "Get in-person advice and live product demos",
+        "tag": "h4",
+        "text": "<p>25 Pedmore Rd, Brierley Hill,<br/>Dudley DY5 1TJ</p><p><br/>Opening Hours</p><p><br/>Mon - Fri, 9 AM - 5 PM </p><p>Saturday, 10 AM - 5 PM</p>",
+        "text_color": "var(--color-white)",
+        "background_color": "var(--color-heritage)",
+        "link_one": "shopify://pages/about-chelsea-baby",
+        "link_one_label": "Book an Appointment",
+        "link_one_style": "solid",
+        "link_one_color": "white",
+        "link_two": "#",
+        "link_two_label": "Get Directions",
+        "link_two_style": "solid",
+        "link_two_color": "white",
+        "enable_pagination": true,
+        "enable_navigation": true,
+        "autoplay": false,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
     "blog_showcase_mKG4me": {
       "type": "blog-showcase",
       "name": "Blog Showcase",
@@ -55,6 +105,7 @@
   },
   "order": [
     "hero-banner",
+    "two_column_text_media_NzaULp",
     "blog_showcase_mKG4me",
     "service_usps_slider_VnDTdM"
   ]

@@ -18,7 +18,11 @@
                     <h4 style="color: {{ section.settings.feature_text_color }}">{{ section.settings.feature_title }}</h4>
                     <div style="color: {{ section.settings.feature_text_color }}">{{ section.settings.feature_text }}</div>
                     {% if section.settings.feature_link != blank and section.settings.feature_link_label != blank %}
-                        <a class="button button--{{ section.settings.feature_link_style }} button--{{ section.settings.feature_link_color }}" href="{{ section.settings.feature_link }}"><span>{{ section.settings.feature_link_label }}</span></a>
+                        {% if section.settings.feature_link_style == 'solid' %}
+                            <a class="button button--{{ section.settings.feature_link_color }}" href="{{ section.settings.feature_link }}"><span>{{ section.settings.feature_link_label }}</span></a>
+                        {% else %}
+                            <a class="button-text button-text--{{ section.settings.feature_link_color }}" href="{{ section.settings.feature_link }}"><span>{{ section.settings.feature_link_label }}</span></a>
+                        {% endif %}
                     {% endif %}
                     {% if section.settings.feature_image != blank %}
                         {{ section.settings.feature_image.src | image_url: width: 1400, crop: "center" | image_tag: class: 'section-blog-showcase__feature-image', alt: section.settings.feature_image.alt, width: 562 }}
@@ -114,30 +118,30 @@
             "options": [
                 {
                     "label": "Primary",
-                    "value": "primary"
+                    "value": "var(--color-primary)"
                 },
                 {
                     "label": "Secondary",
-                    "value": "secondary"
+                    "value": "var(--color-secondary)"
                 },
                 {
                     "label": "Tertiary",
-                    "value": "tertiary"
+                    "value": "var(--color-tertiary)"
                 },
                 {
                     "label": "Transactional",
-                    "value": "transactional"
+                    "value": "var(--color-transactional)"
                 },
                 {
                     "label": "Black",
-                    "value": "black"
+                    "value": "var(--color-black)"
                 },
                 {
                     "label": "White",
-                    "value": "white"
+                    "value": "var(--color-white)"
                 }
             ],
-            "default": "white"
+            "default": "var(--color-white)"
         },
         {
             "type": "image_picker",

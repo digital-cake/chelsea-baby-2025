@@ -1,0 +1,110 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-two-column-text-media {
+    &__inner {
+        display: flex;
+        @media (max-width: $w-l) {
+            flex-direction: column;
+        }
+    }
+    &__content {
+        position: relative;
+        padding: 3.375em 1em 4.5em 1em;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+        border-top-left-radius: $radius-small;
+        border-bottom-left-radius: $radius-small;
+        &-title {
+            font-size: 1.75em;
+            @media (min-width: $w-l) {
+                max-width: 50%;
+            }
+        }
+        &-label {
+            position: relative;
+            top: 20px;
+            font-size: 0.5em;
+        }
+        &-text {
+            line-height: 110%;
+        }
+        &-actions {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 2em;
+        }
+        .illustration {
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    &__swiper {
+        width: 100%;
+        max-width: 424px;
+        @media (max-width: $w-l) {
+            max-width: none;
+        }
+        .swiper {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            height: 100%;
+            .image-overlay {
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                border-radius: $radius-small;
+            }
+        }
+        .image-wrapper {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            min-height: 410px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 410px;
+			video {
+				width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+			}
+        }
+    }
+}
