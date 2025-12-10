@@ -13,6 +13,73 @@
       "type": "hero-banner",
       "settings": {}
     },
+    "ugc_slider_Rcj4B8": {
+      "type": "ugc-slider",
+      "blocks": {
+        "image_3a8hik": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-1.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        },
+        "image_dG36T9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-2.jpg",
+            "label": "@usermum123",
+            "link": "https://www.instagram.com/chelseababyuk/"
+          }
+        },
+        "image_hgLbwq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-3.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        },
+        "image_gzWayE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-4.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        },
+        "image_PXXTxL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-5.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_3a8hik",
+        "image_dG36T9",
+        "image_hgLbwq",
+        "image_gzWayE",
+        "image_PXXTxL"
+      ],
+      "name": "UGC Slider",
+      "settings": {
+        "title": "Little Moments We Love",
+        "tag": "h3",
+        "label": "@Chelseababyuk",
+        "label_link": "https://www.instagram.com/chelseababyuk/",
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
     "two_column_text_media_NzaULp": {
       "type": "two-column-text-media",
       "blocks": {
@@ -105,6 +172,7 @@
   },
   "order": [
     "hero-banner",
+    "ugc_slider_Rcj4B8",
     "two_column_text_media_NzaULp",
     "blog_showcase_mKG4me",
     "service_usps_slider_VnDTdM"

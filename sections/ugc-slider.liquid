@@ -1,0 +1,225 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{% if section.blocks.size > 0 %}
+    {%- render 'vite' with '@sectionStyles/_ugc-slider.scss' -%}
+    {%- render 'vite' with '@@/components/ugc-slider.js' -%}
+
+    <div class="wrap wrap--no-padding wrap--{{ section_id }}">
+        <div class="section-ugc-slider__inner">
+            <div class="section-ugc-slider__header">
+                {% if section.settings.title != blank %}
+                    <{{ section.settings.tag }} class="medium">{{ section.settings.title }}</{{ section.settings.tag }}>
+                {% endif %}
+                {% if section.settings.label != blank and section.settings.label_link != blank %}
+                    <a class="section-ugc-slider__header-label" aria-label="{{ section.settings.label }}" href="{{ section.settings.label_link }}">
+                        {% render 'icon-thumbs-up.svg' %}
+                        <span>{{ section.settings.label }}</span>
+                    </a>
+                {% endif %}
+            </div>
+            <div class="section-ugc-slider__slider">
+                <div class="swiper swiper-{{ section_id }}">
+                    <div class="swiper-wrapper">
+                        {% for block in section.blocks %}
+                            {% if block.settings.image == blank %}{% continue %}{% endif %}
+                                <div class="swiper-slide">
+                                    <div class="section-ugc-slider__slider-slide">
+                                        {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+                                            {% if block.settings.label != blank %}
+                                                <span class="slide-label">{{ block.settings.label }}</span>
+                                            {% endif %}
+                                            {{ block.settings.image.src | image_url: width: 900, crop: "center" | image_tag: alt: block.settings.image.alt, width: 324 }}
+                                        {% if block.settings.link != blank %}</a>{% endif %}
+                                    </div>
+                                </div>
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-{{ section_id }}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const swiperUgcData = {
+            section_id: {{ section_id | json }},
+            size: {{ section.settings.service_usps.size | json }},
+            autoplay: {{ section.settings.autoplay | json }},
+            delay: {{ section.settings.delay | json }},
+            speed: {{ section.settings.speed | json }},
+            enable_pagination: {{ section.settings.enable_pagination | json }},
+        };
+
+        window.addEventListener('DOMContentLoaded', function() {
+            window.init_ugc_slider(swiperUgcData);
+        });
+        if (Shopify.designMode) {
+            document.addEventListener('shopify:section:load', function() {
+                window.init_ugc_slider(swiperUgcData);
+            });
+        };
+    </script>
+{% endif %}
+
+{% schema %}
+{
+    "name": "UGC Slider",
+    "tag": "section",
+    "class": "section-ugc-slider",
+    "blocks": [
+        {
+            "name": "Image",
+            "type": "image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Label"
+                },
+                {
+                    "type": "url",
+                    "id": "link",
+                    "label": "Link"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Little Moments We Love"
+        },
+        {
+            "type": "select",
+            "id": "tag",
+            "label": "Tag",
+            "options": [
+                {
+                    "value": "h2",
+                    "label": "H2"
+                },
+                {
+                    "value": "h3",
+                    "label": "H3"
+                },
+                {
+                    "value": "h4",
+                    "label": "H4"
+                },
+                {
+                    "value": "h5",
+                    "label": "H5"
+                },
+                {
+                    "value": "h6",
+                    "label": "H6"
+                }
+            ],
+            "default": "h3"
+        },
+        {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "default": "@Chelseababyuk"
+        },
+        {
+            "type": "url",
+            "id": "label_link",
+            "label": "Label Link"
+        },
+            {
+            "type": "header",
+            "content": "Swiper Settings"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pagination",
+            "label": "Enable Pagination",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Autoplay",
+            "default": false
+        },
+        {
+            "type": "number",
+            "id": "delay",
+            "label": "Autoplay Delay",
+            "default": 3,
+            "info": "Time delay between slide transitions, in seconds."
+        },
+        {
+            "type": "range",
+            "min": 1,
+            "max": 10,
+            "default": 7,
+            "id": "speed",
+            "label": "Autoplay Speed"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "UGC Slider"
+        }
+    ]
+}
+{% endschema %}
