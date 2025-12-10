@@ -13,6 +13,65 @@
       "type": "hero-banner",
       "settings": {}
     },
+    "brands_logo_slider_TrmgAn": {
+      "type": "brands-logo-slider",
+      "blocks": {
+        "logo_B6Gkme": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/clair-de-lune-logo.png",
+            "logo_link": ""
+          }
+        },
+        "logo_m3yRHP": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/silver-cross-logo.png",
+            "logo_link": ""
+          }
+        },
+        "logo_VNLnMj": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/icandy-logo.png",
+            "logo_link": ""
+          }
+        },
+        "logo_FfiK6c": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/tutti-logo.png",
+            "logo_link": ""
+          }
+        },
+        "logo_4PNfMW": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/maxi-cosi-logo.png",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_B6Gkme",
+        "logo_m3yRHP",
+        "logo_VNLnMj",
+        "logo_FfiK6c",
+        "logo_4PNfMW"
+      ],
+      "name": "Brands Logo Slider",
+      "settings": {
+        "title": "Our Handpicked Brand Partners",
+        "tag": "h4",
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "mobile_padding_top": 88,
+        "mobile_padding_bottom": 88
+      }
+    },
     "collection_slider_QQXwXF": {
       "type": "collection-slider",
       "name": "Collection Slider",
@@ -23,6 +82,7 @@
         "label_icon": "shopify://shop_images/icon-gift.svg",
         "collection": "abc-design",
         "background_color": "var(--color-grey)",
+        "collection_products_to_show_limit": 15,
         "padding_top": 64,
         "padding_bottom": 64,
         "mobile_padding_top": 32,
@@ -189,6 +249,7 @@
   },
   "order": [
     "hero-banner",
+    "brands_logo_slider_TrmgAn",
     "collection_slider_QQXwXF",
     "ugc_slider_Rcj4B8",
     "two_column_text_media_NzaULp",
