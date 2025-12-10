@@ -1,0 +1,51 @@
+@use "../abstracts/variables.scss" as *;
+
+.card-product {
+    border: 1px solid #1F25350D;
+    border-radius: $radius-small;
+    background-color: $color-white-standard;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+    height: 100%;
+    position: relative;
+    &__header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    &__media {
+        img {
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+        }
+    }
+    &__title {
+        font-size: 0.8125em;
+        line-height: 150%;
+        color: $color-primary;
+        max-width: 70%;
+    }
+    &__footer {
+        padding: 1em 0.75em;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0.875em;
+        &-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            button {
+                text-decoration: none;
+                text-transform: uppercase;
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

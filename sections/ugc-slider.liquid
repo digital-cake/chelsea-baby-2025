@@ -5,35 +5,37 @@
     {%- render 'vite' with '@sectionStyles/_ugc-slider.scss' -%}
     {%- render 'vite' with '@@/components/ugc-slider.js' -%}
 
-    <div class="wrap wrap--no-padding wrap--{{ section_id }}">
-        <div class="section-ugc-slider__inner">
-            <div class="section-ugc-slider__header">
-                {% if section.settings.title != blank %}
-                    <{{ section.settings.tag }} class="medium">{{ section.settings.title }}</{{ section.settings.tag }}>
-                {% endif %}
-                {% if section.settings.label != blank and section.settings.label_link != blank %}
-                    <a class="section-ugc-slider__header-label" aria-label="{{ section.settings.label }}" href="{{ section.settings.label_link }}">
-                        {% render 'icon-thumbs-up.svg' %}
-                        <span>{{ section.settings.label }}</span>
-                    </a>
-                {% endif %}
-            </div>
-            <div class="section-ugc-slider__slider">
-                <div class="swiper swiper-{{ section_id }}">
-                    <div class="swiper-wrapper">
-                        {% for block in section.blocks %}
-                            {% if block.settings.image == blank %}{% continue %}{% endif %}
-                                <div class="swiper-slide">
-                                    <div class="section-ugc-slider__slider-slide">
-                                        {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
-                                            {% if block.settings.label != blank %}
-                                                <span class="slide-label">{{ block.settings.label }}</span>
-                                            {% endif %}
-                                            {{ block.settings.image.src | image_url: width: 900, crop: "center" | image_tag: alt: block.settings.image.alt, width: 324 }}
-                                        {% if block.settings.link != blank %}</a>{% endif %}
+    <div class="section-ugc-slider__container" style="background-color: {{ section.settings.background_color }};">
+        <div class="wrap wrap--no-padding wrap--{{ section_id }}">
+            <div class="section-ugc-slider__inner">
+                <div class="section-ugc-slider__header">
+                    {% if section.settings.title != blank %}
+                        <{{ section.settings.tag }} class="medium">{{ section.settings.title }}</{{ section.settings.tag }}>
+                    {% endif %}
+                    {% if section.settings.label != blank and section.settings.label_link != blank %}
+                        <a class="section-ugc-slider__header-label" aria-label="{{ section.settings.label }}" href="{{ section.settings.label_link }}">
+                            {% render 'icon-thumbs-up.svg' %}
+                            <span>{{ section.settings.label }}</span>
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="section-ugc-slider__slider">
+                    <div class="swiper swiper-{{ section_id }}">
+                        <div class="swiper-wrapper">
+                            {% for block in section.blocks %}
+                                {% if block.settings.image == blank %}{% continue %}{% endif %}
+                                    <div class="swiper-slide">
+                                        <div class="section-ugc-slider__slider-slide">
+                                            {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+                                                {% if block.settings.label != blank %}
+                                                    <span class="slide-label">{{ block.settings.label }}</span>
+                                                {% endif %}
+                                                {{ block.settings.image.src | image_url: width: 900, crop: "center" | image_tag: alt: block.settings.image.alt, width: 324 }}
+                                            {% if block.settings.link != blank %}</a>{% endif %}
+                                        </div>
                                     </div>
-                                </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                     <div class="swiper-pagination swiper-pagination-{{ section_id }}"></div>
                 </div>
@@ -44,7 +46,7 @@
     <script>
         const swiperUgcData = {
             section_id: {{ section_id | json }},
-            size: {{ section.settings.service_usps.size | json }},
+            size: {{ section.blocks.size | json }},
             autoplay: {{ section.settings.autoplay | json }},
             delay: {{ section.settings.delay | json }},
             speed: {{ section.settings.speed | json }},
@@ -136,7 +138,39 @@
             "id": "label_link",
             "label": "Label Link"
         },
-            {
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-grey)"
+        },
+        {
             "type": "header",
             "content": "Swiper Settings"
         },

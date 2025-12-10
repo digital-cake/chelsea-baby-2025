@@ -1,0 +1,20 @@
+<div class="price price-display" itemprop="offers" itemscope itemtype="https://schema.org/Offer" data-base="{{ product.price }}">
+    {% if product.price_max > product.price_min %}
+    <span class="from">{{ "products.product.price_from" | t }} </span>
+    <span class="label-price" itemprop="price" content="{{ product.price | money }}" data-original="{{ product.price }}">
+        {{- product.price | money -}}
+    </span>
+    <span class="compare"></span>
+    {% else %}
+    <span itemprop="price" content="{{ product.price | money }}">
+        {% if product.compare_at_price > product.price %}<ins>{% endif %}
+        {{- product.price | money -}}
+        {% if product.compare_at_price > product.price %}</ins>{% endif %}
+    </span>
+    <span class="compare">
+        {% if product.compare_at_price > product.price %}
+        <del>{{- product.compare_at_price | money -}}</del>
+        {% endif %}
+    </span>
+    {% endif %}
+</div>

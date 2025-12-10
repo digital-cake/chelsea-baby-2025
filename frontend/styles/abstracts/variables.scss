@@ -17,7 +17,9 @@ $radius-xlarge: 10px;
 // theme colours
 $color-black: var(--color-black);
 $color-white: var(--color-white);
+$color-white-standard: #FFFFFF;
 $color-grey: var(--color-grey);
+$color-grey-dark: #E9E9E6;
 $color-primary: var(--color-primary);
 $color-primary-hover: var(--color-primary-hover);
 $color-secondary: var(--color-secondary);
@@ -45,12 +47,12 @@ $w-s: 440px;
 $w-xs: 360px;
 
 @mixin section_header_center {
-	padding-bottom: 32px;
+	padding-bottom: 40px;
     text-align: center;
 }
 
 @mixin section_header {
-	padding-bottom: 32px;
+	padding-bottom: 40px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

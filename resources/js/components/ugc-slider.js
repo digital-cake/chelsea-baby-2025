@@ -9,9 +9,8 @@ window.init_ugc_slider = function(swiperUgcData) {
         speed: parseInt(swiperUgcData.speed) * 100,
         spaceBetween: 23,
         slidesPerView: 'auto',
-        init: false,
-        centeredSlides: true,
         loop: true,
+        centeredSlides: true,
         centeredSlidesBounds: true,
         autoplay: swiperUgcData.autoplay ? {
             delay: parseInt(swiperUgcData.delay) * 1000,
@@ -32,5 +31,4 @@ window.init_ugc_slider = function(swiperUgcData) {
             }
         }
     });
-    swiper.init();
 };

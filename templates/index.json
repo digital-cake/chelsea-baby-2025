@@ -13,6 +13,22 @@
       "type": "hero-banner",
       "settings": {}
     },
+    "collection_slider_QQXwXF": {
+      "type": "collection-slider",
+      "name": "Collection Slider",
+      "settings": {
+        "title": "Baby Shower Essentials",
+        "tag": "h3",
+        "label": "<p>Unsure what to gift? Check out our  <a href=\"/products/buki-france-dino-mega-egg\" title=\"Buki France Dino Mega Egg\">Gift Cards</a></p>",
+        "label_icon": "shopify://shop_images/icon-gift.svg",
+        "collection": "abc-design",
+        "background_color": "var(--color-grey)",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
     "ugc_slider_Rcj4B8": {
       "type": "ugc-slider",
       "blocks": {
@@ -70,6 +86,7 @@
         "tag": "h3",
         "label": "@Chelseababyuk",
         "label_link": "https://www.instagram.com/chelseababyuk/",
+        "background_color": "var(--color-grey)",
         "enable_pagination": true,
         "autoplay": true,
         "delay": 3,
@@ -172,6 +189,7 @@
   },
   "order": [
     "hero-banner",
+    "collection_slider_QQXwXF",
     "ugc_slider_Rcj4B8",
     "two_column_text_media_NzaULp",
     "blog_showcase_mKG4me",
