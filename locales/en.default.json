@@ -85,6 +85,7 @@
             "title": "All Collections"
         },
         "collection": {
+            "shop_now": "Shop Now",
             "drawer": {
                 "continue": "Continue",
                 "close": "Close"

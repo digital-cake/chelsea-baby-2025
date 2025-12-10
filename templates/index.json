@@ -13,6 +13,65 @@
       "type": "hero-banner",
       "settings": {}
     },
+    "collections_slider_aQr3wR": {
+      "type": "collections-slider",
+      "blocks": {
+        "collection_jVPVfH": {
+          "type": "collection",
+          "settings": {
+            "title": "Car Seats",
+            "collection": "baby-car-seats-birth-16-months-1"
+          }
+        },
+        "collection_9ckAJp": {
+          "type": "collection",
+          "settings": {
+            "title": "Pushchairs",
+            "collection": "cybex-gold-pushchairs"
+          }
+        },
+        "collection_MGbtzL": {
+          "type": "collection",
+          "settings": {
+            "title": "Cots & Cribs",
+            "collection": "cribs"
+          }
+        },
+        "collection_ncVEFK": {
+          "type": "collection",
+          "settings": {
+            "title": "Gifts",
+            "collection": "baby-gifts"
+          }
+        },
+        "collection_NLJztD": {
+          "type": "collection",
+          "settings": {
+            "title": "Nursery",
+            "collection": "furniture"
+          }
+        }
+      },
+      "block_order": [
+        "collection_jVPVfH",
+        "collection_9ckAJp",
+        "collection_MGbtzL",
+        "collection_ncVEFK",
+        "collection_NLJztD"
+      ],
+      "name": "Collections Slider",
+      "settings": {
+        "title": "Shop by Category",
+        "tag": "h3",
+        "link": "shopify://collections",
+        "link_label": "Shop All",
+        "background_color": "var(--color-grey)",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
     "brands_logo_slider_TrmgAn": {
       "type": "brands-logo-slider",
       "blocks": {
@@ -63,6 +122,7 @@
       "settings": {
         "title": "Our Handpicked Brand Partners",
         "tag": "h4",
+        "background_color": "var(--color-grey)",
         "autoplay": true,
         "delay": 3,
         "speed": 7,
@@ -249,6 +309,7 @@
   },
   "order": [
     "hero-banner",
+    "collections_slider_aQr3wR",
     "brands_logo_slider_TrmgAn",
     "collection_slider_QQXwXF",
     "ugc_slider_Rcj4B8",
