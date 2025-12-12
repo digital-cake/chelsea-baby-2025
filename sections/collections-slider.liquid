@@ -25,12 +25,15 @@
                                 {% if block.settings.collection == blank %}{% continue %}{% endif %}
                                 <div class="swiper-slide">
                                     <div class="section-collections-slider__slider-slide">
-                                        {% if block.settings.image != blank %}
-                                            {{ block.settings.image.src | image_url: width: 960, crop: "center" | image_tag: alt: block.settings.image.alt, width: 320 }}
-                                        {% else %}
-                                            {{ block.settings.collection.image.src | image_url: width: 960, crop: "center" | image_tag: alt: block.settings.collection.image.alt, width: 320 }}
-                                        {% endif %}
-                                        <div>
+                                       <a class="image-wrapper" aria-label="{{ block.settings.collection.title }}" href="{{ block.settings.collection.url }}">
+                                            {% if block.settings.image != blank %}
+                                                {{ block.settings.image.src | image_url: width: 960, crop: "center" | image_tag: alt: block.settings.image.alt, width: 320 }}
+                                            {% elsif block.settings.collection.image != blank %}
+                                                {{ block.settings.collection.image.src | image_url: width: 960, crop: "center" | image_tag: alt: block.settings.collection.image.alt, width: 320 }}
+                                            {% endif %}
+                                            <div class="image-overlay" style="background:{{ block.settings.image_overlay }}"></div>
+                                       </a>
+                                        <div class="slide-footer">
                                             {% if block.settings.title != blank %}
                                                 <p>{{ block.settings.title }}</p>
                                             {% else %}
@@ -54,11 +57,11 @@
 
     <script>
         window.addEventListener('DOMContentLoaded', function() {
-            window.init_collection_slider({{ section_id | json }});
+            window.init_collections_slider({{ section_id | json }});
         });
         if (Shopify.designMode) {
             document.addEventListener('shopify:section:load', function() {
-                window.init_collection_slider({{ section_id | json }});
+                window.init_collections_slider({{ section_id | json }});
             });
         };
     </script>
@@ -80,6 +83,11 @@
                     "id": "image",
                     "label": "Image",
                     "info": "Overrides default collection image"
+                },
+                {
+                    "type": "color_background",
+                    "id": "image_overlay",
+                    "label": "Image"
                 },
                 {
                     "type": "text",

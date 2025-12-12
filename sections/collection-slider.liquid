@@ -15,7 +15,9 @@
                         <{{ section.settings.tag }} class="medium">{{ section.settings.collection.title }}</{{ section.settings.tag }}>   
                     {% endif %}
                     {% if section.settings.label != blank %}
-                        <div class="section-collection-slider__header-label">{% if section.settings.label_icon != blank %}{{ section.settings.label_icon.src | image_url: width: 50, crop: "center" | image_tag: alt: section.settings.label_icon.alt, width: 18 }}{% endif %}{{ section.settings.label }}</div>
+                        <div class="section-collection-slider__header-label">{% if section.settings.label_icon != blank %}{{ section.settings.label_icon.src | image_url: width: 50, crop: "center" | image_tag: alt: section.settings.label_icon.alt, width: 18 }}{% endif %}{{ section.settings.label }}</div> 
+                    {% else %}
+                        <a class="button-text button-text--primary" aria-label="{{ section.settings.link_label }}" href="{{ section.settings.collection.url }}"><span>{{ section.settings.link_label }}</span></a>
                     {% endif %}
                 </div>
                 <div class="section-collection-slider__slider">
@@ -89,6 +91,21 @@
                 }
             ],
             "default": "h3"
+        },
+        {
+            "type": "header",
+            "content": "Collection link settings",
+            "info": "Will be overridden by label icon settings"
+        },
+        {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label",
+            "default": "Shop All"
+        },
+        {
+            "type": "header",
+            "content": "Label icon settings"
         },
         {
             "type": "richtext",

@@ -13,12 +13,31 @@
       "type": "hero-banner",
       "settings": {}
     },
+    "collection_slider_rwUNYk": {
+      "type": "collection-slider",
+      "name": "Collection Slider",
+      "settings": {
+        "title": "Best Sellers",
+        "tag": "h3",
+        "link_label": "Shop All",
+        "label": "",
+        "collection": "abc-design",
+        "background_color": "var(--color-white)",
+        "collection_products_to_show_limit": 15,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
     "collections_slider_aQr3wR": {
       "type": "collections-slider",
       "blocks": {
         "collection_jVPVfH": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/cc235af0d1e02c671520589494f6c39fa7e318cb.png",
+            "image_overlay": "",
             "title": "Car Seats",
             "collection": "baby-car-seats-birth-16-months-1"
           }
@@ -26,6 +45,8 @@
         "collection_9ckAJp": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/1aafbb3f7b72eaa58f321fcea33d73893b9ae86b.png",
+            "image_overlay": "",
             "title": "Pushchairs",
             "collection": "cybex-gold-pushchairs"
           }
@@ -33,6 +54,8 @@
         "collection_MGbtzL": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/a4d2f1d8ca7d267b6fb6417f3efe0e5298d641cb.png",
+            "image_overlay": "",
             "title": "Cots & Cribs",
             "collection": "cribs"
           }
@@ -40,6 +63,8 @@
         "collection_ncVEFK": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/ae013a54ecefa3d3901a0c15f031006acf19da68.png",
+            "image_overlay": "",
             "title": "Gifts",
             "collection": "baby-gifts"
           }
@@ -47,6 +72,8 @@
         "collection_NLJztD": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/1c5cd23d2347b0594ee7ef8dc9b73312946751eb.png",
+            "image_overlay": "",
             "title": "Nursery",
             "collection": "furniture"
           }
@@ -65,7 +92,7 @@
         "tag": "h3",
         "link": "shopify://collections",
         "link_label": "Shop All",
-        "background_color": "var(--color-grey)",
+        "background_color": "var(--color-white)",
         "padding_top": 64,
         "padding_bottom": 64,
         "mobile_padding_top": 32,
@@ -122,7 +149,7 @@
       "settings": {
         "title": "Our Handpicked Brand Partners",
         "tag": "h4",
-        "background_color": "var(--color-grey)",
+        "background_color": "var(--color-white)",
         "autoplay": true,
         "delay": 3,
         "speed": 7,
@@ -138,6 +165,7 @@
       "settings": {
         "title": "Baby Shower Essentials",
         "tag": "h3",
+        "link_label": "Shop All",
         "label": "<p>Unsure what to gift? Check out our  <a href=\"/products/buki-france-dino-mega-egg\" title=\"Buki France Dino Mega Egg\">Gift Cards</a></p>",
         "label_icon": "shopify://shop_images/icon-gift.svg",
         "collection": "abc-design",
@@ -309,6 +337,7 @@
   },
   "order": [
     "hero-banner",
+    "collection_slider_rwUNYk",
     "collections_slider_aQr3wR",
     "brands_logo_slider_TrmgAn",
     "collection_slider_QQXwXF",
