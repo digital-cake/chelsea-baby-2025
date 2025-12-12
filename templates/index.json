@@ -13,6 +13,53 @@
       "type": "hero-banner",
       "settings": {}
     },
+    "usp_banner_Cgmy6P": {
+      "type": "usp-banner",
+      "blocks": {
+        "usp_nhNjhP": {
+          "type": "usp",
+          "settings": {
+            "text": "Visit our store to try before you buy with a product demo",
+            "link": "",
+            "icon": "shopify://shop_images/icon-shop.svg"
+          }
+        },
+        "usp_JNQCBe": {
+          "type": "usp",
+          "settings": {
+            "text": "Enjoy 10% off your first order by joining our mailing list",
+            "link": "",
+            "icon": "shopify://shop_images/icon-discount.svg"
+          }
+        },
+        "usp_zYmH7g": {
+          "type": "usp",
+          "settings": {
+            "text": "Buy now pay later with Klarna",
+            "link": "",
+            "icon": "shopify://shop_images/icon-klarna.svg"
+          }
+        }
+      },
+      "block_order": [
+        "usp_nhNjhP",
+        "usp_JNQCBe",
+        "usp_zYmH7g"
+      ],
+      "name": "USP Banner",
+      "settings": {
+        "disabled_border_radius": false,
+        "text_color": "var(--color-primary)",
+        "background_color": "var(--color-white)",
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
     "collection_slider_rwUNYk": {
       "type": "collection-slider",
       "name": "Collection Slider",
@@ -337,6 +384,7 @@
   },
   "order": [
     "hero-banner",
+    "usp_banner_Cgmy6P",
     "collection_slider_rwUNYk",
     "collections_slider_aQr3wR",
     "brands_logo_slider_TrmgAn",

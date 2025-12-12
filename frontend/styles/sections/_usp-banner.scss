@@ -1,0 +1,58 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-usp-banner {
+	position: relative;
+	transition: all 0.3s ease-in-out;
+    .swiper {
+        display: none;
+        &-initialized {
+            display: block;
+        }
+        .swiper-wrapper {
+            align-items: center;
+        }
+    }
+    &__inner {
+        border-top-left-radius: $radius-large;
+        border-top-right-radius: $radius-large;
+        position: relative;
+        padding: 1.625em 5.125em;
+        @media (max-width: $w-xl) {
+            padding: 0.75em 1em;
+        }
+        &.no-border-radius {
+            border-radius: unset;
+        }
+        .swiper-pagination {
+            position: relative;
+            padding-top: 1.625em;
+        }
+        &-item, a {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: default;
+            gap: 1.25em;
+            span {
+                font-size: 0.625em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 140%;
+                letter-spacing: 0.5px;
+                color: $color-black;
+                font-weight: $weight-bold;
+                text-transform: uppercase;
+                text-align: left;
+                max-width: 240px;
+                @media (max-width: $w-m) {
+                    text-align: center;
+                }
+            }
+        }
+        a {
+            cursor: pointer;
+        }
+    }
+}
