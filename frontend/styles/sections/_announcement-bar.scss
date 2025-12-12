@@ -1,0 +1,51 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-announcement-bar {
+	position: relative;
+	transition: all 0.3s ease-in-out;
+    z-index: 10;
+    .swiper {
+        display: none;
+        &-initialized {
+            display: block;
+        }
+    }
+    &__inner {
+        position: relative;
+        padding: 0.75em 2.125em;
+        .swiper-wrapper {
+            justify-content: space-between;
+            .swiper-slide {
+                @media (min-width: 900px) {
+                    width: fit-content !important;
+                }
+            }
+        }
+        &-announcement {
+            width: 100%;
+            min-width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            cursor: default;
+            span {
+                font-size: 0.625em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: $weight-display;
+                line-height: 1;
+                letter-spacing: 0.5px;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: $color-black;
+                text-transform: uppercase;
+            }
+        }
+    }
+}

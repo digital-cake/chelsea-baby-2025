@@ -13,7 +13,45 @@
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
-      "settings": {}
+      "blocks": {
+        "announcement_G6Trhc": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free UK Delivery on Orders over £50",
+            "link": ""
+          }
+        },
+        "announcement_pE8wDp": {
+          "type": "announcement",
+          "settings": {
+            "text": "30-Day Returns",
+            "link": ""
+          }
+        },
+        "announcement_H7Wb3e": {
+          "type": "announcement",
+          "settings": {
+            "text": "Click and Collect available",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_G6Trhc",
+        "announcement_pE8wDp",
+        "announcement_H7Wb3e"
+      ],
+      "settings": {
+        "text_color": "var(--color-white)",
+        "background_color": "var(--color-primary)",
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
     },
     "header": {
       "type": "header",

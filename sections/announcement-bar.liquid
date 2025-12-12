@@ -1,0 +1,214 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{% if section.blocks.size > 0 %}
+    {%- render 'vite' with '@sectionStyles/_announcement-bar.scss' -%}
+    {%- render 'vite' with '@@/components/announcement-bar.js' -%}
+
+    <div class="wrap wrap--no-padding wrap--{{ section_id }}">
+        <div class="section-announcement-bar__inner" style="background-color: {{ section.settings.background_color }};">
+            <div class="swiper swiper-{{ section_id }}">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        {% if block.settings.text != blank %}
+                            <div class="swiper-slide">
+                                <div class="section-announcement-bar__inner-announcement">
+                                    {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+                                        <span style="color: {{ section.settings.text_color }};">{{ block.settings.text }}</span>
+                                    {% if block.settings.link != blank %}</a>{% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const swiperAnnouncementBarData = {
+        section_id: {{ section_id | json }},
+        size: {{ section.blocks.size | json }},
+        autoplay: {{ section.settings.autoplay | json }},
+        delay: {{ section.settings.delay | json }},
+        speed: {{ section.settings.speed | json }}
+        };
+
+        window.addEventListener('DOMContentLoaded', function() {
+            window.init_announcement_bar_slider(swiperAnnouncementBarData);
+        });
+        if (Shopify.designMode) {
+            document.addEventListener('shopify:section:load', function() {
+                window.init_announcement_bar_slider(swiperAnnouncementBarData);
+            });
+        };
+    </script>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Announcement Bar",
+    "tag": "section",
+    "class": "section-announcement-bar",
+    "blocks": [
+        {
+            "name": "Announcement",
+            "type": "announcement",
+            "limit": 3,
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "Text",
+                    "id": "text",
+                    "default": "Announcement goes here"
+                },
+                {
+                    "type": "url",
+                    "id": "link",
+                    "label": "Link",
+                    "info": "Will wrap the whole announcement message"
+                }
+            ]
+        }
+    ],
+    "settings": [
+          {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-white)"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-primary)"
+        },
+        {
+            "type": "header",
+            "content": "Slider Settings"
+        },
+        {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Autoplay",
+            "default": false
+        },
+        {
+            "type": "number",
+            "id": "delay",
+            "label": "Autoplay Delay",
+            "default": 3,
+            "info": "Time delay between slide transitions, in seconds."
+        },
+        {
+            "type": "range",
+            "min": 1,
+            "max": 10,
+            "default": 7,
+            "id": "speed",
+            "label": "Autoplay Speed"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        }
+    ]
+}
+{% endschema %}
