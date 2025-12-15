@@ -1,3 +1,581 @@
-<div>
-    Hero Banner
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+
+{%- render 'vite' with '@sectionStyles/_hero-banner.scss' -%}
+{%- render 'vite' with '@@/components/hero-banner.js' -%}
+
+{% for block in section.blocks %}
+    {% if forloop.first %}
+        {% if block.settings.image_desktop != blank %}
+            {% assign file_path = block.settings.image_desktop.src | img_url: "1920x" %}
+            {% assign file_type = file_path | split: "." | last %}
+            {% assign clean_file_type = file_type | split: "?" | first %}
+            <link rel="preload" fetchpriority="high" as="image" href="{{ block.settings.image_desktop.src | img_url: "1920x" }}" type="image/{{ clean_file_type }}">
+        {% endif %}
+        {% if block.settings.image_mobile != blank %}
+            {% assign file_path = block.settings.image_mobile.src | img_url: "900x" %}
+            {% assign file_type = file_path | split: "." | last %}
+            {% assign clean_file_type = file_type | split: "?" | first %}
+            <link rel="preload" fetchpriority="high" as="image" href="{{ block.settings.image_mobile.src | img_url: "900x" }}" type="image/{{ clean_file_type }}">
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+<h1 style="display: none;">{{ page_title }}</h1>
+
+<div class="wrap wrap--no-padding">
+
+    <div class="section-hero-banner__inner">
+
+        {% if section.blocks.size > 0 %}
+        <div class="section-hero-banner__slides">
+            <div class="swiper swiper-{{ section_id }}">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        {% case block.type %}
+                        {% when "slide" %}
+                            {% assign has_button_1 = false %}
+                            {% assign has_button_2 = false %}
+                            {% if block.settings.url_1 != blank and block.settings.label_1 != blank %}
+                                {% assign has_button_1 = true %}
+                            {% endif %}
+                            {% if block.settings.url_2 != blank and block.settings.label_2 != blank %}
+                                {% assign has_button_2 = true %}
+                            {% endif %}
+                            <style>
+                            {% if block.settings.image_desktop != blank %}
+                                .slide--{{ forloop.index }} {
+                                    background: url({{ block.settings.image_desktop.src | img_url: "1920x" }}) no-repeat 50% 50% / cover;
+                                }
+                                @media (max-width:1024px) {
+                                    .slide--{{ forloop.index }} {
+                                        background: url({{ block.settings.image_mobile.src | img_url: "900x" }}) no-repeat 50% 50% / cover;
+                                    }
+                                }
+                            {% endif %}
+                            </style>
+                            <div class="swiper-slide slide slide--{{ forloop.index }}">
+                                <div class="slide__inner pos-d-v-{{ block.settings.pos_d_v }} pos-d-h-{{ block.settings.pos_d_h }} pos-m-v-{{ block.settings.pos_m_v }}">
+                                    <div class="slide__content align-d-{{ block.settings.align_d }} align-m-{{ block.settings.align_m }}" id="slide-{{ forloop.index }}">
+                                        {% if block.settings.title != blank %}
+                                            <h2 style="color: {{ block.settings.text_color }}" class="large">{{ block.settings.title | newline_to_br }}</h2>
+                                        {% endif %}
+                                        {% if block.settings.subtitle %}
+                                            <p style="color: {{ block.settings.text_color }}" class="subtitle">{{ block.settings.subtitle | newline_to_br }}</p>
+                                        {% endif %}
+                                        {% if has_button_1 == true or has_button_2 == true %}
+                                        <div class="slide__actions align-d-{{ block.settings.align_d }} align-m-{{ block.settings.align_m }}">
+                                            {% if has_button_1 == true %}
+                                                {% if block.settings.link_1_style == 'solid' %}
+                                                    <a class="button button--{{ block.settings.link_1_color }}" href="{{ block.settings.url_1 }}"><span>{{ block.settings.label_1 }}</span></a>
+                                                {% else %}
+                                                    <a class="button-text button-text--{{ block.settings.link_1_color }}" href="{{ block.settings.url_1 }}"><span>{{ block.settings.label_1 }}</span></a>
+                                                {% endif %}
+                                            {% endif %}
+                                            {% if has_button_2 == true %}
+                                                {% if block.settings.link_2_style == 'solid' %}
+                                                    <a class="button button--{{ block.settings.link_2_color }}" href="{{ block.settings.url_2 }}"><span>{{ block.settings.label_2 }}</span></a>
+                                                {% else %}
+                                                    <a class="button-text button-text--{{ block.settings.link_2_color }}" href="{{  block.settings.url_2 }}"><span>{{ block.settings.label_2 }}</span></a>
+                                                {% endif %}
+                                            {% endif %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% if block.settings.overlay == true %}
+                                    <div class="section-hero-bannner__overlay overlay" style="background:{{ block.settings.overlay_background }}"></div>
+                                {% endif %}
+                                {% if block.settings.video_desktop != blank %}
+
+                                    {% assign desktop_streamable_src = block.settings.video_desktop.sources | where: 'format', 'm3u8' | first %}
+                                    {% assign desktop_standard_src =  block.settings.video_desktop.sources | where: 'format', 'mp4' | first   %}
+
+                                    <div class="video-wrapper" style="background-image: url('{{ block.settings.video_desktop.preview_image | img_url: '1920x1080', crop: 'center' }}');">
+                                        <video
+                                            crossOrigin="anonymous"
+                                            muted
+                                            loop
+                                            playsinline
+                                            autoplay
+                                            width="{{ block.settings.video_desktop.sources[1].width }}"
+                                            height="{{ block.settings.video_desktop.sources[1].height }}"
+                                            class="desktop hls-video"
+                                            poster="{{ block.settings.video_desktop.preview_image | img_url: '1920x1080', crop: 'center' }}"
+                                            data-streamable-src="{{ desktop_streamable_src.url }}" 
+                                            data-standard-src="{{ desktop_standard_src.url }}"
+                                        >
+                                        </video>
+                                    </div>
+                                {% endif %}
+                                {% if block.settings.video_mobile != blank %}
+
+                                    {% assign mobile_streamable_src = block.settings.video_mobile.sources | where: 'format', 'm3u8' | first %}
+                                    {% assign mobile_standard_src =  block.settings.video_mobile.sources | where: 'format', 'mp4' | first   %}
+
+                                    <div class="video-wrapper" style="background-image: url('{{ block.settings.video_mobile.preview_image | img_url: '1920x1080', crop: 'center' }}');">
+                                        <video
+                                            crossOrigin="anonymous"
+                                            muted
+                                            loop
+                                            playsinline
+                                            autoplay
+                                            loop
+                                            width="{{ block.settings.video_mobile.sources[1].width }}"
+                                            height="{{ block.settings.video_mobile.sources[1].height }}"
+                                            class="mobile hls-video"
+                                            poster="{{ block.settings.video_mobile.preview_image | img_url: '1920x1080', crop: 'center' }}"
+                                            data-streamable-src="{{ mobile_streamable_src.url }}" 
+                                            data-standard-src="{{ mobile_standard_src.url }}"
+                                        >
+                                        </video>
+                                </div>
+                                {% endif %}
+                            </div>    
+                        {% endcase  %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="swiper-actions-wrapper">
+                {% if section.settings.enable_pagination and section.blocks.size > 1 %}
+                    <div class="swiper-pagination swiper-pagination--white swiper-pagination-{{ section_id }}"></div>
+                {% endif %}
+                {% if section.settings.enable_arrows and section.blocks.size > 1 %}
+                    <div class="swiper-navigation">
+                        <div class="swiper-button swiper-button-prev prev-{{ section_id }}"></div>
+                        <div class="swiper-button swiper-button-next next-{{ section_id }}"></div>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+        {% endif %}
+        
+    </div>
+    
 </div>
+
+<script>
+    const swiperData = {
+        section_id: {{ section_id | json }},
+        size: {{ section.blocks.size | json }},
+        speed: {{ section.settings.speed | json }},
+        enable_arrows: {{ section.settings.enable_arrows | json }},
+        enable_pagination: {{ section.settings.enable_pagination | json }},
+        autoplay: {{ section.settings.autoplay | json }},
+        delay: {{ section.settings.delay | json }}
+    };
+
+    window.addEventListener('DOMContentLoaded', function() {
+        window.init_hero_banner_slider(swiperData);
+    });
+    if (Shopify.designMode) {
+        document.addEventListener('shopify:section:load', function() {
+            window.init_hero_banner_slider(swiperData);
+        });
+    };
+</script>
+
+{% schema %}
+{
+    "name": "Hero Banner",
+    "tag": "section",
+    "class": "section-hero-banner",
+    "blocks": [
+        {
+            "type": "slide",
+            "name": "Slide",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "title",
+                    "label": "Text",
+                    "default": "Your title here"
+                },
+                {
+                    "type": "header",
+                    "content": "Subtitle"
+                },
+                {
+                    "type": "textarea",
+                    "id": "subtitle",
+                    "label": "Text"
+                },
+                {
+                    "type": "select",
+                    "id": "text_color",
+                    "label": "Text Color",
+                    "options": [
+                        {
+                            "label": "White",
+                            "value": "var(--color-white)"
+                        },
+                        {
+                            "label": "Grey",
+                            "value": "var(--color-grey)"
+                        },
+                        {
+                            "label": "Primary",
+                            "value": "var(--color-primary)"
+                        },
+                        {
+                            "label": "Secondary",
+                            "value": "var(--color-secondary)"
+                        },
+                        {
+                            "label": "Tertiary",
+                            "value": "var(--color-tertiary)"
+                        },
+                        {
+                            "label": "Heritage",
+                            "value": "var(--color-heritage)"
+                        }
+                    ],
+                    "default": "var(--color-white)"
+                },
+                {
+                    "type": "header",
+                    "content": "Button 1"
+                },
+                {
+                    "type": "text",
+                    "id": "label_1",
+                    "label": "Label",
+                    "default": "Label one"
+                },
+                {
+                    "type": "url",
+                    "id": "url_1",
+                    "label": "Link"
+                },
+                {
+                    "type": "select",
+                    "id": "link_1_style",
+                    "label": "Link Style",
+                    "options": [
+                        {
+                            "label": "Solid",
+                            "value": "solid"
+                        },
+                        {
+                            "label": "Text",
+                            "value": "text"
+                        }
+                    ],
+                    "default": "solid"
+                },
+                {
+                    "type": "select",
+                    "id": "link_1_color",
+                    "label": "Link Colour",
+                    "options": [
+                        {
+                            "label": "Primary",
+                            "value": "primary"
+                        },
+                        {
+                            "label": "Secondary",
+                            "value": "secondary"
+                        },
+                        {
+                            "label": "Tertiary",
+                            "value": "tertiary"
+                        },
+                        {
+                            "label": "Transactional",
+                            "value": "transactional"
+                        },
+                        {
+                            "label": "Black",
+                            "value": "black"
+                        },
+                        {
+                            "label": "White",
+                            "value": "white"
+                        }
+                    ],
+                    "default": "white"
+                },
+                {
+                    "type": "header",
+                    "content": "Button 2"
+                },
+                {
+                    "type": "text",
+                    "id": "label_2",
+                    "label": "Label",
+                    "default": "Label two"
+                },
+                {
+                    "type": "url",
+                    "id": "url_2",
+                    "label": "Link"
+                },
+                {
+                    "type": "select",
+                    "id": "link_2_style",
+                    "label": "Link Style",
+                    "options": [
+                        {
+                            "label": "Solid",
+                            "value": "solid"
+                        },
+                        {
+                            "label": "Text",
+                            "value": "text"
+                        }
+                    ],
+                    "default": "solid"
+                },
+                {
+                    "type": "select",
+                    "id": "link_2_color",
+                    "label": "Link Colour",
+                    "options": [
+                        {
+                            "label": "Primary",
+                            "value": "primary"
+                        },
+                        {
+                            "label": "Secondary",
+                            "value": "secondary"
+                        },
+                        {
+                            "label": "Tertiary",
+                            "value": "tertiary"
+                        },
+                        {
+                            "label": "Transactional",
+                            "value": "transactional"
+                        },
+                        {
+                            "label": "Black",
+                            "value": "black"
+                        },
+                        {
+                            "label": "White",
+                            "value": "white"
+                        }
+                    ],
+                    "default": "white"
+                },
+                {
+                    "type": "header",
+                    "content": "Desktop Position"
+                },
+                {
+                    "type": "select",
+                    "id": "pos_d_v",
+                    "label": "Vertical",
+                    "options": [
+                        {
+                            "value": "top",
+                            "label": "Top"
+                        },
+                        {
+                            "value": "middle",
+                            "label": "Middle"
+                        },
+                        {
+                            "value": "bottom",
+                            "label": "Bottom"
+                        }
+                    ],
+                    "default": "middle"
+                },
+                {
+                    "type": "select",
+                    "id": "pos_d_h",
+                    "label": "Horizontal",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "Left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "Center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "Right"
+                        }
+                    ],
+                    "default": "center"
+                },
+                {
+                    "type": "header",
+                    "content": "Mobile Position"
+                },
+                {
+                    "type": "select",
+                    "id": "pos_m_v",
+                    "label": "Vertical",
+                    "options": [
+                        {
+                            "value": "top",
+                            "label": "Top"
+                        },
+                        {
+                            "value": "middle",
+                            "label": "Middle"
+                        },
+                        {
+                            "value": "bottom",
+                            "label": "Bottom"
+                        }
+                    ],
+                    "default": "middle"
+                },
+                {
+                    "type": "header",
+                    "content": "Alignment"
+                },
+                {
+                    "type": "select",
+                    "id": "align_d",
+                    "label": "Desktop",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "Left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "Center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "Right"
+                        }
+                    ],
+                    "default": "center"
+                },
+                {
+                    "type": "select",
+                    "id": "align_m",
+                    "label": "Mobile",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "Left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "Center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "Right"
+                        }
+                    ],
+                    "default": "center"
+                },
+                {
+                    "type": "header",
+                    "content": "Overlay"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "overlay",
+                    "label": "Enable Overlay",
+                    "default": true
+                },
+                {
+                    "type": "color_background",
+                    "id": "overlay_background",
+                    "label": "Overlay"
+                },
+                {
+                    "type": "header",
+                    "content": "Images"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_desktop",
+                    "label": "Desktop",
+                    "info": "Min. size: 1920x1080"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_mobile",
+                    "label": "Mobile",
+                    "info": "Min. size: 900x1100"
+                },
+                {
+                    "type": "header",
+                    "content": "Videos"
+                },
+                {
+                    "type": "video",
+                    "id": "video_desktop",
+                    "label": "Desktop",
+                    "info": "Min. size: 1920x1080"
+                },
+                {
+                    "type": "video",
+                    "id": "video_mobile",
+                    "label": "Mobile",
+                    "info": "Min. size: 900x1100"
+                },
+                {
+                    "type": "image_picker",
+                    "label": "Video Poster",
+                    "id": "video_poster",
+                    "info": "To show when low power mode is enabled"
+                },
+                {
+                    "type": "image_picker",
+                    "label": "Video Poster Mobile",
+                    "id": "video_poster_mobile",
+                    "info": "To show when low power mode is enabled"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "header",
+            "content": "Slider"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_arrows",
+            "label": "Enable Arrows",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pagination",
+            "label": "Enable Pagination",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Enable Autoplay",
+            "default": false
+        },
+        {
+            "type": "range",
+            "min": 1,
+            "max": 10,
+            "default": 3,
+            "id": "delay",
+            "label": "Autoplay Delay (seconds)"
+        },
+        {
+            "type": "range",
+            "min": 1,
+            "max": 10,
+            "default": 5,
+            "id": "speed",
+            "label": "Autoplay Speed"
+        }
+    ]
+}
+{% endschema %}

@@ -3,6 +3,8 @@
 .section-usp-banner {
 	position: relative;
 	transition: all 0.3s ease-in-out;
+    margin-top: -10px;
+    z-index: 2;
     .swiper {
         display: none;
         &-initialized {
@@ -17,8 +19,8 @@
         border-top-right-radius: $radius-large;
         position: relative;
         padding: 1.625em 5.125em;
-        @media (max-width: $w-xl) {
-            padding: 0.75em 1em;
+        @media (max-width: $w-l) {
+            padding: 2em 1em;
         }
         &.no-border-radius {
             border-radius: unset;
@@ -49,6 +51,9 @@
                 @media (max-width: $w-m) {
                     text-align: center;
                 }
+            }
+            img {
+                min-width: 30px;
             }
         }
         a {

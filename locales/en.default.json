@@ -114,7 +114,7 @@
     },
     "search": {
         "title": "Search",
-        "placeholder": "Enter your search term...",
+        "placeholder": "Search Products...",
         "submit": "Search",
         "no_results": "No results.",
         "no_results_for": "No results for '{{ terms }}'.",

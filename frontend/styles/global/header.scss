@@ -1,7 +1,112 @@
-.header-wrapper {
-    background-color: #000000;
-    padding: 0.5em 1.25em;
-    h1 {
-        color: #ffffff;
+@use "../abstracts/variables.scss" as *;
+
+.section-header {
+    &__inner {
+        // &--index {
+        //     position: fixed;
+        //     width: 100%;
+        //     z-index: 3;
+        //     background-color: $color-white;
+        // }
+    }
+    &__branding {
+        width: 100%;
+        max-width: 200px;
+        min-width: 200px;
+    }
+    &__mobile {
+        display: none;
+        @media (max-width: $w-l) {
+            display: block;
+        }
+        button {
+            appearance: none;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+    }
+    &__top {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr auto 1fr;
+        padding: 0.75em 2em;
+    }
+    &__search {
+        label {
+            display: none;
+        }
+        button {
+            appearance: none;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            span {
+                display: none;
+            }
+        }
+        input {
+            border: none;
+            appearance: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 16px;
+            &::placeholder {
+                font-size: 14px;
+            }
+            &::-webkit-search-decoration {
+                appearance: none;
+            }
+        }
+        .inner {
+            display: flex;
+            align-items: center;
+            gap: 6.5px;
+        }
+        display: block;
+        @media (max-width: $w-l) {
+            display: none;
+        }
+    }
+    &__actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1em;
+        a, button {
+            appearance: none;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            span {
+                display: none;
+            }
+        }
+        svg {
+            min-width: 20px;
+        }
+        &-cart {
+            display: flex;
+            position: relative;
+            #cart-counter {
+                pointer-events: none;
+                position: absolute;
+                width: 1em;
+                height: 1em;
+                top: -6px;
+                right: -6px;
+                background-color: $color-transactional;
+                border-radius: 50%;
+                color: $color-white;
+            }
+        }
+        &-account {
+            display: block;
+            @media (max-width: 500px) {
+                display: none;
+            }
+        }
     }
 }

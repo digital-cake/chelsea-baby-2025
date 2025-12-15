@@ -11,7 +11,69 @@
   "sections": {
     "hero-banner": {
       "type": "hero-banner",
-      "settings": {}
+      "blocks": {
+        "slide_WgP7Kj": {
+          "type": "slide",
+          "settings": {
+            "title": "The pram that feels like an extra pair of hands.",
+            "subtitle": "This pram is built to make life feel lighter — from smooth walks through the park to nap times on the go. Think of it as the friend who always knows what you need, before you do.",
+            "text_color": "#f7f8f8",
+            "label_1": "Discover The Dune 2",
+            "url_1": "shopify://products/silver-cross-dune-2-travel-system-accessory-bundle",
+            "link_1_style": "solid",
+            "link_1_color": "white",
+            "label_2": "Shop All Pushchairs",
+            "url_2": "shopify://collections",
+            "link_2_style": "solid",
+            "link_2_color": "white",
+            "pos_d_v": "bottom",
+            "pos_d_h": "left",
+            "pos_m_v": "bottom",
+            "align_d": "left",
+            "align_m": "left",
+            "overlay": true,
+            "overlay_background": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)",
+            "image_desktop": "shopify://shop_images/hero-banner-placeholder.png",
+            "image_mobile": "shopify://shop_images/hero-banner-placeholder.png"
+          }
+        },
+        "slide_bR37cy": {
+          "type": "slide",
+          "settings": {
+            "title": "The pram that feels like an extra pair of feet.",
+            "subtitle": "This pram is built to make life feel lighter — from smooth walks through the park to nap times on the go. Think of it as the friend who always knows what you need, before you do.",
+            "text_color": "#f7f8f8",
+            "label_1": "Discover The Dune 2",
+            "url_1": "shopify://products/silver-cross-dune-2-travel-system-accessory-bundle",
+            "link_1_style": "solid",
+            "link_1_color": "white",
+            "label_2": "Shop All Pushchairs",
+            "url_2": "shopify://collections",
+            "link_2_style": "solid",
+            "link_2_color": "white",
+            "pos_d_v": "bottom",
+            "pos_d_h": "left",
+            "pos_m_v": "bottom",
+            "align_d": "left",
+            "align_m": "left",
+            "overlay": true,
+            "overlay_background": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)",
+            "image_desktop": "shopify://shop_images/hero-banner-placeholder.png",
+            "image_mobile": "shopify://shop_images/hero-banner-placeholder.png"
+          }
+        }
+      },
+      "block_order": [
+        "slide_WgP7Kj",
+        "slide_bR37cy"
+      ],
+      "settings": {
+        "enable_arrows": true,
+        "enable_pagination": true,
+        "autoplay": false,
+        "delay": 3,
+        "speed": 5
+      }
     },
     "usp_banner_Cgmy6P": {
       "type": "usp-banner",

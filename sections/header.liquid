@@ -1,4 +1,44 @@
-<div class="section-header__inner"></div>
+<div class="section-header__inner{% if template.name == 'index' %} section-header__inner--index{% endif %}">
+    <div class="section-header__top">
+        <div class="section-header__mobile">
+            <button type="button">
+                {% render 'icon-menu.svg' %}
+            </button>
+        </div>
+        <div class="section-header__search">
+            <form action="{{ routes.search_url }}" method="get" role="search" id="header-search-form" autocomplete="off">
+                <div class="inner">
+                    <input type="hidden" name="type" value="product">
+                    <label for="drawer-search-input">{{ "search.title" | t }}</label>
+                    <button id="header-search-submit" type="button" aria-label="{{ "search.title" | t }}">
+                        <span>{{ "search.title" | t }}</span>
+                        {% render "icon-search.svg" %}
+                    </button>
+                    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ "search.placeholder" | t }}" id="header-search-input" autocomplete="off">
+                </div>
+            </form>
+        </div>
+        <div class="section-header__branding">
+            <h1 style="display: none;">{{ page_title }}</h1>
+            {% if section.settings.logo != blank %}
+                <a aria-label="{{ shop.name }}" href="{{ routes.root_url }}">
+                    {{ section.settings.logo.src | image_url: width: 600 | image_tag: alt: image.alt, width: 200 }}
+                </a>
+            {% endif %}
+        </div>
+        <div class="section-header__actions">
+            <a class="section-header__actions-account" aria-label="{{ 'general.menu.account' | t }}" href="{{ routes.account_url }}">{% render 'icon-account.svg' %}<span>{{ 'general.menu.account' | t }}</span></a>
+            <a aria-label="{{ 'general.menu.wishlist' | t }}" href="{{ routes.root_url }}pages/wishlist">{% render 'icon-heart.svg' %}<span>{{ 'general.menu.wishlist' | t }}</span></a>
+            <div class="section-header__actions-cart">
+                <button aria-label="{{ 'general.menu.cart' | t }}" type="button"><span>{{ 'general.menu.cart' | t }}</span>{% render 'icon-cart.svg' %}</button>
+                <span id="cart-counter"><span class="count"></span></span></a>
+            </li>
+        </div>
+    </div>
+    <div class="section-header__navigation">
+
+    </div>
+</div>
 
 {% schema %}
     {
@@ -6,6 +46,17 @@
         "tag": "header",
         "class": "section-header",
         "blocks": [],
-        "settings": []
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Logo"
+            },
+            {
+                "type": "link_list",
+                "id": "menu",
+                "label": "Menu"
+            }
+        ]
     }
 {% endschema %}
