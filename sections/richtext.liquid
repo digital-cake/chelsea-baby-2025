@@ -1,0 +1,376 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{% if section.blocks.size > 0 %}
+    {%- render 'vite' with '@sectionStyles/_richtext.scss' -%}
+
+    {% assign has_buttons = false %}
+
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when "button" %}
+                {% assign has_buttons = true %}
+        {% endcase %}
+    {% endfor %}
+
+    <div class="section-richtext__container" style="background-color: {{ section.settings.background_color }};">
+
+        <div class="wrap wrap--{{ section.settings.width }} wrap--{{ section_id }}">
+
+            <div class="section-richtext__inner">
+
+                <div class="section-richtext__content section-richtext__content--{{ section.settings.alignment }}">
+
+                {% for block in section.blocks %}
+                    {% case block.type %}
+                        {% when "heading" %}
+                            <{{ block.settings.tag }} class="{{ block.settings.size }}" style="color: {{ section.settings.text_color }}">{{ block.settings.title | newline_to_br }}</{{ block.settings.tag }}>
+                        {% when "text" %}
+                            <p style="color: {{ section.settings.text_color }}">{{ block.settings.text }}</p>
+                    {% endcase %}
+                {% endfor %}
+
+                {% if has_buttons == true %}
+                    <div class="section-richtext__actions section-richtext__actions--{{ section.settings.alignment }}">
+                        {% for block in section.blocks %}
+                        {% case block.type %}
+                            {% when "button" %}
+                                {% if block.settings.url != blank and block.settings.link_label != blank %}
+                                    {% if block.settings.link_style == 'text' %}
+                                        <a href="{{ block.settings.url }}" class="text-button text-button--{{ block.settings.link_colour }}" aria-label="{{ block.settings.link_label }}">
+                                            <span>{{ block.settings.link_label }}</span>
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ block.settings.url }}" class="button button--{{ block.settings.link_style }} button--{{ block.settings.link_colour }}" aria-label="{{ block.settings.link_label }}">
+                                            <span>{{ block.settings.link_label }}</span>
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                        {% endcase %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endif %}
+
+{% schema %}
+{
+    "name": "Richtext",
+    "tag": "section",
+    "class": "section-richtext",
+    "blocks": [
+        {
+            "type": "heading",
+            "name": "Heading",
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "title",
+                    "label": "Text",
+                    "default": "Lorem ipsum dolor sit amet consectetur"
+                },
+                {
+                    "type": "select",
+                    "id": "tag",
+                    "label": "Tag",
+                    "options": [
+                        {
+                            "value": "h2",
+                            "label": "H2"
+                        },
+                        {
+                            "value": "h3",
+                            "label": "H3"
+                        },
+                        {
+                            "value": "h4",
+                            "label": "H4"
+                        },
+                        {
+                            "value": "h5",
+                            "label": "H5"
+                        }
+                    ],
+                    "default": "h3"
+                },
+                {
+                    "type": "select",
+                    "id": "size",
+                    "label": "Size",
+                    "options": [
+                        {
+                            "value": "small",
+                            "label": "Small"
+                        },
+                        {
+                            "value": "medium",
+                            "label": "Medium"
+                        },
+                        {
+                            "value": "large",
+                            "label": "Large"
+                        },
+                        {
+                            "value": "display",
+                            "label": "Display"
+                        }
+                    ],
+                    "default": "large"
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "name": "Text",
+            "settings": [
+                {
+                    "type": "inline_richtext",
+                    "id": "text",
+                    "label": "Text",
+                    "default": "Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+                }
+            ]
+        },
+        {
+            "type": "button",
+            "name": "Button",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "link_label",
+                    "label": "Link Label",
+                    "default": "Label"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Link",
+                    "info": "Required."
+                },
+                {
+                    "type": "select",
+                    "id": "link_style",
+                    "label": "Link Style",
+                    "options": [
+                        {
+                            "value": "solid",
+                            "label": "Solid"
+                        },
+                        {
+                            "value": "outline",
+                            "label": "Outline"
+                        },
+                        {
+                            "value": "text",
+                            "label": "Text"
+                        }
+                    ],
+                    "default": "solid"
+                },
+                {
+                    "type": "select",
+                    "id": "link_colour",
+                    "label": "Link Colour",
+                    "options": [
+                        {
+                            "value": "primary",
+                            "label": "Primary"
+                        },
+                        {
+                            "value": "secondary",
+                            "label": "Secondary"
+                        },
+                        {
+                            "value": "tertiary",
+                            "label": "Tertiary"
+                        },
+                        {
+                            "value": "transactional",
+                            "label": "Transactional"
+                        },
+                        {
+                            "value": "white",
+                            "label": "White"
+                        },
+                        {
+                            "value": "black",
+                            "label": "Black"
+                        }
+                    ],
+                    "default": "white"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+                {
+                    "value": "medium",
+                    "label": "Small"
+                },
+                {
+                    "value": "large",
+                    "label": "Medium"
+                    
+                },
+                {
+                    "value": "x-large",
+                    "label": "Large"
+                },
+                {
+                    "value": "xx-large",
+                    "label": "Full"
+                }
+            ],
+            "default": "medium"
+        },
+        {
+            "type": "select",
+            "id": "alignment",
+            "label": "Alignment",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "center"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-primary)"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-white)"
+        },
+        {
+            "type": "header",
+            "content": "Desktop Padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 140,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 56
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 140,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 56
+        },
+        {
+            "type": "header",
+            "content": "Mobile Padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 140,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 140,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 48
+        }
+    ],
+    "presets": [
+        {
+            "name": "Richtext"
+        }
+    ]
+}
+{% endschema %}

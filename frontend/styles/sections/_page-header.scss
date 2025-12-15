@@ -1,0 +1,57 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-page-header {
+    position: relative;
+    min-height: 422px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: $w-m) {
+        min-height: 385px;
+    }
+    .image-overlay {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    &__inner {
+        position: relative;
+        z-index: 2;
+        padding: 8.75em 0 6.875em 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        text-align: center;
+        max-width: 700px;
+        width: 100%;
+        margin: 0 auto;
+        @media (max-width: $w-m) {
+            padding: 4.5em 0;
+        }
+    }
+    &__image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        transform: translate(-50%,-50%);
+        &.desktop {
+            display: block;
+            @media (max-width: $w-m) {
+                display: none;
+            }
+        }
+        &.mobile {
+            display: none;
+            @media (max-width: $w-m) {
+                display: block;
+            }
+        }
+    }
+}

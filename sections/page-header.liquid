@@ -1,0 +1,128 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_page-header.scss' -%}
+
+<div class="section-page-header__container" style="background-color: {{ section.settings.background_color }};">
+    <div class="wrap wrap--large wrap--{{ section_id }}">
+        <div class="section-page-header__inner">
+            <h1 style="color: {{ section.settings.text_color }}" class="display">{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}{{ page.title }}{% endif %}</h1>
+            <div style="color: {{ section.settings.text_color }}">{% if section.settings.description != blank %}{{ section.settings.description }}{% else %}{{ page.content | strip_html }}{% endif %}</div>
+        </div>
+    </div>
+    {% if section.settings.image_desktop != blank %}
+        {{ section.settings.image_desktop.src | image_url: width: 3840 | image_tag: class: "section-page-header__image desktop", alt: section.settings.image_desktop.alt }}
+    {% endif %}
+    {% if section.settings.image_mobile != blank %}
+        {{ section.settings.image_mobile.src | image_url: width: 1920 | image_tag: class: "section-page-header__image mobile", alt: section.settings.image_mobile.alt }}
+    {% endif %}
+    <div class="image-overlay" style="background:{{ section.settings.image_overlay }}"></div>
+</div>
+
+{% schema %}
+{
+    "name": "Page Header",
+    "tag": "section",
+    "class": "section-page-header",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Overrides default page title"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "info": "Overrides default page content"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-white)"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "info": "To be used if no image set",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-primary)"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image Desktop"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Image Mobile"
+        },
+        {
+            "type": "color_background",
+            "id": "image_overlay",
+            "label": "Image Overlay",
+            "default": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Page Header"
+        }
+    ]
+}
+{% endschema %}

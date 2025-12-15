@@ -5,13 +5,23 @@
     padding: 1.75em 4em;
     border-top-left-radius: $radius-small;
     border-top-right-radius: $radius-small;
+    @media (max-width: $w-m) {
+        padding: 1.375em 1em 3em 1em;
+    }
     &__inner {
         display: grid;
         grid-template-columns: 250px 1fr;
         gap: 5.75em;
+        @media (max-width: $w-m) {
+            grid-template-columns: 1fr;
+            gap: 1em;
+        }
     }
     &__text {
         color: $color-white;
         line-height: 140%;
+        @media (max-width: $w-m) {
+            text-align: center;
+        }
     }
 }

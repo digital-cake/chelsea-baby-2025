@@ -1,0 +1,40 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-richtext {
+    .wrap {
+        @media (min-width: $w-l) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+	&__content {
+        position: relative;
+		text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+		&--left {
+			text-align: left;
+            align-items: flex-start;
+		}
+		&--right {
+			text-align: right;
+            align-items: flex-end;
+		}
+	}
+	&__actions {
+        position: relative;
+		padding-top: 1em;
+		display: flex;
+		gap: 1.75em;
+		justify-content: center;
+		flex-wrap: wrap;
+		&--left {
+			justify-content: flex-start;
+		}
+		&--right {
+			justify-content: flex-end;
+		}
+	}
+}
