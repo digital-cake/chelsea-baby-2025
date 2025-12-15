@@ -54,6 +54,7 @@
         "autoplay": true,
         "delay": 3,
         "speed": 7,
+        "enable_pagination": true,
         "padding_top": 0,
         "padding_bottom": 0,
         "mobile_padding_top": 0,
@@ -72,9 +73,9 @@
         "background_color": "var(--color-white)",
         "collection_products_to_show_limit": 15,
         "padding_top": 64,
-        "padding_bottom": 64,
+        "padding_bottom": 0,
         "mobile_padding_top": 32,
-        "mobile_padding_bottom": 32
+        "mobile_padding_bottom": 0
       }
     },
     "collections_slider_aQr3wR": {
@@ -141,8 +142,8 @@
         "link_label": "Shop All",
         "background_color": "var(--color-white)",
         "padding_top": 64,
-        "padding_bottom": 64,
-        "mobile_padding_top": 32,
+        "padding_bottom": 96,
+        "mobile_padding_top": 96,
         "mobile_padding_bottom": 32
       }
     },
@@ -200,10 +201,83 @@
         "autoplay": true,
         "delay": 3,
         "speed": 7,
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "mobile_padding_top": 88,
+        "padding_top": 0,
+        "padding_bottom": 96,
+        "mobile_padding_top": 96,
         "mobile_padding_bottom": 88
+      }
+    },
+    "featured_product_gJaCkQ": {
+      "type": "featured-product",
+      "blocks": {
+        "bullet_mBxBd4": {
+          "type": "bullet",
+          "settings": {
+            "text": "The only stroller in the world IATA Cabin Approved in seat and carrycot mode"
+          }
+        },
+        "bullet_g8by3M": {
+          "type": "bullet",
+          "settings": {
+            "text": "Supersized 8kg storage basket and\nseat pocket"
+          }
+        },
+        "bullet_FyJUFQ": {
+          "type": "bullet",
+          "settings": {
+            "text": "Suitable from birth to 22kg \n(Approx. 4 years)"
+          }
+        },
+        "bullet_HCyr6p": {
+          "type": "bullet",
+          "settings": {
+            "text": "Car seat compatible with Glide Plus\n360 adapters included"
+          }
+        },
+        "bullet_fJHif3": {
+          "type": "bullet",
+          "settings": {
+            "text": "Lie-flat seat with UPF50+ ventilated sun peak and catch-all comfort liner"
+          }
+        },
+        "bullet_DGBxtE": {
+          "type": "bullet",
+          "settings": {
+            "text": "Additional universal adapters sold separately to pair with a car seat of your choice"
+          }
+        },
+        "bullet_fqMnwd": {
+          "type": "bullet",
+          "settings": {
+            "text": "One-hand, self-standing foldwith built-in shoulder carry strap"
+          }
+        },
+        "bullet_NwixiJ": {
+          "type": "bullet",
+          "settings": {
+            "text": "Glide adapters and rain cover included"
+          }
+        }
+      },
+      "block_order": [
+        "bullet_mBxBd4",
+        "bullet_g8by3M",
+        "bullet_FyJUFQ",
+        "bullet_HCyr6p",
+        "bullet_fJHif3",
+        "bullet_DGBxtE",
+        "bullet_fqMnwd",
+        "bullet_NwixiJ"
+      ],
+      "name": "Featured Product",
+      "settings": {
+        "feature_product": "silver-cross-nia-stroller-champagne",
+        "video": "shopify://files/videos/584cfc1cefa84403bd49e067c52731d2.HD-1080p-4.8Mbps-60456388.mp4",
+        "image_overlay": "",
+        "padding_top": 0,
+        "padding_bottom": 56,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 68
       }
     },
     "collection_slider_QQXwXF": {
@@ -286,9 +360,9 @@
         "autoplay": true,
         "delay": 3,
         "speed": 7,
-        "padding_top": 64,
+        "padding_top": 0,
         "padding_bottom": 64,
-        "mobile_padding_top": 32,
+        "mobile_padding_top": 0,
         "mobile_padding_bottom": 32
       }
     },
@@ -388,6 +462,7 @@
     "collection_slider_rwUNYk",
     "collections_slider_aQr3wR",
     "brands_logo_slider_TrmgAn",
+    "featured_product_gJaCkQ",
     "collection_slider_QQXwXF",
     "ugc_slider_Rcj4B8",
     "two_column_text_media_NzaULp",

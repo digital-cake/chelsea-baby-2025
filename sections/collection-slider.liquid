@@ -8,7 +8,7 @@
     <div class="section-collection-slider__container" style="background-color: {{ section.settings.background_color }};">
         <div class="wrap wrap--{{ section_id }}">
             <div class="section-collection-slider__inner">
-                <div class="section-collection-slider__header">
+                <div class="section-collection-slider__header{% if section.settings.label != blank %} stack{% endif %}">
                     {% if section.settings.title != blank %}
                         <{{ section.settings.tag }} class="medium">{{ section.settings.title }}</{{ section.settings.tag }}>
                     {% else %}

@@ -1,0 +1,125 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-featured-product {
+    .wrap {
+        @media (max-width: $w-l) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    &__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2em;
+        align-items: center;
+        @media (max-width: $w-l) {
+            grid-template-columns: 1fr;
+        }
+        &-media {
+            position: relative;
+            .video-wrapper, .image-wrapper {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                min-height: 678px;
+                @media (max-width: $w-l) {
+                    min-height: unset;
+                }
+                video, img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    border-radius: $radius-large;
+                    @media (max-width: $w-l) {
+                        border-radius: unset;
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        transform: none;
+                        min-height: 440px;
+                    }
+                }
+            }
+            .image-overlay {
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                border-radius: $radius-large;
+                @media (max-width: $w-l) {
+                    border-radius: unset;
+                }
+            }
+        }
+        &-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3em;
+        }
+    }
+    &__card {
+        display: flex;
+        align-items: center;
+        gap: 4.125em;
+        margin-left: -6.125em;
+        position: relative;
+        img {
+            border-radius: $radius-large;
+        }
+        @media (max-width: $w-l) {
+            margin-left: 0;
+            margin-top: -4.75em;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.25em;
+            padding: 0 1.125em;
+        }
+        &-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25em;
+            p {
+                font-size: 1.25em;
+            }
+            .price {
+                font-size: 16px;
+            }
+        }
+    }
+    &__usps {
+        padding-left: 1em;
+        list-style-type: disc;
+        @media (max-width: $w-l) {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-left: 2em;
+            padding-bottom: 1em;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        &-track {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 1em 2em;
+            @media (max-width: $w-l) {
+                width: 150%;
+                padding-right: 1em;
+            }
+        }
+        
+        li {
+            font-size: 0.875em;
+            font-weight: 400;
+            line-height: 140%;
+            color: $color-primary;
+        }
+    }
+}

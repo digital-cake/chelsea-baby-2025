@@ -12,6 +12,10 @@
         }
         @media (max-width: $w-m) {
             padding-right: 0.9375em;
+            &.stack {
+                flex-direction: column;
+                gap: 1em;
+            }
         }
         &-label {
             display: flex;
