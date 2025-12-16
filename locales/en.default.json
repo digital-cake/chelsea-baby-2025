@@ -11,7 +11,9 @@
     "general": {
         "404": {
             "title": "404: Page not found",
-            "text": "The page you were looking for does not exist."
+            "text": "The page you were looking for does not exist.",
+            "go_home": "Go home",
+            "take_a_step_back": "Take a step back"
         },
         "tools_menu": {
             "search": "Search",

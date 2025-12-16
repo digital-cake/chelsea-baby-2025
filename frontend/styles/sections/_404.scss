@@ -1,0 +1,38 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-main-404 {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        text-align: center;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        padding: 0 1em;
+        h1 {
+            font-size: 1.75em;
+        }
+        &-label {
+            padding: 0 1em;
+            background-color: $color-tertiary;
+            border-radius: $radius-small;
+            color: $color-white;
+            font-size: 0.5em;
+            text-transform: uppercase;
+        }
+    }
+    &__actions {
+        display: flex;
+        gap: 1em;
+        a, button {
+            span {
+                text-transform: uppercase;
+            }
+        }
+    }
+}
