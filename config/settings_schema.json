@@ -137,8 +137,37 @@
         },
         {
           "type": "richtext",
+          "id": "store_address_hours",
+          "label": "Address Hours"
+        },
+         {
+          "type": "richtext",
           "id": "store_address",
           "label": "Address"
+        },
+        {
+          "type": "text",
+          "id": "contact_name",
+          "label": "Contact Name",
+          "default": "Chelsea Baby Ltd"
+        },
+        {
+          "type": "text",
+          "id": "contact_email",
+          "label": "Contact Email",
+          "default": "hello@chelseababy.com"
+        },
+        {
+          "type": "richtext",
+          "id": "contact_number",
+          "label": "Contact Number",
+          "default": "<p>01902 490 211 or 01902 965 882</p>"
+        },
+         {
+          "type": "text",
+          "id": "contact_registration",
+          "label": "Contact Registration",
+          "default": "Registered in England & Wales No. 13770736"
         },
         {
           "type": "header",

@@ -1,0 +1,169 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_main-contact.scss' -%}
+{% comment %} {%- render 'vite' with '@@/components/contact.js' -%} {% endcomment %}
+
+<div class="wrap wrap--medium-large wrap--{{ section_id }}">
+    <div class="section-main-contact__inner">
+        <div class="section-main-contact__details">
+            <h1>{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}{{ page.title }}{% endif %}</h1>
+            {% if section.settings.text != blank %}
+                <div class="section-main-contact__details-text">{{ section.settings.text }}</div>
+            {% endif %}
+            <div class="section-main-contact__details-main form-details">
+                {% if settings.contact_name != blank %}
+                    <p class="title">{{ settings.contact_name }}</p>
+                {% endif %}
+                {% if settings.store_address != blank %}
+                    <div>{{ settings.store_address }}</div>
+                {% endif %}
+                {% if settings.contact_registration != blank %}
+                    <p>{{ settings.contact_registration }}</p>
+                {% endif %}
+                {% if settings.contact_email != blank %}
+                    <a href="mailto:{{ settings.contact_email }}">Email: <span>{{ settings.contact_email }}</span></a>
+                {% endif %}
+                 {% if settings.contact_number != blank %}
+                   <div>{{ settings.contact_number }}</div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="section-main-contact__form">
+            {% if section.settings.form_title != blank %}
+                <h2>{{ section.settings.form_title }}</h2>
+            {% endif %}
+            {% form 'contact', class: "form form--contact" %}
+                {% if form.posted_successfully? %}
+                    <p class="success"><strong>{{ 'forms.success' | t }}</strong></p>
+                {% else %}
+                    {{ form.errors | default_errors }}
+                    <div class="form-row form-row--split">
+                        <label for="ContactFormName" class="required visible">{{ 'forms.first_name' | t }}</label>
+                        <input type="text" id="ContactFormName" name="contact[first_name]" required="required">
+                    </div>
+                    <div class="form-row form-row--split">
+                        <label for="ContactFormName" class="required visible">{{ 'forms.last_name' | t }}</label>
+                        <input type="text" id="ContactFormName" name="contact[last_name]" required="required">
+                    </div>
+                    <div class="form-row form-row--split">
+                        <label for="ContactFormEmail" class="required visible">{{ 'forms.email' | t }}</label>
+                        <input type="email" id="ContactFormEmail" name="contact[email]" required="required">
+                    
+                    </div>
+                    <div class="form-row form-row--split">
+                        <label for="ContactFormOrderNumber" class="visible">{{ 'forms.order' | t }} {{ 'forms.if_applicable' | t }}</label>
+                        <input type="text" id="ContactFormOrderNumber" name="contact[orderNumber]">
+                    </div>
+                    <div class="form-row form-row--full">
+                        <label for="ContactFormMessage" class="required visible">{{ 'forms.message' | t }}</label>
+                        <textarea rows="10" id="ContactFormMessage" name="contact[body]" required="required"></textarea>
+                    </div>
+                    <div class="form-row form-row--full form-row--actions">
+                        <button type="submit" class="button button--primary button--full-width button--rounded-full" aria-label="{{ 'forms.send_message' | t }}">
+                            <span>{{ 'forms.send_message' | t }}</span>
+                        </button>
+                    </div>
+                {% endif %}
+            {% endform %}
+            <div class="section-main-contact__form-details form-details">
+                {% if settings.contact_name != blank %}
+                    <p class="title">{{ settings.contact_name }}</p>
+                {% endif %}
+                {% if settings.store_address != blank %}
+                    <div>{{ settings.store_address }}</div>
+                {% endif %}
+                {% if settings.contact_registration != blank %}
+                    <p>{{ settings.contact_registration }}</p>
+                {% endif %}
+                {% if settings.contact_email != blank %}
+                    <a href="mailto:{{ settings.contact_email }}">Email: <span>{{ settings.contact_email }}</span></a>
+                {% endif %}
+                 {% if settings.contact_number != blank %}
+                   <div>{{ settings.contact_number }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Main Contact",
+    "tag": "section",
+    "class": "section-main-contact",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Overrides default title"
+        },
+        {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Need help with your order or advice on the right product? Our experienced team is always on hand to help with any questions about strollers, car seats, and more. Get in touch—we’re happy to help.</p>"
+        },
+        {
+            "type": "text",
+            "id": "form_title",
+            "label": "Form Title",
+            "default": "Complete the form"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Main Contact"
+        }
+    ]
+}
+{% endschema %}

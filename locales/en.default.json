@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
     "general": {
         "404": {
@@ -112,6 +121,11 @@
             }
         }
     },
+    "contact": {
+        "address": "Address",
+        "Email": "Email",
+        "Phone": "Phone"
+    },
     "search": {
         "title": "Search",
         "placeholder": "Search Products...",
@@ -203,9 +217,123 @@
         "filter_and_sort": "Filter Results",
         "filter_and_sort_alt": "Filter & Sort",
         "price_from": "From",
-        "price_to": "To",
-        "active": "Active Filters",
-        "product_flatlay": "Flatlay",
-        "product_model": "Model"
+        "price_to": "To"
+    },
+    "forms": {
+        "name": "Name",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "email": "Email address",
+        "phone": "Phone number",
+        "order": "Order number",
+        "if_applicable": "If applicable",
+        "message": "Message",
+        "subject": "Subject",
+        "send": "Send message",
+        "success": "Thank you for contacting us, we will get back to you as soon as possible.",
+        "signup_success": "Thank you for signing up.",
+        "password": "Password",
+        "have_password": "Have a password? Sign in here.",
+        "new_password": "New password",
+        "confirm_password": "Confirm password",
+        "reset_password": "Reset password",
+        "forgot_password": "Forgot password?",
+        "activate_account": "Activate account",
+        "create_account": "Create account",
+        "login": "Sign in",
+        "signup": "Sign up",
+        "send_message": "Submit Form"
+    },
+  "account": {
+    "reset_password": {
+      "title": "Reset password"
+    },
+    "activate_account": {
+      "title": "Activate account"
+    },
+    "login": {
+      "title": "Sign in",
+      "register_here": "Click here to register",
+      "no_account": "Don't have an account?"
+    },
+    "forgot_password": {
+      "title": "Forgot password",
+      "instruction": "Please enter your email address below and we will send you a link to reset your password.",
+      "success": "We have sent you a link to reset your password."
+    },
+    "register": {
+      "title": "Create account",
+      "have_account": "Already have an account?",
+      "login": "Click here to login",
+      "error_html": "This email address is already associated with an account. If this account is yours, you can <a href=\"\/account\/login\">reset your password<\/a>"
+    },
+    "addresses": {
+      "title": "Your addresses",
+      "default_address": "Default",
+      "new_address": "New address",
+      "edit_address": "Edit address",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "country": "Country",
+      "province": "Province",
+      "city": "City",
+      "zip": "Postcode",
+      "phone": "Phone number",
+      "default": "This is your default address",
+      "set_as_default": "Set as default address?",
+      "add": "Save address",
+      "update": "Save changes",
+      "edit": "Edit",
+      "delete": "Delete",
+      "new": "Add address",
+      "confirm_delete": "Are you sure you want to delete this address?",
+      "cancel": "Cancel"
+    },
+    "menu": {
+      "orders": "Your Orders",
+      "addresses": "Your Addresses",
+      "logout": "Sign out",
+      "continue_shopping": "Continue Shopping",
+      "subscriptions": "Your Subscriptions"
+    },
+    "orders": {
+      "title": "Your orders",
+      "no_orders": "You haven't placed any orders yet.",
+      "date": "Date:",
+      "summary": "Summary:",
+      "summary_items": "items",
+      "status": "Status:",
+      "total": "Total:",
+      "view_order": "View Order",
+      "items": "Items:"
+    },
+    "order": {
+      "name": "Order:",
+      "billing_address": "Billing Address",
+      "shipping_address": "Shipping Address",
+      "payment_status": "Payment Status:",
+      "fulfillment_status": "Fulfillment Status:",
+      "price": "Price",
+      "quantity": "Quantity",
+      "variant": "Variant",
+      "subscription": "Subscription",
+      "product_sku": "SKU:",
+      "unavailable": "Unavailable"
     }
+  },
+  "gift_card": {
+    "title": "Here's your gift card!",
+    "disabled": "This is not a valid gift card",
+    "expired": "Expired on {{ expiry }}",
+    "active": "Expires on {{ expiry }}",
+    "no_expiry_date": "This gift card will not expire",
+    "balance_left": "Remaining amount:",
+    "redeem": "Use this code at checkout",
+    "shop_link": "Start Shopping",
+    "print": "Print Your card",
+    "add_to_apple_wallet": "Add to Apple Wallet"
+  }
 }
