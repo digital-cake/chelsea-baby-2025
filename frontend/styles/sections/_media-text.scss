@@ -1,0 +1,87 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-media-text {
+    &__inner {
+        display: grid;
+        grid-template-columns: 540px auto;
+        gap: 4.375em;
+        align-items: center;
+        &.flip {
+            grid-template-columns: auto 540px;
+            .section-media-text__inner-media {
+                order: 2;
+            }
+            @media (max-width: $w-ml) {
+                gap: 2.375em;
+            }
+            @media (max-width: $w-l) {
+                grid-template-columns: 1fr 1fr;
+            }
+            @media (max-width: 900px) {
+                grid-template-columns: 1fr;
+                gap: 2em;
+            }  
+        }  
+        @media (max-width: $w-ml) {
+            gap: 2.375em;
+        }
+        @media (max-width: $w-l) {
+            grid-template-columns: 1fr 1fr;
+        }
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+            gap: 2em;
+        }  
+        &-media {
+            position: relative;
+            .video-wrapper, .image-wrapper {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                min-height: 540px;
+                @media (max-width: $w-l) {
+                    min-height: unset;
+                }
+                video, img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    border-radius: $radius-large;
+                    @media (max-width: $w-l) {
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        transform: none;
+                        min-height: 408px;
+                    }
+                }
+            }
+            .image-overlay {
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                border-radius: $radius-large;
+                @media (max-width: $w-l) {
+                    border-radius: unset;
+                }
+            }
+        }
+        &-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+        &-title {
+            font-size: 1.75em;
+        }
+    }
+}
