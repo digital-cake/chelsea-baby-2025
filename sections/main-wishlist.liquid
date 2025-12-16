@@ -1,0 +1,119 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{% assign wishlist = customer.metafields.cake.wishlist_items %}
+{% assign wishlistItems = customer.metafields.cake.wishlist_items.value %}
+
+{%- render 'vite' with '@sectionStyles/_wishlist.scss' -%}
+
+<div class="wrap wrap--no-padding wrap--{{ section_id }}">
+
+    <div class="section-wishlist__header">
+        <h1 class="large">{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}{{ page.title }}{% endif %}</h1>
+        {% if section.settings.text != blank %}
+            <p>{{ section.settings.text }}</p>
+        {% endif %}
+    </div>
+
+    <div class="section-wishlist__inner{% unless customer %} logged-out{% endunless %}{% unless wishlist %} empty{% endunless %}">
+        {% if customer %}
+            {% if wishlist %}
+                <ul>
+                {% for product in wishlistItems %}
+                    <li class="products__product">{% render "card-product", product: product %}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p><strong>{{ section.settings.empty_wishlist_text }}</strong></p>
+            {% endif %}
+        {% else %}
+            {% if section.settings.logged_out_text != blank %}
+                <p><strong>{{ section.settings.logged_out_text }}</strong></p>
+            {% endif %}
+            <p><a href="{{ routes.account_login_url }}" class="button button--primary"><span>{{ "forms.login" | t }}</span></a></p>
+        {% endif %}
+    </div>
+
+</div>
+
+{% schema %}
+{
+    "name": "Wishlist",
+    "tag": "section",
+    "class": "section-wishlist",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Your Wishlist"
+        },
+        {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "Create your dream list of baby essentials and share it with friends and family — because every little wish deserves to come true."
+        },
+        {
+            "type": "text",
+            "id": "empty_wishlist_text",
+            "label": "Empty Wishlist Text",
+            "default": "You have no saved items."
+        },
+        {
+            "type": "text",
+            "id": "logged_out_text",
+            "label": "Logged Out Text",
+            "default": "Sign in to sync your wishlist across all your devices."
+        },
+        {
+            "type": "header",
+            "content": "Desktop Padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Mobile Padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        }
+    ]
+}
+{% endschema %}

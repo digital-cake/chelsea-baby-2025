@@ -1,12 +1,57 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "main": {
-            "type": "main-404",
-            "settings": {
-            }
-        }
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {
+        "label": "404 ERROR",
+        "title": "Page Not Found",
+        "text": "It seems this page has taken a little time out. Head back to our homepage to keep browsing the cutest baby essentials.",
+        "padding_top": 86,
+        "padding_bottom": 86,
+        "mobile_padding_top": 62,
+        "mobile_padding_bottom": 62
+      }
     },
-    "order": [
-        "main"
-    ]
+    "recommendations_tab_slider_U99XrT": {
+      "type": "recommendations-tab-slider",
+      "name": "Recommendations",
+      "settings": {
+        "you_may_also_like_collection": "accessories",
+        "title": "Best Sellers",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "mobile_padding_top": 48,
+        "mobile_padding_bottom": 48
+      }
+    },
+    "service_usps_slider_Kxb8fj": {
+      "type": "service-usps-slider",
+      "name": "Service USPS Slider",
+      "settings": {
+        "service_usps": "service-usps-test",
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "main",
+    "recommendations_tab_slider_U99XrT",
+    "service_usps_slider_Kxb8fj"
+  ]
 }

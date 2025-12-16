@@ -1,0 +1,89 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{% assign products_per_page = settings.products_per_page %}
+
+{%- render 'vite' with '@sectionStyles/_main-list-collections.scss' -%}
+
+<div class="wrap wrap--xx-large wrap--{{ section_id }}">
+
+<h1 class="medium">{{ 'sections.list_collections.title' | t }}</h1>
+
+    <div class="section-list-collections__inner">
+        <ul>
+        {% paginate collections by products_per_page %}
+            {% for collection in collections %}
+                <li>
+                    <a href="{{ collection.url }}" aria-label="{{ collection.title }}" class="list-title">
+                        <span>{{ collection.title }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        {% endpaginate %}
+        </ul>
+        {% paginate collections by products_per_page %}
+            <div class="section-list-collections__pagination">
+                {% render 'pagination', paginate: paginate %}
+            </div>
+        {% endpaginate %}
+    </div>
+    
+</div>
+
+{% schema %}
+{
+    "name": "List Collections",
+    "tag": "section",
+    "class": "section-list-collections",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 96
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 96
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 48
+        }
+    ]
+}
+{% endschema %}

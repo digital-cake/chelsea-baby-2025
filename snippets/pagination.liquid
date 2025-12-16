@@ -1,0 +1,69 @@
+{%- render 'vite' with '@snippetStyles/_pagination.scss' -%}
+
+{%- if paginate.pages > 1 -%}
+    <nav role="navigation">
+      <ol class="pagination">
+        {%- if paginate.previous-%}
+          <li>
+            <a href="{{ paginate.previous.url }}">
+              <span aria-hidden="true">{% render 'icon-chevron-left.svg' %}</span>
+              <span class="visuallyhidden">page</span>
+            </a>
+          </li>
+        {%- else -%}
+          <li class="disabled">
+            <span aria-hidden="true">{% render 'icon-chevron-left.svg' %}</span>
+            <span class="visuallyhidden">page</span>
+          </li>
+        {%- endif -%}
+
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <li>
+              <a href="{{ part.url }}">
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </a>
+            </li>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <li class="active" aria-current="page">
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </li>
+            {%- else -%}
+              <li>
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if paginate.next -%}
+          <li>
+            <a href="{{ paginate.next.url }}">
+              <span class="visuallyhidden">page</span>
+              <span aria-hidden="true">{% render 'icon-chevron-right.svg' %}</span>
+            </a>
+          </li>
+        {%- else -%}
+          <li class="disabled">
+            <span class="visuallyhidden">page</span>
+            <span aria-hidden="true">{% render 'icon-chevron-right.svg' %}</span>
+          </li>
+        {%- endif -%}
+      </ol>
+    </nav>
+{%- endif -%}
+
+<style>
+    .visuallyhidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+    }
+</style>

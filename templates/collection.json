@@ -1,18 +1,55 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "header": {
-            "type": "collection-header",
-            "settings": {
-            }
-        },
-        "main": {
-            "type": "main-collection",
-            "settings": {
-            }
-        }
+  "sections": {
+    "header": {
+      "type": "collection-header",
+      "settings": {}
     },
-    "order": [
-        "header",
-        "main"
-    ]
+    "main": {
+      "type": "main-collection",
+      "settings": {}
+    },
+    "recommendations_tab_slider_A44nPC": {
+      "type": "recommendations-tab-slider",
+      "name": "Recommendations",
+      "settings": {
+        "you_may_also_like_collection": "accessories",
+        "title": "Best Sellers",
+        "link_label": "Shop All",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "mobile_padding_top": 46,
+        "mobile_padding_bottom": 46
+      }
+    },
+    "service_usps_slider_9Lji8B": {
+      "type": "service-usps-slider",
+      "name": "Service USPS Slider",
+      "settings": {
+        "service_usps": "service-usps-test",
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "header",
+    "main",
+    "recommendations_tab_slider_A44nPC",
+    "service_usps_slider_9Lji8B"
+  ]
 }

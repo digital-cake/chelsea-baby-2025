@@ -1,0 +1,41 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-wishlist {
+	p {
+		text-align: center;
+	}
+	.button {
+        margin-top: 1em;
+		&--login {
+			margin: 0 auto;
+		}
+	}
+    &__header {
+        padding: 3.5em 0;
+        @include section_header_center;
+        max-width: 440px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        p {
+            font-size: 0.825em;
+            line-height: 140%;
+            color: $color-primary;
+        }
+        h1 {
+            color: $color-primary;
+        }
+    }
+    &__inner {
+        & > ul {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        &.empty {
+            a {
+                text-transform: uppercase;
+            }
+        }
+    }
+}

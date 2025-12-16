@@ -1,0 +1,76 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-recommendations-tab-slider {
+    overflow: hidden;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 3em 2em 3em;
+        @media (max-width: $w-m) {
+            padding: 0 0.75em 1em 0.75em;
+        }
+    }
+    &__tabs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        button {
+            opacity: 0.5;
+            padding: 0;
+            span {
+                color: $color-black;
+                font-size: 32px;
+                font-family: $font-display;
+                font-weight: $weight-display;
+                @media (max-width: $w-l) {
+                    font-size: 18px
+                }
+            }
+            &.active {
+                opacity: 1;
+                text-decoration: underline;
+                text-underline-offset: 6px;
+            }
+            @media (max-width: $w-m) {
+                font-size: 1em;
+            }
+            &.hidden {
+                display: none;
+            }
+        }
+    }
+    .swiper {
+        &.hidden {
+            display: none;
+        }
+        .swiper-slide {
+            height: auto;
+        }
+        .swiper-navigation {
+            padding: 2em 0 0 0;
+            display: flex;
+            gap: 1em;
+            justify-content: flex-end;
+            .swiper-button-prev, .swiper-button-next {
+                position: relative;
+                left: unset;
+                right: unset;
+                top: unset;
+                margin-top: unset;
+            }
+        }
+    }
+    &__entries {
+        padding-left: 2em;
+        padding-right: 2em;
+        @media (max-width: $w-m) {
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+        .swiper {
+            overflow: visible;
+        }
+    }
+}

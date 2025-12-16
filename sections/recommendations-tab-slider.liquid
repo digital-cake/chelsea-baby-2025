@@ -1,0 +1,153 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_recommendations-tab-slider.scss' -%}
+{%- render 'vite' with '@@/components/recommendations-tab-slider.js' -%}
+
+{% assign recommendations_products = null %}
+
+{% if recommendations.performed? and recommendations.products_count > 0 %}
+  {% assign recommendations_products = recommendations.products %}
+{% elsif section.settings.you_may_also_like_collection != blank %}
+  {% assign recommendations_products = section.settings.you_may_also_like_collection.products %}
+{% endif %}
+<div class="section-recommendations-tab-slider__container">
+    <div class="wrap wrap--no-padding wrap--{{ section_id }}">
+        <div class="section-recommendations-tab-slider__header">
+            <div class="section-recommendations-tab-slider__tabs">
+                {% if recommendations_products != null %}
+                    <button class="button button--no-styling active" type="button" data-swiper-target="yaml"><span>{% if section.settings.title %}{{ section.settings.title }}{% else %}{{ 'general.yaml.title' | t }}{% endif %}</span></button>
+                {% endif %}
+                <button class="button button--no-styling button-recently-viewed hidden{% if recommendations_products == null %} active{% endif %}" type="button" data-swiper-target="recent"><span>{{ 'general.recently_viewed.title' | t }}</span></button>
+            </div>
+            {% if section.settings.you_may_also_like_collection != blank and section.settings.link_label != blank %}
+                <a aria-label="{{ section.settings.link_label }}" class="button-text button-text--primary" href="{{ section.settings.you_may_also_like_collection.url }}"><span>{{ section.settings.link_label }}</span></a>
+            {% endif %}
+        </div>
+
+        <div class="section-recommendations-tab-slider__entries">
+
+            <div class="swiper swiper__recommendations swiper__recommendations--{{ section_id }}" data-name="yaml">
+                <div class="swiper-wrapper">
+                    {% for product in recommendations_products %}
+                        <div class="swiper-slide">
+                            {% render "card-product", product: product %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-navigation">
+                    <div class="swiper-button-prev swiper-button-prev-{{ section_id }}"></div>
+                    <div class="swiper-button-next swiper-button-next-{{ section_id }}"></div>
+                </div>
+            </div>
+
+            <div class="swiper swiper__recently-viewed swiper__recently-viewed--{{ section_id }}{% if recommendations_products != null %} hidden{% endif %}" data-name="recent">
+                <div class="swiper-wrapper"></div>
+                <div class="swiper-navigation">
+                    <div class="swiper-button-prev swiper-button-prev-{{ section_id }}"></div>
+                    <div class="swiper-button-next swiper-button-next-{{ section_id }}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const relatedProductsContainer = document.querySelector('.section-recommendations-tab-slider');
+        fetch(window.Shopify.routes.root + "recommendations/products?product_id={% if request.page_type == 'product' %}{{ product.id }}{% else %}{{ cart.items[0].product.id }}{% endif %}&section_id={{ section.id }}&intent=related&limit=10")
+        .then(response => response.text())
+        .then(text => {
+            const relatedProductsMarkup = document.createElement('div');
+            relatedProductsMarkup.innerHTML = text;
+            const relatedProducts = relatedProductsMarkup.querySelector('.section-recommendations-tab-slider');
+            if (relatedProducts && relatedProducts.innerHTML.trim().length) {
+                relatedProductsContainer.innerHTML = relatedProducts.innerHTML;
+            }
+        }).finally(() => {
+            window.init_recommendations_swiper({{ section_id | json }});
+            window.init_recently_viewed_swiper({{ section_id | json }});
+            window.handle_swiper_tab_navigation('section-recommendations-tab-slider');
+        })
+    })
+</script>
+
+{% schema %}
+{
+    "name": "Recommendations",
+    "tag": "section",
+    "class": "section-recommendations-tab-slider",
+    "settings": [
+        {
+            "type": "collection",
+            "id": "you_may_also_like_collection",
+            "label": "You May Also Like Collection"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "You May Also Like"
+        },
+        {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label",
+            "default": "Shop All"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 56
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 56
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 46
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 46
+        }
+    ],
+    "presets": [
+        {
+            "name": "Recommendations"
+        }
+    ]
+}
+{% endschema %}

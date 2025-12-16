@@ -1,0 +1,124 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_main-collection.scss' -%}
+{%- render 'vite' with '@@/components/main-collection.js' -%}
+
+{% assign products_per_page = settings.products_per_page %}
+{% assign filter_type = settings.filter_type %}
+
+{%- assign filter_count = 0 -%}
+{%- assign has_range = false -%}
+
+{%- for filter in collection.filters -%}
+    {%- if filter.type == "price_range" -%}
+        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+            {%- assign has_range = true -%}
+        {%- endif -%}
+    {%- else -%}
+        {%- for filter_value in filter.active_values -%}
+            {%- assign filter_count = filter_count | plus: 1 -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endfor -%}
+
+<div class="wrap wrap--x-large wrap--{{ section_id }}">
+
+    <div class="section-collection__inner">
+
+        <div class="section-collection__content">
+
+            {% paginate collection.products by products_per_page %}
+                <ul class="section-collection__products">
+                    {% for product in collection.products %}
+                        <li>{% render "card-product", product: product, noDescription: true %}</li>
+                    {% else %}
+                        <li class="empty"><p>{{ 'collection.no_products' | t }}</p></li>
+                    {% endfor %}
+                </ul>
+                <div class="section-collection__pagination {% if paginate.pages <= 1 %} empty{% endif %}">
+                {% render 'pagination', paginate: paginate %}
+                </div>
+            {% endpaginate %}
+            
+        </div>
+    </div>
+
+</div>
+
+<div class="main-collection-mobile-floating-filter">
+    <button class="button button--primary button--full-width" type="button">{% render 'icon-filter.svg' %}<span>{{ 'filter_and_sort.filter_and_sort_alt' | t }}</span></button>
+</div>
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org/",
+    "@type": "ProductCollection",
+    "name": {{ collection.title | json }},
+    "url": {{ request.origin | append: collection.url | json }},
+    {% if collection.image != blank -%}
+    "image": [{{ collection.image | image_url: width: 1920 | prepend: "https:" | json }}],
+    {%- endif %}
+    {% if collection.description != blank -%}
+    "description": {{ collection.description | strip_html | json }},
+    {%- endif %}
+}
+</script>
+
+{% schema %}
+{
+    "name": "Product Grid",
+    "tag": "section",
+    "class": "section-collection",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 56
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 96
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 48
+        }
+    ]
+}
+{% endschema %}

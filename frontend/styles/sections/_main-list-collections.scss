@@ -1,0 +1,17 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-list-collections {
+	position: relative;
+    h1 {
+        margin-bottom: 1em;
+    }
+    ul {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 1.25em 5em;
+        justify-content: flex-start;
+        @media (max-width: 550px) {
+            grid-template-columns: 1fr;
+        }
+    }
+}
