@@ -1,0 +1,125 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-frequently-asked-questions {
+    &__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5em;
+        align-items: center;
+        @media (max-width: $w-l) {
+            grid-template-columns: 1fr;
+            gap: 1em;
+        }
+    }
+    &__faqs {
+        display: flex;
+        flex-direction: column;
+        gap: 2.25em;
+        &-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            h4 {
+                font-size: 1.75em;
+            }
+            .header-label {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.75em;
+                border-radius: $radius-small;
+                background-color: $color-grey-dark;
+                padding: 0.375em 0.75em;
+                font-size: 0.625em;
+                a {
+                    text-decoration: underline;
+                }
+            }
+        }
+        &-entries {
+            .faqs-item {
+                border-bottom: 1px solid $color-primary;
+                padding: 1em 0;
+                &:last-of-type {
+                    border-bottom: none;
+                }
+                &.is-open {
+                    .faqs-item__question {
+                        svg {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+                &__question {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 1em;
+                    span {
+                        font-size: 1.25em;
+                        @media (max-width: $w-m) {
+                            font-size: 1em;
+                        }
+                    }
+                    svg {
+                        transition: transform 0.3s ease;
+                    }
+                }
+                &__answer {
+                    overflow: hidden;
+                    max-height: 0;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: max-height 0.35s ease, opacity 0.2s ease;
+                    &.is-open {
+                        opacity: 1;
+                        visibility: visible;
+                        padding-top: 1em;
+                        padding-right: 2em;
+                    }
+                }
+            }
+        }
+    }
+    &__media {
+        position: relative;
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 676px;
+            @media (max-width: $w-l) {
+                min-height: unset;
+            }
+            video, img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                border-radius: $radius-large;
+                @media (max-width: $w-l) {
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    transform: none;
+                    min-height: 408px;
+                }
+            }
+        }
+        .image-overlay {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            border-radius: $radius-large;
+        }
+    }
+}

@@ -1,0 +1,247 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_frequently-asked-questions.scss' -%}
+{%- render 'vite' with '@@/components/frequently-asked-questions.js' -%}
+
+<div class="section-frequently-asked-questions__container">
+    <div class="wrap wrap--x-large wrap--{{ section_id }}">
+        <div class="section-frequently-asked-questions__inner">
+            <div class="section-frequently-asked-questions__faqs">
+                <div class="section-frequently-asked-questions__faqs-header">
+                    {% if section.settings.title != blank %}
+                        <h4>{{ section.settings.title }}</h4>
+                    {% endif %}
+                    {% if section.settings.label != blank %}
+                        <div class="header-label">{% if section.settings.label_icon != blank %}{{ section.settings.label_icon.src | image_url: width: 50, crop: "center" | image_tag: alt: section.settings.label_icon.alt, width: 18 }}{% endif %}{{ section.settings.label }}</div> 
+                    {% endif %}
+                </div>
+                <div class="section-frequently-asked-questions__faqs-entries">
+                    {% if section.settings.faq_group != blank %}
+                        {% assign faqs = section.settings.faq_group.entries.value %}
+                        {% for faq in faqs %}
+                            <div class="faqs-item faqs-item--{{ section_id }}">
+                                <div class="faqs-item__question"><span>{{ faq.question }}</span>{% render 'icon-chevron.svg' %}</div>
+                                <div class="faqs-item__answer">{{ faq.answer | metafield_tag }}</div>
+                            </div>
+                        {% endfor %}
+                    {% elsif section.blocks.size > 1 %}
+                        {% for block in section.blocks %}
+                            <div class="faqs-item faqs-item--{{ section_id }}">
+                                <div class="faqs-item__question"><span>{{ block.settings.question }}</span>{% render 'icon-chevron.svg' %}</div>
+                                <div class="faqs-item__answer">{{ block.settings.answer }}</div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="section-frequently-asked-questions__media">
+                {% if section.settings.image != blank %}
+                    <div class="image-wrapper">
+                        {{ section.settings.image.src | image_url: width: 2028, crop: "center" | image_tag: alt: section.settings.image.alt, width: 676 }}
+                    </div>
+                    <div class="image-overlay" style="background:{{ section.settings.image_overlay }}"></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        window.handle_faqs({{ section_id | json }});
+    });
+    if (Shopify.designMode) {
+        document.addEventListener('shopify:section:load', function() {
+            window.handle_faqs({{ section_id | json }});
+        });
+    };
+</script>
+
+{% schema %}
+{
+    "name": "FAQs",
+    "tag": "section",
+    "class": "section-frequently-asked-questions",
+    "blocks": [
+        {
+            "name": "FAQ",
+            "type": "faq",
+            "limit": 6,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question",
+                    "label": "Question",
+                    "default": "Question here"
+                },
+                {
+                    "type": "richtext",
+                    "id": "answer",
+                    "label": "Answer",
+                    "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "FAQs"
+        },
+        {
+            "type": "richtext",
+            "id": "label",
+            "label": "Label"
+        },
+        {
+            "type": "image_picker",
+            "id": "label_icon",
+            "label": "Label Icon"
+        },
+        {
+            "type": "metaobject",
+            "id": "faq_group",
+            "label": "FAQs Group",
+            "metaobject_type": "faq_group",
+            "info": "Will override default FAQ's at block level"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "checkbox",
+            "id": "flip_image",
+            "label": "Flip Image",
+            "info": "Move Image to left",
+            "default": false
+        },
+        {
+            "type": "color_background",
+            "id": "image_overlay",
+            "label": "Image Overlay"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-primary)"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-white)"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "FAQs"
+        }
+    ]
+}
+{% endschema %}
