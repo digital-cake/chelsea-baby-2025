@@ -1,0 +1,37 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-article-header {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        span {
+            font-size: 0.625em;
+        }
+    }
+    &__image {
+        position: relative;
+        border-radius: $radius-small;
+        img {
+            display: block;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        .image-overlay {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            border-radius: $radius-small;
+        }
+    }
+}

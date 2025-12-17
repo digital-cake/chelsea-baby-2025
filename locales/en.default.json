@@ -211,8 +211,10 @@
     "blogs": {
         "blog": {
             "view_all": "View all",
-            "view_blog": "View Blog",
-            "read_blog": "Read blog"
+            "discover_more": "Discover more",
+            "read_blog": "Read blog",
+            "previous_article": "Previous Article",
+            "next_article": "Next Article"
         }
     },
     "filter_and_sort": {
