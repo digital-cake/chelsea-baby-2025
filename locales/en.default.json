@@ -192,7 +192,8 @@
             "estimated_arrival": "Estimated Shipping: ",
             "select_variant": "Select variant",
             "colour": "Colour",
-            "free_shipping": "This Item Qualifies For Free Shipping"
+            "free_shipping": "This Item Qualifies For Free Shipping",
+            "price_from": "From"
         },
         "gift_voucher": {
             "name": "Recipient Name",

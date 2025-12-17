@@ -1,0 +1,94 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_blog-header.scss' -%}
+
+<div class="wrap wrap--large wrap--{{ section_id }}">
+    <div class="section-blog-header__inner">
+        <div class="section-blog-header__inner-title">
+            <h1>{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}{{ blog.title }}{% endif %}</h1>
+            {% if blog.metafields.cake.description != blank %}
+                <p>{{ blog.metafields.cake.description }}</p>
+            {% endif %}
+        </div>
+        <div class="section-blog-header__container">
+            <div class="section-blog-header__inner-tags">
+                <a href="{{ blog.url }}" class="button-text button-text--primary{% if blog.url == request.path %} active{% endif %}">{{ 'blogs.blog.view_all' | t }}</a>
+                {% for tag in blog.all_tags %}
+                    {% assign handle = tag | handle %}
+                    {% assign taggedURL = blog.url | append: '/tagged/' | append: handle %}
+                    <a href="{{ taggedURL }}" class="button-text button-text--primary{% if request.path == taggedURL %} active{% endif %}"><span>{{ tag }}</span></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Blog Header",
+    "tag": "section",
+    "class": "section-blog-header",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Overrides the default blog title"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 146
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 56
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 138
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 88
+        }
+    ],
+    "presets": [
+        {
+            "name": "Blog Header"
+        }
+    ]
+}
+{% endschema %}

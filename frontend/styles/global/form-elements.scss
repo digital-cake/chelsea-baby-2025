@@ -17,7 +17,7 @@ select {
 	width: 100%;
 	border: 1px solid #1F25354D;
 	appearance: none;
-	color: $color-black;
+	color: $color-primary;
 	border-radius: $radius-small;
 	letter-spacing: 0.05em;
 	&:hover {
@@ -50,7 +50,7 @@ select {
 	appearance: none;
 	background: transparent url(icon-drop.svg) no-repeat 100% 50% / 1em;
 	border: 1px solid $color-grey;
-	border-bottom-color: $color-black;
+	border-bottom-color: $color-primary;
 	&.failed {
 		border-color: $color-failure;
 	}
@@ -134,17 +134,17 @@ input[type='search']::-webkit-search-results-decoration {
 }
 ::placeholder {
 	font: 1em $font-base;
-	color: $color-black;
+	color: $color-primary;
 	opacity: 0.3;
 }
 :-ms-input-placeholder {
 	font: 1em $font-base;
-	color: $color-black;
+	color: $color-primary;
 	opacity: 0.3;
 }
 ::-ms-input-placeholder {
 	font: 1em $font-base;
-	color: $color-black;
+	color: $color-primary;
 	opacity: 0.3;
 }
 .form {

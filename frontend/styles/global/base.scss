@@ -35,7 +35,7 @@ h6 {
 	font-weight: $weight-display;
 	line-height: 140%;
     font-style: normal;
-	color: $color-black;
+	color: $color-primary;
 	&.display {
 		font-size: 4em; //64px
         font-weight: $weight-display;
@@ -98,7 +98,7 @@ small {
 	display: block;
 }
 del {
-	color: $color-black;
+	color: $color-primary;
 	text-decoration: line-through;
 	text-decoration-thickness: 1px;
 	font-size: 0.75em;
@@ -186,9 +186,9 @@ h6:empty {
 		width: 10px;
 		height: 10px;
 		background-color: transparent;
-		border: 1px solid $color-black;
+		border: 1px solid $color-primary;
 		&-active {
-			background-color: $color-black;
+			background-color: $color-primary;
 		}
 	}
 	&--white {
@@ -206,12 +206,12 @@ h6:empty {
 		border-radius: 50%;
 		width: 40px;
 		height: 40px;
-		border: 1px solid $color-black;
+		border: 1px solid $color-primary;
 		background-color: $color-white;
 		opacity: 0.8;
 		&::after {
 			font-size: 12px;
-			color: $color-black;
+			color: $color-primary;
 		}
 	}
 }

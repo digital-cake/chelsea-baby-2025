@@ -1,0 +1,86 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_blog.scss' -%}
+
+<div class="wrap wrap--x-large wrap--{{ section_id }}">
+     {% paginate blog.articles by 12 %}
+        <div class="section-blog__articles">
+            {% for article in blog.articles %}
+                {% render 'card-article', article: article %}
+            {% endfor %}
+        </div>
+        <div class="section-blog__pagination">
+            
+        </div>
+        {% render 'pagination', paginate: paginate %}
+    {% endpaginate %}
+</div>
+
+{% schema %}
+{
+    "name": "Blog",
+    "tag": "section",
+    "class": "section-blog",
+    "settings": [
+        {
+            "type": "color_background",
+            "id": "image_overlay",
+            "label": "Image Overlay"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 160
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Blog"
+        }
+    ]
+}
+{% endschema %}

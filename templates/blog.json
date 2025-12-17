@@ -1,12 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "main": {
-            "type": "main-blog",
-            "settings": {
-            }
-        }
+  "sections": {
+    "blog_header_KBAY9a": {
+      "type": "blog-header",
+      "name": "Blog Header",
+      "settings": {
+        "title": "",
+        "padding_top": 60,
+        "padding_bottom": 56,
+        "mobile_padding_top": 56,
+        "mobile_padding_bottom": 56
+      }
     },
-    "order": [
-        "main"
-    ]
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "image_overlay": "",
+        "padding_top": 0,
+        "padding_bottom": 62,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "recommendations_tab_slider_Jpd696": {
+      "type": "recommendations-tab-slider",
+      "name": "Recommendations",
+      "settings": {
+        "you_may_also_like_collection": "accessories",
+        "title": "Best Sellers",
+        "link_label": "Shop All",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "mobile_padding_top": 46,
+        "mobile_padding_bottom": 46
+      }
+    },
+    "service_usps_slider_KyBJXz": {
+      "type": "service-usps-slider",
+      "name": "Service USPS Slider",
+      "settings": {
+        "service_usps": "service-usps-test",
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "blog_header_KBAY9a",
+    "main",
+    "recommendations_tab_slider_Jpd696",
+    "service_usps_slider_KyBJXz"
+  ]
 }
