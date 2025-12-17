@@ -1,0 +1,25 @@
+{%- render 'vite' with '@snippetStyles/_delivery-threshold.scss' -%}
+
+{% assign free_delivery_threshold = blank %}
+{% assign threshold_rows = settings.free_delivery_at | newline_to_br | strip_newlines | split: "<br />" %} 
+{% assign cart_subtotal = cart.items_subtotal_price | money_without_currency | plus: 0 %}
+
+{% for row in threshold_rows %}
+    {% assign currency_code = row | split: ':' | first %}
+    {% assign threshold = row | split: ':' | last | plus: 0 %}
+    {% if currency_code == cart.currency.iso_code %}
+        {% assign free_delivery_threshold = threshold %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% assign current_country = localization.country | downcase %}
+{% assign allowed_countries = settings.allowed_countries | split: ',' | strip %}
+{% if free_delivery_threshold != blank and allowed_countries contains current_country %}
+    <div class="cart-delivery-threshold">
+        <div id="cart-delivery-threshold__discount-message" data-message="{{ settings.threshold_text }}" data-success="{{ settings.threshold_text_success }}" data-threshold="{{ free_delivery_threshold }}" style="color: {{ settings.delivery_text_color }}"></div>
+        <div class="cart-delivery-threshold__discount-bar">
+            <span class="progress" style="width: {{ cart.total_price | divided_by: settings.threshold_value }}%; max-width: 100%; background-color: {{ settings.bar_progress_color }}"></span>
+        </div>
+    </div>
+{% endif %}

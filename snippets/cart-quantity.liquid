@@ -1,0 +1,15 @@
+{%- render 'vite' with '@snippetStyles/_cart-quantity.scss' -%}
+
+<div class="cart-quantity" data-id="{{ item.variant_id }}">
+    <button class="increment down button button--white" type="button">
+        <span>
+            {% render 'icon-minus.svg' %}
+        </span>
+    </button>
+    <input type="number" name="updates[]" id="updates_{{ item.key }}" data-id="{{ item.id }}" value="{{ item.quantity }}" min="0">
+    <button class="increment up button button--white" type="button">
+        <span>
+            {% render 'icon-plus.svg' %}
+        </span>
+    </button>
+</div>

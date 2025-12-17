@@ -11,7 +11,13 @@
   "sections": {
     "main": {
       "type": "main-cart",
-      "settings": {}
+      "settings": {
+        "service_usps": "cart-usps-test",
+        "padding_top": 40,
+        "padding_bottom": 80,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 80
+      }
     },
     "recommendations_tab_slider_8mArHG": {
       "type": "recommendations-tab-slider",
@@ -25,10 +31,26 @@
         "mobile_padding_top": 46,
         "mobile_padding_bottom": 46
       }
+    },
+    "service_usps_slider_XBT3XR": {
+      "type": "service-usps-slider",
+      "name": "Service USPS Slider",
+      "settings": {
+        "service_usps": "service-usps-test",
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
     }
   },
   "order": [
     "main",
-    "recommendations_tab_slider_8mArHG"
+    "recommendations_tab_slider_8mArHG",
+    "service_usps_slider_XBT3XR"
   ]
 }

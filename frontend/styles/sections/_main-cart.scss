@@ -1,0 +1,192 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-cart {
+	.wrap {
+		max-width: 1100px
+	}
+	&__header {
+		@include section_header_center;
+		.cart-delivery-threshold {
+			margin-top: 1em;
+			&__discount-bar {
+				@media(min-width: $w-m) {
+					width: 425px;
+				}
+			}
+		}
+	}
+	&__content {
+		display: grid;
+		grid-template-columns: 444px 1fr;
+		gap: 5.125em;
+		align-items: flex-start;
+		@media (max-width: $w-l) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+		}
+		.cart-empty {
+			text-align: center;
+			padding: 4em 0px;
+			grid-column: span 2
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+	.cart-totals {
+		width: 520px;
+		border-radius: $radius-small;
+        background-color: $color-grey;
+		position: sticky;
+        top: 0;
+		@media (max-width: $w-xl) {
+			width: 100%;
+		}
+		@media (max-width: $w-l) {
+			position: relative;
+		}
+		&__usps {
+			display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: $radius-small;
+            background-color: $color-primary;
+			padding: 1em;
+			gap: 1.25em;
+			border-top-left-radius: unset;
+			border-top-right-radius: unset;
+            .service-usp {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.5em;
+                pointer-events: none;
+                padding: 0 1em;
+                span {
+                    font-size: 0.625em;
+                    line-height: 140%;
+                    font-weight: $weight-bold;
+					color: $color-white;
+                    text-transform: uppercase;
+                }
+            }
+			&--desktop {
+				display: none;
+				@media (min-width: $w-l) {
+					display: grid;
+				}
+			}
+			&--mobile {
+				display: none;
+				max-width: calc(100vw - 4em);
+				background-color: $color-primary;
+				padding: 1.375em;
+				border-radius: $radius-small;
+				.service-usp {
+					text-align: center;
+					display: flex;
+					align-items: flex-start;
+					gap: 0.5em;
+                    margin: 0 auto;
+					span {
+						font-size: 0.625em;
+						line-height: 140%;
+						color: $color-white;
+						pointer-events: none;
+                        text-transform: uppercase;
+                        text-align: left;
+					}
+				}
+				.swiper-pagination {
+					position: relative;
+					padding-top: 1em;
+					top: unset;
+					bottom: unset !important;
+				}
+				@media (max-width: $w-l) {
+					display: block;
+				}
+				@media (max-width: $w-m) {
+					max-width: calc(100vw - 2em);
+				}
+                .swiper-slide {
+                    @media (max-width: $w-l) {
+                        display: flex !important;
+                        justify-content: center !important;
+                        .service-usp {
+                            span {
+                                max-width: 160px;
+                            }
+                        }
+                    }
+                }
+			}
+		}
+        &__icons {
+            display: flex;
+            justify-content: center;
+        }
+		&__inner {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			padding: 1.625em 1em;
+			@media (max-width: $w-l) {
+				position: fixed;
+				width: 100%;
+				height: fit-content;
+				bottom: 0;
+				left: 0;
+				top: unset;
+				background-color: $color-white;
+				z-index: 9;
+			}
+			@media (max-width: $w-m) {
+				padding: 2em 0.75em;
+			}
+            .payment-icons {
+                ul {
+                    justify-content: center;
+                }
+            }
+		}
+		&__sub-total {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5em;
+			& > div {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+            .shipping {
+                margin-left: auto;
+                text-transform: uppercase;
+                font-weight: $weight-bold;
+            }
+			.totals {
+				span {
+					font-size: 1.25em;
+					line-height: 150%;
+					font-weight: $weight-bold;
+				}
+			}
+			.shipping {
+				span {
+					font-size: 0.625em;
+					line-height: 140%;
+					font-weight: $weight-bold;
+				}
+			}
+		}
+		&__actions {
+			button {
+                gap: 0.75em;
+                height: 50px;
+                text-transform: capitalize;
+				svg {
+					width: 1em;
+					min-width: 1em;
+				}
+			}
+		}
+	}
+}

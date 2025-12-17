@@ -100,6 +100,12 @@
                 background-color: $color-transactional;
                 border-radius: 50%;
                 color: $color-white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .count {
+                    font-size: 8px;
+                }
             }
         }
         &-account {

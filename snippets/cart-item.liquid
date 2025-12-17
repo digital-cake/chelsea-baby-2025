@@ -1,0 +1,63 @@
+<div class="cart-item cart-item--{{ type }}">
+    <div class="cart-item__media">
+        <a href="{{ item.url | within: collection }}" aria-label="{{ item.product.title }}">
+            <img src="{{ item | img_url: 'compact' }}" alt="{{ item.product.title }}">
+        </a>
+    </div>
+    <div class="cart-item__details">
+        <div class="cart-item__title">
+            <a href="{{ item.url }}" aria-label="{{ item.product.title }}" class="title">
+                <span>{{ item.product.title }}</span>
+            </a>
+            <div class="cart-item__price">
+                {% if item.original_line_price != item.final_line_price %}
+                    <del>{{ item.original_line_price | money }}</del>
+                    <ins>{{ item.final_line_price | money }}</ins>
+                    {% else %}
+                    <span class="product-price" data-price="{{ item.final_line_price }}">{{ item.final_line_price | money }}</span>
+                {% endif %}
+            </div>
+        </div>
+        {% assign propertySize = item.properties | size %}
+        {% if propertySize > 0 %}
+            <div class="cart-item__properties">
+                <ul>
+                {% for property in item.properties %}
+                    {% assign property_first_char = property.first | slice: 0 %}
+                    {% if property.last != blank and property_first_char != '_' %}
+                        <li><span>{{ property.first }}: {{ property.last }}</span></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% unless item.product.has_only_default_variant %}
+        <div class="cart-item__variant">
+            <ul>
+                {% for option in item.options_with_values %}
+                    <li>{{ option.value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endunless %}
+        <div class="cart-item__wrap">
+            <div class="cart-item__quantity">
+                <span data-quantity="{{ item.quantity }}" style="display:none"></span>
+                {% render "cart-quantity", item: item %}
+            </div>
+            <div class="cart-item__actions">
+                <button aria-label="{{ 'cart.wishlist' | t }}" data-product="{{ item.id }}" class="remove button-text button-text--primary">
+                    <span>{{ 'cart.wishlist' | t }}</span>
+                </button>
+                <a href="/cart/change?line={{ index }}&amp;quantity=0" aria-label="{{ 'cart.remove_item' | t }}" data-product="{{ item.id }}" class="remove button-text button-text--primary">
+                    <span>{{ 'cart.remove_item' | t }}</span>
+                </a>
+            </div>
+        </div>
+        {% if item.discounts != blank %}
+            <div class="cart-item__discounts">
+                {% for discount in item.discounts %}{{ "cart.discount" | t }}: <span>{{ discount.title }}</span> <span>({{ discount.amount | money_without_trailing_zeros }})</span>{% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>

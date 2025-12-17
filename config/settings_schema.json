@@ -116,6 +116,57 @@
         }
       ]
     },
+    {
+      "name": "Delivery threshold",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_delivery_threshold",
+          "label": "Show Delivery Threshold",
+          "default": true
+        },
+        {
+          "type": "textarea",
+          "id": "allowed_countries",
+          "label": "Countries to include",
+          "info": "A comma seperated list of countries spelt as in the localisation menu that have access to the free delivery threshold",
+          "default": "united kingdom,united states,australia,france"
+        },
+        {
+          "type": "textarea",
+          "id": "free_delivery_at",
+          "label": "Free delivery at",
+          "info": "A numerical value of the minimum cart total where the free delivery rate will display",
+          "default": "GBP:70\nUSD:95\nAUD:150\nEUR:80"
+        },
+        {
+          "type": "text",
+          "id": "threshold_text",
+          "label": "Pre-threshold text",
+          "info": "Text to appear whilst cart total is below delivery threshold. Use [value] to posistion the remaining spend value",
+          "default": "Spend [value] more for free delivery"
+        },
+        {
+          "type": "text",
+          "id": "threshold_text_success",
+          "label": "Success text",
+          "info": "Text to display once delivery threshold has been achieved",
+          "default": "You have qualified for free delivery!"
+        },
+        {
+          "type": "color",
+          "id": "delivery_text_color",
+          "label": "Text colour",
+          "default": "#1F2535"
+        },
+        {
+          "type": "color",
+          "id": "bar_progress_color",
+          "label": "Bar progress colour",
+          "default": "#89ADC9"
+        }
+      ]
+    },
      {
       "name": "Global",
       "settings": [

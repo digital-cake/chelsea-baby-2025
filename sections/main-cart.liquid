@@ -1,0 +1,156 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_main-cart.scss' -%}
+{%- render 'vite' with '@@/components/main-cart.js' -%}
+{%- render 'vite' with '@@/components/delivery-threshold.js' -%}
+
+<div class="wrap wrap--{{ section_id }}">
+
+    <div class="section-cart__inner">
+  
+        <div class="section-cart__header">
+            <h1 class="medium">{{ 'cart.title_review' | t }}</h1>
+              {% if settings.show_delivery_threshold == true %}
+                  {% render "delivery-threshold" %}
+              {% endif %}
+        </div>
+
+        <div class="section-cart__content">
+        
+          {% if cart.item_count > 0 %}
+            <div class="cart-items">
+                <!--[cart-items]-->
+                    {% for item in cart.items %}
+                        {% render 'cart-item', item: item, index: forloop.index %}
+                    {% endfor %}
+                <!--[/cart-items]-->
+            </div>
+
+            <div class="cart-totals">
+                <div class="cart-totals__inner">
+                    <div class="cart-totals__sub-total">
+                        <!--[cart-total]-->
+                        <div class="totals">
+                            <span>{{ 'cart.subtotal' | t }}</span> <span class="total" data-price-total="{{ cart.total_price }}">{{ cart.total_price | money }}</span>
+                        </div>
+                        <!--[/cart-total]-->
+                        <div class="shipping">
+                            <span>{{ 'cart.shipping_label_calculated' | t }}</span>
+                       </div>
+                    </div>
+                    <div class="cart-totals__actions">
+                        {% form 'cart', cart %}
+                            <button type="submit" name="checkout" class="button button--full-width button--transactional" aria-label="{{ 'cart.checkout' | t }}">
+                                {% render 'icon-lock.svg' %}
+                                <span>{{ 'cart.checkout' | t }}</span>
+                            </button>
+                        {% endform %}
+                    </div>
+                    <div class="cart-totals__icons">
+                        {% render "payment-icons" %}
+                    </div>
+                </div>
+                <div class="cart-totals__usps cart-totals__usps--desktop">
+                  {% if section.settings.service_usps != blank %}
+                    {% for usp in section.settings.service_usps.usps.value %}
+                          <div class="service-usp">
+                              {{ usp.icon | image_url: width: 60, crop: "center" | image_tag: alt: usp.text, width: 18 }}
+                              <span>{{ usp.text }}</span>
+                          </div>
+                      {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="cart-totals__usps--mobile">
+                  {% if section.settings.service_usps != blank %}
+                        <div class="swiper swiper-cart-usps">
+                            <div class="swiper-wrapper">
+                                {% for usp in section.settings.service_usps.usps.value %}
+                                    <div class="swiper-slide">
+                                        <div class="service-usp">
+                                            {{ usp.icon | image_url: width: 60, crop: "center" | image_tag: alt: usp.text, width: 18 }}
+                                            <span>{{ usp.text }}</span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="swiper-pagination swiper-pagination--white swiper-pagination-cart-usps"></div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <!--[cart-empty]-->
+            <p class="cart-empty">{{ 'cart.empty' | t }}</p>
+            <!--[/cart-empty]-->
+            {% endif %}
+            
+        </div>
+
+    </div>
+    
+</div>
+
+{% schema %}
+{
+    "name": "Cart",
+    "tag": "section",
+    "class": "section-cart",
+    "settings": [
+       {
+          "type": "metaobject",
+          "id": "service_usps",
+          "label": "Service USPs",
+          "metaobject_type": "service_usps_group"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 128
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 168
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 120
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 112
+        }
+    ]
+}
+{% endschema %}

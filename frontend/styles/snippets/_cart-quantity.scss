@@ -1,0 +1,45 @@
+@use "../abstracts/variables.scss" as *;
+
+.cart-quantity {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+    padding: 0 0.25em;
+	width: 6.5em;
+	height: 1.875em;
+	background-color: $color-white;
+	border-radius: 4px;
+	input, button {
+		border: none;
+		&:hover {
+			transform: none !important;
+			top: 0;
+		}
+	}
+	input {
+		width: 32px;
+        height: 32px;
+		padding: 0 0.5em;
+		text-align: center;
+		font-size: 0.75em;
+        border: 1px solid $color-black;
+        border-radius: 4px;
+	}
+	button {
+		width: 23px;
+        height: 23px;
+        min-width: 23px;
+        min-height: 23px;
+		padding: 0;
+		touch-action: manipulation;
+		span {
+			svg {
+				width: 10px;
+				min-width: 10px;
+				path {
+					stroke-width: 2;
+				}
+			}
+		}
+	}
+}

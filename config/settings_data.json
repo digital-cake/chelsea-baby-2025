@@ -10,6 +10,7 @@
 {
   "current": {
     "products_per_page": 16,
+    "free_delivery_at": "GBP:1000\nUSD:500\nAUD:500\nEUR:500",
     "store_address_hours": "<p>25 Pedmore Rd, Brierley Hill,</p><p><br/>Dudley DY5 1TJ</p><p><br/>Opening Hours</p><p><br/>Mon - Fri, 9 AM - 5 PM </p><p>Saturday, 10 AM - 5 PM</p>",
     "store_address": "<p>Address: Unit 25, Pedmore Road Industrial Estate, Pedmore Road, Brierley Hill, West Midlands, DY5 1TJ</p>",
     "contact_number": "<p>Phone:<a href=\"tel:01902490211\" title=\"tel:01902490211\"> 01902 490 211</a> or <a href=\"tel:01902965882\" title=\"tel:01902965882\">01902 965 882</a></p>",
