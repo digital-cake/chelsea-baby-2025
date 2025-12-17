@@ -12,6 +12,12 @@
         }
         .swiper-wrapper {
             align-items: center;
+            .swiper-slide {
+                // &:nth-of-type(2) {
+                //     border-left: 1px solid rgba(31, 37, 53, 0.05);
+                //     border-right: 1px solid rgba(31, 37, 53, 0.05);
+                // }
+            }
         }
     }
     &__inner {

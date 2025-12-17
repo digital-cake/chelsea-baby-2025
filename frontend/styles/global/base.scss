@@ -9,7 +9,7 @@ body {
 body {
 	font: 16px $font-base;
 	font-weight: $weight-bold;
-	color: $color-black;
+	color: $color-primary;
 	position: relative;
 	line-height: 140%;
 	-webkit-font-smoothing: antialiased;
@@ -214,4 +214,17 @@ h6:empty {
 			color: $color-black;
 		}
 	}
+}
+
+#overlay-mask {
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: $color-primary;
+	opacity: 0.6;
+	display: none;
+	backdrop-filter: blur(45px);
 }

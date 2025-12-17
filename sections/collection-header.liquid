@@ -1,0 +1,160 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_collection-header.scss' -%}
+
+<div class="section-collection-header__container" style="background-color: {{ section.settings.background_color }};">
+    <div class="wrap wrap--{{ section_id }}">
+        <div class="section-collection-header__inner">
+            {% if section.settings.background_image_desktop != blank %}
+                {{ section.settings.background_image_desktop.src | image_url: width: 3840 | image_tag: class: "section-collection-header__image desktop", alt: section.settings.background_image_desktop.alt }}
+            {% else %}
+                {% if collection.image != blank %}
+                    {{ collection.image.src | image_url: width: 1220 | image_tag: class: "section-collection-header__image desktop", alt: collection.image.alt }}
+                {% endif %}
+            {% endif %}
+            {% if section.settings.background_image_mobile != blank %}
+                {{ section.settings.background_image_mobile.src | image_url: width: 3840 | image_tag: class: "section-collection-header__image mobile", alt: section.settings.background_image_mobile.alt }}
+            {% else %}
+                {% if collection.image != blank %}
+                    {{ collection.image.src | image_url: width: 1220 | image_tag: class: "section-collection-header__image mobile", alt: collection.image.alt }}
+                {% endif %}
+            {% endif %}
+            <div class="section-collection-header__overlay" style="background:{{ section.settings.image_overlay }}"></div>
+            <div class="section-collection-header__header">
+                <h1 style="color: {{ section.settings.text_color }}" class="large">{% if section.settings.title_override != blank %}{{ section.settings.title_override }}{% else %}{{ collection.title }}{% endif %}{% if collection.metafields.cake.show_collection_header_description_drawer != false %}{% if collection.description != blank or collection.metafields.cake.collection_header_description_drawer_content != blank %}<button type="button" aria-label="info" class="button button--no-styling show-collection-content">{% render "icon-info.svg" %}</button>{% endif %}{% endif %}</h1>
+                <div style="color: {{ section.settings.text_color }}">{% if section.settings.description_override != blank %}{{ section.settings.description_override }}{% else %}{{ collection.metafields.cake.short_description |  metafield_tag }}{% endif %}</div>    
+            </div>
+            {% if collection.metafields.cake.header_links != blank %}
+                <ul class="section-collection-header__links">
+                    {% for link in collection.metafields.cake.header_links.value %}
+                        <li>
+                            <a class="button-text button-text--white" aria-label="{{ link.title }}" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% if collection.metafields.cake.show_collection_header_description_drawer != false %}
+    {% render "drawer-collection-header-description", collection: collection %}
+    {%- render 'vite' with '@@/components/drawer-collection-header-description.js' -%}
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            window.init_collection_header_description_drawer();
+        });
+        if (Shopify.designMode) {
+            document.addEventListener('shopify:section:load', function() {
+                window.init_collection_header_description_drawer();
+            });
+        };
+    </script>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Collection Header",
+    "tag": "section",
+    "class": "section-collection-header",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title_override",
+            "label": "Title Override"
+        },
+        {
+            "type": "text",
+            "id": "description_override",
+            "label": "Description Override"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-white)"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-primary)"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_image_desktop",
+            "label": "Background Image Desktop Override"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_image_mobile",
+            "label": "Background Image Mobile Override"
+        },
+        {
+            "type": "color_background",
+            "id": "image_overlay",
+            "label": "Image Overlay",
+            "default": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Collection Header"
+        }
+    ]
+}
+{% endschema %}

@@ -19,6 +19,9 @@
         font-family: $font-base;
         letter-spacing: 0.6px;
     }
+    &--no-styling {
+        padding: 0;
+    }
     &--full-width {
         width: 100%;
     }

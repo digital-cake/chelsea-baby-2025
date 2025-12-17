@@ -1,0 +1,76 @@
+@use "../abstracts/variables.scss" as *;
+
+.drawer {
+	position: fixed;
+	left: -$w-ms;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100%;
+	max-width: 478px;
+	background-color: $color-white;
+	z-index: 999999;
+	height: 100%;
+	transition: right 0.3s ease-in-out;
+	&__inner {
+		height: 100%;
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		grid-template-columns: 100%;
+	}
+	&__header {
+		display: flex;
+		flex-direction: column;
+		padding: 2.5em 2em 1.125em 2em;
+		gap: 0.5em;
+		@media (max-width: $w-m) {
+			padding: 1.25em 1em 0.625em 1em;
+		}
+		&__title {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			line-height: 1;
+			.drawer-close {
+				background-color: transparent;
+				border: none;
+				font: 1em $font-base;
+				width: 24px;
+				height: 24px;
+				min-width: 24px;
+				min-height: 24px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				cursor: pointer;
+				appearance: none;
+				svg {
+					width: 20px;
+					height: auto;
+				}
+				span {
+					display: none;
+				}
+			}
+			.title-label {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				text-transform: uppercase;
+			}
+		}
+	}
+	&__content {
+		overflow: hidden;
+		overflow-y: auto;
+	}
+	&__footer {
+		&__text {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            span {
+                font-size: 0.625em;
+            }
+        }
+	}
+}

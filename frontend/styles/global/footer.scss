@@ -8,19 +8,20 @@
     overflow: hidden;
     .stamp-logo {
         position: absolute;
-        right: -250px;
-        top: 45%;
+        right: -335px;
+        top: 50%;
         transform: translate(-50%, -50%);
         img {
             display: block;
             object-fit: cover;
-            width: 300px;
+            width: 400px;
             @media (max-width: $w-m) {
                 width: 250px;
             }
         }
         @media (max-width: $w-m) {
-            right: -175px;
+            right: -170px;
+            top: 40%;
         }
     }
     a {
@@ -69,7 +70,7 @@
         ul {
             display: flex;
             flex-direction: column;
-            gap: 1em;
+            gap: 0.5em;
         }
         .menu-title {
             font-size: 0.625em;

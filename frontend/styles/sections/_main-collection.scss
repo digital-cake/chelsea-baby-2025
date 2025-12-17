@@ -1,7 +1,28 @@
+@use "../abstracts/variables.scss" as *;
+
 .section-collection {
     &__products {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 3.5em 1.875em;
+    }
+
+    .main-collection-mobile-floating-filter {
+        position: fixed;
+        left: 50%;
+        bottom: 2em;
+        z-index: 3;
+        transform: translateX(-50%);
+        border: 1px solid $color-transactional;
+        background-color: $color-white;
+        border-radius: 30px;
+        button {
+            display: flex;
+            align-items: center;
+            gap: 0.75em;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            font-weight: 400;
+        }
     }
 }
