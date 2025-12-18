@@ -186,6 +186,64 @@
         "mobile_padding_bottom": 32
       }
     },
+    "manual_reviews_slider_CqYycW": {
+      "type": "manual-reviews-slider",
+      "blocks": {
+        "review_Eetdg7": {
+          "type": "review",
+          "settings": {
+            "review_stars": 4,
+            "title": "Amazing all-round experience — would buy from Chelsea Baby again in a heartbeat!",
+            "text": "<p>I ordered a Joie car seat from ChelseaBaby after seeing it cheaper there than a few other sites. I hadn’t used them before, so I wasn’t totally sure what to expect, but everything went smoothly.<br/><br/>The checkout was straightforward, and I got email updates as soon as the order was confirmed and again when it was dispatched. Delivery took about 3 days, which was fine.<br/><br/>The box was a bit scuffed from the courier but the car seat inside was perfect.I had one question about whether it would fit with the base I already had, so I emailed their support and they got back to me pretty quickly with a helpful answer. Nice to see an actual person replying rather than a copy-and-paste response.</p>"
+          }
+        },
+        "review_zBTpzD": {
+          "type": "review",
+          "settings": {
+            "review_stars": 5,
+            "title": "Amazing all-round experience — would buy from Chelsea Baby again!",
+            "text": "<p>I ordered a Joie car seat from ChelseaBaby after seeing it cheaper there than a few other sites. I hadn’t used them before, so I wasn’t totally sure what to expect, but everything went smoothly.<br/><br/>The checkout was straightforward, and I got email updates as soon as the order was confirmed and again when it was dispatched. Delivery took about 3 days, which was fine.</p>"
+          }
+        },
+        "review_WWCg84": {
+          "type": "review",
+          "settings": {
+            "review_stars": 3,
+            "title": "Amazing all-round experience",
+            "text": "<p>I ordered a Joie car seat from ChelseaBaby after seeing it cheaper there than a few other sites. I hadn’t used them before, so I wasn’t totally sure what to expect, but everything went smoothly.<br/><br/>The box was a bit scuffed from the courier but the car seat inside was perfect.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "review_Eetdg7",
+        "review_zBTpzD",
+        "review_WWCg84"
+      ],
+      "name": "Manual Reviews Slider",
+      "settings": {
+        "image": "shopify://shop_images/review-placeholder.jpg",
+        "image_overlay": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)",
+        "text_color": "var(--color-primary)",
+        "background_color": "var(--color-white)",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "manual_reviews_slider_XCMAcG": {
+      "type": "manual-reviews-slider",
+      "name": "Manual Reviews Slider",
+      "settings": {
+        "image_overlay": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)",
+        "text_color": "var(--color-primary)",
+        "background_color": "var(--color-white)",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
     "featured_product_ChgEX8": {
       "type": "featured-product",
       "blocks": {
@@ -391,6 +449,8 @@
     "collection_slider_WTpctC",
     "collections_slider_zQGgUU",
     "collections_logo_grid_AjpKnK",
+    "manual_reviews_slider_CqYycW",
+    "manual_reviews_slider_XCMAcG",
     "featured_product_ChgEX8",
     "ugc_slider_CfgqED",
     "two_column_title_text_FcTLeD",

@@ -1,0 +1,114 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-manual-reviews-slider {
+    .wrap {
+        @media (max-width: $w-l) {
+            padding-right: 2em;
+            padding-left: 2em;
+        }
+        @media (max-width: $w-m) {
+            padding-right: 0.9375em;
+            padding-left: 0.9375em;
+        }
+    }
+    &__inner {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        justify-content: space-between;
+        position: relative;
+        @media (max-width: $w-l) {
+            flex-direction: column;
+            gap: 3.5em;
+        }
+
+        .swiper-actions {
+            width: calc(50% - 1.125em);
+            position: absolute;
+            padding-right: 2em;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .swiper-navigation {
+                display: flex;
+                gap: 1em;
+                justify-content: flex-end;
+                .swiper-button-prev, .swiper-button-next {
+                    position: relative;
+                    left: unset;
+                    right: unset;
+                    top: unset;
+                    margin-top: unset;
+                    background-color: $color-grey;
+                }
+            }
+            .swiper-pagination {
+                position: relative;
+                bottom: unset;
+                top: unset;
+                width: fit-content;
+            }
+            @media (max-width: $w-l) {
+                width: 100%;
+            }
+        }
+    }
+    &__image {
+        width: calc(50% - 1.125em);
+        position: relative;
+        @media (max-width: $w-l) {
+            width: 100%;
+        }
+        img {
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+            max-height: 694px;
+            width: 100%;
+            border-top-right-radius: $radius-large;
+            border-bottom-right-radius: $radius-large;
+            @media (max-width: $w-l) {
+                border-radius: $radius-large;
+            }
+        }
+        .image-overlay {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            border-top-right-radius: $radius-large;
+            border-bottom-right-radius: $radius-large;
+            @media (max-width: $w-l) {
+                border-radius: $radius-large;
+            }
+        }
+    }
+    &__slider {
+        width: calc(50% - 1.125em);
+        padding-right: 2em;
+        @media (max-width: $w-l) {
+            width: 100%;
+            padding: 0 0 5em 0;
+        }
+        &-item {
+            .review-stars {
+                margin-bottom: 1em;
+                display: flex;
+                gap: 5px;
+            }
+            h4 {
+                margin-bottom: 32px;
+                font-size: 1.75em;
+            }
+            a {
+                text-decoration: underline;
+                color: inherit;
+            }
+        }
+    }
+}
