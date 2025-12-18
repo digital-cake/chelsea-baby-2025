@@ -24,6 +24,9 @@
             <div class="section-collection-header__header">
                 <h1 style="color: {{ section.settings.text_color }}" class="large">{% if section.settings.title_override != blank %}{{ section.settings.title_override }}{% else %}{{ collection.title }}{% endif %}{% if collection.metafields.cake.show_collection_header_description_drawer != false %}{% if collection.description != blank or collection.metafields.cake.collection_header_description_drawer_content != blank %}<button type="button" aria-label="info" class="button button--no-styling show-collection-content">{% render "icon-info.svg" %}</button>{% endif %}{% endif %}</h1>
                 <div style="color: {{ section.settings.text_color }}">{% if section.settings.description_override != blank %}{{ section.settings.description_override }}{% else %}{{ collection.metafields.cake.short_description |  metafield_tag }}{% endif %}</div>    
+                {% if collection.metafields.cake.header_link != blank %}
+                    <a aria-label="{{ collection.metafields.cake.header_link.value.text }}" class="button button--white" href="{{ collection.metafields.cake.header_link.value.url }}"><span>{{ collection.metafields.cake.header_link.value.text }}</span></a>
+                {% endif %}
             </div>
             {% if collection.metafields.cake.header_links != blank %}
                 <ul class="section-collection-header__links">

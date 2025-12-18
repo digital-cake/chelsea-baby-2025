@@ -54,6 +54,10 @@
             align-items: center;
             gap: 0.5em;
         }
+        a.button {
+            width: fit-content;
+            margin-top: 0.5em;
+        }
     }
     &__links {
         position: absolute;

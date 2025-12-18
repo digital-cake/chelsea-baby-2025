@@ -100,9 +100,9 @@
         "link_label": "Shop All",
         "background_color": "var(--color-white)",
         "padding_top": 64,
-        "padding_bottom": 96,
+        "padding_bottom": 56,
         "mobile_padding_top": 96,
-        "mobile_padding_bottom": 32
+        "mobile_padding_bottom": 48
       }
     },
     "collections_logo_grid_AjpKnK": {
@@ -180,9 +180,9 @@
         "title": "Meet Our Pushchair Brands",
         "link": "shopify://collections",
         "link_label": "Shop All",
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "mobile_padding_top": 32,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "mobile_padding_top": 48,
         "mobile_padding_bottom": 32
       }
     },
@@ -225,9 +225,11 @@
         "image_overlay": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)",
         "text_color": "var(--color-primary)",
         "background_color": "var(--color-white)",
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "mobile_padding_top": 32,
+        "enable_pagination": true,
+        "enable_navigation": true,
+        "padding_top": 56,
+        "padding_bottom": 92,
+        "mobile_padding_top": 56,
         "mobile_padding_bottom": 32
       }
     },
@@ -238,6 +240,8 @@
         "image_overlay": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)",
         "text_color": "var(--color-primary)",
         "background_color": "var(--color-white)",
+        "enable_pagination": true,
+        "enable_navigation": true,
         "padding_top": 64,
         "padding_bottom": 64,
         "mobile_padding_top": 32,
@@ -315,7 +319,7 @@
         "padding_top": 72,
         "padding_bottom": 56,
         "mobile_padding_top": 48,
-        "mobile_padding_bottom": 68
+        "mobile_padding_bottom": 48
       }
     },
     "ugc_slider_CfgqED": {
@@ -380,9 +384,9 @@
         "autoplay": true,
         "delay": 3,
         "speed": 7,
-        "padding_top": 0,
+        "padding_top": 56,
         "padding_bottom": 64,
-        "mobile_padding_top": 0,
+        "mobile_padding_top": 48,
         "mobile_padding_bottom": 32
       }
     },
@@ -395,10 +399,10 @@
         "text": "<p>From newborn snuggles to toddler adventures, our pushchairs are built to adapt as your little one grows. At Chelsea Baby, we believe every stroll should be simple, safe, and stylish. That’s why our collection includes lightweight travel strollers, convertible prams, and <a href=\"/collections/all-terrain-pushchairs-1\" title=\"All Terrain Pushchairs & Prams\">all-terrain pushchairs </a>designed for real life — whether you’re weaving through city streets or wandering through the <strong>park</strong>.</p><p>Enjoy premium comfort, clever functionality, and beautiful design in every detail. Because when your pushchair works effortlessly, you can focus on what really matters — making memories with your baby.</p>",
         "text_color": "var(--color-primary)",
         "background_color": "var(--color-grey)",
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "mobile_padding_top": 32,
-        "mobile_padding_bottom": 32
+        "padding_top": 72,
+        "padding_bottom": 102,
+        "mobile_padding_top": 64,
+        "mobile_padding_bottom": 64
       }
     },
     "recommendations_tab_slider_nLVAFY": {
