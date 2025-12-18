@@ -105,6 +105,87 @@
         "mobile_padding_bottom": 32
       }
     },
+    "collections_logo_grid_AjpKnK": {
+      "type": "collections-logo-grid",
+      "blocks": {
+        "collection_fWRFED": {
+          "type": "collection",
+          "settings": {
+            "collection": "icandy",
+            "logo": "shopify://shop_images/icandy-logo.png"
+          }
+        },
+        "collection_rKx79e": {
+          "type": "collection",
+          "settings": {
+            "collection": "joie",
+            "logo": "shopify://shop_images/logo-joie.png"
+          }
+        },
+        "collection_RT9bVz": {
+          "type": "collection",
+          "settings": {
+            "collection": "nuna",
+            "logo": "shopify://shop_images/nuna-logo.png"
+          }
+        },
+        "collection_MBgxrX": {
+          "type": "collection",
+          "settings": {
+            "collection": "egg",
+            "logo": "shopify://shop_images/egg-logo.png"
+          }
+        },
+        "collection_mNaUtY": {
+          "type": "collection",
+          "settings": {
+            "collection": "silver-cross",
+            "logo": "shopify://shop_images/silver-cross-logo.png"
+          }
+        },
+        "collection_dBgb7U": {
+          "type": "collection",
+          "settings": {
+            "collection": "maxi-cosi",
+            "logo": "shopify://shop_images/logo-maxi.png"
+          }
+        },
+        "collection_mwxADV": {
+          "type": "collection",
+          "settings": {
+            "collection": "cozy-n-safe",
+            "logo": "shopify://shop_images/cozy-n-safe-logo.png"
+          }
+        },
+        "collection_BR6eVd": {
+          "type": "collection",
+          "settings": {
+            "collection": "hauck",
+            "logo": "shopify://shop_images/hauck-logo.png"
+          }
+        }
+      },
+      "block_order": [
+        "collection_fWRFED",
+        "collection_rKx79e",
+        "collection_RT9bVz",
+        "collection_MBgxrX",
+        "collection_mNaUtY",
+        "collection_dBgb7U",
+        "collection_mwxADV",
+        "collection_BR6eVd"
+      ],
+      "name": "Collections Logo Grid",
+      "settings": {
+        "title": "Meet Our Pushchair Brands",
+        "link": "shopify://collections",
+        "link_label": "Shop All",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
     "featured_product_ChgEX8": {
       "type": "featured-product",
       "blocks": {
@@ -173,9 +254,9 @@
         "video": "shopify://files/videos/584cfc1cefa84403bd49e067c52731d2.HD-1080p-4.8Mbps-60456388.mp4",
         "image_overlay": "",
         "background_color": "var(--color-grey)",
-        "padding_top": 0,
+        "padding_top": 72,
         "padding_bottom": 56,
-        "mobile_padding_top": 0,
+        "mobile_padding_top": 48,
         "mobile_padding_bottom": 68
       }
     },
@@ -309,6 +390,7 @@
     "header",
     "collection_slider_WTpctC",
     "collections_slider_zQGgUU",
+    "collections_logo_grid_AjpKnK",
     "featured_product_ChgEX8",
     "ugc_slider_CfgqED",
     "two_column_title_text_FcTLeD",

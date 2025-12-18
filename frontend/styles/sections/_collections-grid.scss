@@ -1,0 +1,50 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-collections-grid {
+    &__inner {
+        &-header {
+            @include section_header;
+            padding: 0 2.125em;
+            @media (max-width: $w-l) {
+                padding: 0 2em;
+            }
+            @media (max-width: $w-m) {
+                padding: 0 0.9375em;
+                flex-direction: column;
+                gap: 0.5em;
+            }
+        }
+        &-entries {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid $color-grey;
+            border-right: none;
+            margin-top: 2em;
+            @media (max-width: $w-m) {
+                grid-template-columns: repeat(3, 1fr);
+                margin-top: 2.625em;
+            }
+            @media (max-width: 550px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        &-entry {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3.25em 4.75em;
+            border-right: 1px solid $color-grey;
+            max-height: 164px;
+            @media (max-width: $w-l) {
+                padding: 4.25em 1.875em;
+            }
+            img {
+                display: block;
+                object-fit: contain;
+            }
+            &:nth-of-type(-n+4) {
+                border-bottom: 1px solid $color-grey;
+            }
+        }
+    }
+}
