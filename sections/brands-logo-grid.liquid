@@ -1,0 +1,178 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{% if section.blocks.size > 0 %}
+    {%- render 'vite' with '@sectionStyles/_brands-logo-grid.scss' -%}
+
+    <div class="section-brands-logo-grid__container" style="background-color: {{ section.settings.background_color }};">
+        <div class="wrap wrap--medium-large wrap--{{ section_id }}">
+            <div class="section-brands-logo-grid__inner">
+                {% if section.settings.title != blank %}
+                    <p class="small section-brands-logo-grid__inner-header">{{ section.settings.title }}</p>
+                {% endif %}
+                <div class="section-brands-logo-grid__entries">
+                    {% for block in section.blocks %}
+                        {% if block.settings.logo != blank %}
+                            <div class="section-brands-logo-grid__entries-item">
+                                {% if block.settings.logo_link != blank %}<a aria-label="{{ block.settings.logo.alt }}" target="_blank" href="{{ block.settings.logo_link }}">{% endif %}
+                                    {{ block.settings.logo.src | image_url: width: 400 | image_tag: alt: block.settings.logo.alt, width: 200 }}
+                                {% if block.settings.logo_link != blank %}</a>{% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Brands Logo Grid",
+    "tag": "section",
+    "class": "section-brands-logo-grid",
+    "blocks": [
+        {
+            "name": "Logo",
+            "type": "logo",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "logo",
+                    "label": "Logo"
+                },
+                {
+                    "type": "url",
+                    "id": "logo_link",
+                    "label": "Logo Link"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Title goes here"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-primary)"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-white)"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        }
+    ],
+    "presets": [
+        {
+            "name": "Brands Logo Grid"
+        }
+    ]
+}
+{% endschema %}

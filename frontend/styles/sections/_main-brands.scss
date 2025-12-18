@@ -1,0 +1,41 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-brands-list {
+    &__inner {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6.25em;
+        @media (max-width: $w-ml) {
+            gap: 4.25em;
+        }
+        @media (max-width: $w-l) { 
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2em 1.375em;
+        }
+        @media (max-width: 600px) { 
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2em 1.375em;
+        }
+    }
+    &__letter {
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            li {
+                a {
+                    font-size: 0.875em;
+                    font-weight: 400;
+                }
+            }
+        }
+        &__inner {
+            padding-bottom: 1em;
+            border-bottom: 1px solid $color-primary;
+            margin-bottom: 1em;
+            p {
+                font-size: 1.25em;
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-brands-logo-grid {
+    &__inner {
+        &-header {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 0.625em;
+            letter-spacing: 1px;
+        }
+    }
+    &__entries {
+        display: flex;
+        align-items: center;
+        gap: 3.375em 6.125em;
+        @media (max-width: $w-ml) {
+            gap: 3.5em;
+        }
+        @media (max-width: $w-m) {
+            display: flex;
+            flex-flow: row wrap;
+            gap: 0 3.5em;
+        }
+        &-item {
+            img {
+                display: block;
+                object-fit: cover;
+            }
+            @media (max-width: $w-m) {
+                width: calc(33.33% - 3.5em);
+                margin: 0 auto;
+            }   
+        }
+    }
+}

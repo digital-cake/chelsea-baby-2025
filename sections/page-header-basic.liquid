@@ -1,0 +1,153 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_page-header-basic.scss' -%}
+
+<div class="section-page-header-basic__container" style="background-color: {{ section.settings.background_color }};">
+    <div class="wrap wrap--large wrap--{{ section_id }}">
+        <div class="section-page-header-basic__inner">
+            <h1 style="color: {{ section.settings.text_color }}" class="large">{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}{{ page.title }}{% endif %}</h1>
+            <div style="color: {{ section.settings.text_color }}">{% if section.settings.description != blank %}{{ section.settings.description }}{% else %}{{ page.content | strip_html }}{% endif %}</div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Page Header",
+    "tag": "section",
+    "class": "section-page-header-basic",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Overrides default page title"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "info": "Overrides default page content"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-primary)"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "info": "To be used if no image set",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-white)"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 70
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 70
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 68
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 68
+        }
+    ],
+    "presets": [
+        {
+            "name": "Page Header Basic"
+        }
+    ]
+}
+{% endschema %}
