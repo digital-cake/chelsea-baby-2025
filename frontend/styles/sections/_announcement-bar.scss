@@ -15,11 +15,6 @@
         padding: 0.75em 2.125em;
         .swiper-wrapper {
             justify-content: space-between;
-            .swiper-slide {
-                @media (min-width: 900px) {
-                    width: fit-content !important;
-                }
-            }
         }
         &-announcement {
             width: 100%;
@@ -45,6 +40,18 @@
                 text-overflow: ellipsis;
                 color: $color-primary;
                 text-transform: uppercase;
+            }
+        }
+    }
+    @media (min-width: 900px) {
+        .section-announcement-bar__inner .swiper-slide:first-child {
+            .section-announcement-bar__inner-announcement span {
+            justify-content: flex-start;
+            }
+        }
+        .section-announcement-bar__inner .swiper-slide:last-child {
+            .section-announcement-bar__inner-announcement span {
+            justify-content: flex-end;
             }
         }
     }

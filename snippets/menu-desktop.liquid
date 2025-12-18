@@ -1,0 +1,22 @@
+{%- render 'vite' with '@snippetStyles/_menu-desktop.scss' -%}
+
+<div>
+    <nav>
+        <ul class="menu menu-desktop">
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when "link" %}
+                    <li class="menu-desktop__item menu-desktop__item--link">
+                        <a href="{{ block.settings.url }}" class="menu-desktop__link" aria-label="{{ block.settings.title }}">
+                            <span>{{ block.settings.title }}</span>
+                        </a>
+                    </li>
+                {% when "mega_2" %}
+                    {% render "menu-desktop-mega-2-tier", block: block.settings %}
+                {% when "brands" %}
+                    {% render "menu-desktop-brands", block: block.settings %}
+            {% endcase %}
+        {% endfor %}
+        </ul>
+    </nav>
+</div>

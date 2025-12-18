@@ -55,6 +55,121 @@
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "mega_2_TqB3bJ": {
+          "type": "mega_2",
+          "settings": {
+            "title": "Car Seats",
+            "url": "shopify://collections/car-seats",
+            "menu": "car-seats",
+            "rows": 5,
+            "url_1": "",
+            "text_1": "",
+            "url_2": "",
+            "text_2": ""
+          }
+        },
+        "mega_2_nzPYRJ": {
+          "type": "mega_2",
+          "settings": {
+            "title": "Pushchairs",
+            "url": "shopify://collections/pushchair-types",
+            "menu": "pushchairs",
+            "rows": 5,
+            "url_1": "",
+            "text_1": "",
+            "url_2": "",
+            "text_2": ""
+          }
+        },
+        "mega_2_9fLxdn": {
+          "type": "mega_2",
+          "settings": {
+            "title": "Cots & Cribs",
+            "url": "shopify://collections/cribs",
+            "menu": "cots-cribs",
+            "rows": 5,
+            "url_1": "",
+            "text_1": "",
+            "url_2": "",
+            "text_2": ""
+          }
+        },
+        "mega_2_hUCKPz": {
+          "type": "mega_2",
+          "settings": {
+            "title": "Nursery Furniture",
+            "url": "shopify://collections/furniture",
+            "menu": "nursery-furniture",
+            "rows": 5,
+            "url_1": "",
+            "text_1": "",
+            "url_2": "",
+            "text_2": ""
+          }
+        },
+        "mega_2_qrc69r": {
+          "type": "mega_2",
+          "settings": {
+            "title": "Highchairs and Feeding",
+            "url": "shopify://collections/meal-time",
+            "menu": "",
+            "rows": 5,
+            "url_1": "",
+            "text_1": "",
+            "url_2": "",
+            "text_2": ""
+          }
+        },
+        "mega_2_NKQXQD": {
+          "type": "mega_2",
+          "settings": {
+            "title": "Toys & Games",
+            "url": "shopify://collections/toys-games",
+            "menu": "toys-games",
+            "rows": 5,
+            "url_1": "",
+            "text_1": "",
+            "url_2": "",
+            "text_2": ""
+          }
+        },
+        "brands_9nraMF": {
+          "type": "brands",
+          "settings": {
+            "title": "Shop Brands",
+            "url": "shopify://pages/brands",
+            "desktop-text": "See full list",
+            "mobile_link_text": "Shop All Brands",
+            "mobile_link": "shopify://pages/brands"
+          }
+        },
+        "link_DLG7Kg": {
+          "type": "link",
+          "settings": {
+            "title": "The Parent Hub",
+            "url": "shopify://blogs/news-1"
+          }
+        },
+        "link_7Rrmjn": {
+          "type": "link",
+          "settings": {
+            "title": "Our Store",
+            "url": "/"
+          }
+        }
+      },
+      "block_order": [
+        "mega_2_TqB3bJ",
+        "mega_2_nzPYRJ",
+        "mega_2_9fLxdn",
+        "mega_2_hUCKPz",
+        "mega_2_qrc69r",
+        "mega_2_NKQXQD",
+        "brands_9nraMF",
+        "link_DLG7Kg",
+        "link_7Rrmjn"
+      ],
       "settings": {
         "logo": "shopify://shop_images/logo-new-simple-primary.svg"
       }
