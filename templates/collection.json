@@ -11,11 +11,22 @@
   "sections": {
     "header": {
       "type": "collection-header",
-      "settings": {}
+      "settings": {
+        "title_override": "",
+        "description_override": "",
+        "text_color": "var(--color-white)",
+        "background_color": "var(--color-primary)",
+        "image_overlay": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)"
+      }
     },
     "main": {
       "type": "main-collection",
-      "settings": {}
+      "settings": {
+        "padding_top": 56,
+        "padding_bottom": 96,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 48
+      }
     },
     "recommendations_tab_slider_A44nPC": {
       "type": "recommendations-tab-slider",
@@ -44,12 +55,26 @@
         "mobile_padding_top": 32,
         "mobile_padding_bottom": 32
       }
+    },
+    "recommendations_tab_slider_cjBRdF": {
+      "type": "recommendations-tab-slider",
+      "name": "Recommendations",
+      "settings": {
+        "you_may_also_like_collection": "accessories",
+        "title": "Best Sellers",
+        "link_label": "Shop All",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "mobile_padding_top": 46,
+        "mobile_padding_bottom": 46
+      }
     }
   },
   "order": [
     "header",
     "main",
     "recommendations_tab_slider_A44nPC",
-    "service_usps_slider_9Lji8B"
+    "service_usps_slider_9Lji8B",
+    "recommendations_tab_slider_cjBRdF"
   ]
 }

@@ -1,0 +1,24 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-b-block {
+    &__inner {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        &-title {
+            padding: 0 1em;
+        }
+        &-text {
+            p, a, li {
+                color: inherit;
+            }
+        }
+        &-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5em;
+        }
+    }
+}

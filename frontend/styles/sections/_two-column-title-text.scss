@@ -1,0 +1,24 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-two-column-title-text {
+    &__inner {
+        display: grid;
+        grid-template-columns: 540px 1fr;
+        gap: 9.875em;
+        @media (max-width: $w-ml) {
+            gap: 4.8em;
+        }
+        @media (max-width: $w-l) {
+            gap: 1.5em;
+            grid-template-columns: 1fr;
+        }
+        &-text {
+            p {
+                margin-bottom: 1em;
+            }
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
+}

@@ -1,12 +1,319 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "header": {
-            "type": "collection-header",
-            "settings": {
-            }
-        }
+  "sections": {
+    "header": {
+      "type": "collection-header",
+      "settings": {
+        "title_override": "",
+        "description_override": "",
+        "text_color": "var(--color-white)",
+        "background_color": "var(--color-primary)",
+        "image_overlay": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)"
+      }
     },
-    "order": [
-        "header"
-    ]
+    "collection_slider_WTpctC": {
+      "type": "collection-slider",
+      "name": "Collection Slider",
+      "settings": {
+        "title": "Best Sellers",
+        "tag": "h3",
+        "link_label": "Shop All",
+        "label": "",
+        "collection": "abc-design",
+        "background_color": "var(--color-white)",
+        "collection_products_to_show_limit": 15,
+        "padding_top": 64,
+        "padding_bottom": 0,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "collections_slider_zQGgUU": {
+      "type": "collections-slider",
+      "blocks": {
+        "collection_aHNG87": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/cc235af0d1e02c671520589494f6c39fa7e318cb.png",
+            "image_overlay": "",
+            "title": "Car Seats",
+            "collection": "baby-car-seats-birth-16-months-1"
+          }
+        },
+        "collection_wnWnbx": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/1aafbb3f7b72eaa58f321fcea33d73893b9ae86b.png",
+            "image_overlay": "",
+            "title": "Pushchairs",
+            "collection": "cybex-gold-pushchairs"
+          }
+        },
+        "collection_JAVyjc": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/a4d2f1d8ca7d267b6fb6417f3efe0e5298d641cb.png",
+            "image_overlay": "",
+            "title": "Cots & Cribs",
+            "collection": "cribs"
+          }
+        },
+        "collection_a7Fn8e": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/ae013a54ecefa3d3901a0c15f031006acf19da68.png",
+            "image_overlay": "",
+            "title": "Gifts",
+            "collection": "baby-gifts"
+          }
+        },
+        "collection_tqY4gj": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/1c5cd23d2347b0594ee7ef8dc9b73312946751eb.png",
+            "image_overlay": "",
+            "title": "Nursery",
+            "collection": "furniture"
+          }
+        }
+      },
+      "block_order": [
+        "collection_aHNG87",
+        "collection_wnWnbx",
+        "collection_JAVyjc",
+        "collection_a7Fn8e",
+        "collection_tqY4gj"
+      ],
+      "name": "Collections Slider",
+      "settings": {
+        "title": "Shop by Category",
+        "tag": "h3",
+        "link": "shopify://collections",
+        "link_label": "Shop All",
+        "background_color": "var(--color-white)",
+        "padding_top": 64,
+        "padding_bottom": 96,
+        "mobile_padding_top": 96,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "featured_product_ChgEX8": {
+      "type": "featured-product",
+      "blocks": {
+        "bullet_cNkgJD": {
+          "type": "bullet",
+          "settings": {
+            "text": "The only stroller in the world IATA Cabin Approved in seat and carrycot mode"
+          }
+        },
+        "bullet_YNwqLd": {
+          "type": "bullet",
+          "settings": {
+            "text": "Supersized 8kg storage basket and\nseat pocket"
+          }
+        },
+        "bullet_iqMEk7": {
+          "type": "bullet",
+          "settings": {
+            "text": "Suitable from birth to 22kg \n(Approx. 4 years)"
+          }
+        },
+        "bullet_4hGPk7": {
+          "type": "bullet",
+          "settings": {
+            "text": "Car seat compatible with Glide Plus\n360 adapters included"
+          }
+        },
+        "bullet_cHLgrJ": {
+          "type": "bullet",
+          "settings": {
+            "text": "Lie-flat seat with UPF50+ ventilated sun peak and catch-all comfort liner"
+          }
+        },
+        "bullet_UCNfWF": {
+          "type": "bullet",
+          "settings": {
+            "text": "Additional universal adapters sold separately to pair with a car seat of your choice"
+          }
+        },
+        "bullet_w49t49": {
+          "type": "bullet",
+          "settings": {
+            "text": "One-hand, self-standing foldwith built-in shoulder carry strap"
+          }
+        },
+        "bullet_gHQqxL": {
+          "type": "bullet",
+          "settings": {
+            "text": "Glide adapters and rain cover included"
+          }
+        }
+      },
+      "block_order": [
+        "bullet_cNkgJD",
+        "bullet_YNwqLd",
+        "bullet_iqMEk7",
+        "bullet_4hGPk7",
+        "bullet_cHLgrJ",
+        "bullet_UCNfWF",
+        "bullet_w49t49",
+        "bullet_gHQqxL"
+      ],
+      "name": "Featured Product",
+      "settings": {
+        "feature_product": "silver-cross-nia-stroller-champagne",
+        "video": "shopify://files/videos/584cfc1cefa84403bd49e067c52731d2.HD-1080p-4.8Mbps-60456388.mp4",
+        "image_overlay": "",
+        "background_color": "var(--color-grey)",
+        "padding_top": 0,
+        "padding_bottom": 56,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 68
+      }
+    },
+    "ugc_slider_CfgqED": {
+      "type": "ugc-slider",
+      "blocks": {
+        "image_zNtnit": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-1.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        },
+        "image_w7TQq9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-2.jpg",
+            "label": "@usermum123",
+            "link": "https://www.instagram.com/chelseababyuk/"
+          }
+        },
+        "image_TWGpEK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-3.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        },
+        "image_W87Arz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-4.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        },
+        "image_6TGcwf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-5.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_zNtnit",
+        "image_w7TQq9",
+        "image_TWGpEK",
+        "image_W87Arz",
+        "image_6TGcwf"
+      ],
+      "name": "UGC Slider",
+      "settings": {
+        "title": "Little Moments We Love",
+        "tag": "h3",
+        "label": "@Chelseababyuk",
+        "label_link": "https://www.instagram.com/chelseababyuk/",
+        "background_color": "var(--color-grey)",
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 0,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "two_column_title_text_FcTLeD": {
+      "type": "two-column-title-text",
+      "name": "Two Column Title Text",
+      "settings": {
+        "title": "Explore Pushchairs Made For Modern Parenting",
+        "tag": "h3",
+        "text": "<p>From newborn snuggles to toddler adventures, our pushchairs are built to adapt as your little one grows. At Chelsea Baby, we believe every stroll should be simple, safe, and stylish. That’s why our collection includes lightweight travel strollers, convertible prams, and <a href=\"/collections/all-terrain-pushchairs-1\" title=\"All Terrain Pushchairs & Prams\">all-terrain pushchairs </a>designed for real life — whether you’re weaving through city streets or wandering through the <strong>park</strong>.</p><p>Enjoy premium comfort, clever functionality, and beautiful design in every detail. Because when your pushchair works effortlessly, you can focus on what really matters — making memories with your baby.</p>",
+        "text_color": "var(--color-primary)",
+        "background_color": "var(--color-grey)",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "recommendations_tab_slider_nLVAFY": {
+      "type": "recommendations-tab-slider",
+      "name": "Recommendations",
+      "settings": {
+        "you_may_also_like_collection": "accessories",
+        "title": "Best Sellers",
+        "link_label": "Shop All",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "mobile_padding_top": 46,
+        "mobile_padding_bottom": 46
+      }
+    },
+    "collection_b_block_9d4tFn": {
+      "type": "collection-b-block",
+      "name": "Collection B-block",
+      "settings": {
+        "tag": "h3",
+        "width": "medium",
+        "text_color": "var(--color-primary)",
+        "background_color": "var(--color-white)",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "service_usps_slider_GnNF3Q": {
+      "type": "service-usps-slider",
+      "name": "Service USPS Slider",
+      "settings": {
+        "service_usps": "service-usps-test",
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "header",
+    "collection_slider_WTpctC",
+    "collections_slider_zQGgUU",
+    "featured_product_ChgEX8",
+    "ugc_slider_CfgqED",
+    "two_column_title_text_FcTLeD",
+    "recommendations_tab_slider_nLVAFY",
+    "collection_b_block_9d4tFn",
+    "service_usps_slider_GnNF3Q"
+  ]
 }

@@ -105,7 +105,9 @@
         "search": {
             "results_count": "results",
             "results": "Search Results",
+            "showing": "Showing",
             "start_search": "Start your search above!",
+            "results_for": "Results for",
             "drawer": {
                 "title": "Filter by",
                 "placeholder": "Search Products...",

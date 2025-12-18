@@ -1,0 +1,176 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_two-column-title-text.scss' -%}
+
+<div class="section-two-column-title-text__container" style="background-color: {{ section.settings.background_color }};">
+    <div class="wrap wrap--x-large wrap--{{ section_id }}">
+        <div class="section-two-column-title-text__inner">
+            <div class="section-two-column-title-text__inner-title">
+                <{{ section.settings.tag }} style="color: {{ section.settings.text_color }}" class="large">{{ section.settings.title }}</{{ section.settings.tag }}>
+            </div>
+            <div class="section-two-column-title-text__inner-text">
+                <div style="color: {{ section.settings.text_color }}">{{ section.settings.text }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Two Column Title Text",
+    "tag": "section",
+    "class": "section-two-column-title-text",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        },
+        {
+            "type": "select",
+            "id": "tag",
+            "label": "Title Tag",
+            "options": [
+                {
+                    "value": "h2",
+                    "label": "H2"
+                },
+                {
+                    "value": "h3",
+                    "label": "H3"
+                },
+                {
+                    "value": "h4",
+                    "label": "H4"
+                },
+                {
+                    "value": "h5",
+                    "label": "H5"
+                }
+            ],
+            "default": "h3"
+        },
+        {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Colour",
+            "options": [
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Transactional",
+                    "value": "var(--color-transactional)"
+                },
+                {
+                    "label": "Black",
+                    "value": "var(--color-black)"
+                },
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                }
+            ],
+            "default": "var(--color-primary)"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                }
+            ],
+            "default": "var(--color-white)"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Two Column Title Text"
+        }
+    ]
+}
+{% endschema %}

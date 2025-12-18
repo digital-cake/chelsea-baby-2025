@@ -4,61 +4,63 @@
 {% if section.settings.feature_product != blank %}
     {%- render 'vite' with '@sectionStyles/_featured-product.scss' -%}
 
-    <div class="wrap wrap--x-large wrap--{{ section_id }}">
-        <div class="section-featured-product__inner">
-            <div class="section-featured-product__inner-media">
-                {% if section.settings.image != blank %}
-                   <div class="image-wrapper">
-                        {{ section.settings.image.src | image_url: width: 1800, crop: "center" | image_tag: alt: section.settings.image.alt, width: 678 }}
-                   </div>
-                {% elsif section.settings.video != blank %}
-                    <div class="video-wrapper">
-                        <video
-                            muted
-                            loop
-                            playsinline
-                            autoplay
-                            poster="{{ section.settings.video.preview_image.src | img_url: 'master' }}"
-                            width="{{ section.settings.video.sources[1].width }}"
-                            height="{{ section.settings.video.sources[1].height }}"
-                            data-video
-                        >
-                            <source src="{{ section.settings.video.sources[1].url }}" type="video/mp4">
-                        </video>
+    <div class="section-featured-product__container" style="background-color: {{ section.settings.background_color }};">
+        <div class="wrap wrap--x-large wrap--{{ section_id }}">
+            <div class="section-featured-product__inner">
+                <div class="section-featured-product__inner-media">
+                    {% if section.settings.image != blank %}
+                    <div class="image-wrapper">
+                            {{ section.settings.image.src | image_url: width: 1800, crop: "center" | image_tag: alt: section.settings.image.alt, width: 678 }}
                     </div>
-                {% endif %}
-                <div class="image-overlay" style="background:{{ section.settings.image_overlay }}"></div>
-            </div>
-            <div class="section-featured-product__inner-content">
-                <div class="section-featured-product__card">
-                    <div class="section-featured-product__card-media">
-                    {% if section.settings.feature_product.images != blank %}
-                        {{ section.settings.feature_product.images[0].src | image_url: width: 800, crop: "center" | image_tag: alt: section.settings.feature_product.images[0].alt, width: 284 }}
+                    {% elsif section.settings.video != blank %}
+                        <div class="video-wrapper">
+                            <video
+                                muted
+                                loop
+                                playsinline
+                                autoplay
+                                poster="{{ section.settings.video.preview_image.src | img_url: 'master' }}"
+                                width="{{ section.settings.video.sources[1].width }}"
+                                height="{{ section.settings.video.sources[1].height }}"
+                                data-video
+                            >
+                                <source src="{{ section.settings.video.sources[1].url }}" type="video/mp4">
+                            </video>
+                        </div>
                     {% endif %}
-                    </div>
-                    <div class="section-featured-product__card-content">
-                        <p>{{ section.settings.feature_product.title }}</p>
-                        <div>
-                            {% render 'product-price', product: section.settings.feature_product %}
+                    <div class="image-overlay" style="background:{{ section.settings.image_overlay }}"></div>
+                </div>
+                <div class="section-featured-product__inner-content">
+                    <div class="section-featured-product__card">
+                        <div class="section-featured-product__card-media">
+                        {% if section.settings.feature_product.images != blank %}
+                            {{ section.settings.feature_product.images[0].src | image_url: width: 800, crop: "center" | image_tag: alt: section.settings.feature_product.images[0].alt, width: 284 }}
+                        {% endif %}
+                        </div>
+                        <div class="section-featured-product__card-content">
+                            <p>{{ section.settings.feature_product.title }}</p>
+                            <div>
+                                {% render 'product-price', product: section.settings.feature_product %}
+                                {% comment %}
+                                    VARIANTS TBA
+                                {% endcomment %}
+                            </div>
                             {% comment %}
-                                VARIANTS TBA
+                                ACTIONS TBA
                             {% endcomment %}
                         </div>
-                        {% comment %}
-                            ACTIONS TBA
-                        {% endcomment %}
                     </div>
+                    {% if section.blocks.size > 0 %}
+                    <ul class="section-featured-product__usps">
+                            <div class="section-featured-product__usps-track">
+                                {% for block in section.blocks %}
+                                {% if block.settings.text == blank %}{% continue %}{% endif %}
+                                <li class="section-featured-product__usps-item">{{ block.settings.text }}</li>
+                                {% endfor %}
+                            </div>
+                        </ul>
+                    {% endif %}
                 </div>
-                {% if section.blocks.size > 0 %}
-                   <ul class="section-featured-product__usps">
-                        <div class="section-featured-product__usps-track">
-                            {% for block in section.blocks %}
-                            {% if block.settings.text == blank %}{% continue %}{% endif %}
-                            <li class="section-featured-product__usps-item">{{ block.settings.text }}</li>
-                            {% endfor %}
-                        </div>
-                    </ul>
-                {% endif %}
             </div>
         </div>
     </div>
@@ -105,6 +107,30 @@
             "type": "color_background",
             "id": "image_overlay",
             "label": "Image / Video Overlay"
+        },
+         {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                }
+            ],
+            "default": "var(--color-white)"
         },
         {
             "type": "header",

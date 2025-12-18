@@ -1,0 +1,131 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+{%- render 'vite' with '@sectionStyles/_main-search.scss' -%}
+{%- render 'vite' with '@@/components/main-search.js' -%}
+
+{% assign products_per_page = settings.products_per_page %}
+
+{%- assign filter_count = 0 -%}
+{%- assign has_range = false -%}
+
+{%- for filter in search.filters -%}
+    {%- if filter.type == "price_range" -%}
+        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+            {%- assign has_range = true -%}
+        {%- endif -%}
+    {%- else -%}
+        {%- for filter_value in filter.active_values -%}
+            {%- assign filter_count = filter_count | plus: 1 -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endfor -%}
+
+<div class="wrap wrap--x-large wrap--{{ section_id }}">
+
+    <div class="section-search__inner">
+
+        {% if search.performed and search.results.size > 0 %}
+            <div class="search-term">
+                <h1 class="large">{{ 'sections.search.results' | t }}</h1>
+                <span> {{ 'sections.search.showing' | t }} {{ search.results | where: "object_type", "product" | size }} {{ 'sections.search.results_for' | t }} '{{ search.terms }}'</span>
+            </div>
+        {% endif %}
+
+        {% if search.performed and search.terms.size > 0 %}
+            <div class="section-search__content">
+                {% if search.results.size > 0 %}
+                    {% paginate search.results by products_per_page %}
+                        <ul class="section-search__products">
+                            {% for item in search.results %}
+                                  {% if item.object_type != 'product' %}{% continue %}{% endif %}
+								  <li>{% render "card-product", product: item, noDescription: true %}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="section-search__pagination {% if paginate.pages <= 1 %} empty{% endif %}">
+                            {% render 'pagination', paginate: paginate %}
+                        </div>
+                    {% endpaginate %}
+                {% else %}
+                    <ul class="section-search__products empty">
+                        <li><span>{{ 'search.no_results_for' | t: terms: search.terms }}</span></li>
+                    </ul>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="section-search__empty">
+                <h5 class="medium">{{ section.settings.search_empty_text }}</h5>
+            </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+<div class="main-search-floating-filter">
+    <button class="button" type="button">{% render 'icon-filter.svg' %}<span>{{ 'filter_and_sort.filter_and_sort_alt' | t }}</span></button>
+</div>
+
+
+{% schema %}
+{
+"name": "Search",
+"tag": "section",
+"class": "section-search",
+"settings": [
+    {
+        "type": "text",
+        "id": "search_empty_text",
+        "label": "Search Empty Text",
+        "default": "Start your search above!"
+    },
+    {
+        "type": "header",
+        "content": "Desktop padding"
+    },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 128,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 56
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 128,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 62
+    },
+    {
+        "type": "header",
+        "content": "Mobile padding"
+    },
+    {
+        "type": "range",
+        "id": "mobile_padding_top",
+        "min": 0,
+        "max": 128,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 48
+    },
+    {
+        "type": "range",
+        "id": "mobile_padding_bottom",
+        "min": 0,
+        "max": 128,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 38
+    }
+]
+}
+{% endschema %}
