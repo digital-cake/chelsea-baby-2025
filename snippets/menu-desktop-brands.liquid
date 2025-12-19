@@ -1,0 +1,56 @@
+<li class="menu-desktop__item menu-desktop__item--mega has-children">
+    <a href="{{ block.url }}" class="menu-desktop__link" aria-label="{{ block.title }}">
+        <span>{{ block.title }}</span>
+    </a>
+    <div class="menu-desktop__mega menu-desktop__brands menu-desktop__mega--brands">
+        <div class="container">
+            {% if block.featured_brands != blank %}
+                    <div class="featured-brands">
+                    <p>{{ block.featured_brands_title }}</p>
+                    <div class="featured-brands__items">
+                        {% for brand in block.featured_brands %}
+                            <a href="{{ brand.link }}" aria-label="{{ brand.name }}">
+                                {{ brand.logo | image_url: width: 200, crop: "center" | image_tag: alt: usp.text, width: 600 }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="menu-mega menu-mega-brands">
+                <div class="menu-mega__menus mega-menus">
+                    {% assign chars = '' %}
+                    {% for vendor in shop.vendors %}
+                        {% capture first_char %}{{ vendor | truncate: 1, '' | upcase }}{% endcapture %}
+                    
+                        {% if forloop.first %}
+                        <div class="brands-list">
+                        {% endif %}
+                    
+                        {% unless chars contains first_char %}
+                        {% unless forloop.first %}
+                        </ul>
+                        </div>
+                        {% endunless %}
+                        <div class="brands-list__letter" data-letter="{{ first_char }}">
+                        <div class="brands-list__letter__inner">
+                            <p>{{ first_char }}</p>
+                        </div>
+                        <ul>
+                        {% capture temp %}{{ chars }}{{ first_char }}{% endcapture %}
+                        {% assign chars = temp %}
+                        {% endunless %}
+                        {% assign vendor_name= vendor | handle %}
+                        {% unless vendor_name == "route" %}
+                        <li><a href="{{ routes.root_url }}collections/{{ vendor | handle }}">{{ vendor }}</a></li>
+                        {% endunless %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% if block.url != blank and block.desktop_text %}
+                <div class="brands-list-action">
+                    <a aria-label="{{ block.desktop_text }}" class="button-text button-text--primary" href="{{ block.url }}"><span>{{ block.desktop_text }}</span></a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</li>

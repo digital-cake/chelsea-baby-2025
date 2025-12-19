@@ -89,15 +89,6 @@
                         "label": "Menu"
                     },
                     {
-                        "type": "range",
-                        "id": "rows",
-                        "label": "Links Per Column",
-                        "default": 5,
-                        "min": 4,
-                        "max": 10,
-                        "step": 1
-                    },
-                    {
                         "type": "header",
                         "content": "Feature 1"
                     },
@@ -110,6 +101,11 @@
                         "type": "url",
                         "id": "url_1",
                         "label": "Link"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title_1",
+                        "label": "Link Title"
                     },
                     {
                         "type": "text",
@@ -132,6 +128,11 @@
                     },
                     {
                         "type": "text",
+                        "id": "title_2",
+                        "label": "Link Title"
+                    },
+                    {
+                        "type": "text",
                         "id": "text_2",
                         "label": "Link Text"
                     }
@@ -148,15 +149,40 @@
                         "default": "Label"
                     },
                     {
+                        "type": "header",
+                        "content": "Featured Brands Settings"
+                    },
+                    {
+                        "type": "text",
+                        "id": "featured_brands_title",
+                        "label": "Featured Brands Title",
+                        "default": "Our Featured Brands"
+                    },
+                    {
+                        "type": "metaobject_list",
+                        "id": "featured_brands",
+                        "label": "Featured Brands",
+                        "metaobject_type": "featured_brands",
+                        "limit": 6
+                    },
+                    {
+                        "type": "header",
+                        "content": "Desktop Settings"
+                    },
+                    {
                         "type": "url",
                         "id": "url",
                         "label": "Link"
                     },
                     {
-                    "type": "text",
-                    "id": "desktop-text",
-                    "label": "Desktop Link Text",
-                    "default": "See full list"
+                        "type": "text",
+                        "id": "desktop_text",
+                        "label": "Desktop Link Text",
+                        "default": "See Brand Directory"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Mobile Settings"
                     },
                     {
                         "type": "text",

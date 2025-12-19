@@ -10,7 +10,7 @@
                 <div class="section-featured-product__inner-media">
                     {% if section.settings.image != blank %}
                     <div class="image-wrapper">
-                            {{ section.settings.image.src | image_url: width: 1800, crop: "center" | image_tag: alt: section.settings.image.alt, width: 678 }}
+                        {{ section.settings.image.src | image_url: width: 1800, crop: "center" | image_tag: alt: section.settings.image.alt, width: 678 }}
                     </div>
                     {% elsif section.settings.video != blank %}
                         <div class="video-wrapper">
