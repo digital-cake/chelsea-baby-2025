@@ -1,0 +1,125 @@
+{% assign badge_count = 0 %}
+{% assign limit = 2 %}
+{% if unlimited == true %}
+    {% assign limit = 20 %}
+{% endif %}
+
+{% assign product_published_at = product.published_at | date: '%s' %}
+{% assign time_to_show = 60 %}
+{% assign time_ago = 'now' | date: '%s' | minus: product_published_at | divided_by: 86400 %}
+
+{% assign badge_object_oos = shop.metaobjects.default_badges.sold-out %}
+{% capture badge_sold_out %}
+{% assign opacity = badge_object_oos.opacity.value | default: 1 %}
+<div class="product-badges__badge product-badges__badge--oos" style="order: {{ badge_object_oos.order }}; background-color: {{ badge_object_oos.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge_object_oos.text_color }};">
+    <span>{{ badge_object_oos.text }}</span>
+</div>
+{% endcapture %}
+
+{% assign badge_object_new = shop.metaobjects.default_badges.new %}
+{% capture badge_new %}
+{% assign opacity = badge_object_new.opacity.value | default: 1 %}
+<div class="product-badges__badge product-badges__badge--new" style="order: {{ badge_object_new.order }}; background-color: {{ badge_object_new.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge_object_new.text_color }};">
+    <span>{{ badge_object_new.text }}</span>
+</div>
+{% endcapture %}
+
+{% assign badge_object_sale = shop.metaobjects.default_badges.sale %}
+{% capture badge_sale %}
+{% assign badge_percentage = product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | ceil %}
+{% assign badge_percentage_markup = badge_percentage | replace: "-" , "" %}
+{% assign opacity = badge_object_sale.opacity.value | default: 1 %}
+<div class="product-badges__badge product-badges__badge--sale" style="order: {{ badge_object_sale.order }}; background-color: {{ badge_object_sale.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge_object_sale.text_color }};">
+    <span>{{ badge_object_sale.text | replace: "[percentage_off]", badge_percentage_markup }}{{ "badges.percent_off" | t }}</span>
+</div>
+{% endcapture %}
+
+{% assign badge_object_trending = shop.metaobjects.default_badges.trending %}
+{% capture badge_trending %}
+{% assign opacity = badge_object_trending.opacity.value | default: 1 %}
+<div class="product-badges__badge product-badges__badge--trending" style="order: {{ badge_object_trending.order }}; background-color: {{ badge_object_trending.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge_object_trending.text_color }};">
+    <span>{{ badge_object_trending.text }}</span>
+</div>
+{% endcapture %}
+
+{% assign badge_object_low_stock = shop.metaobjects.default_badges.low-stock %}
+{% capture badge_low_stock %}
+{% assign opacity = badge_object_low_stock.opacity.value | default: 1 %}
+    <div class="product-badges__badge product-badges__badge--warning" style="order: {{ badge_object_low_stock.order }}; display: none; background-color: {{ badge_object_low_stock.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge_object_low_stock.text_color }};">
+        <div class="warning"></div>
+    </div>
+{% endcapture %}
+
+{% if product.available %}
+{% assign badges = '<div class="product-badges">' %}
+{% else %}
+{% assign badges = '<div class="product-badges">' %}
+{% endif %}
+
+{% assign custom_badges = product.metafields.cake.custom_badges.value %}
+
+{% if custom_badges != blank %}
+    {% for badge in custom_badges %}
+        {% if badge.default_override == true %}
+            {% capture badge_custom %}
+            {% assign opacity = badge.opacity.value | default: 1 %}
+            <div class="product-badges__badge product-badges__badge--{{ badge.name | handle }} product-badges__badge--custom product-badges__badge--override" style="order: {{ badge.order }}; background-color: {{ badge.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge.text_color }};">
+                <span>{{ badge.text }}</span>
+            </div>
+            {% endcapture %}
+            {% unless badge_count == limit %}
+                {% assign badges = badges | append: badge_custom %}
+                {% assign badge_count = badge_count | plus: 1 %}
+            {% endunless %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% unless product.tags contains "NEW_BADGE_DISABLED" %}
+{% if time_ago < time_to_show %}
+    {% unless badge_count == limit %}
+        {% assign badges = badges | append: badge_new %}
+        {% assign badge_count = badge_count | plus: 1 %}
+    {% endunless %}
+{% endif %}
+{% endunless %}
+
+{% if product.compare_at_price > product.price %}
+    {% unless badge_count == limit %}
+        {% assign badges = badges | append: badge_sale %}
+        {% assign badge_count = badge_count | plus: 1 %}
+    {% endunless %}
+{% endif %}
+
+{% if badge_low_stock %}
+     {% unless badge_count == limit %}
+        {% assign badges = badges | append: badge_low_stock %}
+        {% assign badge_count = badge_count | plus: 1 %}
+    {% endunless %}
+{% endif %}
+
+{% if custom_badges != blank %}
+    {% for badge in custom_badges %}
+        {% if badge.default_override == false %}
+            {% capture badge_custom %}
+            {% assign opacity = badge.opacity.value | default: 1 %}
+            <div class="product-badges__badge product-badges__badge--{{ badge.name | handle }} product-badges__badge--custom" style="order: {{ badge.order }}; background-color: {{ badge.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge.text_color }};">
+                <span>{{ badge.text }}</span>
+            </div>
+            {% endcapture %}
+            {% unless badge_count == limit %}
+                {% assign badges = badges | append: badge_custom %}
+                {% assign badge_count = badge_count | plus: 1 %}
+            {% endunless %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% unless product.available %}
+    {% assign badges = badges | append: badge_sold_out %}
+    {% assign badge_count = badge_count | plus: 1 %}
+{% endunless %}
+
+{% assign badges = badges | append: '</div>' %}
+
+{{ badges }}

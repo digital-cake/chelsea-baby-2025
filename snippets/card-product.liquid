@@ -1,9 +1,23 @@
+{% if customer %}
+    {% assign wishlistItems = customer.metafields.cake.wishlist_items.value %}
+    {% assign productInWishlist = false %}
+    {% assign productId = product.id %}
+    {% if wishlistItems != empty %}
+        {% for product in customer.metafields.cake.wishlist_items.value %}
+            {% if product.id == productId %}
+                {% assign productInWishlist = true %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endif %}
+
 <div class="card-product">
     <div class="card-product__header">
-        {% comment %}
-            - wishlist
-            - badges
-        {% endcomment %}
+        {% render 'product-badges', product: product %}
+        <button class="wishlist-toggle{% if customer %} active{% endif %}{% if productInWishlist == true %} added{% endif %}" data-id="{{ product.id }}" type="button" aria-label="{{ "products.product.wishlist" | t }}">
+            {% render "icon-heart.svg" %}
+            <span>{{ "products.product.wishlist" | t }}</span>
+        </button>
     </div>
     <a href="{{ product.url | within: 'collection' }}" class="card-product__media">
         {{ product.images[0].src | image_url: width: 640 | image_tag: alt: media.alt, width: 320, height: 320 }}

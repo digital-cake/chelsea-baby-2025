@@ -210,6 +210,13 @@
             "date_alert": "Your gift card will be sent to the recipient on the chosen date. Please choose a date within the next 90 days."
         }
     },
+    "badges": {
+        "new": "New",
+        "percent_off": "% Off",
+        "sale": "Sale",
+        "sold_out": "Sold Out",
+        "selling_fast": "Selling Fast"
+    },
     "blogs": {
         "blog": {
             "view_all": "View all",

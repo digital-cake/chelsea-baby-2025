@@ -130,3 +130,32 @@
     color: $color-primary;
     border-radius: 2px;
 }
+
+.wishlist-toggle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid $color-primary;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    appearance: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    svg {
+        width: 14px;
+        pointer-events: none;
+        path {
+            stroke-width: 2;
+        }
+    }
+    &.added {
+        svg {
+            fill: $color-primary !important;
+        }
+    }
+    span {
+        display: none;
+    }
+}

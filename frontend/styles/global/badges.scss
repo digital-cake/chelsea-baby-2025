@@ -1,0 +1,28 @@
+@use "../abstracts/variables.scss" as *;
+
+.product-badges {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 4px;
+    &__badge {
+        border-radius: 2px;
+        font-size: 8px;
+        height: 18px;
+        padding: 3px 6px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        background-color: $color-grey;
+        backdrop-filter: blur(2px);
+        color: $color-white;
+        pointer-events: none;
+        span {
+            display: block;
+            line-height: 1;
+            margin-top: 1px;
+        }
+    }
+}
