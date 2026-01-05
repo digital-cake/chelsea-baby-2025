@@ -119,5 +119,9 @@
     &__navigation {
         padding: 1em 2em;
         position: relative;
+        display: none;
+        @media (min-width: $w-l) {
+            display: block;
+        }
     }
 }
