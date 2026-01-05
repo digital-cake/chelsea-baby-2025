@@ -257,7 +257,8 @@
         "create_account": "Create account",
         "login": "Sign in",
         "signup": "Sign up",
-        "send_message": "Submit Form"
+        "send_message": "Submit Form",
+        "submit": "Submit"
     },
   "account": {
     "reset_password": {
