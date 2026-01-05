@@ -1,0 +1,37 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-article-navigation {
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.825em;
+            .icon {
+                background-color: $color-grey;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.5em;
+                border-radius: 50%;
+                border: 1px solid $color-primary;
+                width: 2.5em;
+                height: 2.5em;
+                svg {
+                    width: 14px;
+                }
+            }
+            span {
+                font-size: 0.625em;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            &:first-of-type {
+                opacity: 0.5;
+            }
+        }
+    }
+}

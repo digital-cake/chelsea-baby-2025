@@ -1,0 +1,18 @@
+.section-article-quote {
+    &__inner {
+        margin: 0 auto;
+        max-width: 600px;
+        display: grid;
+        gap: 2em;
+        h3 {
+            font-size: 1.75em;
+        }
+        span {
+            display: block;
+            &::before {
+                content: "•";
+                margin-right: 5px;
+            }
+        }
+    }
+}

@@ -23,7 +23,8 @@
         display: flex;
         justify-content: space-between;
         gap: 1.875em;
-         padding-right: 2.125em;
+        padding-right: 2.125em;
+        padding-bottom: 1em;
         @media (max-width: $w-l) {
             padding-right: 2em;
         }

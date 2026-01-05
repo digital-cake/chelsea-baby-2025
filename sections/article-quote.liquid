@@ -1,0 +1,95 @@
+{% if section.settings.text != blank %}
+    {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+    {% render "section-styles", section_id: section_id, section: section %}
+
+    {%- render 'vite' with '@sectionStyles/_article-quote.scss' -%}
+
+    <div class="wrap wrap--article wrap--{{ section_id }}">
+        <div class="section-article-quote__inner" style="text-align: {{ section.settings.text_alignment }};">
+            <h3>{{ section.settings.text }}</h3>
+            {% if section.settings.author != blank %}
+                <span class="detail">{{ section.settings.author }}</span>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Article Quote",
+    "tag": "section",
+    "class": "section-article-quote",
+    "settings": [
+        {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+            "type": "text",
+            "id": "author",
+            "label": "Author"
+        },
+        {
+            "type": "text_alignment",
+            "id": "text_alignment",
+            "label": "Text Alignment",
+            "default": "center"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        }
+    ],
+    "presets": [
+        {
+            "name": "Article Quote"
+        }
+    ],
+    "templates": ["article"]
+}
+{% endschema %}

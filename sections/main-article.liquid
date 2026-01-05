@@ -10,16 +10,6 @@
         {{ article.content }}
 
     </div>
-
-    <div class="section-article__navigation">
-        {% if blog.previous_article %}
-            <a href="{{ blog.previous_article.url }}" class="section-article__navigation-button"><div class="icon">{% render 'icon-chevron-left.svg' %}</div><span>{{ 'blogs.blog.previous_article' | t }}</span></a>
-        {% endif %}
-        
-        {% if blog.next_article %}
-            <a href="{{ blog.next_article.url }}" class="section-article__navigation-button"><span>{{ 'blogs.blog.next_article' | t }}</span><div class="icon">{% render 'icon-chevron-right.svg' %}</div></a>
-        {% endif %}
-    </div>
     
 </div>
 

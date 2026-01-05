@@ -1,0 +1,40 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-article-image {
+    .wrap {
+        @media (max-width: $w-l) {
+            padding-right: 2em;
+            padding-left: 2em;
+        }
+        @media (max-width: $w-m) {
+            padding-right: 0.9375em;
+            padding-left: 0.9375em;
+            &.mobile-scroll {
+                padding-right: 0;
+                .section-article-image__inner {
+                    scroll-snap-type: x mandatory;
+                    overflow-x: auto; 
+                    grid-template-columns: auto;
+                    display: flex;
+                    img {
+                        min-width: 260px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__inner {
+        display: grid;
+        img {
+            object-fit: cover;
+            display: block;
+            max-height: 360px;
+            width: 100%;
+            border-radius: $radius-small;
+        }
+        @media(max-width: $w-m) {
+            grid-template-columns: 1fr !important;
+        }
+    }
+}

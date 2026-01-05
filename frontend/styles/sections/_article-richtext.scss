@@ -1,12 +1,9 @@
 @use "../abstracts/variables.scss" as *;
 
-.section-article {
+.section-article-richtext {
     &__inner {
         display: grid;
         gap: 1em;
-        p, a, span, li {
-            margin-bottom: 1em;
-        }
         p {
             &:empty {
                 display: none;
@@ -46,15 +43,6 @@
             font-weight: $weight-display;
             @media (max-width: $w-l) {
                 font-size: 0.875em; //14px
-            }
-        }
-        img {
-            object-fit: cover;
-            display: block;
-            max-height: 360px;
-            width: 100%;
-            @media (max-width: $w-m) {
-                max-height: 412px;
             }
         }
     }

@@ -1,0 +1,40 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-product-cards {
+    .wrap {
+        @media (max-width: $w-m) {
+            padding-right: 0;
+        }
+    }
+    &__header {
+        padding-bottom: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media (max-width: $w-m) {
+            padding-right: 1em;
+        }
+    }
+    &__inner {
+        .swiper-navigation {
+            padding: 2em 1em 0 0;
+            display: flex;
+            gap: 1em;
+            justify-content: flex-end;
+            .swiper-button-prev, .swiper-button-next {
+                position: relative;
+                left: unset;
+                right: unset;
+                top: unset;
+                margin-top: unset;
+            }
+        }
+        .swiper-slide {
+            max-width: 200px;
+            height: auto;
+            @media (max-width: $w-m) {
+                max-width: 275px;
+            }
+        }
+    }
+}

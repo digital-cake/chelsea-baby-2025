@@ -1,0 +1,115 @@
+{% if section.settings.text != blank %}
+    {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+    {% render "section-styles", section_id: section_id, section: section %}
+
+    {%- render 'vite' with '@sectionStyles/_article-image-text-split.scss' -%}
+
+    <div class="wrap wrap--article wrap--{{ section_id }}">
+        <div class="section-image-text-split__inner{% if section.settings.reverse_content == true %} reverse{% endif %}">
+            <div class="section-image-text-split__image">
+                {% if section.settings.image_desktop != blank %}
+                    {{ section.settings.image_desktop.src | image_url: width: 720, crop: "center" | image_tag: class: 'desktop', alt: section.settings.image_desktop.alt, loading: 'lazy' }}
+                {% endif %}
+            </div>
+            <div class="section-image-text-split__text" style="text-align: {{ section.settings.text_alignment }};">
+                {% if section.settings.text != blank %}
+                    <h3 class="medium">{{ section.settings.text }}</h3>
+                {% endif %} 
+                {% if section.settings.author != blank %}
+                    <p class="detail">{{ section.settings.author }}</p>
+                {% endif %} 
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Article Image Text Split",
+    "tag": "section",
+    "class": "section-image-text-split",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "reverse_content",
+            "label": "Reverse Content",
+            "default": false
+        },
+        {
+            "type": "text_alignment",
+            "id": "text_alignment",
+            "label": "Alignment",
+            "default": "left"
+        },
+        {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+            "type": "text",
+            "id": "author",
+            "label": "Author"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image Desktop"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Article Image Text Split"
+        }
+    ],
+    "templates": ["article"]
+}
+{% endschema %}

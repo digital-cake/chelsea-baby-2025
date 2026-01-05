@@ -1,0 +1,74 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_article-navigation.scss' -%}
+
+<div class="wrap wrap--{{ section_id }} wrap--article">
+    <div class="section-article-navigation__inner">
+        {% if blog.previous_article %}
+            <a href="{{ blog.previous_article.url }}" class="section-article-navigation__inner-button"><div class="icon">{% render 'icon-chevron-left.svg' %}</div><span>{{ 'blogs.blog.previous_article' | t }}</span></a>
+        {% endif %}
+        
+        {% if blog.next_article %}
+            <a href="{{ blog.next_article.url }}" class="section-article-navigation__inner-button"><span>{{ 'blogs.blog.next_article' | t }}</span><div class="icon">{% render 'icon-chevron-right.svg' %}</div></a>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Article Navigation",
+    "tag": "section",
+    "class": "section-article-navigation",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 84
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 84
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ]
+}
+{% endschema %}

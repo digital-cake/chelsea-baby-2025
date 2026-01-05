@@ -1,0 +1,115 @@
+{% if section.blocks.size > 0 %}
+    {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+    {% render "section-styles", section_id: section_id, section: section %}
+
+    {%- render 'vite' with '@sectionStyles/_article-image.scss' -%}
+
+    <div class="wrap wrap--article wrap--{{ section_id }}{% if section.blocks.size == 3 %} wrap--no-padding{% endif %}{% if section.settings.mobile_scroll %} mobile-scroll{% endif %}">
+        {% assign image_gap = section.settings.image_gap | divided_by: 16.0 | append: "em" %}
+        <div class="section-article-image__inner" style="gap: {{ image_gap }};grid-template-columns: repeat({{ section.blocks.size }}, 1fr);">
+            {% for block in section.blocks %}
+                <div class="section-article-image__item">
+                    {% if block.settings.image_desktop != blank %}
+                        {{ block.settings.image_desktop.src | image_url: width: 1920, crop: "center" | image_tag: alt: block.settings.image_desktop.alt, loading: 'lazy' }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Article Image",
+    "tag": "section",
+    "class": "section-article-image",
+    "blocks": [
+        {
+            "name": "Image",
+            "type": "image",
+            "limit": 3,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image_desktop",
+                    "label": "Image Desktop"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "mobile_scroll",
+            "label": "Mobile Scroll",
+            "default": false,
+            "info": "Scroll instead of stack images"
+        },
+        {
+            "type": "range",
+            "id": "image_gap",
+            "min": 0,
+            "max": 48,
+            "step": 2,
+            "unit": "px",
+            "label": "Image Gap",
+            "default": 18
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 62
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 48
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 62
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Article Image"
+        }
+    ],
+    "templates": ["article"]
+}
+{% endschema %}

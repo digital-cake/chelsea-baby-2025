@@ -1,0 +1,30 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-image-text-split {
+    &__inner {
+        display: grid;
+        grid-template-columns: 290px auto;
+        gap: 2.5em;
+        align-items: center;
+        @media(max-width: $w-m) {
+            grid-template-columns: 1fr;
+        }
+    }
+    &__image {
+        img {
+            border-radius: $radius-small;
+        }
+    }
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        .detail {
+            display: block;
+            &::before {
+                content: "•";
+                margin-right: 5px;
+            }
+        }
+    }
+}

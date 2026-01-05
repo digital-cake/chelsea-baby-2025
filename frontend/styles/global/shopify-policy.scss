@@ -1,9 +1,8 @@
 @use "../abstracts/variables.scss" as *;
 
-.section-article {
-    &__inner {
-        display: grid;
-        gap: 1em;
+.shopify-policy {
+    &__container {
+        margin: 4em auto !important;
         p, a, span, li {
             margin-bottom: 1em;
         }
@@ -48,13 +47,14 @@
                 font-size: 0.875em; //14px
             }
         }
-        img {
-            object-fit: cover;
-            display: block;
-            max-height: 360px;
-            width: 100%;
-            @media (max-width: $w-m) {
-                max-height: 412px;
+    }
+    &__title {
+        margin-bottom: 2em;
+        h1 {
+            font-size: 4em; //64px
+            font-weight: $weight-display;
+            @media (max-width: $w-l) {
+                font-size: 2.5em; //40px
             }
         }
     }

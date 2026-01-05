@@ -29,6 +29,11 @@
         "mobile_padding_bottom": 32
       }
     },
+    "article_navigation": {
+      "type": "article-navigation",
+      "name": "Article Navigation",
+      "settings": {}
+    },
     "related_articles_f8qTnA": {
       "type": "related-articles",
       "name": "Related Articles",
@@ -60,6 +65,7 @@
   "order": [
     "article_header_Rm9JVF",
     "main",
+    "article_navigation",
     "related_articles_f8qTnA",
     "service_usps_slider_LQiKey"
   ]
