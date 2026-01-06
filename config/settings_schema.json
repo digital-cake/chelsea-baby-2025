@@ -167,7 +167,7 @@
         }
       ]
     },
-     {
+    {
       "name": "Global",
       "settings": [
         {
@@ -254,6 +254,47 @@
           "type": "url",
           "label": "Pinterest Link",
           "id": "pinterest_link"
+        }
+      ]
+    },
+     {
+      "name": "Search",
+      "settings": [
+        {
+          "type": "text",
+          "id": "search_menu_one_label",
+          "label": "Menu One Label",
+          "default": "Collections"
+        },
+        {
+          "type": "link_list",
+          "id": "search_menu_one",
+          "label": "Search Menu One",
+          "info": "To display before search query, Required"
+        },
+        {
+          "type": "text",
+          "id": "search_menu_two_label",
+          "label": "Menu Two Label",
+          "default": "Parent Hub Articles"
+        },
+        {
+          "type": "link_list",
+          "id": "search_menu_two",
+          "label": "Search Menu Two",
+          "info": "To display before search query"
+        },
+        {
+          "type": "text",
+          "id": "search_menu_products_label",
+          "label": "Search Products Menu Label",
+          "default": "Latest Products"
+        },
+        {
+          "type": "collection",
+          "id": "search_products_menu",
+          "label": "Search Products Menu (Product Cards)",
+          "info": "To display before search query, Required"
         }
       ]
     },

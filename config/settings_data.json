@@ -19,6 +19,9 @@
     "instagram_link": "#",
     "youtube_link": "#",
     "pinterest_link": "#",
+    "search_menu_one": "cake-search-menu-one",
+    "search_menu_two": "cake-search-menu-two",
+    "search_products_menu": "cybex",
     "sections": {
       "cart-drawer": {
         "type": "cart-drawer",

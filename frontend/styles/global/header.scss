@@ -35,7 +35,8 @@
         border-bottom: 1px solid $color-primary;
     }
     &__search {
-        label {
+        display: block;
+        @media (max-width: $w-l) {
             display: none;
         }
         button {
@@ -43,31 +44,14 @@
             outline: none;
             border: none;
             background-color: transparent;
-            span {
-                display: none;
-            }
-        }
-        input {
-            border: none;
-            appearance: none;
-            outline: none;
-            background-color: transparent;
-            font-size: 16px;
-            &::placeholder {
-                font-size: 14px;
-            }
-            &::-webkit-search-decoration {
-                appearance: none;
-            }
-        }
-        .inner {
             display: flex;
+            gap: 0.625em;
             align-items: center;
-            gap: 6.5px;
-        }
-        display: block;
-        @media (max-width: $w-l) {
-            display: none;
+            cursor: pointer;
+            span {
+                font-size: 14px;
+                pointer-events: none;
+            }
         }
     }
     &__actions {
@@ -109,9 +93,21 @@
                 }
             }
         }
+        &-wishlist {
+            display: block;
+            @media (max-width: 580px) {
+                display: none;
+            }
+        }
+        &-search {
+            display: none;
+            @media (max-width: $w-l) {
+                display: block;
+            }
+        }
         &-account {
             display: block;
-            @media (max-width: 500px) {
+            @media (max-width: 580px) {
                 display: none;
             }
         }

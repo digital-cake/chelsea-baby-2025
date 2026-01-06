@@ -131,6 +131,9 @@ ins {
 a {
 	color: $color-primary;
 	text-decoration: none;
+	span {
+		color: $color-primary;
+	}
 }
 img,
 svg {

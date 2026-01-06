@@ -8,17 +8,10 @@
         </div>
 
         <div class="section-header__search">
-            <form action="{{ routes.search_url }}" method="get" role="search" id="header-search-form" autocomplete="off">
-                <div class="inner">
-                    <input type="hidden" name="type" value="product">
-                    <label for="drawer-search-input">{{ "search.title" | t }}</label>
-                    <button id="header-search-submit" type="button" aria-label="{{ "search.title" | t }}">
-                        <span>{{ "search.title" | t }}</span>
-                        {% render "icon-search.svg" %}
-                    </button>
-                    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ "search.placeholder" | t }}" id="header-search-input" autocomplete="off">
-                </div>
-            </form>
+            <button id="header-search-toggle" type="button" aria-label="{{ "search.title" | t }}">
+                {% render "icon-search.svg" %}
+                <span>{{ "search.placeholder" | t }}</span>
+            </button>
         </div>
 
         <div class="section-header__branding">
@@ -32,7 +25,11 @@
 
         <div class="section-header__actions">
             <a class="section-header__actions-account" aria-label="{{ 'general.menu.account' | t }}" href="{{ routes.account_url }}">{% render 'icon-account.svg' %}<span>{{ 'general.menu.account' | t }}</span></a>
-            <a aria-label="{{ 'general.menu.wishlist' | t }}" href="{{ routes.root_url }}pages/wishlist">{% render 'icon-heart.svg' %}<span>{{ 'general.menu.wishlist' | t }}</span></a>
+            <a class="section-header__actions-wishlist" aria-label="{{ 'general.menu.wishlist' | t }}" href="{{ routes.root_url }}pages/wishlist">{% render 'icon-heart.svg' %}<span>{{ 'general.menu.wishlist' | t }}</span></a>
+            <button class="section-header__actions-search" id="header-search-toggle" type="button" aria-label="{{ "search.title" | t }}">
+                {% render "icon-search.svg" %}
+                <span>{{ "search.placeholder" | t }}</span>
+            </button>
             <div class="section-header__actions-cart">
                 <button aria-label="{{ 'general.menu.cart' | t }}" type="button"><span>{{ 'general.menu.cart' | t }}</span>{% render 'icon-cart.svg' %}</button>
                 <span id="cart-counter"><span class="count"></span></span></a>
@@ -44,6 +41,8 @@
         {% render 'menu-desktop', blocks: section.blocks %}
     </div>
 </div>
+
+{% render "drawer-search" %}
 
 {% schema %}
     {

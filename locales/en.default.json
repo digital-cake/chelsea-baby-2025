@@ -74,6 +74,7 @@
         "sort": "Sort",
         "clear": "Clear",
         "clear_all": "Clear Filter",
+        "clear_search": "Clear Search",
         "back_action": "Back",
         "cancel": "Cancel",
         "delete": "Delete",
@@ -119,9 +120,9 @@
                 "no_results": "No results for",
                 "heading": "Suggestions",
                 "resources": "Resources",
-                "blogs": "Blogs",
+                "blogs": "Parent Hub Articles",
                 "collections": "Collections",
-                "products": "Products"
+                "products": "Related Products"
             }
         }
     },
@@ -134,9 +135,10 @@
         "title": "Search",
         "placeholder": "Search Products...",
         "submit": "Search",
+        "results": "Results",
         "no_results": "No results.",
         "no_results_for": "No results for '{{ terms }}'.",
-        "show_all": "See all search results",
+        "show_all": "See all results",
         "clear_search": "Clear Search"
     },
     "cart": {

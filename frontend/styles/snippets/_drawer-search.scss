@@ -1,0 +1,107 @@
+@use "../abstracts/variables.scss" as *;
+
+.drawer-search-open {
+	position: absolute;
+	width: 100%;
+	overflow-y: hidden;
+
+	.drawer-search {
+		display: block;
+		.pre-search-results {
+			opacity: 1;
+		}
+	}
+    #overlay-mask {
+        display: block;
+    }
+}
+
+.drawer-search {
+	position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 0;
+	width: 100%;
+	z-index: 11;
+	display: none;
+	.pre-search-results {
+		max-height: 0;
+		opacity: 0;
+		transition: max-height 0.4s ease, opacity 0.3s ease;
+	}
+	form {
+		height: 70px;
+	}
+	.card-product {
+		&__quick-add-toggle {
+			display: none;
+		}
+	}
+	&__input {
+		position: relative;
+		height: 100%;
+		input[type='search'] {
+			width: 100%;
+			height: 100%;
+			font-size: 1.25em;
+			align-items: flex-start;
+			color: $color-primary;
+			padding: 0 1.625em;
+			background-color: $color-white;
+			border-bottom: 1px solid $color-primary;
+			outline: none;
+            border-radius: unset;
+			&::-webkit-search-cancel-button {
+				display: none;
+			}
+			&::placeholder {
+				font-size: 14px;
+			}
+			@media (max-width: $w-m) {
+				padding: 0 1em;
+			}
+		}
+		&--label {
+			display: none;
+		}
+		&-actions {
+			position: absolute;
+			right: 2em;
+			top: 50%;
+			transform: translateY(-50%);
+			display: flex;
+			align-items: center;
+			gap: 1em;
+			@media (max-width: $w-m) {
+				right: 1em;
+			}
+		}
+		&--close {
+			background-color: $color-primary;
+			border-radius: 50%;
+			border: none;
+			font: 1em $font-base;
+			width: 30px;
+			height: 30px;
+			min-width: 30px;
+			min-height: 30px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			appearance: none;
+			padding: 2px;
+			&:hover {
+				svg {
+					fill: $color-black;
+				}
+			}
+			svg {
+				fill: $color-black;
+			}
+			span {
+				display: none;
+			}
+		}
+	}
+}

@@ -1,0 +1,59 @@
+{%- render 'vite' with '@snippetStyles/_drawer-search.scss' -%}
+
+<div class="drawer-search">
+    <predictive-search>
+        <form action="{{ routes.search_url }}" method="get" role="search" id="searchbox" autocomplete="off">
+            <div class="drawer-search__input">
+                <label class="drawer-search__input--label" for="drawer-search-input">{{ "sections.search.drawer.label" | t }}</label>
+                <input class="drawer-search__input--input" maxlength="32" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ "sections.search.drawer.placeholder" | t }}" id="drawer-search-input" autocomplete="off">
+                <div class="drawer-search__input-actions">
+                    <button class="drawer-search__input--clear button-text button-text--primary" aria-label="{{ "accessibility.clear_search" | t }}">
+                        <span>{{ "accessibility.clear_search" | t }}</span>
+                    </button>
+                    <button class="drawer-search__input--close" aria-label="{{ "accessibility.close" | t }}">
+                        <span>{{ "accessibility.close" | t }}</span>
+                        {% render "icon-cross.svg" %}
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div id="predictive-search" tabindex="-1"></div>
+
+        <div class="pre-search-results">
+            <div class="pre-search-results__wrapper">
+                <div class="pre-search-results__inner">
+                    {% if settings.search_menu_one != blank and settings.search_menu_one_label != blank %}
+                        <div class="menu-search">
+                            <p>{{ settings.search_menu_one_label }}</p>
+                            <ul class="menu-search__links">
+                                {% for link in settings.search_menu_one.links limit: 4 %}
+                                    <li><a href="{{ link.url }}"><span>{{ link.title | truncatewords: 5 }}</span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if settings.search_menu_two != blank and settings.search_menu_two_label != blank %}
+                        <div class="menu-search">
+                            <p>{{ settings.search_menu_two_label }}</p>
+                            <ul class="menu-search__links">
+                                {% for link in settings.search_menu_two.links limit: 4 %}
+                                    <li><a href="{{ link.url }}"><span>{{ link.title | truncatewords: 5 }}</span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+                {% if settings.search_products_menu != blank %}
+                    <div class="products-search">
+                        <p>{{ settings.search_menu_products_label }}</p>
+                        <ul class="products-search__products">
+                            {% for product in settings.search_products_menu.products limit: 4 %}
+                                <li>{% render 'card-product', product: product %}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %} 
+            </div>
+        </div>
+    </predictive-search>
+</div>

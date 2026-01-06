@@ -23,7 +23,7 @@
         {{ product.images[0].src | image_url: width: 640 | image_tag: alt: media.alt, width: 320, height: 320 }}
     </a>
     <div class="card-product__footer">
-        <p class="card-product__title">{{ product.title }}</p>
+        <p class="card-product__title">{{ product.title | truncatewords: 6 }}</p>
         <div class="card-product__footer-inner">
             {% render 'product-price', product: product %}
             <button aria-label="{{ 'products.product.add' | t }}" class="card-product__quick-add button-text button-text--transactional"><span>{{ 'products.product.add' | t }} +</span></button>

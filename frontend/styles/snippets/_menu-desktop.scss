@@ -207,6 +207,7 @@
 		.menu-grandchild {
 			display: grid;
 			gap: 1em;
+			grid-template-rows: 2;
 			span {
 				text-transform: capitalize;
 				font-size: 0.875em;
