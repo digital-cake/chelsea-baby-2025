@@ -84,6 +84,9 @@
         font-weight: 400;
         letter-spacing: 0.6px;
     }
+    &:hover {
+        text-decoration-thickness: 2px;
+    }
     &--primary {
         text-decoration-color: $color-primary;
         span {

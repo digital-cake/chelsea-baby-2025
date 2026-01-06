@@ -1,0 +1,31 @@
+{%- render 'vite' with '@snippetStyles/_drawer-mobile.scss' -%}
+{%- render 'vite' with '@@/components/drawer-mobile.js' -%}
+
+<div class="drawer drawer-mobile" id="drawer-mobile">
+    <div class="drawer__inner drawer-mobile__inner">
+        <div class="drawer__content drawer-mobile__content" id="drawer-mobile-content">
+            {% render "menu-mobile", menu: menu %}
+            {% comment %} <div class="menu-mobile__feature">
+                {% if section.settings.feature_url != blank %}<a href="{{ section.settings.feature_url }}" aria-label="Feature Mobile">{% endif %}
+                    <img 
+                        {% if request.design_mode %}
+                        src="{{ section.settings.feature_image.src | img_url: "300x300", crop: "center" }}"
+                        {% else %}
+                        data-src="{{ section.settings.feature_image.src | img_url: "300x300", crop: "center" }}"
+                        class="preload"
+                        {% endif %}
+                        height="300"
+                        width="300"
+                        alt="{{ section.settings.feature_image.alt | escape }}"
+                    >
+                    <p>{% if section.settings.feature_text != blank %}{{ section.settings.feature_text }}{% endif %}</p>
+
+                {% if section.settings.feature_url != blank %}</a>{% endif %}
+            </div> {% endcomment %}
+        </div>
+        <div class="menu-mobile__footer">
+            <a class="menu-mobile__footer-account" aria-label="{{ 'general.menu.account' | t }}" href="{{ routes.account_url }}">{% render 'icon-account.svg' %}<span>{{ 'general.menu.account' | t }}</span>{% render 'icon-chevron-right.svg' %}</a>
+            <a class="menu-mobile__footer-wishlist" aria-label="{{ 'general.menu.wishlist' | t }}" href="{{ routes.root_url }}pages/wishlist">{% render 'icon-heart.svg' %}<span>{{ 'general.menu.wishlist' | t }}</span>{% render 'icon-chevron-right.svg' %}</a>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,7 @@ window.closeAllDrawers = _callback => {
 	const bodyClasses = documentBody.className.split(' ');
 	documentBody.classList.remove('scroll-lock');
 	bodyClasses.forEach(bodyClass => {
-		if (bodyClass.match('drawer-open') || bodyClass.match('drawer-search-open') || bodyClass.match('drawer-cart-open') || bodyClass.match('drawer-filters-open') || bodyClass.match('drawer-collection-header-description-open')) {
+		if (bodyClass.match('drawer-open') || bodyClass.match('drawer-search-open') || bodyClass.match('drawer-cart-open') || bodyClass.match('drawer-menu-open') || bodyClass.match('drawer-mobile-open') || bodyClass.match('drawer-filters-open') || bodyClass.match('drawer-collection-header-description-open')) {
 			documentBody.classList.remove(bodyClass);
 			documentBody.classList.remove('scroll-lock');
 		}
@@ -73,9 +73,9 @@ window.openMobileDrawer = () => {
 	const documentBody = document.querySelector('body');
 	if (documentBody.classList.contains('drawer-open')) {
 		window.closeAllDrawers(() => {
-			documentBody.classList.add('drawer-menu-open', 'drawer-mobile-open');
+			documentBody.classList.add('drawer-menu-open', 'drawer-mobile-open', 'scroll-lock');
 		});
 	} else {
-		documentBody.classList.add('drawer-menu-open', 'drawer-mobile-open');
+		documentBody.classList.add('drawer-menu-open', 'drawer-mobile-open', 'scroll-lock');
 	}
 };

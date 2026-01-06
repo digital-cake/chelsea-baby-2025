@@ -3,7 +3,12 @@
 
         <div class="section-header__mobile">
             <button type="button">
-                {% render 'icon-menu.svg' %}
+                <span class="burger">
+                    {% render 'icon-menu.svg' %}
+                </span>
+                <span class="cross">
+                    {% render 'icon-cross.svg' %}
+                </span>
             </button>
         </div>
 
@@ -41,6 +46,8 @@
         {% render 'menu-desktop', blocks: section.blocks %}
     </div>
 </div>
+
+{% render "drawer-mobile", blocks: section.blocks %}
 
 {% render "drawer-search" %}
 

@@ -1,0 +1,38 @@
+@use "../abstracts/variables.scss" as *;
+
+.drawer-mobile-open {
+	.drawer-mobile {
+		left: 0;
+	}
+}
+.drawer-mobile {
+	left: -120%;
+	right: auto;
+	transition: left 0.25s linear;
+	bottom: 0;
+    top: unset;
+    transform: none;
+	height: 100%;
+	overflow: hidden;
+	width: 100vw;
+    border-top: 1px solid $color-primary;
+	&__inner {
+		height: 100%;
+		display: grid;
+		grid-template-columns: 100%;
+	}
+	&__content {
+		padding: 0;
+		height: 100%;
+		overflow-y: auto;
+		@media (max-width: $w-s) {
+			padding: 0;
+		}
+		nav {
+			display: block;
+		}
+	}
+	&__footer {
+		display: block;
+	}
+}

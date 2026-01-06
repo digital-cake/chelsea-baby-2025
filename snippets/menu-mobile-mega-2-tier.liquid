@@ -1,0 +1,75 @@
+<li class="menu-mobile__item menu-mobile__item--mega{% if block.menu.links.size > 0 %} has-children{% endif %}">
+    <a href="{{ block.url }}" class="menu-mobile__link{% if block.menu.links.size > 0 %}  menu-mobile__link--has-children{% endif %}" aria-label="{{ block.title }}">
+        <span>{{ block.title }}</span>
+        {% render "icon-chevron-right.svg" %}
+    </a>
+    {% if block.menu.links.size > 0 %}
+    <div class="menu-mobile__mega menu-mobile__mega--2-tier">
+        <div class="menu-mega menu-mega-2-tier">
+            <div class="menu-mega__menus mega-menus">
+                <div class="menu-mega__title">
+                    <button class="button link button--back" aria-label="{{ "accessibility.back" | t }}">
+                        {% render "icon-chevron-left.svg" %}
+                    </button>
+                </div>
+                {% for child_link in block.menu.links %}
+                <div class="menu-child">
+                    <a href="{{ child_link.url }}" class="menu-child__title" aria-label="{{ child_link.title }}">
+                        <span>{{ child_link.title }}</span>
+                        {% render "icon-chevron-right.svg" %}
+                    </a>
+                    <ul class="menu-grandchild">
+
+                        {% for grandchild_link in child_link.links %}
+                        <li class="menu-grandchild__item">
+                            <a href="{{ grandchild_link.url }}" class="menu-grandchild__link" aria-label="{{ grandchild_link.title }}">
+                                <span>{{ grandchild_link.title }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="menu-mega__features">
+                    {% if block.image_1 != blank %}
+                        <div class="menu-mega__feature menu-mega__feature--1">
+                            {% if block.url_1 != blank %}<a href="{{ block.url_1 }}" aria-label="Feature 1">{% endif %}
+                                <img 
+                                    {% if request.design_mode %}
+                                    src="{{ block.image_1.src | img_url: "640x480", crop: "center" }}"
+                                    {% else %}
+                                    data-src="{{ block.image_1.src | img_url: "640x480", crop: "center" }}"
+                                    class="preload"
+                                    {% endif %}
+                                    width="640"
+                                    height="480"
+                                    alt="{{ block.image_1.alt | escape }}"
+                                >
+                                    <p>{% if block.text_1 != blank %}{{ block.text_1 }}{% endif %}</p>
+                            {% if block.url_1 != blank %}</a>{% endif %}
+                        </div>
+                        {% endif %}
+                        {% if block.image_2 != blank %}
+                        <div class="menu-mega__feature menu-mega__feature--2">
+                            {% if block.url_2 != blank %}<a href="{{ block.url_2 }}" aria-label="Feature 2">{% endif %}
+                                <img 
+                                    {% if request.design_mode %}
+                                    src="{{ block.image_2.src | img_url: "640x480", crop: "center" }}"
+                                    {% else %}
+                                    data-src="{{ block.image_2.src | img_url: "640x480", crop: "center" }}"
+                                    class="preload"
+                                    {% endif %}
+                                    height="640"
+                                    width="480"
+                                    alt="{{ block.image_2.alt | escape }}"
+                                >
+                                    <p>{% if block.text_2 != blank %}{{ block.text_2 }}{% endif %}</p>
+                            {% if block.url_2 != blank %}</a>{% endif %}
+                        </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</li>

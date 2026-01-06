@@ -1,0 +1,24 @@
+{%- render 'vite' with '@snippetStyles/_menu-mobile.scss' -%}
+{%- render 'vite' with '@@/components/menu-mobile.js' -%}
+
+<div>
+    <nav>
+        <ul class="menu menu-mobile">
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when "link" %}
+                    <li class="menu-mobile__item menu-mobile__item--link">
+                        <a href="{{ block.settings.url }}" class="menu-mobile__link" aria-label="{{ block.settings.title }}">
+                            <span>{{ block.settings.title }}</span>
+                            {% render "icon-chevron-right.svg" %}
+                        </a>
+                    </li>
+                {% when "mega_2" %}
+                    {% render "menu-mobile-mega-2-tier", block: block.settings %}
+                {% when "brands" %}
+                    {% render "menu-mobile-brands", block: block.settings %}
+            {% endcase %}
+        {% endfor %}
+        </ul>
+    </nav>
+</div>

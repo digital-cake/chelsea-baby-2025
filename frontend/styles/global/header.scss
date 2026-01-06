@@ -25,6 +25,48 @@
             border: none;
             background-color: transparent;
             cursor: pointer;
+            svg {
+                cursor: pointer;
+                width:  20px;
+                height:  20px;
+                min-width: 20px;
+                min-height: 20px;
+                path {
+                    stroke: $color-primary;
+                }
+                .line {
+                    transition: transform 0.3s ease, opacity 0.3s ease;
+                    transform-origin: center;
+                }
+                &.active {
+                    .line {
+                        &:nth-child(1) {
+                            transform: rotate(45deg) translate(7px, 6px);
+                        }
+                        &:nth-child(2) {
+                            opacity: 0;
+                        }
+                        &:nth-child(3) {
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
+            }
+            .cross {
+                display: none;
+                svg {
+                    width: 22px;
+                    height: 22px;
+                    min-width: 22px;
+                    min-height: 22px;
+                }
+            }
+            .show {
+                display: block !important;
+            }
+            .hide {
+                display: none !important;
+            }
         }
     }
     &__top {
@@ -33,6 +75,9 @@
         grid-template-columns: 1fr auto 1fr;
         padding: 0.75em 2em;
         border-bottom: 1px solid $color-primary;
+        @media (max-width: $w-l) {
+            padding: 1em;
+        }
     }
     &__search {
         display: block;
