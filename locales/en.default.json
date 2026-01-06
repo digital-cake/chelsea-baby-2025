@@ -228,7 +228,7 @@
     },
     "filter_and_sort": {
         "sort": "Sort By",
-        "filter": "Filters",
+        "filter": "Filter By",
         "filter_and_sort": "Filter Results",
         "filter_and_sort_alt": "Filter & Sort Results",
         "price_from": "From",

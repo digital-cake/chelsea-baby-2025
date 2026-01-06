@@ -1,0 +1,120 @@
+{%- assign filter_count = 0 -%}
+{%- assign has_range = false -%}
+
+{%- for filter in search.filters -%}
+    {%- if filter.type == "price_range" -%}
+        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+            {%- assign has_range = true -%}
+        {%- endif -%}
+    {%- else -%}
+        {%- for filter_value in filter.active_values -%}
+            {%- assign filter_count = filter_count | plus: 1 -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endfor -%}
+
+<div class="filters filters-search">
+{% unless search.results.size == 0 %}
+    <form class="filter-form" id="filter-form-mobile" method="GET">
+        {% comment %} <input type="hidden" name="filter.v.availability" value="1" /> {% endcomment %}
+        {% if search.terms %}
+        <input type="hidden" name="q" value="{{ search.terms }}" />
+        {% endif %}
+        <div class="filter-form__filters">
+        {%- for filter in search.filters -%}
+            {% assign filter_label = filter.label | handle %}
+            {% if filter.values.size >= 1 or filter.type == "price_range" %}
+            {% comment %} {% if filter.label == 'Availability' %}
+                {% continue %}
+            {% endif %} {% endcomment %}
+            <div class="filter-group filter-group--{{ filter.label | downcase | handleize }}">
+                <div class="filter-group-summary"><span>{{ filter.label }}</span>{% render 'icon-chevron.svg' %}</div>
+                <div class="filter-group-display">
+                    {%- case filter.type -%}
+                        {%- when 'boolean' or 'list' -%}
+                        <ul class="filter-group-display__list{% if filter.values.size >= 12 %} col-3{% elsif filter.values.size >= 6 %} col-2{% endif %}">
+                            {%- for filter_value in filter.values -%}
+                                {% assign filter_name = filter_value.label | handle %}
+                                {% assign hex_value = '' %}
+                                <li class="filter-group-display__list-item {%- if filter_value.count < 1 %} hidden{% endif %}">
+                                    <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}" class="radio-input {% if filter_value.count == 0 and filter_value.active == false %}disabled{% else %}filter-label{% endif %}">
+                                        <input type="checkbox"
+                                            class="{{ filter.label  }}"
+                                            data-filter="filter-{{ filter_value.value | handleize}}"
+                                            name="{{ filter_value.param_name }}"
+                                            value="{{ filter_value.value }}"
+                                            id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                                            {% if filter_value.active -%}checked{%- endif %}
+                                            {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                                        >
+                                          {% if filter_label == "colour" %}
+                                            {% assign filter_colour_swatches = shop.metaobjects.filter_colour_swatches.values %}
+                                            {% for swatch in filter_colour_swatches %}
+                                                {% assign colour_name = swatch.generic_colour_name | handleize %}
+                                                {% assign filter_colour_name = filter_value.label | handleize %}
+                                                {% if colour_name == filter_colour_name %}
+                                                    {% if swatch.image != blank %}
+                                                        <span class="filter-colour-swatch filter--{{ filter_name }}"
+                                                            style="background-image: url('{{ swatch.image | img_url: '40x40' }}'); background-size: cover;">
+                                                        </span>
+                                                    {% elsif swatch.colour != blank %}
+                                                        <span class="filter-colour-swatch filter--{{ filter_name }}"
+                                                            style="background-color: {{ swatch.colour }};">
+                                                        </span>
+                                                    {% else %}
+                                                        <span class="filter-colour-swatch filter--{{ filter_name }}"></span>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        <span>{{ filter_value.label }}</span>
+                                    </label>
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                        {%- when 'price_range' -%}
+                            <div class="filter-group-display__price-range">
+                                <div class="filter-group-display__price-range-from">
+                                    <label for="Filter-{{ filter.min_value.param_name }}">
+                                        {{ "filter_and_sort.price_from" | t }}
+                                        <span>
+                                            <input name="{{ filter.min_value.param_name }}"
+                                                id="Filter-{{ filter.min_value.param_name }}"
+                                                {% if filter.min_value.value -%}
+                                                value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                                                {%- endif %}
+                                                type="number"
+                                                placeholder="0"
+                                                min="0"
+                                                max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                            >
+                                        </span>
+                                </label>
+                                </div>
+                                <div class="filter-group-display__price-range-to">
+                                    <label for="Filter-{{ filter.max_value.param_name }}">
+                                        {{ "filter_and_sort.price_to" | t }}
+                                        <span>
+                                            <input name="{{ filter.max_value.param_name }}"
+                                                id="Filter-{{ filter.max_value.param_name }}"
+                                                {% if filter.max_value.value -%}
+                                                value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                                                {%- endif %}
+                                                type="number"
+                                                placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                min="0"
+                                                max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                            >
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                    {%- endcase -%}
+                </div>
+            </div>
+            {% endif %}
+        {%- endfor -%}
+        </div>
+    </form>
+{% endunless %}
+</div>

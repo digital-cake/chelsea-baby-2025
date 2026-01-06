@@ -1,0 +1,90 @@
+{%- render 'vite' with '@snippetStyles/_drawer-filters.scss' -%}
+{%- render 'vite' with '@snippetStyles/_filters-mobile.scss' -%}
+{%- render 'vite' with '@@/components/drawer-filters.js' -%}
+{%- render 'vite' with '@@/components/filters-mobile.js' -%}
+
+{%- assign filter_count = 0 -%}
+{%- assign has_range = false -%}
+
+{% if request.page_type == "collection" %}
+
+    {%- for filter in collection.filters -%}
+        {%- if filter.type == "price_range" -%}
+            {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+                {%- assign has_range = true -%}
+            {%- endif -%}
+        {%- else -%}
+            {%- for filter_value in filter.active_values -%}
+                {%- assign filter_count = filter_count | plus: 1 -%}
+            {%- endfor -%}
+        {%- endif -%}
+    {%- endfor -%}
+
+
+    <div class="drawer drawer-filters" id="drawer-filters">
+        <div class="drawer__inner drawer-filters__inner">
+            <div class="drawer__header drawer-filters__header" id="drawer-filters-header">
+                <div class="drawer__header__title">
+                    <h5 class="small">{{ 'filter_and_sort.filter' | t }}</h5>
+                    <button class="drawer-close" aria-label="{{ 'accessibility.close' | t }}"><span>{{ 'accessibility.close' | t }}</span>{% render "icon-cross.svg" %}</button>
+                </div>
+            </div>
+            <div class="drawer__content drawer-filters__content" id="drawer-filters-content">
+                {% render "active-filters", collection: collection, filter_count: filter_count, has_range: has_range %}
+                {% render "sort-collection-mobile", collection: collection %}
+                {% render "filters-collection-mobile", collection: collection %}
+            </div>
+            <div class="drawer__footer drawer-filters__footer" id="drawer-filters-footer">
+                <div class="drawer-filters__footer-wrap">
+                    <span class="drawer-filters__footer-count">{{ collection.products | size }} {{ 'sections.search.results' | t }}</span>
+                    <a class="button-text button-text--underline button-text--black" href="{{ collection.url }}"><span>{{ "accessibility.clear_all" | t }}</span></a>
+                </div>
+                <button 
+                   form="filter-form-mobile"    
+                    type="submit" 
+                    class="button button--primary apply-drawer-filters" aria-label="{{ "accessibility.apply_filters" | t }}"><span>{{ "accessibility.apply_filters" | t }}</span></button>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+
+    {%- for filter in search.filters -%}
+        {%- if filter.type == "price_range" -%}
+            {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+                {%- assign has_range = true -%}
+            {%- endif -%}
+        {%- else -%}
+            {%- for filter_value in filter.active_values -%}
+                {%- assign filter_count = filter_count | plus: 1 -%}
+            {%- endfor -%}
+        {%- endif -%}
+    {%- endfor -%}
+
+    <div class="drawer drawer-filters" id="drawer-filters">
+        <div class="drawer__inner drawer-filters__inner">
+            <div class="drawer__header drawer-filters__header" id="drawer-filters-header">
+                <div class="drawer__header__title">
+                    <h5 class="small">{{ 'filter_and_sort.filter' | t }}</h5>
+                    <button class="drawer-close" aria-label="{{ 'accessibility.close' | t }}"><span>{{ 'accessibility.close' | t }}</span>{% render "icon-cross.svg" %}</button>
+                </div>
+            </div>
+            <div class="drawer__content drawer-filters__content" id="drawer-filters-content">
+                {% render "active-filters", search: search, filter_count: filter_count, has_range: has_range %}
+                {% render "sort-search-mobile", search: search %}
+                {% render "filters-search-mobile", search: search %}
+            </div>
+            <div class="drawer__footer drawer-filters__footer" id="drawer-filters-footer">
+                <div class="drawer-filters__footer-wrap">
+                    <span class="drawer-filters__footer-count">{{ search.results | where: "object_type", "product" | size }} {{ 'sections.search.results' | t }}</span>
+                    <a class="button-text" href="{{ routes.search_url }}?q={{ search.terms }}&type=product"><span>{{ "accessibility.clear_all" | t }}</span></a>
+                </div>
+                <button class="button button--primary apply-drawer-filters" 
+                form="filter-form-mobile"    
+                type="submit" 
+                aria-label="{{ "accessibility.apply_filters" | t }}"><span>{{ "accessibility.apply_filters" | t }}</span></button>
+            </div>
+        </div>
+    </div>
+
+{% endif %}

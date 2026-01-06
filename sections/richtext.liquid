@@ -37,7 +37,7 @@
                             {% when "button" %}
                                 {% if block.settings.url != blank and block.settings.link_label != blank %}
                                     {% if block.settings.link_style == 'text' %}
-                                        <a href="{{ block.settings.url }}" class="text-button text-button--{{ block.settings.link_colour }}" aria-label="{{ block.settings.link_label }}">
+                                        <a href="{{ block.settings.url }}" class="button-text button-text--{{ block.settings.link_colour }}" aria-label="{{ block.settings.link_label }}">
                                             <span>{{ block.settings.link_label }}</span>
                                         </a>
                                     {% else %}

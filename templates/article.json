@@ -24,15 +24,20 @@
       "type": "main-article",
       "settings": {
         "padding_top": 0,
-        "padding_bottom": 64,
+        "padding_bottom": 0,
         "mobile_padding_top": 0,
-        "mobile_padding_bottom": 32
+        "mobile_padding_bottom": 0
       }
     },
     "article_navigation": {
       "type": "article-navigation",
       "name": "Article Navigation",
-      "settings": {}
+      "settings": {
+        "padding_top": 84,
+        "padding_bottom": 84,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
     },
     "related_articles_f8qTnA": {
       "type": "related-articles",

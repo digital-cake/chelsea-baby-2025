@@ -49,6 +49,10 @@
       {{ content_for_layout }}
     </main>
 
+    {% if request.page_type == "collection" or request.page_type == "search" %}
+      {% section "drawer-filters" %}
+    {% endif %} 
+
     <div id="overlay-mask"></div>
 
     {% sections 'footer-group' %}

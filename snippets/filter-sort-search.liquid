@@ -1,0 +1,57 @@
+{%- assign filter_count = 0 -%}
+{%- assign has_range = false -%}
+
+{%- for filter in search.filters -%}
+    {%- if filter.type == "price_range" -%}
+        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+            {%- assign has_range = true -%}
+        {%- endif -%}
+    {%- else -%}
+        {%- for filter_value in filter.active_values -%}
+            {%- assign filter_count = filter_count | plus: 1 -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endfor -%}
+
+<aside class="product-grid-tools product-grid-tools--drawer">
+    {%- render 'vite' with '@snippetStyles/_filters-drawer.scss' -%}
+    <button type="button" class="button-text--filter button--toggle-filters" aria-label="{{ "filter_and_sort.filter_and_sort" | t }}">
+        {% render 'icon-filter.svg' %}
+        <span class="desktop">{{ "filter_and_sort.filter_and_sort" | t }}</span>
+    </button>
+    <div class="product-grid-tools__layout button-text--filter">
+        <div class="icon two-column active">
+            <div class="inner">
+                <span></span>
+                <span></span>
+            </div>
+            <span class="label">Two</span>
+        </div>
+        <div class="layout-toggle">
+            <input
+                type="checkbox"
+                name="search-layout-toggle"
+                class="search-layout-toggle"
+            >
+            <span></span>
+        </div>
+        <div class="icon single">
+            <div class="inner">
+                <span></span>
+            </div>
+            <span class="label">One</span>
+        </div>
+    </div>
+    {% render "sort-search", search: search %}
+</aside>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        window.handle_collection_and_search_layout();
+    });
+    if (Shopify.designMode) {
+        document.addEventListener('shopify:section:load', function() {
+            window.handle_collection_and_search_layout();
+        });
+    };
+</script>

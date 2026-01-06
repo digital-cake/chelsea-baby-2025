@@ -1,0 +1,43 @@
+{%- render 'vite' with '@@/components/search.js' -%}
+
+<form class="search-sort-mobile" id="sort-form-mobile">
+    {% assign current_sort = search.sort_by | default: search.default_sort_by %}
+    {% assign current_sort_option = '' %}
+    {%- for option in search.sort_options -%}
+        {%- if option.value == current_sort -%}
+        {% assign current_sort_option = option.name %}
+        {%- endif -%}
+    {%- endfor -%}
+
+   <button type="button" class="button-text button-text--sort" data-action="sort-by">
+        <span>{{ 'filter_and_sort.sort' | t }}:</span>
+        {% if current_sort_option != '' %}
+            <span> {{ current_sort_option }}</span>
+        {% endif %}
+        {%- render 'icon-chevron.svg' -%}
+    </button>
+
+    <div class="filter-group-sort">
+        <div class="sort-options">
+            {% assign current_sort = search.sort_by | default: search.default_sort_by %}
+            {%- for option in search.sort_options -%}
+            {%- if search.default_sort_by != 'best-selling' and option.value == 'best-selling' %}{% continue %}{% endif -%}
+            <label class="sort-options__option">
+                <input type="radio" name="sort_by" value="{{ option.value }}" {%- if current_sort == option.value %} checked{% endif %}>
+                    <span>{{ option.name }}</span>
+            </label>
+            {%- endfor -%}
+        </div>
+    </div>
+</form>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        window.init_handle_search_sort_by_mobile();
+    });
+    if (Shopify.designMode) {
+        document.addEventListener('shopify:section:load', function() {
+            window.init_handle_search_sort_by_mobile();
+        });
+    };
+</script>

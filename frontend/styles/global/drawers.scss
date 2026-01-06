@@ -31,13 +31,14 @@
 			align-items: center;
 			line-height: 1;
 			.drawer-close {
-				background-color: transparent;
+				background-color: $color-primary;
 				border: none;
 				font: 1em $font-base;
-				width: 24px;
-				height: 24px;
-				min-width: 24px;
-				min-height: 24px;
+				border-radius: 50%;
+				width: 30px;
+				height: 30px;
+				min-width: 30px;
+				min-height: 30px;
 				display: flex;
 				justify-content: center;
 				align-items: center;

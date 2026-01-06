@@ -1,0 +1,38 @@
+@use "../abstracts/variables.scss" as *;
+
+.active-filters-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em;
+    @media (max-width: $w-m) {
+        padding: 0 1em;
+    }
+}
+
+.active-filters {
+	display: block;
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em;
+		a {
+            padding: 0.5em 0.5em 0.5em 1.25em;
+            border: 1px solid #BCBDBE;
+			display: flex;
+            border-radius: $radius-medium;
+			text-decoration: none;
+			background: url('data:image/svg+xml,<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.99999 0.61377L1 8.61377M1.00001 0.61377L9 8.61377" stroke="%231C1A19" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat 6px 50%;
+			background-color: $color-white;
+            background-size: 8px;
+			line-height: 1;
+			span {
+				font-size: 10px;
+				display: flex;
+				gap: 0.5em;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
+}
