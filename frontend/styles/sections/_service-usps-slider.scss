@@ -2,11 +2,11 @@
 
 .section-service-usps-slider {
     &__inner {
-        padding: 2.875em 3.25em;
+        padding: 1.25em 3.25em;
         background-color: $color-grey;
         border-radius: $radius-small;
         @media (max-width: $w-m) {
-            padding: 1.875em 1em 1.375em 1em; 
+            padding: 0 1em 0 1em; 
         }
     }
     .swiper {
@@ -16,6 +16,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                padding: 1.625em 0;
                 .service-usp {
                     width: 100%;
                     max-width: 270px;
@@ -28,6 +29,15 @@
                         line-height: 140%;
                         text-transform: uppercase;
                         font-weight: $weight-display;
+                    }
+                }
+                @media (max-width: $w-m) {
+                    padding: 1.875em 0 1.375em 0;
+                }
+                @media (min-width: $w-m) {
+                    &:nth-of-type(2) {
+                        border-left: 1px solid $color-grey-dark;
+                        border-right: 1px solid $color-grey-dark;
                     }
                 }
             }

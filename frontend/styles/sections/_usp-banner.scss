@@ -35,6 +35,14 @@
             position: relative;
             padding-top: 1.625em;
         }
+        .swiper-slide {
+            @media (min-width: $w-m) {
+                &:nth-of-type(2) {
+                    border-left: 1px solid $color-grey-dark;
+                    border-right: 1px solid $color-grey-dark;
+                }
+            }
+        }
         &-item, a {
             text-align: center;
             display: flex;

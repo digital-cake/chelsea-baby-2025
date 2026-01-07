@@ -26,11 +26,11 @@ window.init_usp_banner_slider = function(uspSwiperData) {
         breakpoints: {
             650: {
                 slidesPerView: 2,
-                spaceBetween: 55,
+                //spaceBetween: 55,
             },
             900: {
                 slidesPerView: uspSwiperData.size,
-                spaceBetween: 55,
+                //spaceBetween: 55,
             }
         }
     });
