@@ -31,7 +31,8 @@
             "wishlist": "Wishlist",
             "open": "Open",
             "location_selector": "Location Selector",
-            "currency": "Currency"
+            "currency": "Currency",
+            "shop_all": "Shop All"
         },
         "footer": {
             "site_by": "Site by Shopify Premier Agency",

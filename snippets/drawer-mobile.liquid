@@ -4,24 +4,27 @@
 <div class="drawer drawer-mobile" id="drawer-mobile">
     <div class="drawer__inner drawer-mobile__inner">
         <div class="drawer__content drawer-mobile__content" id="drawer-mobile-content">
+            <div class="menu-mobile__main-features">
+                {% if section.settings.feature_one_image != blank %}
+                    <div class="menu-mobile__main-feature">
+                        {% if section.settings.feature_one_url != blank %}<a href="{{ section.settings.feature_one_url }}" aria-label="Feature Mobile">{% endif %}
+                            {{ section.settings.feature_one_image.src | image_url: width: 700, crop: "center" | image_tag: alt: section.feature_one_image.alt }}
+                            {% if section.settings.feature_one_title != blank %}<p>{{ section.settings.feature_one_title }}</p>{% endif %}
+                            {% if section.settings.feature_one_text != blank %}<p class="feature-text">{{ section.settings.feature_one_text }}</p>{% endif %}
+                        {% if section.settings.feature_one_url != blank %}</a>{% endif %}
+                    </div>
+                {% endif %}
+                {% if section.settings.feature_two_image != blank %}
+                    <div class="menu-mobile__main-feature">
+                        {% if section.settings.feature_two_url != blank %}<a href="{{ section.settings.feature_two_url }}" aria-label="Feature Mobile">{% endif %}
+                            {{ section.settings.feature_two_image.src | image_url: width: 700, crop: "center" | image_tag: alt: section.feature_two_image.alt }}
+                            {% if section.settings.feature_two_title != blank %}<p>{{ section.settings.feature_two_title }}</p>{% endif %}
+                            {% if section.settings.feature_two_text != blank %}<p class="feature-text">{{ section.settings.feature_two_text }}</p>{% endif %}
+                        {% if section.settings.feature_two_url != blank %}</a>{% endif %}
+                    </div>
+                {% endif %}
+            </div>
             {% render "menu-mobile", menu: menu %}
-            {% comment %} <div class="menu-mobile__feature">
-                {% if section.settings.feature_url != blank %}<a href="{{ section.settings.feature_url }}" aria-label="Feature Mobile">{% endif %}
-                    <img 
-                        {% if request.design_mode %}
-                        src="{{ section.settings.feature_image.src | img_url: "300x300", crop: "center" }}"
-                        {% else %}
-                        data-src="{{ section.settings.feature_image.src | img_url: "300x300", crop: "center" }}"
-                        class="preload"
-                        {% endif %}
-                        height="300"
-                        width="300"
-                        alt="{{ section.settings.feature_image.alt | escape }}"
-                    >
-                    <p>{% if section.settings.feature_text != blank %}{{ section.settings.feature_text }}{% endif %}</p>
-
-                {% if section.settings.feature_url != blank %}</a>{% endif %}
-            </div> {% endcomment %}
         </div>
         <div class="menu-mobile__footer">
             <a class="menu-mobile__footer-account" aria-label="{{ 'general.menu.account' | t }}" href="{{ routes.account_url }}">{% render 'icon-account.svg' %}<span>{{ 'general.menu.account' | t }}</span>{% render 'icon-chevron-right.svg' %}</a>

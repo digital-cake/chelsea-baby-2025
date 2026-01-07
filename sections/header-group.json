@@ -188,7 +188,15 @@
         "link_7Rrmjn"
       ],
       "settings": {
-        "logo": "shopify://shop_images/logo-new-simple-primary.svg"
+        "logo": "shopify://shop_images/logo-new-simple-primary.svg",
+        "feature_one_image": "shopify://shop_images/ThuleYepp2MaxiFrameMountedChildBikeSeat2.jpg",
+        "feature_one_url": "shopify://collections",
+        "feature_one_title": "Black Friday Deals",
+        "feature_one_text": "Score big on premium baby gear",
+        "feature_two_image": "shopify://shop_images/ThuleYeppNexxt2MaxiFrameMountChildBikeSeat2.jpg",
+        "feature_two_url": "shopify://collections",
+        "feature_two_title": "Book an In-store appointment",
+        "feature_two_text": "Get an hour 1-1 appointment to pick your perfect items"
       }
     }
   },

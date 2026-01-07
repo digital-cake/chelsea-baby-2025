@@ -1,9 +1,15 @@
 <li class="menu-mobile__item menu-mobile__item--mega has-children">
-    <a href="{{ block.url }}" class="menu-mobile__link" aria-label="{{ block.title }}">
+    <a href="{{ block.url }}" class="menu-mobile__link menu-mobile__link--has-children" aria-label="{{ block.title }}">
         <span>{{ block.title }}</span>
         {% render "icon-chevron-right.svg" %}
     </a>
     <div class="menu-mobile__mega menu-mobile__brands menu-mobile__mega--brands">
+        <div class="menu-mega__title">
+            <button class="button-text button--back" aria-label="{{ "accessibility.back" | t }}">
+                {% render "icon-chevron-left.svg" %}
+            </button>
+            <span>{{ block.title }}</span>
+        </div>
         <div class="container">
             {% if block.featured_brands != blank %}
                     <div class="featured-brands">
