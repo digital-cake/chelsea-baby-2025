@@ -1,0 +1,32 @@
+@use "../abstracts/variables.scss" as *;
+
+.breadcrumbs {
+	ol {
+		li {
+			display: inline-flex;
+			gap: 0.25em;
+			&::after {
+				content: '|';
+				font-size: 10px;
+                font-weight: $weight-bold;
+				display: block;
+				position: relative;
+				margin-right: 6px;
+			}
+			&:last-child {
+				&::after {
+					display: none;
+				}
+			}
+			a {
+				font-size: 10px;
+				text-decoration: none;
+				text-transform: uppercase;
+				&:hover,
+				&:focus {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}

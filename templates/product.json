@@ -1,12 +1,257 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "main": {
-            "type": "main-product",
-            "settings": {
-            }
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "breadcrumbs_3UL9QJ": {
+          "type": "breadcrumbs",
+          "settings": {}
+        },
+        "title_price_HKDEq6": {
+          "type": "title_price",
+          "settings": {}
+        },
+        "usps_LRHyWx": {
+          "type": "usps",
+          "settings": {}
+        },
+        "description_AW6xBE": {
+          "type": "description",
+          "settings": {}
+        },
+        "colours_aKCWNY": {
+          "type": "colours",
+          "settings": {}
+        },
+        "bundle_options_nxGXK9": {
+          "type": "bundle_options",
+          "settings": {}
+        },
+        "variants_DCp7ti": {
+          "type": "variants",
+          "settings": {}
+        },
+        "actions_BUpmyi": {
+          "type": "actions",
+          "settings": {}
+        },
+        "message_QUYJYW": {
+          "type": "message",
+          "settings": {
+            "message": "<p>Tax included. <a href=\"/policies/shipping-policy\" target=\"_blank\" title=\"Shipping Policy\">Shipping</a> calculated at checkout</p>"
+          }
+        },
+        "payment_icons_pT38zw": {
+          "type": "payment_icons",
+          "settings": {}
+        },
+        "notifications_HHYF8J": {
+          "type": "notifications",
+          "settings": {}
         }
+      },
+      "block_order": [
+        "breadcrumbs_3UL9QJ",
+        "title_price_HKDEq6",
+        "usps_LRHyWx",
+        "description_AW6xBE",
+        "colours_aKCWNY",
+        "bundle_options_nxGXK9",
+        "variants_DCp7ti",
+        "actions_BUpmyi",
+        "message_QUYJYW",
+        "payment_icons_pT38zw",
+        "notifications_HHYF8J"
+      ],
+      "settings": {
+        "padding_top": 120,
+        "padding_bottom": 120,
+        "mobile_padding_top": 86,
+        "mobile_padding_bottom": 132
+      }
     },
-    "order": [
-        "main"
-    ]
+    "frequently_asked_questions_RVRjwa": {
+      "type": "frequently-asked-questions",
+      "blocks": {
+        "faq_T8kbUM": {
+          "type": "faq",
+          "settings": {
+            "question": "Which brands does Chelsea Baby carry?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+          }
+        },
+        "faq_BB8q6K": {
+          "type": "faq",
+          "settings": {
+            "question": "How do you select which baby brands and products to sell?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+          }
+        },
+        "faq_edEPik": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your returns and warranty policy for the branded products?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+          }
+        },
+        "faq_TFcxTr": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer after‑sales support for the branded items you sell?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+          }
+        },
+        "faq_QWENP7": {
+          "type": "faq",
+          "settings": {
+            "question": "How quickly can I expect delivery and what are the shipping fees?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+          }
+        },
+        "faq_tCWf6b": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you  have a physical store?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_T8kbUM",
+        "faq_BB8q6K",
+        "faq_edEPik",
+        "faq_TFcxTr",
+        "faq_QWENP7",
+        "faq_tCWf6b"
+      ],
+      "name": "FAQs",
+      "settings": {
+        "title": "FAQs",
+        "label": "<p>Got unanswered questions? <a href=\"/pages/contact\" title=\"Contact Chelsea Baby\">Contact Us</a></p>",
+        "label_icon": "shopify://shop_images/icon-phone.svg",
+        "faq_group": "",
+        "image": "shopify://shop_images/two-babies-placeholder.jpg",
+        "flip_image": false,
+        "image_overlay": "",
+        "text_color": "var(--color-primary)",
+        "background_color": "var(--color-white)",
+        "padding_top": 64,
+        "padding_bottom": 32,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "ugc_slider_7t3XTU": {
+      "type": "ugc-slider",
+      "blocks": {
+        "image_6LT6jG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-1.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        },
+        "image_kEfd6Y": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-2.jpg",
+            "label": "@usermum123",
+            "link": "https://www.instagram.com/chelseababyuk/"
+          }
+        },
+        "image_P8DttA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-3.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        },
+        "image_qJMiyy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-4.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        },
+        "image_fxqJHU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-img-5.jpg",
+            "label": "@usermum123",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_6LT6jG",
+        "image_kEfd6Y",
+        "image_P8DttA",
+        "image_qJMiyy",
+        "image_fxqJHU"
+      ],
+      "name": "UGC Slider",
+      "settings": {
+        "title": "Little Moments We Love",
+        "tag": "h3",
+        "label": "@Chelseababyuk",
+        "label_link": "https://www.instagram.com/chelseababyuk/",
+        "background_color": "var(--color-white)",
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 0,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "recommendations_tab_slider_8XxWdf": {
+      "type": "recommendations-tab-slider",
+      "name": "Recommendations",
+      "settings": {
+        "you_may_also_like_collection": "accessories",
+        "title": "Best Sellers",
+        "link_label": "Shop All",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "mobile_padding_top": 46,
+        "mobile_padding_bottom": 46
+      }
+    },
+    "service_usps_slider_Xz6d86": {
+      "type": "service-usps-slider",
+      "name": "Service USPS Slider",
+      "settings": {
+        "service_usps": "service-usps-test",
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "main",
+    "frequently_asked_questions_RVRjwa",
+    "ugc_slider_7t3XTU",
+    "recommendations_tab_slider_8XxWdf",
+    "service_usps_slider_Xz6d86"
+  ]
 }

@@ -1,0 +1,79 @@
+{%- render 'vite' with '@snippetStyles/_drawer-cart.scss' -%}
+{%- render 'vite' with '@@/components/drawer-cart.js' -%}
+{%- render 'vite' with '@@/components/delivery-threshold.js' -%}
+
+<div class="drawer drawer-cart" id="drawer-cart">
+    <div class="drawer__inner drawer-cart__inner">
+        <div class="drawer__header drawer-cart__header" id="drawer-cart-header">
+            <div class="drawer__header__title">
+                <h3 class="medium">{{ 'cart.title' | t }}</h3>
+                <button class="drawer-close" aria-label="{{ 'accessibility.close' | t }}"><span>{{ 'accessibility.close' | t }}</span>{% render "icon-cross.svg" %}</button>
+            </div>
+            {% if settings.show_delivery_threshold == true %}
+                {% render "delivery-threshold" %}
+            {% endif %}
+            {% if settings.drawer_message != blank %}
+                <div class="drawer-cart__header__message">
+                    {{ settings.drawer_message }}
+                </div>
+            {% endif %}
+            <div class="drawer-cart__header__status hidden">
+                <span class="status--added">{{ 'cart.item_added' | t }}</span>
+            </div>
+        </div>
+        <div class="drawer__content drawer-cart__content" id="drawer-cart-content">
+            <span class="loading-icon">{% render "icon-loader.svg" %}</span>
+            <div class="cart-items"></div>
+        </div>
+        <div class="drawer__footer drawer-cart__footer hide-content" id="drawer-cart-footer">
+            {% if settings.cart_drawer_upsells != blank %}
+                <div class="cart-drawer-upsells">
+                    {% if settings.cart_drawer_upsells_title != blank %}
+                        <div class="cart-drawer-upsells__title">
+                            <p>{{ settings.cart_drawer_upsells_title }}</p>
+                            <span>{% render 'icon-chevron.svg' %}</span>
+                        </div>
+                    {% endif %}
+                    <div class="cart-drawer-upsells__products">
+                        {% for product in settings.cart_drawer_upsells.products limit: 12 %}
+                            <div class="cart-drawer-upsells__item">
+                                {{ product.images[0].src | image_url: width: 300 | image_tag: alt: product.images[0].alt }}
+                                <div class="inner">
+                                    <div class="header">
+                                        <a href="{{ product.url }}">{{ product.title | truncatewords: 6 }}</a>
+                                        {% render 'product-price', product: product %}
+                                    </div>
+                                    <div class="actions">
+                                        {% form 'product', product, class: 'product-form product-form-upsell' %}
+                                            <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+                                            <button class="button-text button-text--primary button--quick-add" type="submit"><span>{{ "products.product.add" | t }} +</span></button>
+                                        {% endform %}
+                                        {% comment %}
+                                            IF STATEMENT HERE FOR VARIANTS AND NON VARIANTS
+                                        {% endcomment %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            <form class="drawer-cart__footer__form" action="{{ routes.cart_url }}" method="post">
+                <div class="cart-totals" id="drawer-cart-totals"></div>
+                <div class="drawer-cart__footer__text"><span>{{ 'cart.shipping_label_calculated' | t }}</span></div>
+                <button name="checkout" class="button button--cart button--transactional">
+                    {% render 'icon-lock.svg' %}
+                    <span>{{ 'cart.checkout' | t }}</span>
+                </button>            
+            </form>
+            <div class="drawer-cart__footer__actions">
+                <a href="{{ routes.cart_url }}" class="view-cart button-text button-text--primary">{{ 'cart.view_cart' | t }}</a>
+            </div>
+           {% if settings.show_payment_icons == true %}
+                <div class="drawer-cart__footer__payment">
+                    {% render "payment-icons" %}
+                </div>
+           {% endif %}
+        </div>
+    </div>
+</div>

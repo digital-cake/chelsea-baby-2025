@@ -1,0 +1,30 @@
+{%- for option in product.options_with_values -%}
+    <span class="option-name">{{ option.name }}:</span>
+    <div class="select-wrap">
+        <select
+            name="option{{ option.position }}"
+            class="variant-group-{{ option.position }} variant-group-select"
+            {% if option.position > 1 %}
+            disabled
+            {% endif %}
+            data-option-position="{{ option.position }}"
+            data-product-handle="{{ product.handle }}"
+        >
+            <option value="" selected disabled>{{ 'products.product.select' | t: variant: option.name }}</option>
+            {%- for value in option.values -%}
+            {% unless value.variant.id %}{% continue %}{% endunless %}
+                <option value="{{ value.id }}">
+                    {{ value.name | escape }} - {{ value.variant.price | money }}
+                    {%- unless value.available %} - {{ 'products.product.sold_out' | t }}{% endunless %}
+                </option>
+            {%- endfor -%}
+        </select>
+        <span class="icon">{% render 'icon-chevron.svg' %}</span>
+    </div>
+
+    <div class="variant-error hidden" data-for="option{{option.position}}">
+        <span>{{ 'products.product.please_select' | t: variant: option.name }}</span>
+    </div>
+{%- endfor -%}
+
+<input type="hidden" name="id" value="{{ product.selected_variant.id }}" />

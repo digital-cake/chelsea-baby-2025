@@ -1,0 +1,245 @@
+@use "../abstracts/variables.scss" as *;
+
+.drawer-cart-open {
+	.drawer-cart {
+		opacity: 1;
+        right: 0;
+	}
+	#overlay-mask {
+		display: block;
+	}
+}
+
+.drawer-cart {
+	right: -800px;
+	opacity: 0;
+	left: auto;
+	width: 100%;
+    height: 100%;
+	transition: all 0.3s ease-in-out;
+	&__header {
+		position: relative;
+		padding: 1.625em 1.25em 0 1.25em;
+        gap: 0;
+		&__status {
+			&.hidden {
+				display: none;
+			}
+			span {
+				font-size: 0.875em;
+			}
+		}
+		&__title {
+			span {
+				font-size: 1.625em;
+			}
+		}
+		&__message {
+			font-size: 14px;
+			border: 1px solid $color-primary;
+			border-radius: 4px;
+			padding: 0.625em;
+		}
+	}
+	&__content {
+        padding: 0 1.25em;
+		&.content-loading {
+			display: flex;
+			justify-content: flex-end;
+			padding-top: 3em;
+			flex-direction: column;
+			position: relative;
+			.cart-items {
+				display: none;
+			}
+			.loading-icon {
+				display: block;
+				position: absolute;
+				top: 30%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+		.cart {
+			position: relative;
+		}
+		.loading-icon {
+			display: none;
+			width: 2em;
+			height: 2em;
+			svg {
+				opacity: 0.5;
+				width: 100%;
+				height: auto;
+				animation-name: spin;
+				animation-duration: 1000ms;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear;
+			}
+		}
+		.cart-empty {
+			text-align: center;
+			padding: 4em 0px;
+		}
+	}
+	&__footer {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+		border-top: 1px solid $color-grey-dark;
+		z-index: 2;
+		&.hide-content {
+			padding: 0;
+			box-shadow: none;
+			form,
+			div {
+				display: none;
+			}
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5em;
+			button {
+                gap: 0.75em;
+				svg {
+					width: 1em;
+					min-width: 1em;
+				}
+			}
+		}
+		.cart-totals {
+			& > div {
+				display: flex;
+				justify-content: space-between;
+				span {
+					font-size: 1.25em;
+					font-weight: $weight-bold;
+				}
+			}
+		}
+		&__actions {
+			display: flex;
+			justify-content: center;
+			position: relative;
+			a {
+				font-size: 0.625em;
+			}
+		}
+		&__payment {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 1.25em;
+			padding: 0 1em 1em 1em;
+			p {
+				font-size: .625em;
+				margin-bottom: 0;
+			}
+			.payment-icons {
+                ul {
+                    justify-content: center;
+                }
+				svg {
+					width: 2em;
+				}
+			}
+		}
+		&__form {
+			padding: 1em 1em 0 1em;
+		}
+		.cart-drawer-upsells {
+			position: relative;
+			padding: 1em 0 1.25em 1em;
+			border-bottom: 1px solid $color-grey-dark;
+			&__title {
+				padding-right: 1.75em;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				cursor: pointer;
+				svg {
+					transform: rotate(-180deg);
+				}
+			}
+			&__products {
+				margin-top: 1.25em;
+				display: flex;
+				gap: 1em;
+				scroll-snap-type: x mandatory;
+				overflow-x: auto;
+			}
+			&__item {
+				width: 100%;
+				min-width: 338px;
+				max-width: 338px;
+				display: grid;
+				grid-template-columns: 94px auto;
+				gap: 0.5em;
+				border: 1px solid $color-grey;
+				border-radius: $radius-small;
+				.inner {
+					padding: 0.625em 0.625em 0.625em 0;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					a {
+						display: block;
+						font-size: 0.875em;
+					}
+				}
+				.header {
+					display: flex;
+					align-items: flex-start;
+					justify-content: space-between;
+					gap: 1em;
+				}
+				.actions {
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+					.price {
+						font-size: 0.875em;
+					}
+					.product-form-upsell {
+						padding-right: 0;
+					}
+				}
+			}
+			&.collapsed {
+				.cart-drawer-upsells__title {
+					svg {
+						transform: rotate(360deg);
+					}
+				}
+				.cart-drawer-upsells__products {
+					display: none;
+				}
+			}
+		}
+		&__text {
+			display: flex;
+			justify-content: flex-end;
+			span {
+				text-transform: uppercase;
+				font-size: 0.625em;
+				font-weight: $weight-bold;
+				letter-spacing: 1px;
+			}
+		}
+	}
+    .cart-delivery-threshold { 
+        margin: 1.5em 0 1.75em 0;
+        &__discount-bar {
+            width: 100%;
+        }
+    }
+}
+@keyframes spin {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

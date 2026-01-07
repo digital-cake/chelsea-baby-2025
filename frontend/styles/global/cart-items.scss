@@ -4,11 +4,12 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	gap: 1.25em 0;
+	padding-bottom: 1em;
 	.cart-item {
 		display: flex;
 		gap: 1em;
 		min-width: 100%;
-		padding: 4px 0;
 		&__wrap {
 			display: flex;
 			justify-content: space-between;
@@ -46,11 +47,12 @@
 		}
 		&__properties, &__variant {
 			li {
-                font-size: 0.75em;
+                font-size: 0.625em;
                 font-weight: $weight-bold;
                 letter-spacing: 0.6px;
                 color: $color-primary;
                 opacity: 0.5;
+				text-transform: uppercase;
             }
 		}
         &__price {

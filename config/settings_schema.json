@@ -164,6 +164,28 @@
           "id": "bar_progress_color",
           "label": "Bar progress colour",
           "default": "#89ADC9"
+        },
+        {
+          "type": "text",
+          "id": "product_threshold_message",
+          "label": "Product Theshold Message",
+          "default": "You’ve qualified for free shipping!"
+        }
+      ]
+    },
+    {
+      "name": "Cart Drawer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "cart_drawer_upsells_title",
+          "label": "Title",
+          "default": "Don’t forget these"
+        },
+        {
+          "type": "collection",
+          "id": "cart_drawer_upsells",
+          "label": "Upsells"
         }
       ]
     },
@@ -257,7 +279,22 @@
         }
       ]
     },
-     {
+    {
+      "name": "Products",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Product Colours"
+        },
+        {
+          "type": "textarea",
+          "id": "product_colours",
+          "label": "Product Colours",
+          "default": "Mocha:#8D7669\nSpace:#000000\nFrappe:#C7B5A5\nGanache:#453836\nEspresso:#292B28\nBlack Olive:#323B36\nButtermilk:#D2CABD\nCarbonite:#36373B\nChocolate Velvet:#5D5048\nJubilee:#D5D6D5\nMink:#88786F\nMulberry:#533A3F\nPistachio:#C2CAC1\nRaven:#272729\nStone:#D2CBC3\nCashmere:#D5D0C6\nFeather:#D9C7BB\nTopaz:#6E7C89\nHoundstooth Almond:#C1AFA5\nHoundstooth Black:#2A2B2D\nHoundstooth Silver:#D6D8D7\nTwillic Black:#000000\nTwillic Graphite:#41424C\nTwillic Truffle:#7B7267\nTwillic Green:#32433D\nAuthentic Black:#000000\nAuthentic Truffle:#89776A\nAuthentic Blue:#212B3A\nForest Green:#57675B\nMidnight Black:#000000\nDark Cherry:#643A44\nDesert Taupe:#D7C9C0\nGrey Melange:#818081\nBlack:#000000\nLatte:#EADED2\nSage:#909787\nSunset:#F2644E\nLimestone:#BEC2D6\nHeritage Black:#000000\nDeep Indigo:#4c4b57\nMoon Grey:#808080\nDesert Taupe Melange:#C2AEA5\nSpace Black:#2A2A2A\nDusty Rose:#997978\nJade Green:#9AB0AB\nMidnight Grey:#3B3B3D\nFrost Grey:#77787E\nTonal Black:#3B4448\nTonal Graphite:#778082\nEssential Black:#121212\nEssential Graphite:#484A4E\nEssential Green:#4D786B\nIconic Black:#222223\nNatural Taupe:#B6B1AD\nZenith:#000000\nCoco:#875F42\nBiscotti:#D2C1A9\nPecan:#372E2F\nBlack Edition:#000000\nIvy:#495845\nCookie:#E7D3C6\nTruffle:#808080\nDark Grey:#585454\nBeige:#d5cdc0\nAll Black:#272628\nAloe:#828884\nBrownie:#61524B\nStone Beige:#E0DAD4\nBurgundy:#554343\nTaupe:#A1928B\nPowder:#B7AEAC\nNoir:#272427\nVanilla:#DDDBDB\nForest:#5A645C\nCaramel:#AE8A70\nNight:#242223\nBlush:#8E6861\nSand:#AF9388\nChampagne:#9f9890\nMaple:#8D7A6B\nDamson:#594345\nPewter:#4C514B\nOnyx:#000000\nFossil:#4A4B50\nGlacier:#D7D6D6\nRose:#B39DAA\nOak:#D6C3AC\nCashmere Oak:#F2E6E1\nCarbon Black:#3B3D3F\nMineral Grey:#5B585A\nNight Blue:#262B37\nDusty Rose:#997978\nTeak:#8F8177\nHarbor Blue:#7A8C90\nSoft Taupe:#CBC4BC\nUrban Olive:#5A5348\nLinen Grey:#BFBCB9\nWarm Caramel:#856A57\nDark Slate:#616B74\nPink:#FFC0CB\nBlue:#98B9CB\nPearl Pink:#E5D9D3\nWhite:#FFFFFF\nMint:#CBD1CE\nTeal:#385656\nBlack Nickel:#585759\nClay Grey:#CBC6C2\nGrey Mist:#939190\nGrey:#808080\nBlack Gold:#DCD0B5\nBlack Rose Gold:#CBB0A8\nGold:#958469\nApricot:#F5CCC3\nCamel:#CBC2C2\nWhite Gold:#DCD0B5\nWhite Rose Gold:#CBB0A8\nGreen:#809694\nDillan:#8598A5\nGreyson:#A3A4A3\nJake:#313131\nSavannah:#D8D7D3\nSand-Dillan:#CC9D71\nSaddle:#926A5E\nChestnut:#705C55\nGwen:#71847D\nKenzi:#A8B7B5\nLiam:#E4D7C7\nTheo:#99867F\nHeritage:#EAD3B6\nSanderson:#957765\nMetro:#302A2D\nEclipse:#3C3C3E\nMaple:#8D7A6B\nEvergreen:#838581\nCaviar:#2C2F32\nCedar:#907e6f"
+        }
+      ]
+    },
+    {
       "name": "Search",
       "settings": [
         {

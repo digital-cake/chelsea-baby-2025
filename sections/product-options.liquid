@@ -1,0 +1,8 @@
+{% render 'product-variants-select', with_additional_price: true %}
+<script id="variantjson" type="application/json">
+{{ product.selected_variant | json }}
+</script>
+
+<script id="variantjsonpreorder" type="application/json">
+{{ product.selected_variant.metafields.cake.preorder | default: false }}
+</script>

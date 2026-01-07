@@ -67,6 +67,31 @@
             color: $color-primary;
         }
     }
+    &--cart {
+        height: 50px;
+        span {
+            text-transform: capitalize;
+        }
+    }
+    &--add-to-cart {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        height: 50px;
+        .button-price {
+            position: relative;
+            &:before {
+                content: "-";
+                position: absolute;
+                right: -10px;
+            }
+        }
+        svg {
+            path {
+                stroke: $color-white;
+            }
+        }
+    }
 }
 
 .button-text {
@@ -83,6 +108,7 @@
         font-size: 0.75em;
         font-weight: 400;
         letter-spacing: 0.6px;
+        display: block;
     }
     &:hover {
         text-decoration-thickness: 2px;

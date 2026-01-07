@@ -1,0 +1,118 @@
+@use "../abstracts/variables.scss" as *;
+
+.main-product-media {
+    overflow-x: auto;
+    order: 1;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    cursor: pointer;
+    @media (min-width: $w-l) {
+        display: grid;
+        grid-auto-rows: auto;
+        scroll-snap-type: y mandatory;
+        grid-template-columns: 1fr 1fr;
+        overflow-y: auto;
+        order: 2;
+        max-height: 868px;
+    }
+    &.gift-card {
+        display: block;
+        overflow: hidden;
+        max-height: none;
+        height: 100%;
+        @media (min-width: $w-l) {
+            grid-template-columns: 1fr;
+        }
+        .main-product-media__image, .main-product-media__video {
+            height: 100%;
+            cursor: pointer !important;
+            pointer-events: none;
+            img {
+                aspect-ratio: auto;
+            }
+        }
+    }
+    &__navigation {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        order: 2;
+        margin: 0 auto;
+        width: 100%;
+        background-color: $color-white;
+        border-radius: 30px;
+        padding: 1.25em 0.75em;
+        position: absolute;
+        left: 0.5em;
+        bottom: 10em;
+        z-index: 2;
+        width: fit-content;
+        &.gift-card {
+            display: none;
+        }
+        .navigation-zoom {
+            padding: 0;
+            width: 2.5em;
+            height: 2.5em;
+            min-width: 2.5em;
+            min-height: 2.5em;
+            svg {
+                width: 18px;
+                path {
+                    stroke: $color-white;
+                }
+            }
+        }
+        .navigation-button {
+            width: 2.5em;
+            height: 2.5em;
+            min-width: 2.5em;
+            min-height: 2.5em;
+            border-radius: 50%;
+            border: 1px solid $color-primary;
+            svg {
+                width: 18px;
+                pointer-events: none;
+            }
+            &.prev {
+                transform: rotate(90deg);
+                @media (min-width: $w-l) {
+                    transform: rotate(180deg);
+                }
+            }
+            &.next {
+                @media (max-width: $w-l) {
+                    transform: rotate(-90deg);
+                }
+            }
+        }
+    }
+    &__image, &__video {
+        flex: 0 0 100%;
+        width: 100vw;
+        scroll-snap-align: start;
+        position: relative;
+        video {
+            display: block;
+            cursor: default;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (min-width: $w-l) {
+            display: inline-block;
+            width: 100%;
+            &:nth-of-type(3n) {
+                grid-column: 1 / -1;
+                pointer-events: none;
+            }
+        }
+        &.full-span {
+            grid-column: 1 / -1;
+        }
+    }
+    .drawer-close {
+        display: none;
+    }
+}

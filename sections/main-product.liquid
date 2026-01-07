@@ -1,3 +1,131 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+
+{%- render 'vite' with '@sectionStyles/_main-product.scss' -%}
+{%- render 'vite' with '@@/components/main-product.js' -%}
+
+{% assign product_type = product.type | handle %}
+
+{% if customer %}
+    {% assign wishlistItems = customer.metafields.cake.wishlist_items.value %}
+    {% assign productInWishlist = false %}
+    {% assign productId = product.id %}
+    {% if wishlistItems != empty %}
+        {% for product in customer.metafields.cake.wishlist_items.value %}
+            {% if product.id == productId %}
+                {% assign productInWishlist = true %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endif %}
+
+<div class="wrap wrap--no-padding wrap--{{ section_id }}">
+    <div class="section-main-product__inner">
+        <div class="section-main-product__media{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
+            <div class="section-main-product__badges">
+                {% render 'product-badges', product: product, unlimited: true %}
+                <button class="wishlist-toggle{% if customer %} active{% endif %}{% if productInWishlist == true %} added{% endif %}" data-id="{{ product.id }}" type="button" aria-label="{{ "products.product.wishlist" | t }}">
+                    {% render "icon-heart.svg" %}
+                    <span>{{ "products.product.wishlist" | t }}</span>
+                </button>
+            </div>
+            <!--[product-media]-->
+            {% render 'main-product-media', product: product %}
+            <!--[/product-media]-->
+        </div>
+        <!--[product-details]-->
+        <div class="section-main-product__content">
+            {% form 'product', product, class: 'product-form product-form-main', data-balcony-product: isBalconyProduct %}
+                {% for block in section.blocks %}
+                    {% case block.type %}
+                        {% when "breadcrumbs" %}
+                            <div class="section-main-product__content-breadcrumbs">
+                                {% render 'breadcrumbs' %}
+                            </div>
+                        {% when "usps" %}
+                            {% if product.metafields.cake.product_usps != blank %}
+                                {% assign usps = product.metafields.cake.product_usps.value.entries.value %}
+                                <ul class="section-main-product__content-usps">
+                                    {% for usp in usps %}
+                                        <li>{{ usp.icon | image_url: width: 42 | image_tag }}<span>{{ usp.text }}</span></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}   
+                            {% when "title_price" %}
+                                <div class="section-main-product__content-title-price">
+                                    <h1 class="medium">{{ product.title }}</h1>
+                                    {% render 'product-price', product: product %}
+                                </div>
+                        {% when "description" %}
+                            {% if product.metafields.cake.short_description != blank %}
+                                <div class="section-main-product__content-description">
+                                    <div>{{ product.metafields.cake.short_description | metafield_tag }}</div>
+                                    <button type="button" class="button-text button-text--primary"><span>{{ "accessibility.read_more" | t }}</span></button>
+                                </div>
+                            {% endif %}
+                        {% when "colours" %}
+                            {% if product.metafields.cake.product_colour_group != blank %}
+                                {% assign hex_codes = settings.product_colours | newline_to_br | strip_newlines | split: "<br />" %}
+
+                                {% for color in hex_codes %}
+                                    {%- assign label = color | split: ':' | first | downcase -%}
+                                    {%- assign code = color | split: ':' | last -%}
+                                {% endfor %}
+                            
+                                {% assign product_colour_group = product.metafields.cake.product_colour_group.value %}
+                                <div class="section-main-product__content-colours">
+                                    <span class="colour-label">{{ 'products.product.colour' | t }}: {{ product.metafields.cake.colour_name }}</span>
+                                    <ul class="product-colour-swatches">
+                                        {% for alt_colour_product in product_colour_group.products.value  %}
+                                            {% assign alt_colour = alt_colour_product.metafields.cake.colour_name | downcase %}
+                                            {% assign alt_hex = '#000000' %}
+                                            {% for color in hex_codes %}
+                                                {%- assign label = color | split: ':' | first | downcase -%}
+                                                {%- assign code = color | split: ':' | last -%}
+                                                {% if label == alt_colour %}
+                                                    {% assign alt_hex = code %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if alt_colour_product.id == product.id %}<div class="current">{% endif %}
+                                                <a aria-label="{{ alt_colour }}" id="{{ alt_colour_product.id }}" class="swatch" href="{{ alt_colour_product.url }}" style="background-color: {{ alt_hex }}"></a>
+                                            {% if alt_colour_product.id == product.id %}</div>{% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        {% when "variants" %}
+                            {% if product.has_only_default_variant %}
+                                <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+                                {% if product.selected_or_first_available_variant.metafields.cake.preorder == true %}
+                                    <input id="preorder" type="hidden" name="properties[_preorder]" value="true">
+                                {% endif %}
+                            {% else %}
+                                <div class="section-main-product__content-variants" {% if product.tags contains "custom_catio" %} style="display: none;"{% endif %}>
+                                    {% render 'product-variants-select', product: product %}
+                                </div>
+                            {% endif %}
+                        {% when "actions" %}
+                            <div class="section-main-product__content-actions">
+                                {% render 'product-actions', product: product %}
+                            </div>
+                        {% when "message" %}  
+                           {% if block.settings.message != blank %}
+                                <div class="section-main-product__content-message">
+                                    {{ block.settings.message }}
+                                </div>
+                           {% endif %}
+                        {% when "payment_icons" %}  
+                        {% when "notifications" %}  
+                            <div class="section-main-product__content-notifications">
+                                {% render 'product-notifications', product: product %}
+                            </div>
+                        {% endcase %}
+                {% endfor %}
+            {% endform %}
+        </div>
+        <!--[/product-details]-->
+    </div>
+</div>
+
 <script>
     window.cake_product_handle = {{ product.handle | json }};
 </script>
@@ -59,13 +187,23 @@
             "limit": 1
         },
         {
-            "type": "title",
-            "name": "Title",
+            "type": "title_price",
+            "name": "Title / Price",
             "limit": 1
         },
         {
-            "type": "price",
-            "name": "Price",
+            "type": "usps",
+            "name": "Product USPs",
+            "limit": 1
+        },
+        {
+            "type": "description",
+            "name": "Short Description",
+            "limit": 1
+        },
+        {
+            "type": "colours",
+            "name": "Colours",
             "limit": 1
         },
         {
@@ -79,10 +217,32 @@
             "limit": 1
         },
         {
-            "type": "icons",
-            "name": "Payment Icons",
+            "type": "message",
+            "name": "Message",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "message",
+                    "label": "Message"
+                }
+            ]
+        },
+        {
+            "type": "payment_icons",
+            "name": "Icons",
             "limit": 1
         },
+        {
+            "type": "notifications",
+            "name": "Notifications",
+            "limit": 1
+        },
+        {
+            "type": "bundle_options",
+            "name": "Bundle Options",
+            "limit": 1
+        }
     ],
     "settings": [
         {

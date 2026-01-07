@@ -1,0 +1,175 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-main-product {
+    &__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4.875em;
+		@media (max-width: $w-l) {
+			grid-template-columns: 1fr;
+		}
+    }
+    &__media {
+        position: relative;
+    }
+    &__badges {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 2;
+        width: 100%;
+        padding: 2.25em 2em;
+    }
+    &__content {
+        padding: 2.125em 0 3.5em 0;
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+        &-title-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2em;
+            .price-display {
+                span {
+                    font-size: 22px;
+                    font-family: $font-display;
+                }
+            }
+        }
+        &-breadcrumbs, &-title-price, &-description, &-colours, &-usps, &-actions, &-variants, &-notifications  {
+            margin-right: 2em;
+        }
+        &-notifications {
+            display: flex;
+            justify-content: space-between;
+            .product-notification {
+                background-color: $color-grey;
+                border-radius: $radius-small;
+                padding: 0.5em 2em;
+                font-size: 0.625em;
+                text-transform: uppercase;
+                font-weight: $weight-bold;
+                letter-spacing: 1px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+        &-variants {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            .option-name {
+                font-size: 0.75em;
+                text-transform: uppercase;
+            }
+            .select-wrap {
+                position: relative;
+                select {
+                    width: 100%;
+                    height: 40px;
+                    border-radius: $radius-small;
+                    border: 1px solid $color-black;
+                    padding: 0 1em;
+                    appearance: none;
+                    font-size: 0.75em;
+                    color: $color-black;
+                }
+                .icon {
+                    position: absolute;
+                    right: 1em;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    pointer-events: none;
+                }
+            }
+            .variant-error {
+                color: $color-failure;
+                span {
+                    font-size: 0.75em;
+                }
+                &.hidden {
+                    display: none;
+                }
+            }
+        }
+        &-usps {
+            padding: 0.375em 0.625em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: $radius-small;
+            gap: 1em;
+            background-color: $color-tertiary;
+            margin-bottom: 1em;
+            li {
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+                img {
+                    width: 0.875em;
+                }
+                span {
+                    font-size: 0.625em;
+                    text-transform: uppercase;
+                    color: $color-primary;
+                    letter-spacing: 1px;
+                    font-weight: $weight-bold;
+                }
+            }
+        }
+        &-description {
+            max-width: 90%;
+            p {
+                font-size: 0.875em;
+            }
+            button {
+                margin-top: 0.5em;
+            }
+        }
+        &-message {
+            font-size: 0.625em;
+            text-transform: uppercase;
+            text-align: center;
+            a {
+                text-decoration: underline;
+            }
+        }
+        &-colours {
+            margin: 1em 0;
+            .colour-label {
+                font-size: 0.625em;
+                text-transform: uppercase;
+                font-weight: $weight-bold;
+                display: block;
+                margin-bottom: 0.5em;
+            }
+			.product-colour-swatches {
+				display: flex;
+				align-items: center;
+				flex-flow: row wrap;
+				gap: 10px;
+				.swatch {
+					display: block;
+					width: 1.875em;
+					height: 1.875em;
+					border-radius: 50%;
+				}
+				.current {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border: 1px solid $color-primary;
+					width: 2.2em;
+					height: 2.2em;
+					border-radius: 50%;
+				}
+			}
+        }
+    }
+}

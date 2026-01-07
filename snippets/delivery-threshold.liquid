@@ -2,7 +2,6 @@
 
 {% assign free_delivery_threshold = blank %}
 {% assign threshold_rows = settings.free_delivery_at | newline_to_br | strip_newlines | split: "<br />" %} 
-{% assign cart_subtotal = cart.items_subtotal_price | money_without_currency | plus: 0 %}
 
 {% for row in threshold_rows %}
     {% assign currency_code = row | split: ':' | first %}

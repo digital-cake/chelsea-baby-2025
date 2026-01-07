@@ -29,14 +29,12 @@
 
     <!-- global variables -->
     <script>
-        Shopify.money_format = '{{ shop.money_format }}';
-        {% if request.page_type == "product" %}
-        const variant_stock = [
-            {% for variant in product.variants %}
-            {"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}},
-            {% endfor %}
-        ]
-        {% endif %}
+      Shopify.money_format = '{{ shop.money_format }}';
+      const label_add_to_cart = "{{ 'products.product.add_to_cart' | t }}";
+      const label_preorder = "{{ 'products.product.preorder' | t }}";
+      const label_choose_options = "{{ 'products.product.choose_options' | t }}";
+      const label_unavailable = "{{ 'products.product.unavailable' | t }}";
+      const label_sold_out = "{{ 'products.product.sold_out' | t }}";
     </script>
   </head>
 
@@ -56,5 +54,9 @@
     <div id="overlay-mask"></div>
 
     {% sections 'footer-group' %}
+
+    {% unless request.page_type == 'cart' %}
+      {% render "drawer-cart" %}
+    {% endunless %}
   </body>
 </html>

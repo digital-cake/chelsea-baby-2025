@@ -1,0 +1,25 @@
+{% assign free_delivery_threshold = blank %}
+{% assign threshold_rows = settings.free_delivery_at | newline_to_br | strip_newlines | split: "<br />" %} 
+
+{% for row in threshold_rows %}
+    {% assign currency_code = row | split: ':' | first %}
+    {% assign threshold = row | split: ':' | last | plus: 0 %}
+    {% if currency_code == cart.currency.iso_code %}
+        {% assign free_delivery_threshold = threshold %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% assign current_country = localization.country | downcase %}
+{% assign allowed_countries = settings.allowed_countries | split: ',' | strip %}
+{% assign free_delivery_threshold_converted = free_delivery_threshold | times: 100 %}
+
+{% if free_delivery_threshold != blank and allowed_countries contains current_country and product.price >= free_delivery_threshold_converted %}
+    <div class="product-notification">
+        <span>{{ settings.product_threshold_message }}</span>
+    </div>
+{% endif %}
+
+<div class="product-notification">
+    availability TBA
+</div>

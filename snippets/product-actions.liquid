@@ -1,0 +1,47 @@
+
+{% assign is_continue_selling = false %}
+{% assign total_variant_stock = 0 %}
+{% for variant in product.variants %}
+    {% assign total_variant_stock = total_variant_stock | plus: variant.inventory_quantity %}
+    {% if variant.inventory_policy == 'continue' %}
+        {% assign is_continue_selling = true %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% if product.metafields.cake.in_store_exclusive != blank %}
+    <button type="button" name="add" data-handle="{{ product.handle }}" aria-label="{{ 'products.product.preorder' | t }}" class="button button--transactional button--full-width">
+        <span class="button-label">{{ 'products.product.in_store_exclusive' | t }}</span>
+    </button>
+{% elsif product.available %}
+    {% if product.has_only_default_variant %}
+         {% if product.metafields.cake.preorder == 1 and is_continue_selling == true and total_variant_stock <= 0 %}
+            <button type="submit" name="add" data-handle="{{ product.handle }}" aria-label="{{ 'products.product.preorder' | t }}" class="button button--transactional button--full-width button--add-to-cart{% if mainProductSticky %} main-product-sticky-atc{% endif %}">
+                {% render 'icon-cart.svg' %}
+                <span class="button-price">{{ product.price | money }}</span>
+                <span class="button-label">{{ 'products.product.preorder' | t }}</span>
+            </button>
+        {% else %}
+            <button type="submit" name="add" data-handle="{{ product.handle }}" aria-label="{{ 'products.product.add_to_cart' | t }}" class="button button--transactional button--full-width button--add-to-cart{% if mainProductSticky %} main-product-sticky-atc{% endif %}">
+                {% render 'icon-cart.svg' %}
+                <span class="button-price">{{ product.price | money }}</span>
+                <span class="button-label">{{ 'products.product.add_to_cart' | t }}</span>
+            </button>
+        {% endif %}
+    {% else %}
+        <button type="submit" name="add" data-handle="{{ product.handle }}" aria-label="{{ 'products.product.add_to_cart' | t }}" class="button button--transactional button--full-width button--add-to-cart{% if mainProductSticky %} main-product-sticky-atc{% endif %}">
+            {% render 'icon-cart.svg' %}
+            <span class="button-price" style="display: none;">{{ product.price | money }}</span>
+            <span class="button-label">{{ 'products.product.choose_options' | t }}</span>
+        </button>
+    {% endif %}
+{% else %}
+    <button type="submit" name="add" class="button button--transactional button--full-width{% if mainProductSticky %} main-product-sticky-atc{% endif %}" disabled data-url="{{ product.url }}">
+        {% render 'icon-cart.svg' %}
+        <span>{{ 'products.product.sold_out' | t }}</span>
+    </button>
+{% endif %}
+
+<a class="klaviyo-bis-trigger" href="#" aria-label="{{ "products.product.notify_me" | t }}" style="display: none;" data-url="{{ product.url }}">
+    <span>{{ "products.product.notify_me" | t }}</span>
+</a>
