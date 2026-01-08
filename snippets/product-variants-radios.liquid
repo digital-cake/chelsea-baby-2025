@@ -1,0 +1,41 @@
+{%- for option in product.options_with_values -%}
+  <div class="variant-option-group" data-option-position="{{ option.position }}">
+    <span class="option-name">{{ option.name }}:</span>
+    <div class="variant-radios" role="radiogroup">
+
+      {%- for value in option.values -%}
+        {% unless value.variant.id %}
+          {% continue %}
+        {% endunless %}
+
+        <label class="variant-radio-label" for="option{{ option.position }}-{{ value.id }}">
+          <input
+            type="radio"
+            id="option{{ option.position }}-{{ value.id }}"
+            name="option{{ option.position }}"
+            value="{{ value.id }}"
+            class="variant-group-{{ option.position }} variant-group-radio"
+            data-option-position="{{ option.position }}"
+            data-product-handle="{{ product.handle }}"
+            {% if option.position > 1 %} disabled {% endif %}
+            {% unless value.available %} disabled {% endunless %}
+            {% if product.selected_or_first_available_variant.id == value.variant.id %}
+              checked
+            {% endif %}
+          >
+          <span class="variant-radio-name">
+            {{ value.name | escape }}
+            {% unless value.available %} ({{ 'products.product.sold_out' | t }}) {% endunless %}
+          </span>
+        </label>
+      {%- endfor -%}
+
+    </div>
+  </div>
+
+  <div class="variant-error hidden" data-for="option{{ option.position }}">
+    <span>{{ 'products.product.please_select' | t: variant: option.name }}</span>
+  </div>
+{%- endfor -%}
+
+<input type="hidden" name="id" value="{{ product.selected_variant.id }}">

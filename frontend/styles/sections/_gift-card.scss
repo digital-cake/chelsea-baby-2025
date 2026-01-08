@@ -1,0 +1,130 @@
+@use "../abstracts/variables.scss" as *;
+
+.gift-card {
+	background-color: $color-primary;
+	padding: 2em 0;
+	text-align: center;
+	&__inner {
+		background-color: $color-grey;
+	}
+	header {
+		background-color: $color-primary;
+		padding: 2em;
+		border-bottom: 1px dashed $color-grey;
+		h1 {
+			margin: 0;
+			font-size: 1em;
+			a {
+				display: flex;
+				justify-content: center;
+			}
+			span {
+				display: none;
+			}
+			svg {
+				width: 100%;
+				max-width: 8em;
+			}
+		}
+	}
+	main {
+		background-color: $color-primary;
+	}
+	&__title {
+		padding: 2em 2em 0 2em;
+		h2 {
+			font-size: 1.75em;
+			color: $color-white;
+			margin: 0;
+			line-height: 1;
+		}
+	}
+	&__value {
+		padding: 0.5em 1.5em 0.75em 1.5em;
+		h3 {
+			margin: 0;
+			line-height: 1;
+			font-size: 4em !important;
+			&.disabled {
+				opacity: 0.25;
+				text-decoration: line-through;
+				margin-bottom: 0.25em;
+			}
+		}
+		h5 {
+			margin: 0;
+			font-size: 1.25em;
+            color: $color-white;
+		}
+        h3 {
+            color: $color-white;
+        }
+	}
+	&__code {
+		padding: 2em;
+		text-align: center;
+		background-color: $color-grey-alt;
+		color: $color-white;
+		margin: 0 2px;
+		span {
+			display: block;
+			font-size: 1.5em;
+			font-weight: $weight-bold;
+			letter-spacing: 3px;
+		}
+	}
+	&__text {
+		line-height: 1;
+		&--1 {
+			p {
+				padding: 0.5em 1.5em 0.75em 1.5em;
+			}
+		}
+		&--2 {
+			p {
+				padding: 1em 1.5em 0 1.5em;
+			}
+		}
+		p {
+			margin: 0;
+			span {
+				font-size: 0.875em;
+			}
+		}
+	}
+	&__actions {
+		padding: 2em;
+		@media print {
+			display: none;
+		}
+		img {
+			margin: 0 auto;
+		}
+	}
+	&__buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25em;
+		.print {
+			font-size: 0.875em;
+			font-weight: $weight-bold;
+			text-transform: uppercase;
+            color: $color-white;
+		}
+	}
+	&__qr-code {
+		border-top: 1px dashed $color-grey;
+		padding: 2em;
+		img {
+			width: 12.5em;
+			margin: 0 auto;
+			border: 5px solid $color-white;
+		}
+	}
+	footer {
+		padding: 2em;
+		img {
+			margin: 1.5em auto 0 auto;
+		}
+	}
+}

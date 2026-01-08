@@ -116,16 +116,17 @@ ins {
 	display: flex;
     gap: 0.5em;
 	del {
-		text-decoration: line-through;
-		text-decoration-thickness: 1px;
-		font-size: 14px;
+		font-size: 10px;
 		opacity: 0.5;
 		color: $color-primary;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: $weight-bold;
 	}
 	ins {
 		border: none;
 		font-size: 14px;
-		color: $color-tertiary;
+		color: $color-heritage;
 	}
 }
 a {

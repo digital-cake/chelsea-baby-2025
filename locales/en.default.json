@@ -205,15 +205,16 @@
             "safety_andd_cart": "Safety and Care",
             "delivery": "Delivery",
             "returns": "Returns",
-            "downloads": "Downloads"
+            "downloads": "Downloads",
+            "was": "was"
         },
         "gift_voucher": {
             "name": "Recipient Name",
             "email": "Recipient Email",
             "message": "Gift Message",
             "send_on": "Send on",
-            "for_me": "Me",
-            "for_them": "A Gift",
+            "for_me": "Email to Me",
+            "for_them": "Email to Them",
             "date": "Date to send",
             "email_alert": "Please enter a valid email address",
             "title": "Who's it for?",

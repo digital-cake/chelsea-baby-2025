@@ -86,7 +86,7 @@
                                                 {% endif %}
                                             {% endfor %}
                                             {% if alt_colour_product.id == product.id %}<div class="current">{% endif %}
-                                                <a aria-label="{{ alt_colour }}" id="{{ alt_colour_product.id }}" class="swatch" href="{{ alt_colour_product.url }}" style="background-color: {{ alt_hex }}"></a>
+                                                <a aria-label="{{ alt_colour }}" id="{{ alt_colour_product.id }}" class="swatch{% if product.available %} unavailable{% endif %}" href="{{ alt_colour_product.url }}" style="background-color: {{ alt_hex }}"></a>
                                             {% if alt_colour_product.id == product.id %}</div>{% endif %}
                                         {% endfor %}
                                     </ul>
@@ -99,8 +99,12 @@
                                     <input id="preorder" type="hidden" name="properties[_preorder]" value="true">
                                 {% endif %}
                             {% else %}
-                                <div class="section-main-product__content-variants" {% if product.tags contains "custom_catio" %} style="display: none;"{% endif %}>
-                                    {% render 'product-variants-select', product: product %}
+                                <div class="section-main-product__content-variants">
+                                    {% if product.type == "Gift Card" or product.type == "GIFTCARD" %}
+                                        {% render 'product-variants-radios', product: product %}
+                                    {% else %}
+                                        {% render 'product-variants-select', product: product %}
+                                    {% endif %}
                                 </div>
                             {% endif %}
                         {% when "actions" %}
@@ -113,7 +117,65 @@
                                     {{ block.settings.message }}
                                 </div>
                            {% endif %}
-                        {% when "payment_icons" %}  
+                        {% when "payment_icons" %} 
+                            <div class="section-main-product__content-payment">
+                                {% render 'payment-icons' %} 
+                            </div>
+                        {% when "gift_card" %} 
+                            {% if product.type == "Gift Card" or product.type == "GIFTCARD" %}
+
+                                {% assign current_day = "now" | date: "%s" %}
+                                {% assign future_day = current_day | plus: 7689600 %}
+                                {% assign tomorrow = current_day | plus: 86400 %}
+
+                                <div class="section-main-product__content-gift-card">
+                                    <div class="recipient-select">
+                                        <div class="recipient-select__buttons">
+                                            <button type="button" class="button-text button-text--primary" data-target="me" aria-label="{{ "products.gift_voucher.for_them" | t }}">
+                                                <span>{{ "products.gift_voucher.for_me" | t }}</span>
+                                            </button>
+                                            <button type="button" class="button-text button-text--primary active" data-target="them" aria-label="{{ "products.gift_voucher.for_them" | t }}">
+                                                <span>{{ "products.gift_voucher.for_them" | t }}</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="recipient-details form active">
+                                        <input type="hidden" class="recipient-enable" name="properties[__shopify_send_gift_card_to_recipient]" value="true">
+                                        <div class="form-row form-row--split">
+                                            <label>{{ "products.gift_voucher.name" | t }}</label>
+                                            <input type="text" name="properties[Recipient name]" maxlength="100">
+                                        </div>
+                                        <div class="form-row form-row--split">
+                                            <label class="required">{{ "products.gift_voucher.email" | t }}</label>
+                                            <input type="email" name="properties[Recipient email]" required>  
+                                            <p class="email-alert">{{ "products.gift_voucher.email_alert" | t }}</p>
+                                        </div>
+                                        <div class="form-row form-row--full">
+                                            <label>{{ "products.gift_voucher.message" | t }}</label>
+                                            <textarea name="properties[Message]" maxlength="200"></textarea>
+                                        </div>
+                                        <div class="form-row send-on-row form-row--full">
+                                            <label for="send-on-date">{{ "products.gift_voucher.send_on" | t }}:</label>
+                                            <div class="date-input-wrapper">
+                                                <input
+                                                type="date"
+                                                id="send-on-date"
+                                                name="properties[Send on]"
+                                                value="{{ tomorrow | date: "%Y-%m-%d" }}"
+                                                min="{{ current_day | date: "%Y-%m-%d" }}"
+                                                max="{{ future_day | date: "%Y-%m-%d" }}"
+                                                >
+                                                <span class="date-chevron" tabindex="0">
+                                                {% render 'icon-chevron.svg' %}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {%- render 'vite' with '@@/components/gift-card.js' -%}
+
+                            {% endif %}
                         {% when "notifications" %}  
                             <div class="section-main-product__content-notifications">
                                 {% render 'product-notifications', product: product %}
@@ -242,6 +304,11 @@
         {
             "type": "bundle_options",
             "name": "Bundle Options",
+            "limit": 1
+        },
+        {
+            "type": "gift_card",
+            "name": "Gift Card",
             "limit": 1
         }
     ],

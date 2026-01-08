@@ -13,7 +13,7 @@
     </span>
     <span class="compare">
         {% if product.compare_at_price > product.price %}
-        <del>{{- product.compare_at_price | money -}}</del>
+        <del>(<span class="compare-was">{{ "products.product.was" | t }} </span> {{- product.compare_at_price | money -}})</del>
         {% endif %}
     </span>
     {% endif %}

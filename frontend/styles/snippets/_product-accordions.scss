@@ -3,6 +3,9 @@
 .accordions {
     padding-top: 3.5em;
     margin-right: 2em;
+    @media (max-width: $w-l) {
+        margin-right: 0;
+    }
     .accordion {
         padding-bottom: 2em;
         &-toggle {
@@ -27,6 +30,9 @@
                 visibility: visible;
                 padding-top: 1.5em;
                 padding-right: 2em;
+                @media (max-width: $w-l) {
+                    padding-right: 0;
+                }
             }
             p, a, span, li {
                 margin-bottom: 1em;
