@@ -71,7 +71,7 @@
                     max-height: 0;
                     opacity: 0;
                     visibility: hidden;
-                    transition: max-height 0.35s ease, opacity 0.2s ease;
+                    transition: max-height 0.3s ease, opacity 0.2s ease;
                     &.is-open {
                         opacity: 1;
                         visibility: visible;

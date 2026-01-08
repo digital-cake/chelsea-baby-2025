@@ -1,0 +1,63 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-product-features {
+    overflow: hidden;
+    &__title {
+        font-size: 1.75em;
+        margin-bottom: 24px;
+    }
+    &__slides {
+        .swiper {
+            overflow: visible;
+        }
+        .swiper-slide {
+            height: auto;
+            img {
+                display: block;
+                margin-bottom: 1.5em;
+                border-radius: $radius-small;
+                width: 100%;
+                object-fit: cover;
+            }
+            .title {
+                font-size: 1.25em;
+                font-weight: $weight-bold;
+                display: block;
+                margin-bottom: 1em;
+            }
+            .text {
+                font-size: 0.875em;
+            }
+            .video-wrapper {
+                position: relative;
+                padding-top: 107%;
+                display: flex;
+                border-radius: $radius-small;
+                overflow: hidden;
+                margin-bottom: 1.5em;
+                cursor: pointer;
+                video, iframe {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 100%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+        .swiper-navigation {
+            margin-top: 1.625em;
+            display: flex;
+            gap: 1em;
+            justify-content: flex-end;
+            .swiper-button-prev, .swiper-button-next {
+                position: relative;
+                left: unset;
+                right: unset;
+                top: unset;
+                margin-top: unset;
+                background-color: $color-grey;
+            }
+        }
+    }
+}

@@ -198,7 +198,14 @@
             "select_variant": "Select variant",
             "colour": "Colour",
             "free_shipping": "This Item Qualifies For Free Shipping",
-            "price_from": "From"
+            "price_from": "From",
+            "description": "Product Description",
+            "specifications": "Product Specifications",
+            "installation": "Product Installation",
+            "safety_andd_cart": "Safety and Care",
+            "delivery": "Delivery",
+            "returns": "Returns",
+            "downloads": "Downloads"
         },
         "gift_voucher": {
             "name": "Recipient Name",

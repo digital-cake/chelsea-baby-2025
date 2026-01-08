@@ -1,0 +1,137 @@
+{%- render 'vite' with '@snippetStyles/_product-accordions.scss' -%}
+{%- render 'vite' with '@@/components/product-accordions.js' -%}
+
+<div class="accordions">
+    {% if product.description != blank %}
+        <div class="accordion">
+            <button type="button" class="accordion-toggle accordion-toggle--description button-text button-text--primary button-text--no-styling" aria-label="{{ "products.product.description" | t }}" data-name="{{ "products.product.description" | t }}">
+                <span>{{ "products.product.description" | t }}</span>
+                {% render "icon-chevron.svg" %}
+            </button>
+            <div class="accordion__content">
+                {{ product.description }}
+            </div>
+        </div>
+    {% endif %}
+    {% if product.metafields.cake.specifications != blank %}
+        <div class="accordion">
+            <button type="button" class="accordion-toggle button-text button-text--primary button-text--no-styling" aria-label="{{ "products.product.specifications" | t }}" data-name="{{ "products.product.specifications" | t }}">
+                <span>{{ "products.product.specifications" | t }}</span>
+                {% render "icon-chevron.svg" %}
+            </button>
+            <div class="accordion__content">
+                {{ product.metafields.cake.specifications | metafield_tag }}
+            </div>
+        </div>
+    {% endif %}
+    {% if product.metafields.cake.installation != blank %}
+        <div class="accordion">
+            <button type="button" class="accordion-toggle button-text button-text--primary button-text--no-styling" aria-label="{{ "products.product.installation" | t }}" data-name="{{ "products.product.installation" | t }}">
+                <span>{{ "products.product.installation" | t }}</span>
+                {% render "icon-chevron.svg" %}
+            </button>
+            <div class="accordion__content">
+                {% if product.metafields.cake.installation.value.video != blank %}
+                    <div class="video-wrapper">
+                        <video loop muted controls playsinline poster="{{ product.metafields.cake.installation.value.video.value.preview_image | image_url: width: 500 }}">
+                            <source src="{{ product.metafields.cake.installation.value.video.value | video_tag }}" type="video/mp4">
+                        </video>
+                    </div>
+                {% elsif product.metafields.cake.installation.value.youtube_video_id != blank %}
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/{{ product.metafields.cake.installation.value.youtube_video_id.value }}?modestbranding=1&playsinline=1&rel=0" frameborder="0"></iframe>
+                    </div>
+                {% elsif product.metafields.cake.installation.value.vimeo_video_id != blank %}
+                    <div class="video-wrapper">
+                        <iframe src="https://player.vimeo.com/video/{{ product.metafields.cake.installation.value.vimeo_video_id.value }}?h=731c66eba4&amp;title=0&amp;byline=0&amp;portrait=0&amp;app_id=58479&amp;player_id=0" frameborder="0" allow="autoplay"></iframe>
+                    </div>
+                {% endif %}
+            
+                <div class="downloads-wrapper">
+                    {% if product.metafields.cake.installation.value.downloads != blank %}
+                        <span class="title">{{ "products.product.downloads" | t }}:</span>
+                        <ul class="downloads-wrapper__list">
+                            {% for download in product.metafields.cake.installation.value.downloads.value %}
+                                {% assign url = download.url %}
+                                {% assign filename = url | split: '/' | last %}
+                                {% assign name_parts = filename | split: '?' | first %}
+                                {% assign name_without_query = name_parts | split: '.' %}
+                                {% assign file_name = name_without_query | first %}
+                                {% assign file_type = name_without_query | last | upcase %}
+
+                                <li class="downloads-wrapper__item">
+                                    <a href="{{ download.url }}">
+                                        {% render 'icon-download.svg' %}
+                                        <div class="details">
+                                            <span>{{ file_name }}</span>
+                                            <span>{{ file_type }}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if product.metafields.cake.safety_and_care != blank %}
+        <div class="accordion">
+            <button type="button" class="accordion-toggle button-text button-text--primary button-text--no-styling" aria-label="{{ "products.product.safety_and_care" | t }}" data-name="{{ "products.product.safety_and_care" | t }}">
+                <span>{{ "products.product.safety_and_care" | t }}{% render 'icon-download.svg' %}</span>
+                {% render "icon-chevron.svg" %}
+            </button>
+            <div class="accordion__content">
+                {{ product.metafields.cake.safety_and_care.value.text | metafield_tag }}
+
+                <div class="downloads-wrapper">
+                    {% if product.metafields.cake.safety_and_care.value.downloads != blank %}
+                        <span class="title">{{ "products.product.downloads" | t }}:</span>
+                        <ul class="downloads-wrapper__list">
+                            {% for download in product.metafields.cake.safety_and_care.value.downloads.value %}
+                                {% assign url = download.url %}
+                                {% assign filename = url | split: '/' | last %}
+                                {% assign name_parts = filename | split: '?' | first %}
+                                {% assign name_without_query = name_parts | split: '.' %}
+                                {% assign file_name = name_without_query | first %}
+                                {% assign file_type = name_without_query | last | upcase %}
+
+                                <li class="downloads-wrapper__item">
+                                    <a href="{{ download.url }}">
+                                        {% render 'icon-download.svg' %}
+                                        <div class="details">
+                                            <span>{{ file_name }}</span>
+                                            <span>{{ file_type }}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if product.metafields.cake.delivery != blank %}
+        <div class="accordion" data-name="{{ "products.product.delivery" | t }}">
+            <button type="button" class="accordion-toggle button-text button-text--primary button-text--no-styling" aria-label="{{ "products.product.delivery" | t }}" data-name="{{ "products.product.delivery" | t }}">
+                <span>{{ "products.product.delivery" | t }}</span>
+                {% render "icon-chevron.svg" %}
+            </button>
+            <div class="accordion__content">
+                {{ product.metafields.cake.delivery.value.text | metafield_tag }}
+            </div>
+        </div>
+    {% endif %}
+    {% if product.metafields.cake.returns != blank %}
+        <div class="accordion" data-name="{{ "products.product.returns" | t }}">
+            <button type="button" class="accordion-toggle button-text button-text--primary button-text--no-styling" aria-label="{{ "products.product.returns" | t }}" data-name="{{ "products.product.returns" | t }}">
+                <span>{{ "products.product.returns" | t }}</span>
+                {% render "icon-chevron.svg" %}
+            </button>
+            <div class="accordion__content">
+                {{ product.metafields.cake.returns.value.text | metafield_tag }}
+            </div>
+        </div>
+    {% endif %}
+</div>

@@ -17,12 +17,12 @@
                     {% endif %}
                 </div>
                 <div class="section-frequently-asked-questions__faqs-entries">
-                    {% if section.settings.faq_group != blank %}
-                        {% assign faqs = section.settings.faq_group.entries.value %}
-                        {% for faq in faqs %}
+                    {% assign faq_group = product.metafields.cake.faqs.value %}
+                    {% if faq_group != blank %}
+                        {% for faq_entry in faq_group.entries.value %}
                             <div class="faqs-item faqs-item--{{ section_id }}">
-                                <div class="faqs-item__question"><span>{{ faq.question }}</span>{% render 'icon-chevron.svg' %}</div>
-                                <div class="faqs-item__answer">{{ faq.answer | metafield_tag }}</div>
+                                <div class="faqs-item__question"><span>{{ faq_entry.question }}</span>{% render 'icon-chevron.svg' %}</div>
+                                <div class="faqs-item__answer">{{ faq_entry.answer | metafield_tag }}</div>
                             </div>
                         {% endfor %}
                     {% elsif section.blocks.size > 1 %}
@@ -60,14 +60,14 @@
 
 {% schema %}
 {
-    "name": "FAQs",
+    "name": "Product FAQs",
     "tag": "section",
     "class": "section-frequently-asked-questions",
     "blocks": [
         {
             "name": "FAQ",
             "type": "faq",
-            "limit": 6,
+            "limit": 8,
             "settings": [
                 {
                     "type": "text",
@@ -100,13 +100,6 @@
             "type": "image_picker",
             "id": "label_icon",
             "label": "Label Icon"
-        },
-        {
-            "type": "metaobject",
-            "id": "faq_group",
-            "label": "FAQs Group",
-            "metaobject_type": "faq_group",
-            "info": "Will override default FAQ's at block level"
         },
         {
             "type": "image_picker",
@@ -240,8 +233,9 @@
     ],
     "presets": [
         {
-            "name": "FAQs"
+            "name": "Product FAQs"
         }
-    ]
+    ],
+    "templates": ["product"]
 }
 {% endschema %}

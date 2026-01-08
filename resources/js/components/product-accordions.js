@@ -1,20 +1,20 @@
-window.handle_faqs = (section_id) => {
-    const toggles = document.querySelectorAll(`.faqs-item--${section_id} .faqs-item__question`);
-    const allItems = document.querySelectorAll(`.faqs-item--${section_id}`);
+const handle_product_accordions = () => {
+    const toggles = document.querySelectorAll('.accordion-toggle');
+    const allItems = document.querySelectorAll('.accordion');
 
     if (!toggles.length) return;
 
     toggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
-            const item = toggle.closest('.faqs-item');
-            const answer = item.querySelector('.faqs-item__answer');
+            const item = toggle.closest('.accordion');
+            const answer = item.querySelector('.accordion__content');
             if (!answer) return;
 
             const isOpen = item.classList.contains('is-open');
 
             allItems.forEach(i => {
                 i.classList.remove('is-open');
-                const a = i.querySelector('.faqs-item__answer');
+                const a = i.querySelector('.accordion__content');
                 if (a) {
                     a.style.maxHeight = null;
                     a.classList.remove('is-open');
@@ -29,3 +29,5 @@ window.handle_faqs = (section_id) => {
         });
     });
 };
+
+window.addEventListener('DOMContentLoaded', handle_product_accordions);

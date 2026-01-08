@@ -25,6 +25,8 @@
     }
     &__content {
         padding: 2.125em 0 3.5em 0;
+        max-height: 932px;
+        overflow-y: auto;
         form {
             display: flex;
             flex-direction: column;
@@ -48,6 +50,7 @@
         &-notifications {
             display: flex;
             justify-content: space-between;
+            gap: 2.375em;
             .product-notification {
                 background-color: $color-grey;
                 border-radius: $radius-small;

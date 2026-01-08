@@ -79,73 +79,139 @@
         "mobile_padding_bottom": 132
       }
     },
-    "frequently_asked_questions_RVRjwa": {
-      "type": "frequently-asked-questions",
+    "service_usps_slider_ytBTQ9": {
+      "type": "service-usps-slider",
+      "name": "Service USPS Slider",
+      "settings": {
+        "service_usps": "product-us-ps-test",
+        "full_width": true,
+        "enable_pagination": true,
+        "autoplay": true,
+        "delay": 3,
+        "speed": 7,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "product_features_6XDQRf": {
+      "type": "product-features",
+      "name": "Product Features",
+      "settings": {
+        "title": "Product Features",
+        "background_color": "var(--color-grey)",
+        "enable_navigation": true,
+        "padding_top": 52,
+        "padding_bottom": 56,
+        "mobile_padding_top": 48,
+        "mobile_padding_bottom": 48
+      }
+    },
+    "call_to_action_GjYnTz": {
+      "type": "call-to-action",
+      "name": "Call To Action",
+      "settings": {
+        "image": "shopify://shop_images/store-placeholder.png",
+        "title": "Chat one-on-one with our team to discover your dream baby setup.",
+        "text": "<p>Reserve a time and our team will walk you through the right products for your family in-store, so you can feel confident and prepared.</p>",
+        "link_1": "shopify://pages/contact",
+        "link_label_1": "Book A Slot",
+        "link_colour_1": "primary",
+        "link_2": "",
+        "link_label_2": "",
+        "link_colour_2": "primary",
+        "background_color": "var(--color-grey)",
+        "cta_background_color": "var(--color-white)",
+        "section_fade_in": false,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "mobile_padding_top": 48,
+        "mobile_padding_bottom": 48
+      }
+    },
+    "product_frequently_asked_questions_mchXig": {
+      "type": "product-frequently-asked-questions",
       "blocks": {
-        "faq_T8kbUM": {
+        "faq_U3NVqh": {
           "type": "faq",
           "settings": {
-            "question": "Which brands does Chelsea Baby carry?",
+            "question": "Question here",
             "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
           }
         },
-        "faq_BB8q6K": {
+        "faq_VqPBmz": {
           "type": "faq",
           "settings": {
-            "question": "How do you select which baby brands and products to sell?",
+            "question": "Question here",
             "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
           }
         },
-        "faq_edEPik": {
+        "faq_6npidk": {
           "type": "faq",
           "settings": {
-            "question": "What is your returns and warranty policy for the branded products?",
+            "question": "Question here",
             "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
           }
         },
-        "faq_TFcxTr": {
+        "faq_xGcYqD": {
           "type": "faq",
           "settings": {
-            "question": "Do you offer after‑sales support for the branded items you sell?",
+            "question": "Question here",
             "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
           }
         },
-        "faq_QWENP7": {
+        "faq_G8tqaj": {
           "type": "faq",
           "settings": {
-            "question": "How quickly can I expect delivery and what are the shipping fees?",
+            "question": "Question here",
             "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
           }
         },
-        "faq_tCWf6b": {
+        "faq_aGWEd3": {
           "type": "faq",
           "settings": {
-            "question": "Do you  have a physical store?",
+            "question": "Question here",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+          }
+        },
+        "faq_HgTQ7K": {
+          "type": "faq",
+          "settings": {
+            "question": "Question here",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+          }
+        },
+        "faq_HXChkJ": {
+          "type": "faq",
+          "settings": {
+            "question": "Question here",
             "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
           }
         }
       },
       "block_order": [
-        "faq_T8kbUM",
-        "faq_BB8q6K",
-        "faq_edEPik",
-        "faq_TFcxTr",
-        "faq_QWENP7",
-        "faq_tCWf6b"
+        "faq_U3NVqh",
+        "faq_VqPBmz",
+        "faq_6npidk",
+        "faq_xGcYqD",
+        "faq_G8tqaj",
+        "faq_aGWEd3",
+        "faq_HgTQ7K",
+        "faq_HXChkJ"
       ],
-      "name": "FAQs",
+      "name": "Product FAQs",
       "settings": {
         "title": "FAQs",
         "label": "<p>Got unanswered questions? <a href=\"/pages/contact\" title=\"Contact Chelsea Baby\">Contact Us</a></p>",
         "label_icon": "shopify://shop_images/icon-phone.svg",
-        "faq_group": "",
-        "image": "shopify://shop_images/two-babies-placeholder.jpg",
+        "image": "shopify://shop_images/product-faqs-placeholder.png",
         "flip_image": false,
         "image_overlay": "",
         "text_color": "var(--color-primary)",
-        "background_color": "var(--color-white)",
+        "background_color": "var(--color-grey)",
         "padding_top": 64,
-        "padding_bottom": 32,
+        "padding_bottom": 64,
         "mobile_padding_top": 32,
         "mobile_padding_bottom": 32
       }
@@ -236,6 +302,7 @@
       "name": "Service USPS Slider",
       "settings": {
         "service_usps": "service-usps-test",
+        "full_width": false,
         "enable_pagination": true,
         "autoplay": true,
         "delay": 3,
@@ -249,7 +316,10 @@
   },
   "order": [
     "main",
-    "frequently_asked_questions_RVRjwa",
+    "service_usps_slider_ytBTQ9",
+    "product_features_6XDQRf",
+    "call_to_action_GjYnTz",
+    "product_frequently_asked_questions_mchXig",
     "ugc_slider_7t3XTU",
     "recommendations_tab_slider_8XxWdf",
     "service_usps_slider_Xz6d86"

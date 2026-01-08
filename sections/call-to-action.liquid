@@ -1,0 +1,271 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_call-to-action.scss' -%}
+
+<div class="section-call-to-action__container" style="background-color: {{ section.settings.background_color }};">
+    <div class="wrap wrap--medium-large wrap--{{ section_id }}">
+        <div class="section-call-to-action__inner">
+            {% if section.settings.image != blank %}
+                <div class="section-call-to-action__image">
+                    {{ section.settings.image.src | image_url: width: 1000 | image_tag: alt: section.settings.image.alt, width: 330 }}
+                </div>
+            {% endif %}
+            <div class="section-call-to-action__content" style="background-color: {{ section.settings.cta_background_color }};">
+                {% if section.settings.title != blank %}
+                    <h3 class="medium">{{ section.settings.title }}</h3>
+                {% endif %}
+                {% if section.settings.text != blank %}
+                    <div>{{ section.settings.text }}</div>
+                {% endif %}
+                <div class="section-call-to-action__content-wrap">
+                    {% if section.settings.link_1 != blank and section.settings.link_label_1 != blank %}
+                        <a class="button button--{{ section.settings.link_colour_1 }}" aria-label="{{ section.settings.link_label_1 }}" href="{{ section.settings.link_1 }}"><span>{{ section.settings.link_label_1 }}</span></a>
+                    {% endif %}
+                    {% if section.settings.link_2 != blank and section.settings.link_label_2 != blank %}
+                        <a class="button button--{{ section.settings.link_colour_2 }}" aria-label="{{ section.settings.link_label_2 }}" href="{{ section.settings.link_2 }}"><span>{{ section.settings.link_label_2 }}</span></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Call To Action",
+    "tag": "section",
+    "class": "section-call-to-action",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Chat one-on-one with our team to discover your dream baby setup."
+        },
+        {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Reserve a time and our team will walk you through the right products for your family in-store, so you can feel confident and prepared.</p>"
+        },
+        {
+            "type": "url",
+            "id": "link_1",
+            "label": "Link One"
+        },
+        {
+            "type": "text",
+            "id": "link_label_1",
+            "label": "Link Label One"
+        },
+        {
+            "type": "select",
+            "id": "link_colour_1",
+            "label": "Link Colour",
+            "options": [
+                {
+                    "value": "primary",
+                    "label": "Primary"
+                },
+                {
+                    "value": "secondary",
+                    "label": "Secondary"
+                },
+                {
+                    "value": "tertiary",
+                    "label": "Tertiary"
+                },
+                {
+                    "value": "transactional",
+                    "label": "Transactional"
+                },
+                {
+                    "value": "white",
+                    "label": "White"
+                },
+                {
+                    "value": "black",
+                    "label": "Black"
+                }
+            ],
+            "default": "primary"
+        },
+        {
+            "type": "url",
+            "id": "link_2",
+            "label": "Link Two"
+        },
+        {
+            "type": "text",
+            "id": "link_label_2",
+            "label": "Link Label Two"
+        },
+        {
+            "type": "select",
+            "id": "link_colour_2",
+            "label": "Link Colour",
+            "options": [
+                {
+                    "value": "primary",
+                    "label": "Primary"
+                },
+                {
+                    "value": "secondary",
+                    "label": "Secondary"
+                },
+                {
+                    "value": "tertiary",
+                    "label": "Tertiary"
+                },
+                {
+                    "value": "transactional",
+                    "label": "Transactional"
+                },
+                {
+                    "value": "white",
+                    "label": "White"
+                },
+                {
+                    "value": "black",
+                    "label": "Black"
+                }
+            ],
+            "default": "primary"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-grey)"
+        },
+         {
+            "type": "select",
+            "id": "cta_background_color",
+            "label": "CTA Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-white)"
+        },
+        {
+            "type": "header",
+            "content": "Animation"
+        },
+        {
+            "type": "checkbox",
+            "id": "section_fade_in",
+            "label": "Section Fade in",
+            "default": false,
+            "info": "Allows the section to fade in on scroll"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 56
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 56
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 48
+        }
+    ],
+    "presets": [
+        {
+            "name": "Call To Action"
+        }
+    ]
+}
+{% endschema %}

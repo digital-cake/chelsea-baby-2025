@@ -5,7 +5,16 @@
     {%- render 'vite' with '@sectionStyles/_service-usps-slider.scss' -%}
     {%- render 'vite' with '@@/components/service-usps-slider.js' -%}
 
-    <div class="wrap wrap--x-large wrap--{{ section_id }}">
+    {% if section.settings.full_width %}
+        {% style %}
+            .wrap--{{ section_id }} {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        {% endstyle %}
+    {% endif %}
+
+    <div class="wrap wrap--{{ section_id }}">
         <div class="section-service-usps-slider__inner">
             <div class="swiper swiper-{{ section_id }}">
                 <div class="swiper-wrapper">
@@ -24,7 +33,7 @@
     </div>
 
     <script>
-        const swiperServiceUspsSliderData = {
+        const swiperServiceUspsSliderData_{{ section_id }} = {
             section_id: {{ section_id | json }},
             size: {{ section.settings.service_usps.size | json }},
             autoplay: {{ section.settings.autoplay | json }},
@@ -34,11 +43,11 @@
         };
 
         window.addEventListener('DOMContentLoaded', function() {
-            window.init_service_usps_slider(swiperServiceUspsSliderData);
+            window.init_service_usps_slider(swiperServiceUspsSliderData_{{ section_id }});
         });
         if (Shopify.designMode) {
             document.addEventListener('shopify:section:load', function() {
-                window.init_service_usps_slider(swiperServiceUspsSliderData);
+                window.init_service_usps_slider(swiperServiceUspsSliderData_{{ section_id }});
             });
         };
     </script>
@@ -55,6 +64,13 @@
           "id": "service_usps",
           "label": "Service USPs",
           "metaobject_type": "service_usps_group"
+        },
+        {
+            "type": "checkbox",
+            "id": "full_width",
+            "label": "Full Width",
+            "info": "Removes padding from left and right side",
+            "default": false
         },
         {
             "type": "header",
