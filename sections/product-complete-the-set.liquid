@@ -10,14 +10,16 @@
     <div class="section-product-complete-the-set__container" style="background-color: {{ section.settings.background_color }};">
         <div class="wrap wrap--{{ section_id }}">
             <div class="section-product-complete-the-set__slides">
-                <div class="section-product-complete-the-set__card">
-                    <h4>{{ section.settings.title }}</h4>
-                    {% if complete_the_set.image != blank %}
-                        {{ complete_the_set.image | image_url: width: 600, crop: "center" | image_tag }}
-                    {% endif %}
-                </div>
                 <div class="swiper swiper-{{ section_id }}">
                     <div class="swiper-wrapper" style="background-color: {{ section.settings.background_color }};">
+                        <div class="swiper-slide">
+                            <div class="section-product-complete-the-set__card">
+                                <h4>{{ section.settings.title }}</h4>
+                                {% if complete_the_set.image != blank %}
+                                    {{ complete_the_set.image | image_url: width: 600, crop: "center" | image_tag }}
+                                {% endif %}
+                            </div>
+                        </div>
                         {% for product in complete_the_set.products.value %}
                             <div class="swiper-slide">
                                 {% render 'card-product', product: product %}

@@ -7,13 +7,11 @@
         margin-bottom: 24px;
     }
     &__card {
-        margin-left: 1em;
+        overflow: hidden;
         position: relative;
         display: flex;
+        height: 100%;
         background-color: $color-heritage;
-        @media (max-width: $w-m) {
-            margin-left: 0;
-        }
         h4 {
             color: $color-white;
             writing-mode: sideways-lr;
