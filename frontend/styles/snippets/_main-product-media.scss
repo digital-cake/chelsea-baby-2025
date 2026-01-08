@@ -49,6 +49,14 @@
         bottom: 10em;
         z-index: 2;
         width: fit-content;
+        @media (max-width: $w-l) {
+            bottom: 0.5em;
+            right: 0.625em;
+            left: auto;
+            flex-direction: row;
+            padding: 0.625em 1.25em;
+            border-radius: 20px;
+        }
         &.gift-card {
             display: none;
         }
@@ -78,13 +86,17 @@
             }
             &.prev {
                 transform: rotate(90deg);
+                order: 2;
                 @media (min-width: $w-l) {
                     transform: rotate(180deg);
+                    order: unset;
                 }
             }
             &.next {
+                order: 3;
                 @media (max-width: $w-l) {
                     transform: rotate(-90deg);
+                    order: unset;
                 }
             }
         }

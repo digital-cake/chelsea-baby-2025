@@ -16,6 +16,10 @@
                 font-size: 0.625em;
             }
         }
+        @media (max-width: $w-m) {
+            flex-direction: column;
+            gap: 1em;
+        }
     }
     &__slider {
         .swiper-pagination {

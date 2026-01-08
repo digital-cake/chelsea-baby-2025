@@ -22,6 +22,9 @@
         z-index: 2;
         width: 100%;
         padding: 2.25em 2em;
+        @media(max-width: $w-l) {
+            padding: 1em;
+        }
     }
     &__content {
         padding: 2.125em 0 3.5em 0;
@@ -89,6 +92,10 @@
                 letter-spacing: 1px;
                 width: 100%;
                 text-align: center;
+            }
+            @media (max-width: 550px) {
+                flex-direction: column;
+                gap: 0.5em;
             }
         }
         &-variants {
@@ -174,6 +181,18 @@
                     color: $color-primary;
                     letter-spacing: 1px;
                     font-weight: $weight-bold;
+                    line-height: 140%;
+                }
+            }
+            @media (max-width: 550px) {
+                flex-flow: row wrap;
+                gap: 0.625em;
+                padding: 0.75em 0.875em;
+                li {
+                    justify-content: center;
+                    &:last-of-type {
+                        width: 100%;
+                    }
                 }
             }
         }

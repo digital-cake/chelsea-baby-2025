@@ -8,6 +8,12 @@
         @media (max-width: $w-m) {
             padding: 0 1em 0 1em; 
         }
+        .swiper-pagination {
+            position: relative;
+            bottom: 0;
+            top: 0;
+            padding-bottom: 1.25em;
+        }
     }
     .swiper {
         .swiper-wrapper {
@@ -30,6 +36,10 @@
                         text-transform: uppercase;
                         font-weight: $weight-display;
                     }
+                    @media (max-width: 550px) {
+                        max-width: none;
+                        padding: 0 3.625em;
+                    }
                 }
                 @media (max-width: $w-m) {
                     padding: 1.875em 0 1.375em 0;
@@ -41,12 +51,6 @@
                     }
                 }
             }
-        }
-        .swiper-pagination {
-            position: relative;
-            bottom: 0;
-            top: 0;
-            margin-top: 1.625em;
         }
     }
 }
