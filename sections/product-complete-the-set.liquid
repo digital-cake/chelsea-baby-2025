@@ -1,0 +1,148 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{% assign complete_the_set = product.metafields.cake.complete_the_set.value %}
+{% if complete_the_set != blank %}
+
+    {%- render 'vite' with '@sectionStyles/_product-complete-the-set.scss' -%}
+    {%- render 'vite' with '@@/components/product-complete-the-set.js' -%}
+
+    <div class="section-product-complete-the-set__container" style="background-color: {{ section.settings.background_color }};">
+        <div class="wrap wrap--{{ section_id }}">
+            <div class="section-product-complete-the-set__slides">
+                <div class="section-product-complete-the-set__card">
+                    <h4>{{ section.settings.title }}</h4>
+                    {% if complete_the_set.image != blank %}
+                        {{ complete_the_set.image | image_url: width: 600, crop: "center" | image_tag }}
+                    {% endif %}
+                </div>
+                <div class="swiper swiper-{{ section_id }}">
+                    <div class="swiper-wrapper" style="background-color: {{ section.settings.background_color }};">
+                        {% for product in complete_the_set.products.value %}
+                            <div class="swiper-slide">
+                                {% render 'card-product', product: product %}
+                            </div>
+                        {% endfor %} 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const swiperCompleteTheSetData = {
+            section_id: {{ section_id | json }}
+        };
+
+        window.addEventListener('DOMContentLoaded', function() {
+            window.init_product_complete_the_set_slider(swiperCompleteTheSetData);
+        });
+        if (Shopify.designMode) {
+            document.addEventListener('shopify:section:load', function() {
+                window.init_product_complete_the_set_slider(swiperCompleteTheSetData);
+            });
+        };
+    </script>
+
+{% endif %}
+
+{% schema %}
+{
+    "name": "Product Complete The Set",
+    "class": "section-product-complete-the-set",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "default": "Features",
+            "label": "Title"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-grey)"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 48
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 4,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 48
+        }
+    ],
+    "presets": [
+      {
+        "name": "Product Complete The Set"
+      }
+    ],
+    "templates": ["product"]
+}
+{% endschema %}

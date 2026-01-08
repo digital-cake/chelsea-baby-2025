@@ -108,6 +108,18 @@
         "mobile_padding_bottom": 48
       }
     },
+    "product_complete_the_set_7tFkw4": {
+      "type": "product-complete-the-set",
+      "name": "Product Complete The Set",
+      "settings": {
+        "title": "Complete the set",
+        "background_color": "var(--color-grey)",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "mobile_padding_top": 48,
+        "mobile_padding_bottom": 48
+      }
+    },
     "call_to_action_GjYnTz": {
       "type": "call-to-action",
       "name": "Call To Action",
@@ -318,6 +330,7 @@
     "main",
     "service_usps_slider_ytBTQ9",
     "product_features_6XDQRf",
+    "product_complete_the_set_7tFkw4",
     "call_to_action_GjYnTz",
     "product_frequently_asked_questions_mchXig",
     "ugc_slider_7t3XTU",

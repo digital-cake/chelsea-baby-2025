@@ -1,0 +1,44 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-product-complete-the-set {
+    overflow: hidden;
+    &__title {
+        font-size: 1.75em;
+        margin-bottom: 24px;
+    }
+    &__card {
+        margin-left: 1em;
+        position: relative;
+        display: flex;
+        background-color: $color-heritage;
+        @media (max-width: $w-m) {
+            margin-left: 0;
+        }
+        h4 {
+            color: $color-white;
+            writing-mode: sideways-lr;
+            text-orientation: mixed;
+            font-size: 1.75em;
+            padding: 1.25em 0.75em;
+            margin-left: -5px;
+        }
+        img {
+            object-fit: cover;
+            max-width: 244px;
+        }
+    }
+    &__slides {
+        display: flex;
+        gap: 1em;
+        .swiper {
+            overflow: visible;
+        }
+        .swiper-slide {
+            max-width: 320px;
+            height: auto;
+            @media (max-width: $w-m) {
+                max-width: 275px;
+            }
+        }
+    }
+}

@@ -12,7 +12,7 @@ window.init_product_features_slider = function(swiperProductFeaturesData) {
 
     const swiper = new Swiper('.swiper-' + swiperProductFeaturesData.section_id, {
         modules: [Mousewheel, Navigation],
-        spaceBetween: 12,
+        spaceBetween: 16,
         slidesPerView: 1.6,
         init: false,
         navigation: swiperProductFeaturesData.enable_navigation && swiperProductFeaturesData.size > 1 ? {
@@ -26,11 +26,11 @@ window.init_product_features_slider = function(swiperProductFeaturesData) {
         breakpoints: {
             768: {
                 slidesPerView: 2.3,
-                spaceBetween: 12
+                spaceBetween: 16
             },
             1025: {
                 slidesPerView: slidesToShow,
-                spaceBetween: 20
+                spaceBetween: 16
             }
         }
     });
