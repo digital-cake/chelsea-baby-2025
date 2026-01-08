@@ -8,39 +8,44 @@
 </div>
 
 <div class="main-product-media{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
-  <button type="button" class="button-text drawer-close">{% render 'icon-cross.svg' %}</button>
+  <button type="button" class="button-text drawer-close">
+    {% render 'icon-cross.svg' %}
+  </button>
 
   {% if product.images.size > 0 or product.media.size > 0 %}
-    {% for media_item in product.media %}
-      {% if media_item.media_type == 'image' %}
-        <div
-          class="main-product-media__image"
-          data-zoom-src="{{ media_item.image.src | image_url: width: 5760, crop: 'center' }}">
-          {{ media_item.image.src | image_url: width: 5760, crop: "center" | image_tag }}
-        </div>
-      {% elsif media_item.media_type == 'video' %}
-        <div class="main-product-media__video">
-           <video 
-                muted
-                autoplay
-                playsinline 
-                loop
-                poster="{{ media_item.preview_image.src | image_url: width: 5760, crop: 'center' }}"
-                width="100%" 
-                height="auto" 
-                {% unless request.design_mode %}
+      {% for media_item in product.media %}
+        {% if media_item.media_type == 'image' %}
+          <a
+            href="{{ media_item.image | image_url: width: 5760, crop: 'center' }}"
+            data-fancybox="product-gallery"
+            data-type="image"
+            class="main-product-media__image"
+          >
+            {{ media_item.image | image_url: width: 5760, crop: "center" | image_tag }}
+          </a>
+        {% elsif media_item.media_type == 'video' %}
+          <a
+            href="{{ media_item.sources[1].url }}"
+            data-fancybox="product-gallery"
+            data-type="video"
+            class="main-product-media__video"
+          >
+            <video 
+              muted
+              autoplay
+              playsinline 
+              loop
+              poster="{{ media_item.preview_image.src | image_url: width: 5760, crop: 'center' }}"
+              width="100%" 
+              height="auto"
+            >
+              <source 
                 src="{{ media_item.sources[1].url }}"
-                {% endunless %}
-                >
-                <source 
-                    {% unless request.design_mode %}
-                    src="{{ media_item.sources[1].url }}"
-                    {% endunless %}
-                    type="video/mp4"
-                >
+                type="video/mp4"
+              >
             </video>
-        </div>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
+          </a>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
 </div>

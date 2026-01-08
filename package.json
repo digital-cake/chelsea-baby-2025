@@ -11,7 +11,7 @@
     "vite-plugin-shopify": "^3.2.0"
   },
   "type": "module",
-   "scripts": {
+  "scripts": {
     "dev": "run-p -sr \"shopify:dev -- {@}\" \"vite:dev\" --",
     "deploy": "run-s \"vite:build\" \"shopify:push -- {@}\" -- --environment=staging",
     "shopify:dev": "shopify theme dev --environment=staging --theme-editor-sync",
@@ -22,6 +22,7 @@
     "deploy:production": "npm run deploy -- --environment=production"
   },
   "dependencies": {
+    "@fancyapps/ui": "^6.1.7",
     "axios": "^1.9.0",
     "moment": "^2.30.1",
     "swiper": "^11.2.6"

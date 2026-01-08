@@ -1,14 +1,35 @@
-// import { Fancybox } from "@fancyapps/ui/dist/fancybox/";
-// import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import { Fancybox } from "@fancyapps/ui/dist/fancybox/";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
-// const init_product_media = () => {
-//     Fancybox.bind('[data-fancybox="gallery"]', {
-//         Thumbs: {
-//             type: "classic",
-//         },
-//         Toolbar: false
-//     });
-// }
+Fancybox.bind('[data-fancybox="product-gallery"]', {
+  Thumbs: {
+    type: "classic",
+  },
+  Toolbar: false,
+});
+
+const zoomBtn = document.querySelector('.navigation-zoom');
+if (zoomBtn) {
+  zoomBtn.addEventListener('click', () => {
+    const links = Array.from(
+      document.querySelectorAll('[data-fancybox="product-gallery"]')
+    );
+
+    const items = links.map((el) => ({
+      src: el.getAttribute('href'),
+      type: el.dataset.type || 'image',
+      caption: el.dataset.caption || '',
+    }));
+
+    Fancybox.show(items, {
+      Thumbs: {
+        type: "classic",
+      },
+      Toolbar: false,
+    });
+  });
+}
+
 
 const open_product_description = () => {
     const toggle = document.getElementById('product-description-toggle');
