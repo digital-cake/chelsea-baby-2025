@@ -44,15 +44,10 @@
                                         {% render 'product-price', product: product %}
                                     </div>
                                     <div class="actions">
-                     
-                                            {% form 'product', product, class: 'product-form product-form-upsell' %}
-                                                <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
-                                                <button class="button-text button-text--primary button--quick-add" type="submit"><span>{{ "products.product.add" | t }} +</span></button>
-                                            {% endform %}
-                                
-                                        {% comment %}
-                                            QUICK ADD LOGIC OFF PP FOR EITHER INSTANT ADD OR SHOW DRAWER
-                                        {% endcomment %}
+                                        {% form 'product', product, class: 'product-form product-form-upsell' %}
+                                            <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+                                            <button class="button-text button-text--primary button--quick-add" type="submit"><span>{{ "products.product.add" | t }} +</span></button>
+                                        {% endform %}
                                     </div>
                                 </div>
                             </div>

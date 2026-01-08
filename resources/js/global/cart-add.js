@@ -197,9 +197,8 @@ window.updateProductMainStickyButton = () => {
 	const clone = atcButtonContainerEl.cloneNode(true);
 
 	const stickyModalContainerEl = document.querySelector('.main-product-sticky-add');
-	const footerGroup = document.querySelector('.shopify-section-group-footer-group');
 	if (!stickyModalContainerEl) return;
-	const stickyModalActions = stickyModalContainerEl.querySelector('.main-product-sticky-add__actions-container');
+	const stickyModalActions = stickyModalContainerEl.querySelector('.main-product-sticky-add__actions');
 	stickyModalActions.innerHTML = "";
 	stickyModalActions.append(clone);
 
@@ -210,7 +209,7 @@ window.updateProductMainStickyButton = () => {
                 stickyModalContainerEl.style.display = 'none';
                 document.body.classList.remove('show-mobile-quick-add');
             } else {
-                stickyModalContainerEl.style.display = 'grid';
+                stickyModalContainerEl.style.display = 'block';
             }
         });
     }, {
@@ -219,6 +218,5 @@ window.updateProductMainStickyButton = () => {
     });
 
   observer.observe(atcButtonContainerEl);
-	//observer.observe(footerGroup);
 }
 window.updateProductMainStickyButton();

@@ -6,7 +6,7 @@
     </span>
     <span class="compare"></span>
     {% else %}
-    <span itemprop="price" content="{{ product.price | money }}">
+    <span class="price" itemprop="price" content="{{ product.price | money }}">
         {% if product.compare_at_price > product.price %}<ins>{% endif %}
         {{- product.price | money -}}
         {% if product.compare_at_price > product.price %}</ins>{% endif %}

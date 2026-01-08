@@ -182,6 +182,7 @@
                             </div>
                         {% endcase %}
                 {% endfor %}
+                {% render 'main-product-sticky-add', product: product %}
             {% endform %}
             {% render "product-accordions", product: product %}
         </div>

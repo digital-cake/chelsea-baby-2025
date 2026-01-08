@@ -1,8 +1,6 @@
 const cartDrawerButton = document.querySelector('.section-header__actions-cart button');
-console.log('cartDrawerButton', cartDrawerButton);
 if (cartDrawerButton)
 	cartDrawerButton.addEventListener('click', e => {
-console.log('click', e.target)
 		e.preventDefault();
 		if (document.body.classList.contains('drawer-cart-open')) {
 			window.closeAllDrawers(() => {});
