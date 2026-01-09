@@ -5,9 +5,15 @@
 
 <div class="wrap wrap--{{ section_id }}">
     <div class="section-newsletter-signup__inner">
-        {% if section.settings.text != blank %}
-            <div class="section-newsletter-signup__text">{{ section.settings.text }}</div>
-        {% endif %}
+        <div class="section-newsletter-signup__header">
+            <span>{{ "general.newsletter.label" | t }}</span>
+            {% if section.settings.text != blank %}
+                <div class="section-newsletter-signup__text">{{ section.settings.text }}</div>
+            {% endif %}
+        </div>
+        <div class="section-newsletter-signup__form">
+            {% render 'klaviyo-footer-signup-form' %}
+        </div>
     </div>
 </div>
 

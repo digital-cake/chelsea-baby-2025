@@ -18,6 +18,11 @@
         color: $color-primary;
         font-family: $font-base;
         letter-spacing: 0.6px;
+        text-transform: capitalize;
+    }
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
     }
     &--no-styling {
         padding: 0;

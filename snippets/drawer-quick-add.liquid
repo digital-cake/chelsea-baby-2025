@@ -1,0 +1,19 @@
+{%- render 'vite' with '@snippetStyles/_drawer-quick-add.scss' -%}
+{%- render 'vite' with '@sectionStyles/_main-product.scss' -%}
+{%- render 'vite' with '@snippetStyles/_product-options.scss' -%}
+{%- render 'vite' with '@@/components/main-product-media.js' -%}
+
+<div class="drawer drawer-quick-add" id="drawer-quick-add">
+    <div class="drawer__inner drawer-quick-add__inner">
+        <div class="drawer__header drawer-quick-add__header" id="drawer-quick-add-header">
+            <button class="drawer-close button button--no-styling button--primary" aria-label="{{ 'accessibility.close' | t }}">{% render "icon-cross.svg" %}</button>
+            <div class="drawer-quick-add__header__status hidden">
+                <span class="status--added">{{ 'quick_add.item_added' | t }}</span>
+            </div>
+        </div>
+        <div class="drawer-quick-add__images"></div>
+        <div class="drawer__content drawer-quick-add__content">
+           <span class="loading-icon">{% render 'icon-loader.svg' %}</span>
+        </div>
+    </div>
+</div>

@@ -12,16 +12,111 @@
         display: grid;
         grid-template-columns: 250px 1fr;
         gap: 5.75em;
-        @media (max-width: $w-m) {
+        align-items: center;
+        @media (max-width: $w-l) {
             grid-template-columns: 1fr;
             gap: 1em;
+        }
+    }
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        span {
+            display: block;
+            background-color: $color-heritage;
+            padding: 6px;
+            border-radius: 2.85px;
+            font-size: 8px;
+            text-transform: uppercase;
+            color: $color-white;
+            width: fit-content;
+            font-weight: $weight-bold;
+            letter-spacing: 0.8px;
+            line-height: 6px;
+            @media (max-width: $w-l) {
+                margin: 0 auto;
+            }
         }
     }
     &__text {
         color: $color-white;
         line-height: 140%;
-        @media (max-width: $w-m) {
+        @media (max-width: $w-l) {
             text-align: center;
+            max-width: 270px;
+            margin: 0 auto;
+        }
+    }
+    &__form {
+        .newsletter {
+            &__form {
+                display: flex;
+                align-items: center;
+                gap: 1.75em;
+                @media (max-width: $w-m) {
+                    flex-direction: column;
+                    gap: 1em;
+                }
+                input[type="email"] {
+                    border: none;
+                    text-transform: initial !important;
+                    background-color: transparent !important;
+                    &::placeholder {
+                        color: $color-white;
+                        text-transform: uppercase;
+                    }
+                    &:focus, &:valid, &:focus-visible {
+                        background-color: transparent !important;
+                        outline: none;
+                        appearance: none;
+                        box-shadow: none;
+                    } 
+                }
+                input, label {
+                    text-transform: uppercase;
+                    font-size: 8px;
+                    color: $color-white;
+                }
+            }
+            &__inputs {
+                width: 100%;
+                border: 1px solid $color-white;
+                border-radius: 25px;
+                padding: 0 1em;
+                display: flex;
+            }
+            &__success {
+                margin-top: 1em;
+                color: $color-white;
+                font-size: 0.875em;
+            }
+            &__terms {
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+                line-height: 1;
+                label {
+                    text-wrap: nowrap;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5em;
+                    cursor: pointer;
+                    letter-spacing: 0.8px;
+                }
+                input[type="checkbox"] {
+                    accent-color: $color-white;
+                    border-color: $color-white;
+                    appearance: revert !important;
+                    border-radius: 50%;
+                }
+            }
+            button {
+                min-width: fit-content;
+                @media (max-width: $w-m) {
+                    width: 100%;
+                }
+            }
         }
     }
 }

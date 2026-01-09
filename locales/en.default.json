@@ -41,10 +41,11 @@
             "follow_us": "Follow us"
         },
         "newsletter": {
-            "label": "Newsletter Sign Up",
-            "sign_up": "Sign Up",
+            "label": "Mailing list",
+            "sign_up": "Join the mailing list",
             "success": "Thank you for signing up. Please keep an eye on your email for news and offers.",
-            "placeholder": "Email Address"
+            "placeholder": "Enter Email Address",
+            "terms": "I agree to the T&C’s"
         },
         "recently_viewed": {
             "title": "Recently viewed"
@@ -164,6 +165,12 @@
         "notification_message": "You’ll receive an email when shipped",
         "terms_and_conditions": "I have read and agree to the Terms and Conditions",
         "preorder_message": "You have [quantity] pre-order item — we’ll keep you updated on delivery times."
+    },
+    "quick_add": {
+      "title": "Add to Bag",
+      "item_added": "Item added to bag",
+      "view_product": "View full product",
+      "back_to_bag": "Back to bag"
     },
     "products": {
         "product": {

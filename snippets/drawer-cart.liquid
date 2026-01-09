@@ -45,8 +45,7 @@
                                     </div>
                                     <div class="actions">
                                         {% form 'product', product, class: 'product-form product-form-upsell' %}
-                                            <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
-                                            <button class="button-text button-text--primary button--quick-add" type="submit"><span>{{ "products.product.add" | t }} +</span></button>
+                                            <button class="button-text button-text--primary button--quick-add product-card-quick-add" type="submit"{% if product.has_only_default_variant %} data-id="{{ product.selected_or_first_available_variant.id }}"{% else %} id="quick-add" data-product-handle="{{ product.handle }}"{% endif %}><span>{{ "products.product.add" | t }} +</span></button>
                                         {% endform %}
                                     </div>
                                 </div>

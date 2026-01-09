@@ -336,6 +336,25 @@
       ]
     },
     {
+        "name": "Newsletter",
+        "settings": [
+            {
+                "type": "text",
+                "id": "klaviyo_company_id",
+                "label": "Klaviyo Company ID",
+                "default": "VgXiWB",
+                "info": "Your Klaviyo Company ID (found in your Klaviyo account settings)"
+            },
+            {
+                "type": "text",
+                "id": "klaviyo_list_id",
+                "label": "Klaviyo List ID",
+                "default": "RuQ36k",
+                "info": "Your Klaviyo List ID (found in your Klaviyo account settings)"
+            }
+        ]
+    },
+    {
         "name": "SEO",
         "settings": [
           {

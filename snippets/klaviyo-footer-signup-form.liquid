@@ -1,0 +1,149 @@
+<div class="newsletter" id="klaviyo-newsletter">
+    <form id="klaviyo-newsletter-form" class="newsletter__form">
+
+        <div class="newsletter__inputs">
+            <input
+                id="klaviyo-email"
+                class="newsletter__input"
+                type="email"
+                placeholder="{{ "general.newsletter.placeholder" | t }}"
+                required
+            >
+
+            <div class="newsletter__terms">
+                <label for="klaviyo-terms" class="newsletter__terms-label">
+                    <input
+                        type="checkbox"
+                        id="klaviyo-terms"
+                        name="klaviyo-terms"
+                        required
+                    >
+                    {{ "general.newsletter.terms" | t }}
+                </label>
+            </div>
+        </div>
+
+        <button
+            type="submit"
+            id="klaviyo-submit"
+            class="newsletter__button button button--white"
+        >
+            <span class="newsletter__label-default">{{ "general.newsletter.sign_up" | t }}</span>
+        </button>
+    </form>
+
+    <div id="klaviyo-error" class="newsletter__error" style="display:none;"></div>
+    <div id="klaviyo-success" class="newsletter__success" style="display:none;">
+        {{ "general.newsletter.success" | t }}
+    </div>
+</div>
+
+<script>
+(function () {
+    const form = document.getElementById('klaviyo-newsletter-form');
+    const emailInput = document.getElementById('klaviyo-email');
+    const errorEl = document.getElementById('klaviyo-error');
+    const successEl = document.getElementById('klaviyo-success');
+    const termsInput = document.getElementById('klaviyo-terms');
+
+    const companyId = '{{ settings.klaviyo_company_id }}';
+    const listId = '{{ settings.klaviyo_list_id }}';
+
+    function setSuccess() {
+        successEl.style.display = 'block';
+        errorEl.style.display = 'none';
+    }
+
+    function setError(message) {
+        errorEl.textContent = message;
+        errorEl.style.display = 'block';
+        successEl.style.display = 'none';
+    }
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const email = emailInput.value.trim();
+
+        if (!email) {
+            setError('Please enter a valid email address.');
+            return;
+        }
+
+        if (!termsInput.checked) {
+            setError('Please agree to the terms and conditions.');
+            return;
+        }
+
+        errorEl.style.display = 'none';
+        successEl.style.display = 'none';
+
+        fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + encodeURIComponent(companyId), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'revision': '2025-01-15'
+            },
+            body: JSON.stringify({
+                data: {
+                    type: 'subscription',
+                    attributes: {
+                        profile: {
+                            data: {
+                                type: 'profile',
+                                attributes: {
+                                    email: email
+                                }
+                            }
+                        },
+                        custom_source: 'Footer Newsletter Form'
+                    },
+                    relationships: {
+                        list: {
+                            data: {
+                                type: 'list',
+                                id: listId
+                            }
+                        }
+                    }
+                }
+            })
+        })
+        .then(function (response) {
+            // ✅ Klaviyo success = 2xx status (often 204 with empty body)
+            if (response.ok) {
+                return null;  // Success, no body to parse
+            }
+            
+            // Only try JSON parsing for error responses (4xx/5xx)
+            return response.text().then(function (errorText) {
+                console.error('Raw error response:', errorText);
+                try {
+                    const errorData = JSON.parse(errorText);
+                    const detail = errorData?.errors?.[0]?.detail;
+                    throw new Error(detail || 'Subscription failed');
+                } catch {
+                    throw new Error('Subscription failed - invalid response');
+                }
+            });
+        })
+        .then(function () {
+            // Success path
+            if (typeof klaviyo !== 'undefined' && typeof klaviyo.track === 'function') {
+                klaviyo.track('Newsletter Signup', {
+                    Source: 'Footer Form',
+                    'List ID': listId
+                });
+            }
+            emailInput.value = '';
+            termsInput.checked = false;
+            setSuccess();
+        })
+        .catch(function (err) {
+            console.error('Klaviyo subscription error:', err);
+            setError(err.message || 'Something went wrong. Please try again.');
+        });
+    });
+})();
+</script>

@@ -94,8 +94,9 @@
             }
             &.next {
                 order: 3;
-                @media (max-width: $w-l) {
-                    transform: rotate(-90deg);
+                transform: rotate(270deg);
+                @media (min-width: $w-l) {
+                    transform: rotate(0deg);
                     order: unset;
                 }
             }
@@ -123,8 +124,5 @@
         &.full-span {
             grid-column: 1 / -1;
         }
-    }
-    .drawer-close {
-        display: none;
     }
 }

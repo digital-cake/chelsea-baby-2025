@@ -43,7 +43,7 @@
         &-title-price {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             gap: 2em;
             .price-display {
                 flex-direction: column;
@@ -52,6 +52,7 @@
                     font-size: 22px;
                     font-family: $font-display;
                     color: $color-primary;
+                    line-height: 140%;
                 }
                 del {
                     font-family: $font-base;
@@ -68,6 +69,13 @@
             margin-right: 2em;
             @media (max-width: $w-l) {
                 margin-right: 0;
+            }
+        }
+        &-actions {
+            #view-product {
+                display: none;
+                height: 50px;
+                min-width: fit-content;
             }
         }
         &-payment {

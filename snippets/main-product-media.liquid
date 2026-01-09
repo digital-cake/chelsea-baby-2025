@@ -8,10 +8,6 @@
 </div>
 
 <div class="main-product-media{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
-  <button type="button" class="button-text drawer-close">
-    {% render 'icon-cross.svg' %}
-  </button>
-
   {% if product.images.size > 0 or product.media.size > 0 %}
       {% for media_item in product.media %}
         {% if media_item.media_type == 'image' %}

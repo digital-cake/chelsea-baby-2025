@@ -1,0 +1,96 @@
+@use "../abstracts/variables.scss" as *;
+
+.drawer-quick-add-open {
+    .drawer-quick-add {
+        right: 0;
+        left: auto;
+        opacity: 1;
+    }
+    #overlay-mask {
+        display: block;
+    }
+}
+
+.drawer-quick-add {
+    max-width: 688px;
+    right: -688px;
+    left: auto;
+    border-top-left-radius: $radius-small;
+    border-bottom-left-radius: $radius-small;
+    &__inner {
+        overflow-y: auto;
+    }
+    &__images {
+        position: relative;
+    }
+    &__header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 1em;
+        z-index: 2;
+        button {
+            width: fit-content;
+            width: 1.875em;
+            height: 1.875em;
+            margin-left: auto;
+        }
+        &__status {
+            &.hidden {
+                display: none;
+            }
+        }
+    }
+    &__content {
+        padding: 0 1.875em;
+        overflow: hidden;
+    }
+    .accordions, .section-main-product__content-notifications, .section-main-product__content-payment, #product-description-toggle {
+        display: none;
+    }
+    .section-main-product__content-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1em;
+        margin-right: 0;
+        #view-product {
+            display: flex;
+        }
+    }
+    .main-product-media {
+        margin-top: 4.625em;
+        @media (min-width: $w-l) {
+            //reset settings from product page
+            overflow-x: auto;
+            display: flex;
+            scroll-snap-type: x mandatory;
+        }
+        &__navigation {
+            bottom: 0.5em;
+            right: 0.625em;
+            left: auto;
+            flex-direction: row;
+            padding: 0.625em 1.25em;
+            border-radius: 20px;
+            .navigation-button {
+                background-color: $color-grey;
+                &.prev {
+                    transform: rotate(90deg);
+                }
+                &.next {
+                    transform: rotate(270deg);
+                }
+            }
+            .navigation-zoom {
+                display: none;
+            }
+        }
+        &__image, &__video {
+            flex: auto;
+            min-width: 304px;
+            pointer-events: none;
+        }
+    }
+}

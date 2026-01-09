@@ -43,6 +43,8 @@
     </button>
 {% endif %}
 
-<a class="klaviyo-bis-trigger" href="#" aria-label="{{ "products.product.notify_me" | t }}" style="display: none;" data-url="{{ product.url }}">
+<a class="klaviyo-bis-trigger button button--primary" href="#" aria-label="{{ "products.product.notify_me" | t }}" style="display: none;" data-url="{{ product.url }}">
     <span>{{ "products.product.notify_me" | t }}</span>
 </a>
+
+<a href="{{ product.url }}" id="view-product" type="button" class="button button--primary" aria-label="{{ 'quick_add.view_product' | t }}"><span>{{ 'quick_add.view_product' | t }}</span></a>
