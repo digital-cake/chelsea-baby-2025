@@ -46,11 +46,11 @@
 			font-size: 1.25em;
 			align-items: flex-start;
 			color: $color-primary;
-			padding: 0 1.625em;
 			background-color: $color-white;
-			border-bottom: 1px solid $color-primary;
+			border: none;
 			outline: none;
             border-radius: unset;
+			padding: 0;
 			&::-webkit-search-cancel-button {
 				display: none;
 			}
@@ -102,6 +102,17 @@
 			span {
 				display: none;
 			}
+		}
+		&-wrap {
+			position: relative;
+			height: 100%;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			gap: 0.625em;
+			border-bottom: 1px solid $color-primary;
+			padding: 0 1.625em;
+			background-color: $color-white;
 		}
 	}
 }

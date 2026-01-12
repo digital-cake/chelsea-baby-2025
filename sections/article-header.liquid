@@ -14,7 +14,7 @@
         </div>
         <div class="section-article-header__image">
             {% if article.image != blank %}
-                {{ article.image.src | image_url: width: 3840 | image_tag: class: "section-article-header__image", alt: article.image.alt }}
+                {% render 'responsive-image', width: 1920, source: article.image.src , alt: article.image.alt  %}
             {% endif %}
             <div class="section-article-header__overlay" style="background:{{ section.settings.image_overlay }}"></div>
         </div>

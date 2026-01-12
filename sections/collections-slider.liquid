@@ -27,9 +27,9 @@
                                     <div class="section-collections-slider__slider-slide">
                                        <a class="image-wrapper" aria-label="{{ block.settings.collection.title }}" href="{{ block.settings.collection.url }}">
                                             {% if block.settings.image != blank %}
-                                                {{ block.settings.image.src | image_url: width: 960, crop: "center" | image_tag: alt: block.settings.image.alt, width: 320 }}
+                                                {% render 'responsive-image', width: 960, source: block.settings.image.src, alt: block.settings.image.alt  %}
                                             {% elsif block.settings.collection.image != blank %}
-                                                {{ block.settings.collection.image.src | image_url: width: 960, crop: "center" | image_tag: alt: block.settings.collection.image.alt, width: 320 }}
+                                                {% render 'responsive-image', width: 960, source: block.settings.collection.image.src, alt: block.settings.collection.image.alt  %}
                                             {% endif %}
                                             <div class="image-overlay" style="background:{{ block.settings.image_overlay }}"></div>
                                        </a>

@@ -29,7 +29,7 @@
         left: 0;
         width: 100%;
         padding-top: 1em;
-        z-index: 2;
+        z-index: 3;
         button {
             width: fit-content;
             width: 1.875em;
@@ -46,7 +46,11 @@
         padding: 0 1.875em;
         overflow: hidden;
     }
-    .accordions, .section-main-product__content-notifications, .section-main-product__content-payment, #product-description-toggle {
+    .section-main-product__badges {
+        padding: 1em;
+        top: 5em;
+    }
+    .accordions, .section-main-product__content-notifications, .section-main-product__content-payment, #product-description-toggle, .wishlist-toggle {
         display: none;
     }
     .section-main-product__content-actions {

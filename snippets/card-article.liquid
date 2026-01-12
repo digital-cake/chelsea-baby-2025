@@ -1,6 +1,6 @@
 <a aria-label="{{ article.title }}" href="{{ article.url }}" class="card-article">
     <div class="card-article__image">
-        {{ article.image.src | image_url: width: 1000 | image_tag: alt: article.image.alt, width: 500 }}
+        {% render 'responsive-image', width: 1000, source: article.image.src, alt: article.image.alt %}
         <div class="card-article__image-overlay" style="background:{{ section.settings.image_overlay }}"></div>
     </div>
     <div class="card-article__content">

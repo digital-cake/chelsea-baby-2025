@@ -9,7 +9,7 @@
             <div class="section-media-text__inner-media">
                 {% if section.settings.image != blank %}
                     <div class="image-wrapper">
-                        {{ section.settings.image.src | image_url: width: 1620, crop: "center" | image_tag: alt: section.settings.image.alt, width: 540 }}
+                        {% render 'responsive-image', width: 1620, source: section.settings.image.src, alt: section.settings.image.alt %}
                     </div>
                 {% elsif section.settings.video != blank %}
                     <div class="video-wrapper">

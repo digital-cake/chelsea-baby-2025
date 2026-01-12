@@ -106,7 +106,6 @@ async function handleOptionSelectionChange($selector) {
 
 		if (selectedOptions.length < $siblingSelectors.length) {
 			$button.disabled = true;
-			$button.classList.remove('button--transactional');
 			$buttonLabel.innerText = label_choose_options;
 			window.updateProductMainStickyButton();
 			return;

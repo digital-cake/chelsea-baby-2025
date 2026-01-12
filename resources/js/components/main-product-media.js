@@ -4,8 +4,10 @@ window.init_product_media = root => {
 	const nextBtn = root.querySelector('.navigation-button.next');
 
 	if (images.length && prevBtn && nextBtn) {
-		function isMobile() {
-			return window.innerWidth <= 768;
+		function isMobileOrQuickAddDrawer() {
+			if (window.innerWidth <= 768 || root.classList.contains('drawer-quick-add')) {
+				return true;
+			}
 		}
 
 		function groupImages(images) {
@@ -13,7 +15,7 @@ window.init_product_media = root => {
 			let i = 0;
 			let isEvenRow = true; // Start with 2-image row
 
-			if (isMobile()) {
+			if (isMobileOrQuickAddDrawer()) {
 				while (i < images.length) {
 					rows.push([images[i]]);
 					i += 1;
@@ -43,9 +45,8 @@ window.init_product_media = root => {
 		let currentRow = 0;
 
 		rows.forEach((row, idx) => {
-			if (!isMobile() && row.length === 1) {
+			if (!isMobileOrQuickAddDrawer() && row.length === 1) {
 				row[0].classList.add('full-span');
-				row[0].querySelector('img').classList.remove('zoomable-image');
 			}
 		});
 
@@ -54,7 +55,7 @@ window.init_product_media = root => {
 			const scrollContainer = root.querySelector('.main-product-media');
 
 			if (scrollContainer && el) {
-				if (isMobile()) {
+				if (isMobileOrQuickAddDrawer()) {
 					// Horizontal scroll on mobile
 					scrollContainer.scrollTo({
 						left: el.offsetLeft,
@@ -84,7 +85,7 @@ window.init_product_media = root => {
 			if (currentRow < rows.length - 1) scrollToRow(currentRow + 1);
 		});
 
-		if (!isMobile()) {
+		if (!isMobileOrQuickAddDrawer()) {
 			const scrollContainer = document.querySelector('.main-product-media');
 
 			if (scrollContainer) {
@@ -115,7 +116,7 @@ window.init_product_media = root => {
 			}
 		}
 
-		if (isMobile()) {
+		if (isMobileOrQuickAddDrawer()) {
 			const scrollContainer = root.querySelector('.main-product-media');
 
 			if (scrollContainer) {

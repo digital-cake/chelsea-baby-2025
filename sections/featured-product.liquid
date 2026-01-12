@@ -24,7 +24,7 @@
                 <div class="section-featured-product__inner-media">
                     {% if section.settings.image != blank %}
                     <div class="image-wrapper">
-                        {{ section.settings.image.src | image_url: width: 1800, crop: "center" | image_tag: alt: section.settings.image.alt, width: 678 }}
+                        {% render 'responsive-image', width: 1800, source: section.settings.image.src, alt: section.settings.image.alt %}
                     </div>
                     {% elsif section.settings.video != blank %}
                         <div class="video-wrapper">
@@ -53,7 +53,7 @@
                             </button>
                         {% if feature_product.images != blank %}
                             <a href="{{ feature_product.url }}" aria-label="{{ produce.title }}">
-                                {{ feature_product.images[0].src | image_url: width: 800, crop: "center" | image_tag: alt: feature_product.images[0].alt, width: 284 }}
+                                {% render 'responsive-image', width: 800, source: feature_product.images[0].src, alt: feature_product.images[0].alt %}
                             </a>
                         {% endif %}
                         </div>

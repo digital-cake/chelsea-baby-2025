@@ -7,17 +7,17 @@
     <div class="wrap wrap--{{ section_id }}">
         <div class="section-collection-header__inner">
             {% if section.settings.background_image_desktop != blank %}
-                {{ section.settings.background_image_desktop.src | image_url: width: 3840 | image_tag: class: "section-collection-header__image desktop", alt: section.settings.background_image_desktop.alt }}
+                {% render 'responsive-image', width: 3840, source: section.settings.background_image_desktop.src, alt: section.settings.background_image_desktop.alt, class: "section-collection-header__image desktop" %}
             {% else %}
                 {% if collection.image != blank %}
-                    {{ collection.image.src | image_url: width: 1220 | image_tag: class: "section-collection-header__image desktop", alt: collection.image.alt }}
+                    {% render 'responsive-image', width: 1220, source: collection.image.src, alt: collection.image.alt, class: "section-collection-header__image desktop" %}
                 {% endif %}
             {% endif %}
             {% if section.settings.background_image_mobile != blank %}
-                {{ section.settings.background_image_mobile.src | image_url: width: 3840 | image_tag: class: "section-collection-header__image mobile", alt: section.settings.background_image_mobile.alt }}
+                {% render 'responsive-image', width: 3840, source: section.settings.background_image_mobile.src, alt: section.settings.background_image_mobile.alt, class: "section-collection-header__image mobile" %}
             {% else %}
                 {% if collection.image != blank %}
-                    {{ collection.image.src | image_url: width: 1220 | image_tag: class: "section-collection-header__image mobile", alt: collection.image.alt }}
+                    {% render 'responsive-image', width: 1220, source: collection.image.src, alt: collection.image.alt, class: "section-collection-header__image mobile" %}
                 {% endif %}
             {% endif %}
             <div class="section-collection-header__overlay" style="background:{{ section.settings.image_overlay }}"></div>

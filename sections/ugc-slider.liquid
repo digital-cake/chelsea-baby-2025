@@ -30,7 +30,7 @@
                                                 {% if block.settings.label != blank %}
                                                     <span class="slide-label">{{ block.settings.label }}</span>
                                                 {% endif %}
-                                                {{ block.settings.image.src | image_url: width: 900, crop: "center" | image_tag: alt: block.settings.image.alt, width: 324 }}
+                                                {% render 'responsive-image', width: 900, source: block.settings.image.src, alt: block.settings.image.alt %}
                                             {% if block.settings.link != blank %}</a>{% endif %}
                                         </div>
                                     </div>

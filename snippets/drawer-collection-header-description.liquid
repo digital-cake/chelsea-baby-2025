@@ -14,14 +14,14 @@
             {% endif %}
 
             {% if collection.metafields.cake.collection_header_description_drawer_image != blank %}
-                {{ collection.metafields.cake.collection_header_description_drawer_image | image_url: width: 820, crop: "center" | image_tag: alt: collection.title, loading: 'lazy' }}
+                {% render 'responsive-image', width: 820, source: collection.metafields.cake.collection_header_description_drawer_image, alt: collection.title %}
             {% else %}
                 {% if collection.image != blank %}
-                    {{ collection.image.src | image_url: width: 820, crop: "center" | image_tag: alt: collection.image.alt, loading: 'lazy' }}
+                    {% render 'responsive-image', width: 820, source: collection.image.src, alt: collection.title %}
                     {% else %}
                         {% assign first_collection_product = collection.products.first %}
                         {% if first_collection_product %}
-                             {{ first_collection_product.images[0].src | image_url: width: 820, crop: "center" | image_tag: alt: first_collection_product.images[0].alt, loading: 'lazy' }}
+                            {% render 'responsive-image', width: 820, source: first_collection_product.images[0].src, alt: first_collection_product.images[0].alt %}
                         {% endif %}
                 {% endif %}
             {% endif %}

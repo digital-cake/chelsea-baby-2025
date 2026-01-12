@@ -1,13 +1,36 @@
 @use "../abstracts/variables.scss" as *;
 
+.template-index {
+    main {
+        padding-top: 0;
+    }
+}
+
+main {
+    @media (min-width: $w-l) {
+        padding-top: 115px;
+    }
+}
+
 .section-header {
-    &__inner {
-        // &--index {
-        //     position: fixed;
-        //     width: 100%;
-        //     z-index: 3;
-        //     background-color: $color-white;
-        // }
+    width: 100%;
+    transition: transform 0.4s ease, opacity 0.3s ease, top 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: transform, opacity, top;
+    background-color: $color-white;
+    z-index: 11;
+    top: unset;
+    position: fixed;
+    &.scrolling {
+        transform: translateY(-1000%);
+        opacity: 0;
+    }
+    &.scrolling-up {
+        top: 0;
+        width: 100%;
+        opacity: 1;
+    }
+    @media (max-width: $w-l) {
+        position: relative;
     }
     &__branding {
         width: 100%;

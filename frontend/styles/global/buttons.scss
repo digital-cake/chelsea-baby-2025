@@ -166,6 +166,15 @@
     border-radius: 2px;
 }
 
+.drawer-filters-toggle {
+    button {
+        transition: background-color 0.3s ease-in-out;
+        &:hover {
+            background-color: $color-transactional;
+        }
+    }
+}
+
 .wishlist-toggle {
     width: 24px;
     height: 24px;

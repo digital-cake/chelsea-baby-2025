@@ -25,7 +25,7 @@
                         {% endif %}
                     {% endif %}
                     {% if section.settings.feature_image != blank %}
-                        {{ section.settings.feature_image.src | image_url: width: 1400, crop: "center" | image_tag: class: 'section-blog-showcase__feature-image', alt: section.settings.feature_image.alt, width: 562 }}
+                        {% render 'responsive-image', width: 1400, source: section.settings.feature_image.src, alt: section.settings.feature_image.alt %}
                         <div class="image-overlay" style="background:{{ section.settings.feature_image_overlay }}"></div>
                     {% endif %}
                 {% endif %}

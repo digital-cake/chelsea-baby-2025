@@ -20,7 +20,7 @@
         </button>
     </div>
     <a href="{{ product.url | within: 'collection' }}" class="card-product__media">
-        {{ product.images[0].src | image_url: width: 640 | image_tag: alt: media.alt, width: 320, height: 320 }}
+        {% render 'responsive-image', width: 640, source: product.images[0].src, alt: product.images[0].alt %}
     </a>
     <div class="card-product__footer">
         <p class="card-product__title">{{ product.title | truncatewords: 6 }}</p>

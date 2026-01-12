@@ -8,7 +8,7 @@
         <div class="section-image-text-split__inner{% if section.settings.reverse_content == true %} reverse{% endif %}">
             <div class="section-image-text-split__image">
                 {% if section.settings.image_desktop != blank %}
-                    {{ section.settings.image_desktop.src | image_url: width: 720, crop: "center" | image_tag: class: 'desktop', alt: section.settings.image_desktop.alt, loading: 'lazy' }}
+                    {% render 'responsive-image', width: 720, source:  section.settings.image_desktop.src , alt: section.settings.image_desktop.alt  %}
                 {% endif %}
             </div>
             <div class="section-image-text-split__text" style="text-align: {{ section.settings.text_alignment }};">

@@ -4,19 +4,9 @@
 {%- render 'vite' with '@sectionStyles/_page-content.scss' -%}
 {% comment %} {%- render 'vite' with '@@/components/page-content.js' -%} {% endcomment %}
 
-<div class="wrap wrap--large wrap--{{ section_id }}">
-
-    {% if section.settings.page != blank %}
-
-    <h2 class="small">{{ section.settings.page.title }}</h2>
-
-    {{ section.settings.page.content }}
-
-    {% else %}
+<div class="wrap wrap--x-large wrap--{{ section_id }}">
 
     {{ page.content }}
-
-    {% endif %}
 
 </div>
 

@@ -65,7 +65,7 @@
                                         {% if block.settings.image == blank %}{% continue %}{% endif %}
                                         <div class="swiper-slide">
                                             <div class="image-wrapper">
-                                                {{ block.settings.image.src | image_url: width: 1272 | image_tag: alt: block.settings.image.alt, width: 424 }}
+                                                {% render 'responsive-image', width: 1272, source: block.settings.image.src, alt: block.settings.image.alt %}
                                             </div>
                                         </div>
                                 {% endcase %}

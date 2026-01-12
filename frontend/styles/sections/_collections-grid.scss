@@ -35,15 +35,23 @@
             padding: 3.25em 4.75em;
             border-right: 1px solid $color-grey;
             max-height: 164px;
+            transition: all 0.3s ease-in-out;
             @media (max-width: $w-l) {
                 padding: 4.25em 1.875em;
             }
             img {
                 display: block;
                 object-fit: contain;
+                transition: all 0.3s ease-in-out;
             }
             &:nth-of-type(-n+4) {
                 border-bottom: 1px solid $color-grey;
+            }
+            &:hover {
+                background-color: $color-grey;
+                img {
+                    transform: scale(1.2);
+                }
             }
         }
     }

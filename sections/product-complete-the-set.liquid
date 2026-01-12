@@ -16,7 +16,7 @@
                             <div class="section-product-complete-the-set__card">
                                 <h4>{{ section.settings.title }}</h4>
                                 {% if complete_the_set.image != blank %}
-                                    {{ complete_the_set.image | image_url: width: 600, crop: "center" | image_tag }}
+                                    {% render 'responsive-image', width: 600, source: complete_the_set.image, alt: section.settings.title %}
                                 {% endif %}
                             </div>
                         </div>

@@ -34,9 +34,9 @@ if (searchDrawerToggles) {
 	for (const toggle of searchDrawerToggles) {
 		toggle.addEventListener('click', e => {
 		e.preventDefault();
-        if (drawerSearchEl && announcementBar) {
-            drawerSearchEl.style.top = announcementBar.offsetHeight + 'px';
-        }
+        // if (drawerSearchEl && announcementBar) {
+        //     drawerSearchEl.style.top = announcementBar.offsetHeight + 'px';
+        // }
 		const documentBody = document.querySelector('body');
 		if (documentBody.classList.contains('drawer-search-open')) {
 			window.closeAllDrawers(() => {

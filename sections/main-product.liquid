@@ -21,6 +21,7 @@
 <div class="wrap wrap--no-padding wrap--{{ section_id }}">
     <div class="section-main-product__inner">
         <div class="section-main-product__media{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
+            <!--[product-media]-->
             <div class="section-main-product__badges">
                 {% render 'product-badges', product: product, unlimited: true %}
                 <button class="wishlist-toggle{% if customer %} active{% endif %}{% if productInWishlist == true %} added{% endif %}" data-id="{{ product.id }}" type="button" aria-label="{{ "products.product.wishlist" | t }}">
@@ -28,7 +29,6 @@
                     <span>{{ "products.product.wishlist" | t }}</span>
                 </button>
             </div>
-            <!--[product-media]-->
             {% render 'main-product-media', product: product %}
             <!--[/product-media]-->
         </div>

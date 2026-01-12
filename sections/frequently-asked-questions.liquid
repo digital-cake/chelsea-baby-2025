@@ -38,7 +38,7 @@
             <div class="section-frequently-asked-questions__media">
                 {% if section.settings.image != blank %}
                     <div class="image-wrapper">
-                        {{ section.settings.image.src | image_url: width: 2028, crop: "center" | image_tag: alt: section.settings.image.alt, width: 676 }}
+                        {% render 'responsive-image', width: 2028, source: section.settings.image.src, alt: ssection.settings.image.alt %}
                     </div>
                     <div class="image-overlay" style="background:{{ section.settings.image_overlay }}"></div>
                 {% endif %}

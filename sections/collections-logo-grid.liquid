@@ -20,7 +20,7 @@
                         {% if block.settings.collection == blank %}{% continue %}{% endif %}
                         <a aria-label="{{ block.settings.collection.title }}" href="{{ block.settings.collection.url }}" class="section-collections-grid__inner-entry">
                             {% if block.settings.logo != blank %}
-                                {{ block.settings.logo.src | image_url: width: 600 | image_tag: alt: block.settings.logo.alt, width: 240 }}
+                                {% render 'responsive-image', width: 600, source: block.settings.logo.src, alt: block.settings.logo.alt %}
                             {% endif %}
                         </a>
                     {% endfor %}

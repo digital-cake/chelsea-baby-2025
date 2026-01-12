@@ -22,14 +22,15 @@ if (mobileDrawertoggle) {
 //Calculate menu height
 const setMobileMenuDrawerHeight = () => {
 	let siteHeaderHeight = 0;
+	const headerHeight = document.querySelector('.section-header') ? document.querySelector('.section-header').offsetHeight : 0;
+	const announcementBarHeight = 34;
 	const windowHeight = window.innerHeight;
-	const siteHeaderGroup = Array.from(document.querySelectorAll('.shopify-section-group-header-group'));
-	if (siteHeaderGroup) {
-		siteHeaderGroup.forEach(section => {
-			siteHeaderHeight += section.offsetHeight;
-		})
-	}
-	const mobileMenuDrawerHeight = windowHeight - siteHeaderHeight - 8 + 'px';
+	siteHeaderHeight = headerHeight + announcementBarHeight;
+	console.log('headerHeight', headerHeight);
+	console.log('announcementBarHeight', announcementBarHeight);
+	console.log('siteHeaderHeight', siteHeaderHeight);
+
+	const mobileMenuDrawerHeight = windowHeight - siteHeaderHeight + 'px';
 	const mobileMenuDrawer = document.querySelector('.drawer-mobile');
 	if (mobileMenuDrawer) mobileMenuDrawer.style.maxHeight = mobileMenuDrawerHeight;
 	if (window.innerWidth <= 1024 && mobileMenuDrawer) mobileMenuDrawer.style.minHeight = mobileMenuDrawerHeight;

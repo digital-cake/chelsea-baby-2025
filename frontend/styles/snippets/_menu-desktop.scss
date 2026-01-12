@@ -1,9 +1,9 @@
 @use "../abstracts/variables.scss" as *;
 
 .mega-open {
-	// #overlay-mask {
-    //     display: block;
-    // }
+	#overlay-mask {
+        display: block;
+    }
 }
 
 .menu-desktop {
@@ -57,7 +57,7 @@
 	&__mega {
 		display: none;
 		position: absolute;
-		background-color: white;
+		background-color: $color-white;
 		left: 0;
 		top: 54px;
 		width: 100%;

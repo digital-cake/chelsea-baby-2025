@@ -6,7 +6,7 @@
         <div class="section-footer__branding">
             {% if section.settings.logo != blank %}
                 <a aria-label="logo" href="{{ routes.root_url }}">
-                    {{ section.settings.logo.src | image_url: width: 540 | image_tag: alt: section.settings.logo.alt, width: 270 }}
+                    {% render 'responsive-image', width: 540, source: section.settings.logo.src, alt: section.settings.logo.alt %}
                 </a>
             {% endif %}
         </div>
@@ -74,7 +74,7 @@
 
 {% if section.settings.stamp_logo != blank %}
     <span class="stamp-logo">
-        {{ section.settings.stamp_logo.src | image_url: width: 540 | image_tag: alt: section.settings.stamp_logo.alt, width: 270 }}
+        {% render 'responsive-image', width: 540, source: section.settings.stamp_logo.src, alt: section.settings.stamp_logo.alt %}
     </span>
 {% endif %}
 

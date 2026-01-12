@@ -10,7 +10,7 @@
             <div class="section-manual-reviews-slider__inner">
                 <div class="section-manual-reviews-slider__image">
                     {% if section.settings.image != blank %}
-                        {{ section.settings.image.src | image_url: width: 1800, crop: "center" | image_tag: alt: section.settings.image.alt, width: 695 }}
+                        {% render 'responsive-image', width: 1800, source: section.settings.image.src, alt: section.settings.image.alt %}
                         <div class="image-overlay" style="background:{{ section.settings.image_overlay }}"></div>
                     {% endif %}
                 </div>

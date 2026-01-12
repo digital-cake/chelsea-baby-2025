@@ -23,7 +23,7 @@
             <h1 style="display: none;">{{ page_title }}</h1>
             {% if section.settings.logo != blank %}
                 <a aria-label="{{ shop.name }}" href="{{ routes.root_url }}">
-                    {{ section.settings.logo.src | image_url: width: 600 | image_tag: alt: image.alt, width: 200 }}
+                    {% render 'responsive-image', width: 600, source: section.settings.logo.src, alt: section.settings.logo.alt %}
                 </a>
             {% endif %}
         </div>

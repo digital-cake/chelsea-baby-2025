@@ -55,7 +55,7 @@
 					width: 100%;
 					&-item {
 						label {
-							gap: 0.5em;
+							gap: 1em;
 							span {
 								position: relative;
 								top: auto;
@@ -64,10 +64,10 @@
 							}
 						}
 						input {
-							width: 2em;
-							height: 2em;
-							min-width: 2em;
-							border-radius: 0 !important;
+							width: 1.5em;
+							height: 1.5em;
+							min-width: 1.5em;
+							min-height: 1.5em;
 							&:checked {
 								appearance: auto;
 							}
@@ -146,11 +146,12 @@
 				}
 				input {
 					pointer-events: none;
-					width: 30px;
-					height: 30px;
-					min-width: 30px;
+					width: 1.5em;
+					height: 1.5em;
+					min-height: 1.5em;
+					min-width: 1.5em;
 					border: 1px solid $color-primary;
-                    border-radius: 2px;
+                    border-radius: $radius-small;
 					accent-color: $color-primary;
 					&:checked {
                         border-color: $color-transactional;

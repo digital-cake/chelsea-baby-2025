@@ -40,7 +40,7 @@
                                 {% continue %}
                             {% endunless %}
                             <div class="cart-drawer-upsells__item">
-                                {{ product.images[0].src | image_url: width: 300 | image_tag: alt: product.images[0].alt }}
+                                {% render 'responsive-image', width: 300, source: product.images[0].src, alt: product.images[0].alt %}
                                 <div class="inner">
                                     <div class="header">
                                         <a href="{{ product.url }}">{{ product.title | truncatewords: 6 }}</a>

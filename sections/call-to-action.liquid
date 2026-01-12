@@ -8,7 +8,7 @@
         <div class="section-call-to-action__inner">
             {% if section.settings.image != blank %}
                 <div class="section-call-to-action__image">
-                    {{ section.settings.image.src | image_url: width: 1000 | image_tag: alt: section.settings.image.alt, width: 330 }}
+                    {% render 'responsive-image', width: 1000, source: section.settings.image.src, alt: section.settings.image.alt %}
                 </div>
             {% endif %}
             <div class="section-call-to-action__content" style="background-color: {{ section.settings.cta_background_color }};">
