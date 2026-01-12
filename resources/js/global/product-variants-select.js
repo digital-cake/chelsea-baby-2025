@@ -98,6 +98,7 @@ async function handleOptionSelectionChange($selector) {
 	} }));
 
 	const $button = $parent.querySelector('.button--add-to-cart');
+	const $klaviyoButton = $parent.querySelector('.klaviyo-bis-trigger');
 
 	if ($button) {
 		const $buttonLabel = $button.querySelector('.button-label');
@@ -110,6 +111,7 @@ async function handleOptionSelectionChange($selector) {
 			window.updateProductMainStickyButton();
 			return;
 		} else if (variant.available) {
+			$button.style.display = 'flex';
 			$button.classList.add('button--transactional');
 			$button.disabled = false;
 			if (variantPreorder) {
@@ -128,7 +130,8 @@ async function handleOptionSelectionChange($selector) {
 			$buttonPrice.style.display = 'block';
 			window.updateProductMainStickyButton();
 		} else {
-			$button.classList.remove('button--transactional');
+			$button.style.display = 'none';
+			$klaviyoButton.style.display = 'block';
 			$button.disabled = true;
 			$buttonLabel.innerHTML = label_sold_out;
 			window.updateProductMainStickyButton();

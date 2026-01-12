@@ -1,8 +1,22 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 {% render "section-styles", section_id: section_id, section: section %}
 
+{% if customer %}
+    {% assign wishlistItems = customer.metafields.cake.wishlist_items.value %}
+    {% assign productInWishlist = false %}
+    {% assign productId = product.id %}
+    {% if wishlistItems != empty %}
+        {% for product in customer.metafields.cake.wishlist_items.value %}
+            {% if product.id == productId %}
+                {% assign productInWishlist = true %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endif %}
+
 {% if section.settings.feature_product != blank %}
     {%- render 'vite' with '@sectionStyles/_featured-product.scss' -%}
+    {% assign feature_product = section.settings.feature_product %}
 
     <div class="section-featured-product__container" style="background-color: {{ section.settings.background_color }};">
         <div class="wrap wrap--x-large wrap--{{ section_id }}">
@@ -33,21 +47,24 @@
                 <div class="section-featured-product__inner-content">
                     <div class="section-featured-product__card">
                         <div class="section-featured-product__card-media">
-                        {% if section.settings.feature_product.images != blank %}
-                            {{ section.settings.feature_product.images[0].src | image_url: width: 800, crop: "center" | image_tag: alt: section.settings.feature_product.images[0].alt, width: 284 }}
+                            <button class="wishlist-toggle{% if customer %} active{% endif %}{% if productInWishlist == true %} added{% endif %}" data-id="{{ feature_product.id }}" type="button" aria-label="{{ "products.product.wishlist" | t }}">
+                                {% render "icon-heart.svg" %}
+                                <span>{{ "products.product.wishlist" | t }}</span>
+                            </button>
+                        {% if feature_product.images != blank %}
+                            <a href="{{ feature_product.url }}" aria-label="{{ produce.title }}">
+                                {{ feature_product.images[0].src | image_url: width: 800, crop: "center" | image_tag: alt: feature_product.images[0].alt, width: 284 }}
+                            </a>
                         {% endif %}
                         </div>
                         <div class="section-featured-product__card-content">
-                            <p>{{ section.settings.feature_product.title }}</p>
-                            <div>
-                                {% render 'product-price', product: section.settings.feature_product %}
-                                {% comment %}
-                                    VARIANTS TBA
-                                {% endcomment %}
+                            {% render "product-badges", product: feature_product %}
+                            <p>{{ feature_product.title }}</p>
+                            <div class="price-swatches-wrap">
+                                {% render 'product-price', product: feature_product %}
+                                {% render "product-colour-swatches", product: feature_product, is_product_feature: true %}
                             </div>
-                            {% comment %}
-                                ACTIONS TBA
-                            {% endcomment %}
+                            <button id="quick-add" data-product-handle="{{ feature_product }}" aria-label="{{ 'products.product.add' | t }}" class="card-product__quick-add button button--transactional"><span>{{ feature_product.price | money }} - {{ 'products.product.add_to_cart' | t }}</span></button>
                         </div>
                     </div>
                     {% if section.blocks.size > 0 %}

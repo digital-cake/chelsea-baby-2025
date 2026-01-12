@@ -37,14 +37,13 @@
         </button>
     {% endif %}
 {% else %}
-    <button type="submit" name="add" class="button button--transactional button--full-width button--add-to-cart" disabled data-url="{{ product.url }}">
+    <button style="display:none;" type="submit" name="add" class="button button--transactional button--full-width button--add-to-cart" disabled data-url="{{ product.url }}">
         {% render 'icon-cart.svg' %}
         <span>{{ 'products.product.sold_out' | t }}</span>
     </button>
+    <a class="klaviyo-bis-trigger button button--primary button--full-width" href="#" aria-label="{{ "products.product.notify_me" | t }}" data-url="{{ product.url }}">
+        <span>{{ "products.product.notify_me" | t }}</span>
+    </a>
 {% endif %}
-
-<a class="klaviyo-bis-trigger button button--primary" href="#" aria-label="{{ "products.product.notify_me" | t }}" style="display: none;" data-url="{{ product.url }}">
-    <span>{{ "products.product.notify_me" | t }}</span>
-</a>
 
 <a href="{{ product.url }}" id="view-product" type="button" class="button button--primary" aria-label="{{ 'quick_add.view_product' | t }}"><span>{{ 'quick_add.view_product' | t }}</span></a>

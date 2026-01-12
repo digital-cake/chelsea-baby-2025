@@ -36,6 +36,9 @@
                     {% endif %}
                     <div class="cart-drawer-upsells__products">
                         {% for product in settings.cart_drawer_upsells.products limit: 12 %}
+                            {% unless product.has_only_default_variant %}
+                                {% continue %}
+                            {% endunless %}
                             <div class="cart-drawer-upsells__item">
                                 {{ product.images[0].src | image_url: width: 300 | image_tag: alt: product.images[0].alt }}
                                 <div class="inner">
@@ -45,7 +48,7 @@
                                     </div>
                                     <div class="actions">
                                         {% form 'product', product, class: 'product-form product-form-upsell' %}
-                                            <button class="button-text button-text--primary button--quick-add product-card-quick-add" type="submit"{% if product.has_only_default_variant %} data-id="{{ product.selected_or_first_available_variant.id }}"{% else %} id="quick-add" data-product-handle="{{ product.handle }}"{% endif %}><span>{{ "products.product.add" | t }} +</span></button>
+                                            <button class="button-text button-text--primary button--quick-add product-card-quick-add" type="submit" data-id="{{ product.selected_or_first_available_variant.id }}"><span>{{ "products.product.add" | t }} +</span></button>
                                         {% endform %}
                                     </div>
                                 </div>

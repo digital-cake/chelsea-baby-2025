@@ -77,6 +77,7 @@ function submitForm($cartAddForm) {
     console.log('cartAdd', cartAdd);
     const url = window.location.pathname;
     if ($cartAddForm.classList.contains('product-form-main') || $cartAddForm.classList.contains('product-form-quick')) {
+      window.closeAllDrawers(() => {});
       if (!url.includes('/cart')) {
         window.updateCartDrawer();
         window.countCartItems();

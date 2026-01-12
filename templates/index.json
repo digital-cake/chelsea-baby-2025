@@ -333,9 +333,10 @@
       ],
       "name": "Featured Product",
       "settings": {
-        "feature_product": "silver-cross-nia-stroller-champagne",
+        "feature_product": "abc-design-ping-2-pushchair-1",
         "video": "shopify://files/videos/584cfc1cefa84403bd49e067c52731d2.HD-1080p-4.8Mbps-60456388.mp4",
         "image_overlay": "",
+        "background_color": "var(--color-white)",
         "padding_top": 0,
         "padding_bottom": 56,
         "mobile_padding_top": 0,
@@ -507,6 +508,7 @@
       "name": "Service USPS Slider",
       "settings": {
         "service_usps": "service-usps-test",
+        "full_width": false,
         "enable_pagination": true,
         "autoplay": true,
         "delay": 3,

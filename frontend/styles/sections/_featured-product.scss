@@ -92,6 +92,22 @@
             .price {
                 font-size: 16px;
             }
+            #view-product {
+                display: none;
+            }
+            .price-swatches-wrap {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+            }
+        }
+        &-media {
+            position: relative;
+            .wishlist-toggle {
+                position: absolute;
+                right: 0.75em;
+                top: 0.75em;
+            }
         }
     }
     &__usps {

@@ -7,11 +7,13 @@
 
   {% if is_product_card %}
     {% assign swatch_limit = 3 %}
+  {%  elsif is_product_feature %}
+    {% assign swatch_limit = 4 %}
   {% else %}
     {% assign swatch_limit = total_swatches %}
   {% endif %}
 
-  <div class="section-main-product__content-colours{% if is_product_card %} card{% endif %}">
+  <div class="section-main-product__content-colours{% if is_product_card or is_product_feature %} card{% endif %}">
     <span class="colour-label">{{ 'products.product.colour' | t }}: {{ product.metafields.cake.colour_name }}</span>
     <div class="swatches">
         <ul class="product-colour-swatches">
@@ -31,7 +33,7 @@
             {% endfor %}
         </ul>
 
-        {% if is_product_card and total_swatches > swatch_limit %}
+        {% if is_product_card and total_swatches > swatch_limit or is_product_feature and total_swatches > swatch_limit %}
         <span class="product-colour-swatches__extra">+{{ total_swatches | minus: swatch_limit }} {{ total_swatches | pluralize: 'Colour', 'Colours' }}</span>
         {% endif %}
     </div>
