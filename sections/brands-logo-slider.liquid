@@ -3,15 +3,6 @@
 
 {% if section.blocks.size > 0 %}
     {%- render 'vite' with '@sectionStyles/_brands-logo-slider.scss' -%}
-    {%- render 'vite' with '@@/components/brands-logo-slider.js' -%}
-
-    {% if section.settings.autoplay == true %}
-        <style>
-            .wrap--{{ section_id }} .swiper-wrapper {
-                transition-timing-function: linear !important;
-            }
-        </style>
-    {% endif %}
 
     <div class="section-brands-logo-slider__container" style="background-color: {{ section.settings.background_color }};">
         <div class="wrap wrap--no-padding wrap--{{ section_id }}">
@@ -19,42 +10,33 @@
                 {% if section.settings.title != blank %}
                     <{{ section.settings.tag }} class="small section-brands-logo-slider__inner-header">{{ section.settings.title }}</{{ section.settings.tag }}>
                 {% endif %}
-                <div class="section-brands-logo-slider__slider">
-                    <div class="swiper swiper-{{ section_id }}">
-                        <div class="swiper-wrapper">
-                            {% for block in section.blocks %}
-                                {% if block.settings.logo != blank %}
-                                    <div class="swiper-slide">
-                                        {% if block.settings.logo_link != blank %}<a aria-label="{{ block.settings.logo.alt }}" target="_blank" href="{{ block.settings.logo_link }}">{% endif %}
-                                            {% render 'responsive-image', width: 400, source: block.settings.logo.src, alt: block.settings.logo.alt %}
-                                        {% if block.settings.logo_link != blank %}</a>{% endif %}
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
+                <div class="section-brands-logo-slider__marquee">
+                    <div class="section-brands-logo-slider__track">
+                        {% for block in section.blocks %}
+                            {% if block.settings.logo != blank %}
+                                <div class="section-brands-logo-slider__item">
+                                {% if block.settings.logo_link != blank %}<a aria-label="{{ block.settings.logo.alt }}" href="{{ block.settings.logo_link }}">{% endif %}
+                                    {% render 'responsive-image', width: 400, source: block.settings.logo.src, alt: block.settings.logo.alt %}
+                                {% if block.settings.logo_link != blank %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        {%- comment -%}Duplicated the logos for seamless infinite scroll{%- endcomment -%}
+                        {% for block in section.blocks %}
+                            {% if block.settings.logo != blank %}
+                                <div class="section-brands-logo-slider__item">
+                                {% if block.settings.logo_link != blank %}<a aria-label="{{ block.settings.logo.alt }}" href="{{ block.settings.logo_link }}">{% endif %}
+                                    {% render 'responsive-image', width: 400, source: block.settings.logo.src, alt: block.settings.logo.alt %}
+                                {% if block.settings.logo_link != blank %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        const swiperBrandsLogoSlider = {
-            section_id: {{ section_id | json }},
-            autoplay: {{ section.settings.autoplay | json }},
-            delay: {{ section.settings.delay | json }},
-            speed: {{ section.settings.speed | json }}
-        };
-
-        window.addEventListener('DOMContentLoaded', function() {
-            window.init_brands_logo_slider(swiperBrandsLogoSlider);
-        });
-        if (Shopify.designMode) {
-            document.addEventListener('shopify:section:load', function() {
-                window.init_brands_logo_slider(swiperBrandsLogoSlider);
-            });
-        };
-    </script>
 {% endif %}
 
 {% schema %}
@@ -146,31 +128,6 @@
                 }
             ],
             "default": "var(--color-grey)"
-        },
-        {
-            "type": "header",
-            "content": "Slider Settings"
-        },
-        {
-            "type": "checkbox",
-            "id": "autoplay",
-            "label": "Autoplay",
-            "default": true
-        },
-        {
-            "type": "number",
-            "id": "delay",
-            "label": "Autoplay Delay",
-            "default": 3,
-            "info": "Time delay between slide transitions, in seconds."
-        },
-        {
-            "type": "range",
-            "min": 1,
-            "max": 10,
-            "default": 7,
-            "id": "speed",
-            "label": "Autoplay Speed"
         },
         {
             "type": "header",

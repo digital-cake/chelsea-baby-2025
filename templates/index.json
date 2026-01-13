@@ -216,35 +216,35 @@
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/clair-de-lune-logo.png",
-            "logo_link": ""
+            "logo_link": "shopify://collections/clair-de-lune"
           }
         },
         "logo_m3yRHP": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/silver-cross-logo.png",
-            "logo_link": ""
+            "logo_link": "shopify://collections/silver-cross"
           }
         },
         "logo_VNLnMj": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/icandy-logo.png",
-            "logo_link": ""
+            "logo_link": "shopify://collections/icandy"
           }
         },
         "logo_FfiK6c": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/tutti-logo.png",
-            "logo_link": ""
+            "logo_link": "shopify://collections/tutti-bambini"
           }
         },
         "logo_4PNfMW": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/maxi-cosi-logo.png",
-            "logo_link": ""
+            "logo_link": "shopify://collections/maxi-cosi"
           }
         }
       },
@@ -260,9 +260,6 @@
         "title": "Our Handpicked Brand Partners",
         "tag": "h4",
         "background_color": "var(--color-white)",
-        "autoplay": true,
-        "delay": 3,
-        "speed": 7,
         "padding_top": 0,
         "padding_bottom": 96,
         "mobile_padding_top": 96,
