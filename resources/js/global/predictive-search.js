@@ -49,15 +49,10 @@ class PredictiveSearch extends HTMLElement {
 					let siteAnnouncementBar = document.querySelector('.section-announcement-bar');
 					let siteHeaderHeight = Number(siteHeader.offsetHeight);
 					let siteAnnoncementHeight = Number(siteAnnouncementBar.offsetHeight);
-					let searchInput = document.querySelector('.drawer-search__input');
-					let searchInputHeight = Number(searchInput.offsetHeight);
-					let searchResultsHeight = windowHeight - siteHeaderHeight - searchInputHeight + 'px';
+					let searchResultsHeight = windowHeight - siteHeaderHeight - siteAnnoncementHeight + 'px';
 					let searchResultsDisplay = document.getElementById('predictive-search');
 					searchResultsDisplay.style.maxHeight = searchResultsHeight;
 					if (window.innerWidth <= 768) searchResultsDisplay.style.minHeight = searchResultsHeight;
-					let preSearchResultsDisplay = document.querySelector('.pre-search-results');
-					preSearchResultsDisplay.style.maxHeight = searchResultsHeight;
-					if (window.innerWidth <= 768) preSearchResultsDisplay.style.minHeight = searchResultsHeight;
 				};
 				displayHeight();
 				window.addEventListener('resize', function () {

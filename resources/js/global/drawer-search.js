@@ -12,9 +12,9 @@ window.calculatePreSearchHeight = () => {
 	let windowHeight = Number(window.innerHeight);
 	let siteHeader = document.querySelector('.section-header');
 	let siteHeaderHeight = Number(siteHeader.offsetHeight);
-	let searchInput = document.querySelector('.drawer-search__input');
-	let searchInputHeight = Number(searchInput.offsetHeight);
-	let searchResultsHeight = windowHeight - siteHeaderHeight - searchInputHeight + 'px';
+	let announcementBar = document.querySelector('.section-announcement-bar');
+	let announcementBarHeight = Number(announcementBar.offsetHeight);
+	let searchResultsHeight = windowHeight - siteHeaderHeight - announcementBarHeight + 'px';
 	let preSearchResultsDisplay = document.querySelector('.pre-search-results');
 	preSearchResultsDisplay.style.maxHeight = searchResultsHeight;
 	if (window.innerWidth <= 768) preSearchResultsDisplay.style.minHeight = searchResultsHeight;

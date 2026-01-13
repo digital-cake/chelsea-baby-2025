@@ -23,12 +23,9 @@ if (mobileDrawertoggle) {
 const setMobileMenuDrawerHeight = () => {
 	let siteHeaderHeight = 0;
 	const headerHeight = document.querySelector('.section-header') ? document.querySelector('.section-header').offsetHeight : 0;
-	const announcementBarHeight = document.querySelector('.section-announcement-bar') ? document.querySelector('.section-announcement-bar').offsetHeight : 0;;
+	const announcementBarHeight = document.querySelector('.section-announcement-bar') ? document.querySelector('.section-announcement-bar').offsetHeight : 0;
 	const windowHeight = window.innerHeight;
 	siteHeaderHeight = headerHeight + announcementBarHeight;
-	console.log('headerHeight', headerHeight);
-	console.log('announcementBarHeight', announcementBarHeight);
-	console.log('siteHeaderHeight', siteHeaderHeight);
 
 	const mobileMenuDrawerHeight = windowHeight - siteHeaderHeight + 'px';
 	const mobileMenuDrawer = document.querySelector('.drawer-mobile');
