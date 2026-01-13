@@ -1,34 +1,39 @@
 import Swiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Autoplay, Pagination, Mousewheel } from 'swiper/modules';
+import { Pagination, Mousewheel } from 'swiper/modules';
 
 window.init_ugc_slider = function(swiperUgcData) {
     const swiper = new Swiper('.swiper-' + swiperUgcData.section_id, {
-        modules: [Autoplay, Pagination, Mousewheel],
-        speed: parseInt(swiperUgcData.speed) * 100,
+        modules: [Pagination, Mousewheel],
+        slidesPerView: 1.3,
+        centeredSlides: false,
+        watchSlidesProgress: true,
+        loop: false,
+        init: false,
         spaceBetween: 23,
-        slidesPerView: 'auto',
-        loop: true,
-        centeredSlides: true,
-        centeredSlidesBounds: true,
-        autoplay: swiperUgcData.autoplay ? {
-            delay: parseInt(swiperUgcData.delay) * 1000,
-            disableOnInteraction: false
-        } : false,
         pagination: swiperUgcData.enable_pagination && swiperUgcData.size > 1 ? {
             el: '.swiper-pagination-' + swiperUgcData.section_id,
             clickable: true,
         } : false,
         mousewheel: {
             forceToAxis: true,
-            sensitivity: 1,
-            releaseOnEdges: false
+            sensitivity: 1
         },
         breakpoints: {
-            650: {
-                spaceBetween: 6
+            480: {
+                slidesPerView: 3,
+                spaceBetween: 6,
+                centeredSlides: true,
+                initialSlide: 2,
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 6,
+                centeredSlides: true,
+                initialSlide: 2,
             }
         }
     });
+    swiper.init();
 };

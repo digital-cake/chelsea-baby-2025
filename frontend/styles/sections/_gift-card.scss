@@ -23,12 +23,13 @@
 			}
 			svg {
 				width: 100%;
-				max-width: 8em;
+				max-width: 15em;
 			}
 		}
 	}
 	main {
 		background-color: $color-primary;
+		padding-top: 0;
 	}
 	&__title {
 		padding: 2em 2em 0 2em;
@@ -63,7 +64,7 @@
 	&__code {
 		padding: 2em;
 		text-align: center;
-		background-color: $color-grey-alt;
+		background-color: $color-grey-dark;
 		color: $color-white;
 		margin: 0 2px;
 		span {
@@ -71,6 +72,7 @@
 			font-size: 1.5em;
 			font-weight: $weight-bold;
 			letter-spacing: 3px;
+			color: $color-primary;
 		}
 	}
 	&__text {
@@ -89,6 +91,7 @@
 			margin: 0;
 			span {
 				font-size: 0.875em;
+				color: $color-white;
 			}
 		}
 	}

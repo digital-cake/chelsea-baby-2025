@@ -45,6 +45,9 @@
     &__content {
         padding: 0 1.875em;
         overflow: hidden;
+        @media (max-width: $w-m) {
+            padding: 0 1em;
+        }
     }
     .section-main-product__badges {
         padding: 1em;
@@ -52,6 +55,9 @@
     }
     .accordions, .section-main-product__content-notifications, .section-main-product__content-payment, #product-description-toggle, .wishlist-toggle {
         display: none;
+    }
+    .section-main-product__content {
+        padding: 3em 0 1.25em 0;
     }
     .section-main-product__content-actions {
         display: flex;
@@ -61,6 +67,12 @@
         margin-right: 0;
         #view-product {
             display: flex;
+            @media (max-width: $w-m) {
+                width: 100%;
+            }
+        }
+        @media (max-width: $w-m) {
+            flex-direction: column;
         }
     }
     .main-product-media {

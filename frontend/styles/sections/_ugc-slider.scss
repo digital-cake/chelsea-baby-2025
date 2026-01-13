@@ -1,6 +1,56 @@
 @use "../abstracts/variables.scss" as *;
 
 .section-ugc-slider {
+    overflow: hidden;
+    
+    &__slider {
+        .swiper {
+            overflow: visible;
+            width: 100% !important;
+        }
+        
+        .swiper-wrapper {
+            width: 100% !important;
+            @media (min-width: $w-l) {
+                justify-content: center;
+            }
+        }
+        
+        .swiper-slide {
+            flex-shrink: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            img {
+                border-radius: $radius-small;
+                display: block;
+                object-fit: cover;
+                height: 252px;
+                transition: all 0.4s ease;
+            }
+            
+            &.swiper-slide-active {
+                img {
+                    height: 323px;
+                }
+            }
+            
+            &.swiper-slide-prev,
+            &.swiper-slide-next {
+                img {
+                    height: 300px;
+                }
+            }
+        }
+        
+        .swiper-pagination {
+            position: relative;
+            padding-top: 2em;
+        }
+    }
+    
     &__header {
         padding: 0 2em;
         @include section_header;
@@ -12,66 +62,40 @@
             border-radius: $radius-small;
             background-color: $color-grey-dark;
             padding: 0.375em 0.75em;
-            span {
-                font-size: 0.625em;
-            }
+            span { font-size: 0.625em; }
         }
         @media (max-width: $w-m) {
             flex-direction: column;
             gap: 1em;
         }
     }
-    &__slider {
-        .swiper-pagination {
-            position: relative;
-            padding-top: 2em;
+    
+    &__slider-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .swiper-wrapper {
+        align-items: center;
+        @media (min-width: $w-l) {
+            justify-content: center;
         }
-        &-slide {
-            position: relative;
-            height: 100%;
-            width: 100%;
-        }
-        .swiper-wrapper {
-            align-items: center;
-            @media (min-width: $w-l) {
-                justify-content: center;
-            }
-        }
-        .swiper-slide {
-            width: 253px;
-            height: 253px;
-            overflow: hidden;
-            border-radius: $radius-small;
-            &-active {
-                width: 323px;
-                height: 323px;
-            }
-            &-prev, &-next {
-                width: 293px;
-                height: 293px;
-            }
-            img {
-                border-radius: $radius-small;
-                display: block;
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-            }
-            .slide-label {
-                position: absolute;
-                top: 0.625em;
-                left: 0.625em;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.75em;
-                border-radius: $radius-small;
-                background-color: $color-white;
-                padding: 0.375em 0.75em;
-                span {
-                    font-size: 0.625em;
-                }
-            }
-        }
+    }
+    
+    .swiper-slide .slide-label {
+        position: absolute;
+        top: 0.625em;
+        left: 0.625em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75em;
+        border-radius: $radius-small;
+        background-color: $color-white;
+        padding: 0.375em 0.75em;
+        font-size: 0.625em;
+        transition: all 0.4s ease;
+        z-index: 2;
     }
 }
