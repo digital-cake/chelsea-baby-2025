@@ -1,0 +1,65 @@
+{%- assign pick_up_availabilities = product_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+
+{%- if pick_up_availabilities.size > 0 -%}
+  <div class="store-availability-container"
+    data-section-id="{{ section.id }}"
+    data-section-type="store-availability">
+
+    <div class="store-availability-information">
+      {%- assign closest_location = pick_up_availabilities.first -%}
+
+        <div class="store-availability-icon">
+          {% if closest_location.available %}
+            <div class="store-availability-icon store-availability-icon--available"></div>
+          {% else %}
+            <div class="store-availability-icon store-availability-icon--unavailable"></div>
+          {% endif %}
+        </div>
+
+        <div class="store-availability-information-container">
+          {%- if closest_location.available -%}
+            <p class="store-availability-information__title">
+              {{ 'store_availability.general.pick_up_available_at_html' | t: location_name: closest_location.location.name }}
+            </p>
+            <p class="store-availability-information__stock store-availability-small-text" style="display: none;">
+              <small>{{ closest_location.pick_up_time }}</small>
+            </p>
+            <p class="store-availability-information__stores rte" style="display: none;">
+              <a href="#" class="store-availability-information__link store-availability-small-text" data-store-availability-modal-open aria-haspopup="dialog">
+                <small>
+                  {%- if pick_up_availabilities.size == 1 -%}
+                    {{ 'store_availability.general.view_store_info' | t }}
+                  {%- else -%}
+                    {{ 'store_availability.general.check_other_stores' | t }}
+                  {%- endif -%}
+                </small>
+              </a>
+            </p>
+          {%- else -%}
+            <p class="store-availability-information__title">
+              {{ 'store_availability.general.pick_up_unavailable_at_html' | t: location_name: closest_location.location.name }}
+            </p>
+            {%- if pick_up_availabilities.size > 1 -%}
+              <p class="store-availability-information__stores rte" style="display: none;">
+                <a href="#" class="store-availability-information__link store-availability-small-text"
+                   data-store-availability-modal-open aria-haspopup="dialog">
+                  <small>
+                    {{ 'store_availability.general.check_other_stores' | t }}
+                  </small>
+                </a>
+              </p>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+    </div>
+  </div>
+{%- else -%}
+  <!--NO_PICKUP-->
+{%- endif -%}
+
+{% schema %}
+{
+  "name": {},
+  "settings": []
+}
+{% endschema %}

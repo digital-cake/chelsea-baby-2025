@@ -100,9 +100,29 @@
                 letter-spacing: 1px;
                 width: 100%;
                 text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 span {
                     line-height: 140%;
                     display: block;
+                }
+                .store-availability-information {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1em;
+                    .store-availability-icon {
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        &--available {
+                            background-color: #32C079;
+                        }
+                        &--unavailable {
+                            background-color: $color-heritage;
+                        }
+                    }
                 }
             }
             @media (max-width: 550px) {

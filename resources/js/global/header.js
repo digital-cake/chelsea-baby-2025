@@ -7,7 +7,7 @@ const handle_header_scroll = () => {
     let ticking = false;
     let direction = 'down';
     const scrollUpThreshold = 34;
-    const directionThreshold = 50;
+    const directionThreshold = 34;
 
     const updateHeader = () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;

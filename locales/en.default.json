@@ -369,5 +369,18 @@
     "shop_link": "Start Shopping",
     "print": "Print Your card",
     "add_to_apple_wallet": "Add to Apple Wallet"
+  },
+   "store_availability": {
+    "general": {
+      "pick_up_available_at_html": "Available for store collection",
+      "view_store_info": "View store information",
+      "check_other_stores": "Check availability at other stores",
+      "pick_up_unavailable_at_html": "Pickup currently unavailable",
+      "miles": "mi",
+      "kilometers": "km",
+      "pick_up_available": "Pickup available",
+      "pick_up_currently_unavailable": "Pickup currently unavailable",
+      "invalid_location_address": "Contact store to confirm address"
+    }
   }
 }

@@ -73,6 +73,7 @@
         position: relative;
         img {
             border-radius: $radius-large;
+            max-width: 284px;
         }
         @media (max-width: $w-l) {
             margin-left: 0;
