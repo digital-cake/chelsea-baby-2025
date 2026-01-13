@@ -84,5 +84,16 @@
         .remove {
             display: flex;
         }
+		&__message {
+			text-align: center;
+			padding: 6px;
+			border-radius: $radius-small;
+			background-color: $color-grey;
+			margin-top: -0.5em;
+			p {
+				font-size: 0.625em;
+				letter-spacing: 0.5px;
+			}
+		}
 	}
 }

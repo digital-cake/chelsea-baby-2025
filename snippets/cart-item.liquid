@@ -1,4 +1,14 @@
-<div class="cart-item cart-item--{{ type }}">
+{% assign is_continue_selling = false %}
+{% assign total_variant_stock = 0 %}
+{% for variant in item.product.variants %}
+    {% assign total_variant_stock = total_variant_stock | plus: variant.inventory_quantity %}
+    {% if variant.inventory_policy == 'continue' %}
+        {% assign is_continue_selling = true %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+<div class="cart-item">
     <div class="cart-item__media">
         <a href="{{ item.url | within: collection }}" aria-label="{{ item.product.title }}">
             <img src="{{ item | img_url: 'compact' }}" alt="{{ item.product.title }}">
@@ -61,3 +71,15 @@
         {% endif %}
     </div>
 </div>
+
+{% if item.product.metafields.cake.preorder == 1 and is_continue_selling == true and total_variant_stock <= 0 and settings.hide_cart_preorder_message == false %}
+    <div class="cart-item__message cart-item__message--preorder">
+        <p>{{ settings.cart_preorder_message }}</p>
+    </div>
+{% endif %}
+
+{% if item.product.type == 'Gift Card' and settings.hide_cart_gift_card_message == false %}
+    <div class="cart-item__message cart-item__message--gift-card">
+        <p>{{ settings.cart_gift_card_message }}</p>
+    </div>
+{% endif %}
