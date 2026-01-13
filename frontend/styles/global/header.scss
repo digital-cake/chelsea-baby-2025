@@ -1,10 +1,10 @@
 @use "../abstracts/variables.scss" as *;
 
-.template-index {
-    main {
-        padding-top: 0;
-    }
-}
+// .template-index {
+//     main {
+//         padding-top: 0;
+//     }
+// }
 
 main {
     @media (min-width: $w-l) {
@@ -19,9 +19,6 @@ main {
     background-color: $color-white;
     z-index: 11;
     position: fixed;
-    // @media (max-width: $w-l) {
-    //     position: relative;
-    // }
     &.scrolling {
         opacity: 0;
     }
