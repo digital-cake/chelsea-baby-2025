@@ -10,11 +10,11 @@
 	right: auto;
 	transition: left 0.25s linear;
 	bottom: 0;
+	top: 100%;
     transform: none;
 	height: 100%;
 	overflow: hidden;
 	width: 100vw;
-    border-top: 1px solid $color-primary;
 	&__inner {
 		height: 100%;
 		display: grid;
