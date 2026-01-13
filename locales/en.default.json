@@ -213,7 +213,8 @@
             "delivery": "Delivery",
             "returns": "Returns",
             "downloads": "Downloads",
-            "was": "was"
+            "was": "was",
+            "choose_your_options": "Choose bundle your option:"
         },
         "gift_voucher": {
             "name": "Recipient Name",

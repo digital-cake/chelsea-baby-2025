@@ -1,0 +1,91 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_product-comparison.scss' -%}
+{% comment %} {%- render 'vite' with '@@/components/product-comparison.js' -%} {% endcomment %}
+
+<div class="wrap wrap--x-large wrap--{{ section_id }}">
+    <div class="section-product-comparison__inner">
+        <div class="section-product-comparison__header">
+            <div class="section-product-comparison__counter">
+                
+            </div>
+            <div class="section-product-comparison__products">
+
+            </div>
+        </div>
+        <div class="section-product-comparison__table">
+            <div class="section-product-comparison__table-labels">
+
+            </div>
+            <div class="section-product-comparison__table-columns">
+                <div class="column"></div>
+                <div class="column"></div>
+                <div class="column"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Product Comparison",
+    "tag": "section",
+    "class": "section-product-comparison",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Comparison"
+        }
+    ]
+}
+{% endschema %}

@@ -1,14 +1,9 @@
 @use "../abstracts/variables.scss" as *;
 
-// .template-index {
-//     main {
-//         padding-top: 0;
-//     }
-// }
-
 main {
+    padding-top: 101px;
     @media (min-width: $w-l) {
-        padding-top: 115px;
+        padding-top: 138px;
     }
 }
 

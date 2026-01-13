@@ -1,0 +1,24 @@
+{% if product.metafields.cake.product_options != blank %}        
+    <div class="section-main-product__content-options">
+        <span>{{ 'products.product.choose_your_options' | t }}</span>
+        {% assign product_options = product.metafields.cake.product_options.value %}
+        <ul class="product-options__list">
+            {% for product_option in product_options.products.value %}
+                {% if product.id != product_option.id %}
+                    <li class="product-options__item{% if product.id == product_option.id %} current{% endif %}">
+                        <a class="details" aria-label="{{ product_option.title }}" href="{{ product_option.url }}">
+                            <img src="{{ product_option.images[0].src | img_url: '85x85', crop: "center" }}" class="media"></img>
+                            <div class="details__inner">
+                                <span class="details__inner-title">{{ product_option.title }}</span>
+                            {% if product_option.metafields.cake.product_option_short_description != blank %}
+                                    <span class="details__inner-description">{{ product_option.metafields.cake.product_option_short_description }}</span>
+                            {% endif %}
+                                <span class="details__inner-price">{{ product_option.price | money }}</span>
+                            </div>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

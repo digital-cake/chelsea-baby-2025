@@ -8,7 +8,11 @@ const handle_header_scroll = () => {
     let lastScrollTop = 0;
     let ticking = false;
     const scrollUpThreshold = 34;
-    const directionThreshold = 101;
+    let directionThreshold = 101;
+
+    if (window.innerWidth < 1024) {
+        directionThreshold = 10;
+    }
 
     const updateHeader = () => {
         header.style.top = (announcementBar ? announcementBar.offsetHeight : 0) + 'px';

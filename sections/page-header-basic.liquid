@@ -4,8 +4,8 @@
 {%- render 'vite' with '@sectionStyles/_page-header-basic.scss' -%}
 
 <div class="section-page-header-basic__container" style="background-color: {{ section.settings.background_color }};">
-    <div class="wrap wrap--large wrap--{{ section_id }}">
-        <div class="section-page-header-basic__inner">
+    <div class="wrap wrap--{{ section.settings.width }} wrap--{{ section_id }}">
+        <div class="section-page-header-basic__inner" style="text-align: {{ section.settings.text_alignment }};">
             <h1 style="color: {{ section.settings.text_color }}" class="large">{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}{{ page.title }}{% endif %}</h1>
             <div style="color: {{ section.settings.text_color }}">{% if section.settings.description != blank %}{{ section.settings.description }}{% else %}{{ page.content | strip_html }}{% endif %}</div>
         </div>
@@ -29,6 +29,36 @@
             "id": "description",
             "label": "Description",
             "info": "Overrides default page content"
+        },
+        {
+            "type": "text_alignment",
+            "id": "text_alignment",
+            "label": "Alignment",
+            "default": "left"
+        },
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+                {
+                    "value": "medium",
+                    "label": "Small"
+                },
+                {
+                    "value": "large",
+                    "label": "Medium"
+                },
+                {
+                    "value": "x-large",
+                    "label": "Large"
+                },
+                {
+                    "value": "xx-large",
+                    "label": "Full Width"
+                }
+            ],
+            "default": "medium"
         },
         {
             "type": "select",
@@ -66,7 +96,6 @@
             "type": "select",
             "id": "background_color",
             "label": "Background Color",
-            "info": "To be used if no image set",
             "options": [
                 {
                     "label": "White",

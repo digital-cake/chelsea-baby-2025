@@ -152,6 +152,8 @@
                             <div class="section-main-product__content-notifications">
                                 {% render 'product-notifications', product: product %}
                             </div>
+                        {% when "options" %}
+                            {% render 'product-options', product: product %}
                         {% endcase %}
                 {% endfor %}
                 {% render 'main-product-sticky-add', product: product %}
@@ -275,8 +277,8 @@
             "limit": 1
         },
         {
-            "type": "bundle_options",
-            "name": "Bundle Options",
+            "type": "options",
+            "name": "Options",
             "limit": 1
         },
         {
