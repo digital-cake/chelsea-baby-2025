@@ -1,9 +1,16 @@
 @use "../abstracts/variables.scss" as *;
 
 .section-announcement-bar {
-	position: relative;
+	position: fixed;
+    width: 100%;
 	transition: all 0.3s ease-in-out;
-    z-index: 10;
+    z-index: 11;
+    // @media (max-width: $w-l) {
+    //     position: relative;
+    // }
+    &.scrolling {
+        opacity: 0;
+    }
     .swiper {
         display: none;
         &-initialized {

@@ -18,19 +18,17 @@ main {
     will-change: transform, opacity, top;
     background-color: $color-white;
     z-index: 11;
-    top: unset;
     position: fixed;
+    // @media (max-width: $w-l) {
+    //     position: relative;
+    // }
     &.scrolling {
-        transform: translateY(-1000%);
         opacity: 0;
     }
     &.scrolling-up {
         top: 0;
         width: 100%;
         opacity: 1;
-    }
-    @media (max-width: $w-l) {
-        position: relative;
     }
     &__branding {
         width: 100%;
