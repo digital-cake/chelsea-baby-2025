@@ -386,6 +386,31 @@
         ]
     },
     {
+      "name": "Map",
+      "settings": [
+        {
+          "type": "text",
+          "id": "google_map_api_key",
+          "label": "Google Maps API Key",
+          "default": "AIzaSyCivIytOfRDb6Kzyeut05jvWR0xm1VRdoI"
+        },
+        {
+          "type": "text",
+          "id": "latitude",
+          "label": "Latitude",
+          "default": "52.48755853474957",
+          "info": "Used for the map marker"
+        },
+        {
+          "type": "text",
+          "id": "longitude",
+          "label": "Longitude",
+          "default": "-2.1062558717923716",
+          "info": "Used for the map marker"
+        }
+      ]
+    },
+    {
         "name": "SEO",
         "settings": [
           {

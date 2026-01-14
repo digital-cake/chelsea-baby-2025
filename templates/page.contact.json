@@ -1,12 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "main": {
-            "type": "main-contact",
-            "settings": {
-            }
-        }
+  "sections": {
+    "main": {
+      "type": "main-contact",
+      "settings": {
+        "title": "",
+        "text": "<p>Need help with your order or advice on the right product? Our experienced team is always on hand to help with any questions about strollers, car seats, and more. Get in touch—we’re happy to help.</p>",
+        "form_title": "Complete the form",
+        "padding_top": 64,
+        "padding_bottom": 88,
+        "mobile_padding_top": 74,
+        "mobile_padding_bottom": 32
+      }
     },
-    "order": [
-        "main"
-    ]
+    "google_map_JiAKWP": {
+      "type": "google-map",
+      "name": "Google Map",
+      "settings": {
+        "padding_top": 88,
+        "padding_bottom": 0,
+        "mobile_padding_top": 74,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "google_map_JiAKWP"
+  ]
 }

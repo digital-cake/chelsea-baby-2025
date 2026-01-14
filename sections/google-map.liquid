@@ -1,0 +1,98 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+{%- render 'vite' with '@sectionStyles/_google-map.scss' -%}
+
+<div class="wrap wrap--no-padding wrap--{{ section_id }}">
+    <div id="map"></div>
+        <script>
+        let mapInstance;
+
+        function initMap() {
+            mapInstance = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: {{ settings.latitude }}, lng: {{ settings.longitude }} },
+                zoom: 17,
+                mapTypeControl: false,
+                streetViewControl: false
+            });
+
+            new google.maps.Marker({
+                position: mapInstance.getCenter(),
+                map: mapInstance
+            });
+        }
+    </script>
+
+    <script 
+        async 
+        src="https://maps.googleapis.com/maps/api/js?key={{ settings.google_map_api_key }}&callback=initMap&libraries=marker">
+    </script>
+</div>
+
+
+{% schema %}
+{
+    "name": "Google Map",
+    "tag": "section",
+    "class": "section-google-map",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Map Location"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        }
+    ],
+    "presets": [
+        {
+            "name": "Google Map"
+        }
+    ]
+}
+{% endschema %}

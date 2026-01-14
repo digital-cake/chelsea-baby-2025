@@ -1,0 +1,9 @@
+@use "../abstracts/variables.scss" as *;
+
+#map {
+    height: 540px;
+    width: 100%;
+    @media (max-width: $w-m) {
+        height: 350px;
+    }
+}
