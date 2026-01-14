@@ -4,6 +4,9 @@
 {%- render 'vite' with '@sectionStyles/_page-header-basic.scss' -%}
 
 <div class="section-page-header-basic__container" style="background-color: {{ section.settings.background_color }};">
+    {% if section.settings.show_back_button %}
+        <button onclick="window.history.back();" type="button" class="button-text button-text--primary section-page-header-basic__button">{% render 'icon-chevron-left.svg' %}<span>{{ "accessibility.back_action" | t }}</span></button>
+    {% endif %}
     <div class="wrap wrap--{{ section.settings.width }} wrap--{{ section_id }}">
         <div class="section-page-header-basic__inner" style="text-align: {{ section.settings.text_alignment }};">
             <h1 style="color: {{ section.settings.text_color }}" class="large">{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}{{ page.title }}{% endif %}</h1>
@@ -18,6 +21,12 @@
     "tag": "section",
     "class": "section-page-header-basic",
     "settings": [
+        {
+            "type": "checkbox",
+            "id": "show_back_button",
+            "label": "Show Back Button",
+            "default": false
+        },
         {
             "type": "text",
             "id": "title",

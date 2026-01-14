@@ -19,6 +19,12 @@
         align-items: center;
         justify-content: space-between;
         padding: 0.875em 0.75em;
+        & > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5em;
+        }
     }
     &__media {
         img {
@@ -55,5 +61,32 @@
     }
     .compare-was {
         display: none;
+    }
+    #compare-remove {
+        display: none;
+        text-transform: capitalize;
+        text-decoration: underline;
+        span {
+            pointer-events: none;
+        }
+    }
+    &__comparison-button {
+        display: none;
+        align-items: center;
+        gap: 1em;
+        height: 50px;
+        .button-price {
+            position: relative;
+            &:before {
+                content: "-";
+                position: absolute;
+                right: -12px;
+            }
+        }
+        svg {
+            path {
+                stroke: $color-white;
+            }
+        }
     }
 }

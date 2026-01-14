@@ -1,6 +1,19 @@
 @use "../abstracts/variables.scss" as *;
 
 .section-page-header-basic {
+    position: relative;
+    &__button {
+        position: absolute;
+        left: 1.25em;
+        top: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        @media (max-width: $w-m) {
+            top: 1.5em;
+        }
+    }
     &__inner {
         display: flex;
         flex-direction: column;

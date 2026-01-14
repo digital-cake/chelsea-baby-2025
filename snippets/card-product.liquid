@@ -11,13 +11,26 @@
     {% endif %}
 {% endif %}
 
+{% assign enable_comparison = false %}
+    {% for collection in product.collections %}
+    {% if collection.metafields.cake.enable_product_comparison == true %}
+        {% assign enable_comparison = true %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
 <div class="card-product">
     <div class="card-product__header">
         {% render 'product-badges', product: product %}
-        <button class="wishlist-toggle{% if customer %} active{% endif %}{% if productInWishlist == true %} added{% endif %}" data-id="{{ product.id }}" type="button" aria-label="{{ "products.product.wishlist" | t }}">
-            {% render "icon-heart.svg" %}
-            <span>{{ "products.product.wishlist" | t }}</span>
-        </button>
+        <div>
+            {% if enable_comparison and request.page_type == 'collection' %}
+                <button class="product-comparison-toggle" type="button" data-product-handle="{{ product.handle }}" aria-label="{{ "products.product.comparison-toggle" | t }}">{% render 'icon-comparison.svg' %}</button>
+            {% endif %}
+            <button class="wishlist-toggle{% if customer %} active{% endif %}{% if productInWishlist == true %} added{% endif %}" data-id="{{ product.id }}" type="button" aria-label="{{ "products.product.wishlist" | t }}">
+                {% render "icon-heart.svg" %}
+                <span>{{ "products.product.wishlist" | t }}</span>
+            </button>
+        </div>
     </div>
     <a href="{{ product.url | within: 'collection' }}" class="card-product__media">
         {% render 'responsive-image', width: 640, source: product.images[0].src, alt: product.images[0].alt %}
@@ -28,6 +41,13 @@
         <div class="card-product__footer-inner">
             {% render 'product-price', product: product %}
             <button id="quick-add" data-product-handle="{{ product.handle }}" aria-label="{{ 'products.product.add' | t }}" class="card-product__quick-add button-text button-text--transactional"><span>{{ 'products.product.add' | t }} +</span></button>
+            <button id="compare-remove" data-product-handle="{{ product.handle }}" aria-label="{{ 'products.product.remove' | t }}" class="card-product__compare-remove button-text button-text--primary"><span>- {{ 'products.product.remove' | t }}</span></button>
         </div>
     </div>
 </div>
+
+<a href="{{ product.url }}" type="button" class="button button--transactional card-product__comparison-button">
+    {% render 'icon-cart.svg' %}
+    <span class="button-price">{{ product.price | money }}</span>
+    <span> {{ 'products.product.view_product' | t }}</span>
+</a>

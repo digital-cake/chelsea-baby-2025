@@ -61,7 +61,6 @@ window.init_recently_viewed_swiper = function(section_id) {
                 }
             },
         });
-        swiper.init();
 
 	} catch (error) {
 		console.error('Error processing recently viewed products:', error);
@@ -69,6 +68,9 @@ window.init_recently_viewed_swiper = function(section_id) {
 }
 
 window.init_recommendations_swiper = function(section_id) {
+    const swiperEl = document.querySelector(`.swiper__recommendations--${ section_id }`);
+    if (!swiperEl) return;
+
     const swiper = new Swiper(`.swiper__recommendations--${ section_id }`, {
         modules: [Mousewheel, Navigation],
         spaceBetween: 16,
@@ -93,7 +95,6 @@ window.init_recommendations_swiper = function(section_id) {
             }
         }
     });
-    swiper.init();
 }
 
 window.handle_swiper_tab_navigation = (sectionClassName) => {

@@ -1,0 +1,7 @@
+{%- render 'vite' with '@snippetStyles/_product-comparison-counter.scss' -%}
+
+<div class="floating-product-comparison-counter">
+    {% render 'icon-comparison.svg' %}
+    <span id="comparison-count">0/3</span> <span>{{ "products.product.comparison" | t }}</span>
+    <a class="button-text button-text--primary" href="{{ routes.root_url }}pages/product-comparison"><span>{{ "accessibility.view" | t }}</span></a>
+</div>

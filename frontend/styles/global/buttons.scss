@@ -175,6 +175,22 @@
     }
 }
 
+.product-comparison-toggle {
+    width: 24px;
+    height: 24px;
+    appearance: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    circle {
+        stroke-width: 1px;
+    }
+    svg {
+        pointer-events: none;
+    }
+}
+
 .wishlist-toggle {
     width: 24px;
     height: 24px;
@@ -185,14 +201,11 @@
     justify-content: center;
     appearance: none;
     outline: none;
-    background-color: transparent;
+    background-color: $color-white;
     cursor: pointer;
     svg {
         width: 14px;
         pointer-events: none;
-        path {
-            stroke-width: 2;
-        }
     }
     &.added {
         svg {

@@ -1,0 +1,212 @@
+@use "../abstracts/variables.scss" as *;
+
+.template-page-product-comparison {
+    .section-page-header-basic__inner {
+        padding: 0 1em;
+    }
+}
+
+.section-product-comparison {
+    .wrap {
+        min-width: 1440px;
+        padding-right: 0;
+        padding-left: 0;
+        @media (min-width: $w-xl) {
+            min-width: unset;
+        }
+        @media (min-width: calc($w-m + 1px)) and (max-width: 1439px) {
+            min-width: unset;
+            max-width: 100%;
+        }
+        @media (max-width: $w-m) {
+            min-width: unset;
+        }
+    }
+    &__inner {
+        overflow-x: auto;
+        padding: 0 2.125em;
+        @media (min-width: calc($w-m + 1px)) and (max-width: 1439px) {
+            width: 100%;
+        }
+        @media (max-width: $w-l) {
+            padding: 0 2em;
+        }
+        @media (max-width: $w-m) {
+            padding-right: 2.875em;
+            padding: 0 0.9375em;
+        }
+    }
+    &__header {
+        display: grid;
+        grid-template-columns: 348px 1fr;
+        align-items: flex-start;
+        margin-bottom: 1.875em;
+        min-width: 1440px;
+
+        @media (min-width: $w-xl) {
+            min-width: unset;
+        }
+        
+        @media (max-width: $w-m) {
+            grid-template-columns: 1fr;
+            gap: 2.75em;
+            padding-left: 2.875em;
+            min-width: unset;
+        }
+    }
+    &__counter {
+        background-color: $color-tertiary;
+        border-radius: $radius-small;
+        padding: 0.5em 0.875em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25em;
+        width: fit-content;
+        span {
+            font-size: 0.625em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 140%;
+            display: block;
+        }
+        @media (max-width: $w-m) {
+            margin-left: 2em;
+        }
+    }
+    &__table {
+        display: grid;
+        grid-template-columns: 348px 1fr;
+        min-width: 1440px;
+        
+        @media (min-width: $w-xl) {
+            min-width: unset;
+        }
+        
+        @media (min-width: calc($w-m + 1px)) and (max-width: 1439px) {
+            min-width: 1440px;
+        }
+        
+        @media (max-width: $w-m) {
+            grid-template-columns: 160px repeat(3, 330px);
+            min-width: 1150px;
+            margin-left: -100px;
+        }
+        &-labels {
+            position: sticky;
+            left: 0;
+            z-index: 10;
+            background-color: $color-white;
+            
+            @media (max-width: $w-m) {
+                width: 160px;
+                min-width: 160px;
+            }
+        }
+        &-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            @media (max-width: $w-m) {
+                display: contents;
+            }
+
+        }
+        &-column {
+            width: 100%;
+            padding-right: 1.25em;
+        }
+        &-row {
+            padding: 2em 0;
+            border-bottom: 1px solid $color-grey;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:first-of-type {
+                border-top: 1px solid $color-grey;
+            }
+            @media (max-width: $w-m) {
+                height: 140px;
+            }
+        }
+    }
+    &__label {
+        padding: 2em 0;
+        border-bottom: 1px solid $color-grey;
+        &:first-of-type {
+            border-top: 1px solid $color-grey;
+        }
+        @media (max-width: $w-m) {
+            padding-left: 2.875em;
+            height: 140px;
+            display: flex;
+            align-items: center;
+        }
+    }
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25em;
+        align-items: flex-start;
+        @media (max-width: $w-m) {
+            grid-template-columns: 330px 330px 330px;
+            gap: 1em;
+        }
+        .card-product {
+            #quick-add {
+                display: none;
+            }
+            #compare-remove {
+                display: flex;
+            }
+            &__footer {
+                min-height: 130px;
+                background-color: $color-grey;
+            }
+            &__wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 1.25em;
+            }
+            &__comparison-button {
+                display: flex;
+            }
+        }
+        .product-card-placeholder {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25em;
+            height: 100%;
+            &__inner {
+                background-color: $color-grey;
+                height: 100%;
+                min-height: 476px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                pointer-events: none;
+            }
+            &__count {
+                background-color: $color-grey-dark;
+                border-radius: 50%;
+                width: 144px;
+                height: 144px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: $font-display;
+                font-size: 4em;
+                font-weight: $weight-display;
+                line-height: 140%;
+                color: rgba(31, 37, 53, 0.30);
+                @media (max-width: $w-l) {
+                    font-size: 2.5em;
+                }
+            }
+            &__button {
+                background-color: rgba(31, 37, 53, 0.30);
+                min-height: 50px;
+            }
+        }
+    }
+}

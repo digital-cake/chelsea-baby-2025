@@ -1,0 +1,12 @@
+{% layout none %}
+<div class="section-product-comparison__table-column">
+    <div class="section-product-comparison__table-row">{% if product.metafields.cake.product_weight != blank %}{{ product.metafields.cake.product_weight }}{% else %}-{% endif %}</div>
+    <div class="section-product-comparison__table-row">{% if product.metafields.cake.age_of_child != blank %}{{ product.metafields.cake.age_of_child }}{% else %}-{% endif %}</div>
+    <div class="section-product-comparison__table-row">{% if product.metafields.cake.height_of_child != blank %}{{ product.metafields.cake.height_of_child }}{% else %}-{% endif %}</div>
+    <div class="section-product-comparison__table-row">{% if product.metafields.cake.weight_of_child != blank %}{{ product.metafields.cake.weight_of_child }}{% else %}-{% endif %}</div>
+    <div class="section-product-comparison__table-row">{% if product.metafields.cake.rotation != blank %}{{ product.metafields.cake.rotation }}{% else %}-{% endif %}</div>
+    <div class="section-product-comparison__table-row">{% if product.metafields.cake.removable_cover != blank %}{{ product.metafields.cake.removable_cover }}{% else %}-{% endif %}</div>
+    <div class="section-product-comparison__table-row">{% if product.metafields.cake.resting_recline_positions != blank %}{{ product.metafields.cake.resting_recline_positions }}{% else %}-{% endif %}</div>
+    <div class="section-product-comparison__table-row">{% if product.metafields.cake.harness_positions != blank %}{{ product.metafields.cake.harness_positions }}{% else %}-{% endif %}</div>
+    <div class="section-product-comparison__table-row">{% if product.metafields.cake.i_size_compliant != blank %}{{ product.metafields.cake.i_size_compliant }}{% else %}-{% endif %}</div>
+</div>
