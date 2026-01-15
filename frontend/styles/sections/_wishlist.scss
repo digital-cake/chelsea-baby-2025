@@ -1,9 +1,11 @@
 @use "../abstracts/variables.scss" as *;
 
 .section-wishlist {
-	p {
-		text-align: center;
-	}
+	& > {
+        p {
+            text-align: center;
+        }
+    }
 	.button {
         margin-top: 1em;
 		&--login {
@@ -31,6 +33,18 @@
         & > ul {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            gap: 3.5em 1.875em;
+            @media (max-width: $w-ml) {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            @media (max-width: $w-l) {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1em 0.5em;
+            }
+            @media (max-width: $w-m) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1em 0.5em;
+            }
         }
         &.empty {
             a {

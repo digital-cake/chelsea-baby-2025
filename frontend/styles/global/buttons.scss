@@ -215,4 +215,13 @@
     span {
         display: none;
     }
+    &--cart {
+        width: fit-content;
+        height: unset;
+        border: none;
+        span {
+            display: flex;
+            pointer-events: none;
+        }
+    }
 }

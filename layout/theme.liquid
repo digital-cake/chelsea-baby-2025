@@ -39,6 +39,21 @@
     </script>
   </head>
 
+  <!-- Wishlist -->
+  {% if customer.id != null %}
+      {%- capture message %}{{ customer.id }}:{{ "now" | date: "%Y-%m" }}:{{ shop.permanent_domain }}{% endcapture -%}
+      {%- assign secret_key = shop.metafields.cake.wishlist_secret -%}
+      {%- assign customer_api_token = message | hmac_sha256: secret_key -%}
+  {% endif %}
+
+  <script>
+        const cake = { 
+            currency: "{{ cart.currency.iso_code }}",
+            customer_id: {{ customer.id | json }},
+            customer_api_token: "{{ customer_api_token }}"
+        };
+    </script>
+
   <body class="template-{{ template | handleize }}">
 
     {% sections 'header-group' %}

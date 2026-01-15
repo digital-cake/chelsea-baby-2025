@@ -6,7 +6,7 @@
 
 {%- render 'vite' with '@sectionStyles/_wishlist.scss' -%}
 
-<div class="wrap wrap--no-padding wrap--{{ section_id }}">
+<div class="wrap wrap--x-large wrap--{{ section_id }}">
 
     <div class="section-wishlist__header">
         <h1 class="large">{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}{{ page.title }}{% endif %}</h1>

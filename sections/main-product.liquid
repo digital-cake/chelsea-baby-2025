@@ -154,6 +154,12 @@
                             </div>
                         {% when "options" %}
                             {% render 'product-options', product: product %}
+                        {% when "car_seats_bundle" %}
+                            <div class="section-main-product__content-bundle">
+                                {% if product.metafields.cake.bundle_car_seats != blank %}
+                                    {% render 'product-bundle-car-seats', product: product %}
+                                {% endif %}
+                            </div>
                         {% endcase %}
                 {% endfor %}
                 {% render 'main-product-sticky-add', product: product %}
@@ -284,6 +290,11 @@
         {
             "type": "gift_card",
             "name": "Gift Card",
+            "limit": 1
+        },
+        {
+            "type": "car_seats_bundle",
+            "name": "Car Seats Bundle",
             "limit": 1
         }
     ],

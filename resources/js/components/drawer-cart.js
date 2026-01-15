@@ -135,6 +135,7 @@ window.updateCartDrawer = () => {
 			window.checkThreshold();
             initCartDrawerQuantity();
 			initCartDrawerRemove();
+			window.initProductAddToWishlist();
 			setTimeout(() => {
 				cartDrawerContent.classList.remove('content-loading');
 			}, 200);

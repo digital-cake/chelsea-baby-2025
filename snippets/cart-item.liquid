@@ -56,7 +56,7 @@
                 {% render "cart-quantity", item: item %}
             </div>
             <div class="cart-item__actions">
-                <button aria-label="{{ 'cart.wishlist' | t }}" data-product="{{ item.id }}" class="button-text button-text--primary">
+                <button type="button" aria-label="{{ 'cart.wishlist' | t }}" data-id="{{ item.product.id }}" data-product="{{ item.id }}" class="button-text button-text--primary wishlist-toggle wishlist-toggle--cart remove{% if customer %} active{% endif %}">
                     <span>{{ 'cart.wishlist' | t }}</span>
                 </button>
                 <a href="/cart/change?line={{ index }}&amp;quantity=0" aria-label="{{ 'cart.remove_item' | t }}" data-product="{{ item.id }}" class="remove button-text button-text--primary">

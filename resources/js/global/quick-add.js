@@ -42,7 +42,7 @@ document.addEventListener('click', function (e) {
             }
         })
         .finally(() => {
-            //window.initProductAddToWishlist();
+            window.initProductAddToWishlist();
 
             const productMediaEl = document.querySelector('.drawer-quick-add .section-main-product__media');
 	        if (productMediaEl) window.init_product_media(productMediaEl);

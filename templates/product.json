@@ -290,9 +290,9 @@
         "autoplay": true,
         "delay": 3,
         "speed": 7,
-        "padding_top": 0,
+        "padding_top": 56,
         "padding_bottom": 64,
-        "mobile_padding_top": 0,
+        "mobile_padding_top": 48,
         "mobile_padding_bottom": 32
       }
     },
