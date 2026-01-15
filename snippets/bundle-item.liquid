@@ -1,0 +1,10 @@
+<li class="card-product-bundle-item{% unless item.available %} unavailable{% endunless %}" data-id="{{ item.selected_or_first_available_variant.id }}" data-price="{{ item.price }}">
+    <div class="details">
+        {% render 'responsive-image', width: 240, source: item.images[0].src, alt: item.images[0].alt, class: 'media' %}
+        <div class="details__inner">
+            <span class="details__inner-title">{{ item.title }}</span>
+            {% render 'bundle-item-colour-swatches', product: item %}
+            {% render 'product-price', product: item %}
+        </div>
+    </div>
+</li>

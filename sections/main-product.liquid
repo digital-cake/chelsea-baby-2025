@@ -34,7 +34,7 @@
         </div>
         <!--[product-details]-->
         <div class="section-main-product__content">
-            {% form 'product', product, class: 'product-form product-form-main', data-balcony-product: isBalconyProduct %}
+            {% form 'product', product, class: 'product-form product-form-main' %}
                 {% for block in section.blocks %}
                     {% case block.type %}
                         {% when "breadcrumbs" %}

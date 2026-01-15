@@ -1,28 +1,10 @@
-{% comment %}
-    TODO:
-        - Check if metafield exists X
-        - Add from label if car seat bundle to title X
-        - Ensure unlisted products cannot be added anywhere other than bundle
-        - Update add to cart logic to say 'Select Car Seat' / only submit if an available one is selected
-        - If bundle product is removed from cart, remove car seat also
-        - When colour variant checked, re-render the card like TF
-{% endcomment %}
 
 <div class="product-bundle-car-seats">
     <span>{{ 'products.product.select_car_seat' | t }}:</span>
     {% assign car_seat_products = product.metafields.cake.bundle_car_seats.value %}
-        <ul class="product-bundle-car-seats__list">
-            {% for item in car_seat_products.products.value %}
-                <li class="card-product-bundle-item{% unless item.available %} unavailable{% endunless %}" data-id="{{ item.selected_or_first_available_variant.id }}" data-price="{{ item.price }}">
-                    <div class="details">
-                        {% render 'responsive-image', width: 240, source: item.images[0].src, alt: item.images[0].alt, class: 'media' %}
-                        <div class="details__inner">
-                            <span class="details__inner-title">{{ item.title }}</span>
-                            {% render 'product-colour-swatches.liquid', product: item %}
-                            {% render 'product-price', product: item %}
-                        </div>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
+    <ul class="product-bundle-car-seats__list">
+        {% for item in car_seat_products.products.value %}
+            {% render 'bundle-item', item: item %}
+        {% endfor %}
+    </ul>
 </div>

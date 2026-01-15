@@ -35,20 +35,21 @@
                         </div>
                     {% endif %}
                     <div class="cart-drawer-upsells__products">
-                        {% for product in settings.cart_drawer_upsells.products limit: 12 %}
-                            {% unless product.has_only_default_variant %}
+                        {% for upsell_product in settings.cart_drawer_upsells.products limit: 12 %}
+                            {% unless upsell_product.has_only_default_variant %}
                                 {% continue %}
                             {% endunless %}
                             <div class="cart-drawer-upsells__item">
-                                {% render 'responsive-image', width: 300, source: product.images[0].src, alt: product.images[0].alt %}
+                                {% render 'responsive-image', width: 300, source: upsell_product.images[0].src, alt: upsell_product.images[0].alt %}
                                 <div class="inner">
                                     <div class="header">
-                                        <a href="{{ product.url }}">{{ product.title | truncatewords: 6 }}</a>
-                                        {% render 'product-price', product: product %}
+                                        <a href="{{ upsell_product.url }}">{{ upsell_product.title | truncatewords: 6 }}</a>
+                                        {% render 'product-price', product: upsell_product %}
                                     </div>
                                     <div class="actions">
-                                        {% form 'product', product, class: 'product-form product-form-upsell' %}
-                                            <button class="button-text button-text--primary button--quick-add product-card-quick-add" type="submit" data-id="{{ product.selected_or_first_available_variant.id }}"><span>{{ "products.product.add" | t }} +</span></button>
+                                        {% form 'product', upsell_product, class: 'product-form product-form-upsell' %}
+                                            <button class="button-text button-text--primary button--quick-add" type="submit" data-id="{{ upsell_product.selected_or_first_available_variant.id }}"><span>{{ "products.product.add" | t }} +</span></button>
+                                            <input type="hidden" name="id" value="{{ upsell_product.first_available_variant.id }}">
                                         {% endform %}
                                     </div>
                                 </div>

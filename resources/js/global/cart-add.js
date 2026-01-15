@@ -26,14 +26,19 @@ document.addEventListener('submit', e => {
 
 	if (typeof carSeatBundleData !== 'undefined' && carSeatBundleData.is_bundle_product) {
 		submitBundleForm();
+		console.log('BUNDLE');
 	} else {
 		submitForm($cartAddForm);
+		console.log('NORMAL');
 	}
 });
 
 function submitForm($cartAddForm) {
 	const formData = new FormData($cartAddForm);
 	const requestUrl = `${window.Shopify.routes.root}cart/add.js`;
+
+	console.log('formData', formData);
+	console.log('$cartAddForm', $cartAddForm);
 
 	fetch(requestUrl, {
 		method: 'POST',
@@ -155,8 +160,6 @@ window.updateProductMainStickyButton = () => {
 };
 window.updateProductMainStickyButton();
 
-	//switch card colour variant on click of swatches, disable swatch link
-
 let CAR_SEAT_BUNDLE_ITEMS = [];
 
 const handleProductCarSeatBundle = () => {
@@ -209,4 +212,12 @@ const handleProductCarSeatBundle = () => {
 	}
 };
 
-window.addEventListener('DOMContentLoaded', handleProductCarSeatBundle);
+const handleProductCarSeatBundleItemColourSwatches = () => {
+	//when clicking a swatch re-render the card with the new data
+	//use ?view=bundle-item
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+	handleProductCarSeatBundle();
+	handleProductCarSeatBundleItemColourSwatches();
+});
