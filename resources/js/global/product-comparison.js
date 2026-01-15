@@ -62,13 +62,16 @@ const update_comparison_counter = () => {
 }
 
 const render_product_card_placeholders = (placeholderCardsToRender) => {
-	const productCardsContainerEl = document.querySelector('.section-product-comparison__cards');
-	if (!productCardsContainerEl) return;
+  const productCardsContainerEl = document.querySelector('.section-product-comparison__cards');
+  if (!productCardsContainerEl) return;
 
-	for (let i = 0; i < placeholderCardsToRender; i++) {
-		productCardsContainerEl.insertAdjacentHTML('beforeend', productCardPlaceholderEl(comparisonProductHandlesArray.length + 1).trim());
-	}
-}
+  const currentCount = comparisonProductHandlesArray.length;
+
+  for (let i = 0; i < placeholderCardsToRender; i++) {
+    productCardsContainerEl.insertAdjacentHTML('beforeend',productCardPlaceholderEl(currentCount + i + 1).trim());
+  }
+};
+
 
 const render_product_column_placeholders = (placeholderColumnsToRender) => {
 	const productSpecsTableColumnEl = document.querySelector('.section-product-comparison__table-columns');
