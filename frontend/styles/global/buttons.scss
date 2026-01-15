@@ -21,8 +21,11 @@
         text-transform: capitalize;
     }
     &:disabled {
-        opacity: 0.5;
+        background-color: rgba(31, 37, 53, 0.30);
         pointer-events: none;
+        span {
+            color: $color-white;
+        }
     }
     &--no-styling {
         padding: 0;

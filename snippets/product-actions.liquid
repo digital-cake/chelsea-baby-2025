@@ -10,9 +10,15 @@
 {% endfor %}
 
 {% if product.metafields.cake.in_store_exclusive != blank %}
-    <button type="button" name="add" data-handle="{{ product.handle }}" aria-label="{{ 'products.product.preorder' | t }}" class="button button--transactional button--full-width button--add-to-cart">
+    <button type="button" name="add" data-handle="{{ product.handle }}" aria-label="{{ 'products.product.in_store_exclusive' | t }}" class="button button--transactional button--full-width button--add-to-cart">
         {% render 'icon-cart.svg' %}
         <span class="button-label">{{ 'products.product.in_store_exclusive' | t }}</span>
+    </button>
+{% elsif product.metafields.cake.bundle_car_seats != blank and product.available %}
+    <button disabled type="submit" name="add" data-handle="{{ product.handle }}" aria-label="{{ 'products.product.add_to_cart' | t }}" class="button button--transactional button--full-width button--add-to-cart">
+        {% render 'icon-cart.svg' %}
+        <span class="button-price" style="display: none;">{{ product.price | money }}</span>
+        <span class="button-label">{{ 'products.product.select_car_seat' | t }}</span>
     </button>
 {% elsif product.available %}
     {% if product.has_only_default_variant %}

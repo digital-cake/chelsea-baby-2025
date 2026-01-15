@@ -76,27 +76,49 @@ const initCartDrawerRemove = () => {
 	const cartDrawerRemoveButtons = cartDrawerContent.querySelectorAll('.remove');
 	if (cartDrawerRemoveButtons)
 		for (const button of cartDrawerRemoveButtons)
-			button.addEventListener('click', e => {
+			button.addEventListener('click', async e => {
 				e.preventDefault();
 				const current_id = button.dataset.product;
-				const current_val = 0;
-				const data = { updates: {} };
-				data.updates[current_id] = current_val;
-				fetch(window.Shopify.routes.root + 'cart/update.js', {
-					method: 'POST',
-					headers: {
-						'Content-type': 'application/json',
-					},
-					body: JSON.stringify(data),
-				})
-					.then(response => response.json())
-					.finally(() => {
-						window.updateCartDrawer();
-						window.countCartItems();
-					})
-					.catch(err => {
-						console.log(err);
+				
+				try {
+					const cartResponse = await fetch(window.Shopify.routes.root + 'cart.js');
+					const cart = await cartResponse.json();
+					
+					const clickedItem = cart.items.find(item => item.id == current_id);
+					
+					if (!clickedItem) {
+						console.error('Line item not found');
+						return;
+					}
+					
+					const data = { updates: {} };
+					
+					const bundleId = clickedItem.properties?._bundle_id;
+					
+					if (bundleId) {
+						cart.items.forEach(item => {
+							if (item.properties?._bundle_id === bundleId) {
+								data.updates[item.id] = 0;
+							}
+						});
+					} else {
+						data.updates[current_id] = 0;
+					}
+					
+					await fetch(window.Shopify.routes.root + 'cart/update.js', {
+						method: 'POST',
+						headers: {
+							'Content-type': 'application/json',
+						},
+						body: JSON.stringify(data),
 					});
+					
+					window.updateCartDrawer();
+					window.countCartItems();
+					
+				} catch (err) {
+					console.error('Error removing cart items:', err);
+				}
 			});
 };
 
