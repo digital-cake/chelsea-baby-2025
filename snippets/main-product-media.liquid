@@ -1,11 +1,13 @@
 {%- render 'vite' with '@@/components/main-product-media.js' -%}
 {%- render 'vite' with '@snippetStyles/_main-product-media.scss' -%}
 
-<div class="main-product-media__navigation{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
-  <button class="button button--no-styling navigation-button prev">{% render 'icon-chevron.svg' %}</button>
-  <button class="button button--no-styling navigation-button next">{% render 'icon-chevron.svg' %}</button>
-  <button class="button button--no-styling button--primary navigation-zoom">{% render 'icon-search.svg' %}</button>
-</div>
+{% if product.images.size > 1 or product.media.size > 1 %}
+  <div class="main-product-media__navigation{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
+    <button class="button button--no-styling navigation-button prev">{% render 'icon-chevron.svg' %}</button>
+    <button class="button button--no-styling navigation-button next">{% render 'icon-chevron.svg' %}</button>
+    <button class="button button--no-styling button--primary navigation-zoom">{% render 'icon-search.svg' %}</button>
+  </div>
+{% endif %}
 
 <div class="main-product-media{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
   {% if product.images.size > 0 or product.media.size > 0 %}

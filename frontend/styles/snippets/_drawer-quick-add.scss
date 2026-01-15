@@ -110,6 +110,7 @@
         &__image, &__video {
             flex: auto;
             min-width: 304px;
+            max-width: 304px;
             pointer-events: none;
         }
     }
