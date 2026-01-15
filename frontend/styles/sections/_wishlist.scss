@@ -1,11 +1,6 @@
 @use "../abstracts/variables.scss" as *;
 
 .section-wishlist {
-	& > {
-        p {
-            text-align: center;
-        }
-    }
 	.button {
         margin-top: 1em;
 		&--login {
@@ -47,6 +42,9 @@
             }
         }
         &.empty {
+            p {
+                text-align: center;
+            }
             a {
                 text-transform: uppercase;
             }

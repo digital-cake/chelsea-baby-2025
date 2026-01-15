@@ -43,6 +43,7 @@ document.addEventListener('click', function (e) {
         })
         .finally(() => {
             window.initProductAddToWishlist();
+            window.handle_product_read_more_button();
 
             const productMediaEl = document.querySelector('.drawer-quick-add .section-main-product__media');
 	        if (productMediaEl) window.init_product_media(productMediaEl);
@@ -65,3 +66,30 @@ document.addEventListener('click', function (e) {
         });
     
 });
+
+window.handle_product_read_more_button = () => {
+  const toggle = document.getElementById('product-description-toggle');
+  const descriptionAccordion = document.querySelector('.accordion-toggle--description');
+
+  if (!toggle) return;
+
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const productUrl = toggle.dataset.productUrl;
+    if (!productUrl) return;
+
+    if (!window.location.pathname.includes('/products/')) {
+      window.location.href = window.Shopify.routes.root + "products/" + productUrl;
+    } else {
+      descriptionAccordion.click();
+      descriptionAccordion.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      });
+    }
+  });
+};
+
+window.addEventListener('DOMContentLoaded', window.handle_product_read_more_button);

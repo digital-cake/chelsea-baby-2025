@@ -1,4 +1,7 @@
 <div class="price price-display" itemprop="offers" itemscope itemtype="https://schema.org/Offer" data-base="{{ product.price }}">
+    {% if product.metafields.cake.bundle_car_seats != blank %}
+        <span class="from">{{ "products.product.price_from" | t }} </span>
+    {% endif %}
     {% if product.price_max > product.price_min %}
     <span class="from">{{ "products.product.price_from" | t }} </span>
     <span class="label-price" itemprop="price" content="{{ product.price | money }}" data-original="{{ product.price }}">

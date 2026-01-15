@@ -30,25 +30,6 @@ if (zoomBtn) {
   });
 }
 
-
-const open_product_description = () => {
-    const toggle = document.getElementById('product-description-toggle');
-    const descriptionAccordion = document.querySelector('.accordion-toggle--description');
-    if (!toggle || !descriptionAccordion) return;
-
-    toggle.addEventListener('click', function() {
-        descriptionAccordion.click();
-        descriptionAccordion.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-            inline: 'nearest'
-        });
-    });
-}
-
-window.addEventListener('DOMContentLoaded', open_product_description);
-
-
 /**
  * Store Availability Module (Vanilla JS)
  * --------------------------------------

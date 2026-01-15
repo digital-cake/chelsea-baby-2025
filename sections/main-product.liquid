@@ -59,7 +59,7 @@
                             {% if product.metafields.cake.short_description != blank %}
                                 <div class="section-main-product__content-description">
                                     <div>{{ product.metafields.cake.short_description | metafield_tag }}</div>
-                                    <button id="product-description-toggle" type="button" class="button-text button-text--primary"><span>{{ "accessibility.read_more" | t }}</span></button>
+                                    <button id="product-description-toggle" data-product-url="{{ product.handle }}" type="button" class="button-text button-text--primary"><span style="pointer-events: none;">{{ "accessibility.read_more" | t }}</span></button>
                                 </div>
                             {% endif %}
                         {% when "colours" %}
