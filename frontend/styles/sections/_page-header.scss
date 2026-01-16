@@ -18,6 +18,9 @@
         height: 100%;
         z-index: 1;
     }
+    &__container {
+        width: 100%;
+    }
     &__inner {
         position: relative;
         z-index: 2;
