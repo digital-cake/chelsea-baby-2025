@@ -19,6 +19,7 @@
                 <div class="swiper-wrapper">
                     {% for product in section.settings.products %}
                         <div class="swiper-slide">
+                            {% if product.tags contains "bundle_car_seat" %}{% continue %}{% endif %}
                             {% render 'card-product', product: product %}
                         </div>
                     {% endfor %}

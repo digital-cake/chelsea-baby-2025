@@ -22,6 +22,7 @@
                         </div>
                         {% for product in complete_the_set.products.value %}
                             <div class="swiper-slide">
+                                {% if product.tags contains "bundle_car_seat" %}{% continue %}{% endif %}
                                 {% render 'card-product', product: product %}
                             </div>
                         {% endfor %} 

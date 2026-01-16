@@ -51,6 +51,7 @@
                         <p>{{ settings.search_menu_products_label }}</p>
                         <ul class="products-search__products">
                             {% for product in settings.search_products_menu.products limit: 4 %}
+                                {% if product.tags contains "bundle_car_seat" %}{% continue %}{% endif %}
                                 <li>{% render 'card-product', product: product %}</li>
                             {% endfor %}
                         </ul>

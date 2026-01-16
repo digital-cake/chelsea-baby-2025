@@ -47,10 +47,7 @@
                                         {% render 'product-price', product: upsell_product %}
                                     </div>
                                     <div class="actions">
-                                        {% form 'product', upsell_product, class: 'product-form product-form-upsell' %}
-                                            <button class="button-text button-text--primary button--quick-add" type="submit" data-id="{{ upsell_product.selected_or_first_available_variant.id }}"><span>{{ "products.product.add" | t }} +</span></button>
-                                            <input type="hidden" name="id" value="{{ upsell_product.first_available_variant.id }}">
-                                        {% endform %}
+                                        <button class="button-text button-text--primary product-upsell-quick-add" type="submit" data-id="{{ upsell_product.selected_or_first_available_variant.id }}"><span>{{ "products.product.add" | t }} +</span></button>
                                     </div>
                                 </div>
                             </div>

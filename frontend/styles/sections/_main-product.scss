@@ -338,6 +338,7 @@
                         background-color: $color-white;
                         border: 1px solid $color-grey;
                         position: relative;
+                        cursor: pointer;
                         .details {
                             display: flex;
                             padding: 0.75em 1.5em 0.75em 0.75em;
@@ -370,6 +371,7 @@
                                         .swatch {
                                             width: 0.875em;
                                             height: 0.875em;
+                                            cursor: pointer;
                                         }
                                         .current {
                                             width: 1.375em;
@@ -400,6 +402,10 @@
                             .details {
                                 pointer-events: none;
                             }
+                        }
+                        &.loading {
+                            opacity: 0.5;
+                            pointer-events: none;
                         }
                     }
                 }
