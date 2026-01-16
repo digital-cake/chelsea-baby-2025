@@ -76,6 +76,9 @@
 
     {% if request.page_type == "collection" or request.page_type == "search" %}
       {% section "drawer-filters" %}
+    {% endif %} 
+
+    {% if request.page_type == "collection" %}
       {% render "floating-product-comparison-counter" %}
     {% endif %} 
 

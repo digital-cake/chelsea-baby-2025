@@ -16,6 +16,8 @@
     </span>
     <span class="compare">
         {% if product.compare_at_price > product.price %}
+        {%- assign savings = product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | ceil %}
+        <span class="savings-badge">{{ "products.product.save" | t }} {{ savings }}%</span>
         <del>(<span class="compare-was">{{ "products.product.was" | t }} </span> {{- product.compare_at_price | money -}})</del>
         {% endif %}
     </span>

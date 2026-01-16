@@ -1,5 +1,11 @@
 {%- render 'vite' with '@snippetStyles/_main-product-sticky-add.scss' -%}
 
 <div class="main-product-sticky-add">
+    <div class="main-product-sticky-add__content">
+        {% render 'responsive-image', width: 300, source: product.images[0].src, alt: product.images[0].alt %}
+        <h2>{{ product.title }}</h2>
+        {% render 'product-price', product: product %}
+    </div>
+
     <div class="main-product-sticky-add__actions"></div>
 </div>

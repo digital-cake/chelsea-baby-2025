@@ -1,5 +1,5 @@
 
-<div class="product-bundle-car-seats">
+<div class="product-bundle-car-seats" data-is-bundle-product="{{ is_bundle_product }}" data-main-product-price="{{ main_product_price }}" data-main-product-id="{{ main_product_id }}">
     <span>{{ 'products.product.select_car_seat' | t }}:</span>
     {% assign car_seat_products = product.metafields.cake.bundle_car_seats.value %}
     <ul class="product-bundle-car-seats__list">

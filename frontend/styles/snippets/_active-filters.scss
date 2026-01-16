@@ -23,7 +23,7 @@
             border-radius: $radius-medium;
 			text-decoration: none;
 			background: url('data:image/svg+xml,<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.99999 0.61377L1 8.61377M1.00001 0.61377L9 8.61377" stroke="%231C1A19" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat 6px 50%;
-			background-color: $color-white;
+			background-color: rgba(31, 37, 53, 0.05);
             background-size: 8px;
 			line-height: 1;
 			span {

@@ -54,10 +54,19 @@
                     color: $color-primary;
                     line-height: 140%;
                 }
-                del {
+                .compare {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    gap: 0.25em;
+                }
+                del, .savings-badge {
                     font-family: $font-base;
                     color: $color-heritage;
                     opacity: 1;
+                    font-size: 10px;
+                    line-height: 1;
+                    text-transform: uppercase;
                 }
                 .from {
                     font-size: 10px;
@@ -294,6 +303,9 @@
                                 line-height: 150%;
                             }
                         }
+                        .savings-badge {
+                            display: none;
+                        }
                     }
                     &.current {
                         border: 1px solid $color-transactional;
@@ -379,6 +391,9 @@
                                         }
                                     }
                                 }
+                            }
+                            .savings-badge {
+                                display: none;
                             }
                         }
                         &.selected {
@@ -505,55 +520,6 @@
             }
             label {
                 display: block;
-            }
-        }
-        .product-colour-swatches {
-            display: flex;
-            align-items: center;
-            flex-flow: row wrap;
-            gap: 10px;
-            .swatch {
-                display: block;
-                width: 1.875em;
-                height: 1.875em;
-                border-radius: 50%;
-                position: relative;
-                &.unavailable {
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%) rotate(45deg);
-                        height: 1px;
-                        width: 100%;
-                        background-color: $color-white;
-                    }
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        bottom: -0.625em;
-                        right: -0.625em;
-                        border: 2px solid $color-grey;
-                        width: 1.25em;
-                        height: 1.25em;
-                        border-radius: 50%;
-                        background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQuNjc3NDYgMTAuNUM1LjAzMDAzIDEwLjgxMTIgNS40OTMxNSAxMSA2LjAwMDM4IDExQzYuNTA3NiAxMSA2Ljk3MDcyIDEwLjgxMTIgNy4zMjMyOSAxMC41TTkuMDAwMzggNEM5LjAwMDM4IDMuMjA0MzUgOC42ODQzMSAyLjQ0MTI5IDguMTIxNyAxLjg3ODY4QzcuNTU5MDkgMS4zMTYwNyA2Ljc5NjAzIDEgNi4wMDAzOCAxQzUuMjA0NzMgMSA0LjQ0MTY2IDEuMzE2MDcgMy44NzkwNiAxLjg3ODY4QzMuMzE2NDUgMi40NDEyOSAzLjAwMDM4IDMuMjA0MzUgMy4wMDAzOCA0QzMuMDAwMzggNS41NDUwOSAyLjYxMDYxIDYuNjAyOTggMi4xNzUyMSA3LjMwMjcxQzEuODA3OTQgNy44OTI5NCAxLjYyNDMgOC4xODgwNSAxLjYzMTA0IDguMjcwMzhDMS42Mzg0OSA4LjM2MTU0IDEuNjU3ODEgOC4zOTYzIDEuNzMxMjYgOC40NTA3OUMxLjc5NzYxIDguNSAyLjA5NjY3IDguNSAyLjY5NDggOC41SDkuMzA1OTVDOS45MDQwOCA4LjUgMTAuMjAzMSA4LjUgMTAuMjY5NSA4LjQ1MDc5QzEwLjM0MjkgOC4zOTYzIDEwLjM2MjMgOC4zNjE1NCAxMC4zNjk3IDguMjcwMzhDMTAuMzc2NCA4LjE4ODA1IDEwLjE5MjggNy44OTI5NCA5LjgyNTU0IDcuMzAyNzFDOS4zOTAxNCA2LjYwMjk4IDkuMDAwMzggNS41NDUwOSA5LjAwMDM4IDRaIiBzdHJva2U9IiMxRjI1MzUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K");
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-color: $color-white;
-                        z-index: 1;
-                    }
-                }
-            }
-            .current {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid $color-primary;
-                width: 2.2em;
-                height: 2.2em;
-                border-radius: 50%;
             }
         }
     }

@@ -157,14 +157,7 @@
                         {% when "car_seats_bundle" %}
                             <div class="section-main-product__content-bundle">
                                 {% if product.metafields.cake.bundle_car_seats != blank %}
-                                    {% render 'product-bundle-car-seats', product: product %}
-                                    <script>
-                                        const carSeatBundleData = {
-                                            is_bundle_product: true,
-                                            main_product_price: {{ product.price }},
-                                            main_product_id: {{ product.selected_or_first_available_variant.id }}
-                                        }
-                                    </script>
+                                    {% render 'product-bundle-car-seats', product: product, is_bundle_product: true, main_product_price: product.price | json, main_product_id: product.selected_or_first_available_variant.id %}
                                 {% endif %}
                             </div>
                         {% endcase %}

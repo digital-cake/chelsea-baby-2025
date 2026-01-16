@@ -5,7 +5,6 @@ document.addEventListener('click', function (e) {
     if (!quickAddBtn) return;
 
     const productHandle = quickAddBtn.dataset.productHandle;
-    const fromWishlist = quickAddBtn.dataset.fromWishlist == 'true';
     const quickAddContentEl = document.querySelector('.drawer-quick-add__content');
     const quickAddImagestEl = document.querySelector('.drawer-quick-add__images');
 
@@ -44,6 +43,8 @@ document.addEventListener('click', function (e) {
         .finally(() => {
             window.initProductAddToWishlist();
             window.handle_product_read_more_button();
+            window.handleProductCarSeatBundle();
+            window.handleProductCarSeatBundleItemColourSwatches();
 
             const productMediaEl = document.querySelector('.drawer-quick-add .section-main-product__media');
 	        if (productMediaEl) window.init_product_media(productMediaEl);

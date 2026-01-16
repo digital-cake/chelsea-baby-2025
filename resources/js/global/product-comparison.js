@@ -54,6 +54,16 @@ const store_comparison_products = () => {
 
 const update_comparison_counter = () => {
 	const comparisonCounters = document.querySelectorAll('#comparison-count');
+	const floatingComparisonBar = document.querySelector('.floating-product-comparison-counter');
+
+	if (!comparisonCounters) return;
+
+	if (comparisonProductHandlesArray.length === 0) {
+		if (floatingComparisonBar) floatingComparisonBar.style.display = 'none';
+	} else {
+		if (floatingComparisonBar) floatingComparisonBar.style.display = 'flex';
+	}
+
 	if (comparisonCounters.length < 1 || comparisonProductHandlesArray.length < 1) return;
 
 	for (const counter of comparisonCounters) {

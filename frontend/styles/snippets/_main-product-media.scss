@@ -49,8 +49,9 @@
         top: 25em;
         z-index: 2;
         width: fit-content;
+        height: fit-content;
         @media (max-width: $w-l) {
-            bottom: 0.5em;
+            top: 85%;
             right: 0.625em;
             left: auto;
             flex-direction: row;
@@ -118,7 +119,6 @@
             width: 100%;
             &:nth-of-type(3n) {
                 grid-column: 1 / -1;
-                pointer-events: none;
             }
         }
         &.full-span {

@@ -24,7 +24,7 @@ document.addEventListener('submit', e => {
 		return;
 	}
 
-	if (typeof carSeatBundleData !== 'undefined' && carSeatBundleData.is_bundle_product) {
+	if (carSeatBundleData && carSeatBundleData.is_bundle_product) {
 		submitBundleForm();
 		console.log('BUNDLE');
 	} else {
@@ -36,9 +36,6 @@ document.addEventListener('submit', e => {
 function submitForm($cartAddForm) {
 	const formData = new FormData($cartAddForm);
 	const requestUrl = `${window.Shopify.routes.root}cart/add.js`;
-
-	console.log('formData', formData);
-	console.log('$cartAddForm', $cartAddForm);
 
 	fetch(requestUrl, {
 		method: 'POST',
@@ -179,7 +176,7 @@ window.updateProductMainStickyButton = () => {
 					stickyModalContainerEl.style.display = 'none';
 					document.body.classList.remove('show-mobile-quick-add');
 				} else {
-					stickyModalContainerEl.style.display = 'block';
+					stickyModalContainerEl.style.display = 'grid';
 				}
 			});
 		},
@@ -193,10 +190,22 @@ window.updateProductMainStickyButton = () => {
 };
 window.updateProductMainStickyButton();
 
-let CAR_SEAT_BUNDLE_ITEMS = [];
+//CAR SEAT BUNDLE LOGIC 
 
-const handleProductCarSeatBundle = () => {
-    if (typeof carSeatBundleData == 'undefined') return;
+let CAR_SEAT_BUNDLE_ITEMS = [];
+let carSeatBundleData = {};
+
+window.handleProductCarSeatBundle = () => {
+	const carSeatBundleDataEl = document.querySelector('.product-bundle-car-seats');
+	if (!carSeatBundleDataEl) return;
+	const mainProductPrice = carSeatBundleDataEl.dataset.mainProductPrice;
+	const mainProductId = carSeatBundleDataEl.dataset.mainProductId;
+	const isBundleProduct = carSeatBundleDataEl.dataset.isBundleProduct;
+	carSeatBundleData = {
+		main_product_price: mainProductPrice ? mainProductPrice : 0,
+		main_product_id: mainProductId ? mainProductId : 0,
+		is_bundle_product: isBundleProduct ? isBundleProduct : false
+	};
 
     const carSeatProducts = document.querySelectorAll('.product-bundle-car-seats__list .card-product-bundle-item');
     if (carSeatProducts.length < 1) return;
@@ -226,6 +235,7 @@ const handleProductCarSeatBundle = () => {
             const totalPrice = Shopify.formatMoney(Number(carSeatBundleData.main_product_price) + Number(productPrice), Shopify.money_format);
             submitButtonPrice.innerHTML = totalPrice;
             submitButtonPrice.style.display = "inline-flex";
+			window.updateProductMainStickyButton();
 
             const timeStamp = new Date().toISOString();
 
@@ -245,9 +255,9 @@ const handleProductCarSeatBundle = () => {
     }
 };
 
-const handleProductCarSeatBundleItemColourSwatches = () => {
+window.handleProductCarSeatBundleItemColourSwatches = () => {
     document.addEventListener('click', function(e) {
-        if (!e.target.classList.contains('swatch')) return;
+        if (!e.target.classList.contains('swatch-bundle-item')) return;
         e.preventDefault();
         
         const selectedSwatch = e.target;
@@ -289,7 +299,7 @@ const handleProductCarSeatBundleItemColourSwatches = () => {
                 const newCardElement = tempDiv.querySelector('.card-product-bundle-item');
                 if (newCardElement) {
                     selectedSwatchParent.replaceWith(newCardElement);
-                    setTimeout(handleProductCarSeatBundle, 100);
+                    setTimeout(window.handleProductCarSeatBundle, 100);
                 } else {
                     throw new Error('New card element not found in response');
                 }
@@ -304,6 +314,6 @@ const handleProductCarSeatBundleItemColourSwatches = () => {
 }
 
 window.addEventListener('DOMContentLoaded', function() {
-    handleProductCarSeatBundle();
-    handleProductCarSeatBundleItemColourSwatches();
+    window.handleProductCarSeatBundle();
+    window.handleProductCarSeatBundleItemColourSwatches();
 });
