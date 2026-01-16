@@ -53,9 +53,9 @@
                     {% endfor %}
                 </div>
             </div>
-            {% if block.url != blank and block.mobile_text %}
+            {% if block.url != blank and block.desktop_text %}
                 <div class="brands-list-action">
-                    <a aria-label="{{ block.mobile_text }}" class="button-text button-text--primary" href="{{ block.url }}"><span>{{ block.mobile_text }}</span></a>
+                    <a aria-label="{{ block.desktop_text }}" class="button-text button-text--primary" href="{{ block.url }}"><span>{{ block.desktop_text }}</span></a>
                 </div>
             {% endif %}
         </div>

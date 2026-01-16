@@ -53,6 +53,9 @@
                     font-family: $font-display;
                     color: $color-primary;
                     line-height: 140%;
+                    @media (max-width: $w-m) {
+                        font-size: 18px;
+                    }
                 }
                 .compare {
                     display: flex;
@@ -151,6 +154,7 @@
                 font-size: 0.75em;
                 text-transform: uppercase;
                 display: block;
+                margin-bottom: 0.25em;
             }
             .select-wrap {
                 position: relative;
@@ -184,6 +188,7 @@
             //Radios
             .variant-radios {
                 display: flex;
+                flex-flow: row wrap;
                 gap: 0.5em;
                 .variant-radio-label {
                     border: 1px solid #1F25354D;

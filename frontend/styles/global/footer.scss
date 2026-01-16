@@ -109,6 +109,13 @@
             text-align: center;
             margin-top: 1.25em;
         }
+        .payment-icons {
+            ul {
+                @media (max-width: $w-l) {
+                    justify-content: center;
+                }
+            }
+        }
     }
     &__legal {
         display: flex;

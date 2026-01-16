@@ -33,6 +33,9 @@
             <div class="cart-item__properties">
                 <ul>
                 {% for property in item.properties %}
+                    {% if property.first == '_bundle_id' %}
+                        {% assign hide_quantity_selector = true %}
+                    {% endif %}
                     {% assign property_first_char = property.first | slice: 0 %}
                     {% if property.last != blank and property_first_char != '_' %}
                         <li><span>{{ property.first }}: {{ property.last }}</span></li>
@@ -53,7 +56,7 @@
         <div class="cart-item__wrap">
             <div class="cart-item__quantity">
                 <span data-quantity="{{ item.quantity }}" style="display:none"></span>
-                {% render "cart-quantity", item: item %}
+                {% render "cart-quantity", item: item, hide_quantity_selector: hide_quantity_selector %}
             </div>
             <div class="cart-item__actions">
                 <button type="button" aria-label="{{ 'cart.wishlist' | t }}" data-id="{{ item.product.id }}" data-product="{{ item.id }}" class="button-text button-text--primary wishlist-toggle wishlist-toggle--cart remove{% if customer %} active{% endif %}">

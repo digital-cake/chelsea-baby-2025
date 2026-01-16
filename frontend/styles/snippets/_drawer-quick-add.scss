@@ -72,10 +72,14 @@
         max-height: unset;
     }
     .section-main-product__content-title-breadcrumbs, .section-main-product__content-usps, .section-main-product__content-description {
-        margin-right: 1.875em;
+        @media (min-width: $w-l) {
+            margin-right: 1.875em;
+        }
     }
     .section-main-product__content-title-price {
-        margin-right: 1.875em;
+        @media (min-width: $w-l) {
+            margin-right: 1.875em;
+        }
         h1 {
             font-size: 22px;
         }
@@ -85,7 +89,9 @@
         align-items: center;
         justify-content: space-between;
         gap: 1em;
-        margin-right: 1.875em;
+        @media (min-width: $w-l) {
+            margin-right: 1.875em;
+        }
         #view-product {
             display: flex;
             @media (max-width: $w-m) {

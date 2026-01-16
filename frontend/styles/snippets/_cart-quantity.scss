@@ -41,5 +41,10 @@
 				}
 			}
 		}
+		&:disabled {
+			background-color: rgba(31, 37, 53, 0.30);
+			pointer-events: none;
+			opacity: 0.5;
+		}
 	}
 }
