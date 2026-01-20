@@ -6,15 +6,15 @@
 <div class="section-collection-header__container" style="background-color: {{ section.settings.background_color }};">
     <div class="wrap wrap--{{ section_id }}">
         <div class="section-collection-header__inner">
-            {% if section.settings.background_image_desktop != blank %}
-                {% render 'responsive-image', width: 3840, source: section.settings.background_image_desktop.src, alt: section.settings.background_image_desktop.alt, class: "section-collection-header__image desktop" %}
+            {% if collection.metafields.cake.background_image_desktop != blank %}
+                {% render 'responsive-image', width: 3840, source: collection.metafields.cake.background_image_desktop.src, alt: collection.metafields.cake.background_image_desktop.alt, class: "section-collection-header__image desktop" %}
             {% else %}
                 {% if collection.image != blank %}
                     {% render 'responsive-image', width: 1220, source: collection.image.src, alt: collection.image.alt, class: "section-collection-header__image desktop" %}
                 {% endif %}
             {% endif %}
-            {% if section.settings.background_image_mobile != blank %}
-                {% render 'responsive-image', width: 3840, source: section.settings.background_image_mobile.src, alt: section.settings.background_image_mobile.alt, class: "section-collection-header__image mobile" %}
+            {% if collection.metafields.cake.background_image_mobile != blank %}
+                {% render 'responsive-image', width: 3840, source: collection.metafields.cake.background_image_mobile.src, alt: collection.metafields.cake.background_image_mobile.alt, class: "section-collection-header__image mobile" %}
             {% else %}
                 {% if collection.image != blank %}
                     {% render 'responsive-image', width: 1220, source: collection.image.src, alt: collection.image.alt, class: "section-collection-header__image mobile" %}
@@ -136,16 +136,6 @@
                 }
             ],
             "default": "var(--color-primary)"
-        },
-        {
-            "type": "image_picker",
-            "id": "background_image_desktop",
-            "label": "Background Image Desktop Override"
-        },
-        {
-            "type": "image_picker",
-            "id": "background_image_mobile",
-            "label": "Background Image Mobile Override"
         },
         {
             "type": "color_background",

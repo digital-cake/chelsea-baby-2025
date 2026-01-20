@@ -6,9 +6,8 @@ import { Mousewheel, Navigation } from 'swiper/modules';
 
 window.init_recently_viewed_swiper = function(section_id) {
 	const recentlyViewedProductHandles = localStorage.getItem('cake_recently_viewed_products_CB');
-	if (!recentlyViewedProductHandles) return;
-
 	const parsedRecentlyViewedProductHandles = JSON.parse(recentlyViewedProductHandles);
+    if (parsedRecentlyViewedProductHandles.length < 1) return;
 
 	const swiperWrapper = document.querySelector(`.swiper__recently-viewed--${ section_id } .swiper-wrapper`);
 
