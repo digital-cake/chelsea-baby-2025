@@ -7,6 +7,7 @@
 	}
 	#overlay-mask {
 		display: block;
+		z-index: 11;
 	}
 }
 
@@ -150,7 +151,7 @@
 		}
 		.cart-drawer-upsells {
 			position: relative;
-			padding: 1em 0 1.25em 1em;
+			padding: 1em 0 0 1em;
 			border-bottom: 1px solid $color-grey-dark;
 			&__title {
 				padding-right: 1.75em;
