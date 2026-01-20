@@ -36,7 +36,7 @@
         {% render 'responsive-image', width: 640, source: product.images[0].src, alt: product.images[0].alt %}
     </a>
     <div class="card-product__footer">
-        <p class="card-product__title">{{ product.title | truncatewords: 6 }}</p>
+        <p class="card-product__title">{{ product.title | truncatewords: 10 }}</p>
         {% render "product-colour-swatches", product: product, is_product_card: true %}
         <div class="card-product__footer-inner">
             {% render 'product-price', product: product %}

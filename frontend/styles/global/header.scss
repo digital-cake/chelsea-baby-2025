@@ -89,6 +89,7 @@ main {
         grid-template-columns: 1fr auto 1fr;
         padding: 0.75em 2em;
         border-bottom: 1px solid $color-primary;
+        background-color: $color-white;
         @media (max-width: $w-l) {
             padding: 1em;
         }
@@ -178,6 +179,7 @@ main {
         padding: 1em 2em;
         border-bottom: 1px solid $color-primary;
         position: relative;
+        background-color: $color-white;
         display: none;
         @media (min-width: $w-l) {
             display: block;

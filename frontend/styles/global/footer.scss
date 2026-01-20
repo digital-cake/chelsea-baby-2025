@@ -14,9 +14,10 @@
         img {
             display: block;
             object-fit: cover;
-            width: 400px;
+            width: 100%;
+            max-width: 400px;
             @media (max-width: $w-m) {
-                width: 250px;
+               max-width: 250px;
             }
         }
         @media (max-width: $w-m) {

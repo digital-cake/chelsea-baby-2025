@@ -6,7 +6,7 @@
     border-top-left-radius: $radius-small;
     border-top-right-radius: $radius-small;
     @media (max-width: $w-m) {
-        padding: 1.375em 1em 3em 1em;
+        padding: 3em 1em;
     }
     &__inner {
         display: grid;

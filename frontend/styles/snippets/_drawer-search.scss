@@ -94,7 +94,9 @@
 			cursor: pointer;
 			appearance: none;
 			padding: 2px;
+			transition: background-color 0.3s ease-in-out;
 			&:hover {
+				background-color: $color-primary-hover;
 				svg {
 					fill: $color-black;
 				}

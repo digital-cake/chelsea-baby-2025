@@ -1,7 +1,7 @@
 @use "../abstracts/variables.scss" as *;
 
 .product-colour-swatches {
-    display: flex;
+    display: flex !important;
     align-items: center;
     flex-flow: row wrap;
     gap: 10px;
