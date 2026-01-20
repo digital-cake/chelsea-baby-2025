@@ -4,6 +4,8 @@
 	display: none;
 	overflow-y: auto;
 	background-color: $color-white;
+	border-bottom-left-radius: $radius-large;
+    border-bottom-right-radius: $radius-large;
 }
 .predictive-search {
 	padding: 1.5em 1.875em 3.25em 1.875em;
@@ -195,7 +197,7 @@
 		}
 	}
 
-	ul {
+	& > ul {
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-template-areas: none;

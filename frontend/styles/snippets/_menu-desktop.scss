@@ -64,6 +64,8 @@
 		z-index: 5;
 		padding: 2.125em 2em;
 		border-top: 1px solid $color-primary;
+		border-bottom-left-radius: $radius-large;
+    	border-bottom-right-radius: $radius-large;
 	}
 	&__brands {
 		overflow-y: auto;
@@ -149,22 +151,37 @@
 			}
 		}
 		&__feature {
+			display: block;
 			width: 274px !important;
 			min-width: 274px !important;
 			@media (max-width: 1130px) {
 				width: 190px !important;
 				min-width: 190px !important;
 			}
-			img {
-				display: block;
-				object-fit: cover;
-				height: 100%;
+			div {
+				overflow: hidden;
 				border-radius: $radius-small;
-				margin-bottom: 1.25em;
-				min-height: 364px;
+				img {
+					display: block;
+					object-fit: cover;
+					height: 100%;
+					border-radius: $radius-small;
+					min-height: 364px;
+					transition: all 0.3s ease-in-out;
+				}
+			}
+			.feature-title {
+				display: block;
+				margin-top: 1.25em;
 			}
 			.feature-text {
+				display: block;
 				font-size: 0.625em;
+			}
+			&:hover {
+				img {
+					transform: scale(1.1);
+				}
 			}
 		}
 	}

@@ -28,8 +28,10 @@
                     {% if block.image_1 != blank %}
                         <div class="menu-mega__feature menu-mega__feature--1">
                             {% if block.url_1 != blank %}<a href="{{ block.url_1 }}" aria-label="Feature 1">{% endif %}
-                                {% render 'responsive-image', width: 600, source: block.image_1.src, alt: block.image_1.alt %}
-                                <p>{% if block.title_1 != blank %}{{ block.title_1 }}{% endif %}</p>
+                                <div>
+                                    {% render 'responsive-image', width: 600, source: block.image_1.src, alt: block.image_1.alt %}
+                                </div>
+                                <p class="feature-title">{% if block.title_1 != blank %}{{ block.title_1 }}{% endif %}</p>
                                 <p class="feature-text">{% if block.text_1 != blank %}{{ block.text_1 }}{% endif %}</p>
                             {% if block.url_1 != blank %}</a>{% endif %}
                         </div>
@@ -37,8 +39,10 @@
                     {% if block.image_2 != blank %}
                         <div class="menu-mega__feature menu-mega__feature--2">
                             {% if block.url_2 != blank %}<a href="{{ block.url_2 }}" aria-label="Feature 2">{% endif %}
-                                {% render 'responsive-image', width: 600, source: block.image_2.src, alt: block.image_2.alt %}
-                                <p>{% if block.title_2 != blank %}{{ block.title_2 }}{% endif %}</p>
+                                <div>
+                                    {% render 'responsive-image', width: 600, source: block.image_2.src, alt: block.image_2.alt %}
+                                </div>
+                                <p class="feature-title">{% if block.title_2 != blank %}{{ block.title_2 }}{% endif %}</p>
                                 <p class="feature-text">{% if block.text_2 != blank %}{{ block.text_2 }}{% endif %}</p>
                             {% if block.url_2 != blank %}</a>{% endif %}
                         </div>

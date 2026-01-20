@@ -8,6 +8,7 @@
     z-index: 11;
     &.scrolling {
         opacity: 0;
+        top: -100%;
     }
     .swiper {
         display: none;

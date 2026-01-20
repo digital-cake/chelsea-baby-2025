@@ -121,39 +121,40 @@
     }
     &:hover {
         text-decoration-thickness: 2px;
+        text-decoration: underline;
     }
     &--primary {
-        text-decoration-color: $color-primary;
+        text-decoration-color: $color-primary !important;
         span {
             color: $color-primary;
         }
     }
     &--secondary {
-        text-decoration-color: $color-secondary;
+        text-decoration-color: $color-secondary !important;
         span {
             color: $color-secondary;
         }
     }
     &--tertiary {
-        text-decoration-color: $color-tertiary;
+        text-decoration-color: $color-tertiary !important;
         span {
             color: $color-tertiary;
         }
     }
     &--transactional {
-        text-decoration-color: $color-transactional;
+        text-decoration-color: $color-transactional !important;
         span {
             color: $color-transactional;
         }
     }
     &--white {
-        text-decoration-color: $color-white;
+        text-decoration-color: $color-white !important;
         span {
             color: $color-white;
         }
     }
     &--black {
-        text-decoration-color: $color-black;
+        text-decoration-color: $color-black !important;
         span {
             color: $color-black;
         }
@@ -207,6 +208,7 @@
     outline: none;
     background-color: $color-white;
     cursor: pointer;
+    z-index: 2;
     svg {
         width: 14px;
         pointer-events: none;
