@@ -21,7 +21,7 @@
                 {%- endif -%}
                 {%- else -%}
                     {%- for filter_value in filter.active_values -%}
-                        {%- if filter_value.label == 'In stock' -%}{% continue %}{%- endif %}
+                        {% comment %} {%- if filter_value.label == 'In stock' -%}{% continue %}{%- endif %} {% endcomment %}
                         {%- assign filter_count = filter_count | plus: 1 -%}
                         <a class="active-filters__remove-filter filter-{{ filter_value.value | handleize}}" href="{{ filter_value.url_to_remove }}">
                             <span>{{ filter_value.label }}</span>
@@ -51,7 +51,7 @@
                 {%- endif -%}
                 {%- else -%}
                     {%- for filter_value in filter.active_values -%}
-                        {%- if filter_value.label == 'In stock' -%}{% continue %}{%- endif %}
+                        {% comment %} {%- if filter_value.label == 'In stock' -%}{% continue %}{%- endif %} {% endcomment %}
                         {%- assign filter_count = filter_count | plus: 1 -%}
                         <a class="active-filters__remove-filter filter-{{ filter_value.value | handleize}}" href="{{ filter_value.url_to_remove }}">
                             <span>{{ filter_value.label }}</span>

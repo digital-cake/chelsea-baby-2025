@@ -27,6 +27,7 @@
         }
     }
     &__media {
+        overflow: hidden;
         img {
             display: block;
             object-fit: cover;
@@ -63,6 +64,9 @@
                 span {
                     font-size: 12px;
                 }
+            }
+            del {
+                text-decoration: line-through;
             }
         }
     }

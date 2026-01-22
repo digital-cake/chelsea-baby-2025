@@ -2,7 +2,9 @@
 
 {%- if paginate.pages > 1 -%}
     <nav role="navigation">
-      <ol class="pagination">
+    <div class="pagination">
+      <span class="pagination__counter">{{ "sections.search.showing" | t }} {% if request.page_type == 'blog' %}{{ blog.articles | size }}{% else %}{{ search.results | size }}{% endif %} of {{ paginate.items }}</span>
+      <ol>
         {%- if paginate.previous-%}
           <li>
             <a href="{{ paginate.previous.url }}">
@@ -51,6 +53,7 @@
           </li>
         {%- endif -%}
       </ol>
+      </div>
     </nav>
 {%- endif -%}
 

@@ -1,6 +1,6 @@
 templates/*.json
 templates/*/*.json
 config/settings_data.json
-locales/*
+# locales/*
 assets/.vite/manifest.json
 sections/*.json

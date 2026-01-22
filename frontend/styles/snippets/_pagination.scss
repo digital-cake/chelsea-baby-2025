@@ -1,40 +1,51 @@
 @use "../abstracts/variables.scss" as *;
 
 .pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 3.75em 0 0 0;
-    gap: 0.5em;
-    li {
-        width: 32px;
-        height: 32px;
+    text-align: center;
+    &__counter {
+        font-size: 0.625em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        line-height: 140%;
+        margin-bottom: 1em;
+        display: block;
+    }
+    ol {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 10px;
-        border: 1px solid #1F25354D;
-        opacity: 0.5;
-        border-radius: $radius-small;
-       a {
+        gap: 0.5em;
+        li {
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
-            height: 100%;
             font-size: 10px;
-       }
-        &.active {
-            background-color: $color-primary;
-            color: $color-white;
-            opacity: 1;
-            border-color: $color-primary;
+            border: 1px solid #1F25354D;
+            opacity: 0.5;
+            border-radius: $radius-small;
+        a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                font-size: 10px;
         }
-        &:first-of-type {
-            border: none;
-        }
-        &:last-of-type {
-            border: none;
+            &.active {
+                background-color: $color-primary;
+                color: $color-white;
+                opacity: 1;
+                border-color: $color-primary;
+            }
+            &:first-of-type {
+                border: none;
+            }
+            &:last-of-type {
+                border: none;
+            }
         }
     }
 }

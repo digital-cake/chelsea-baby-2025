@@ -5,6 +5,7 @@
     flex-flow: row wrap;
     align-items: center;
     gap: 4px;
+    z-index: 2;
     &__badge {
         border-radius: 2px;
         font-size: 8px;

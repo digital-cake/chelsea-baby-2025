@@ -32,6 +32,7 @@
         font-size: 0.875em;
         display: block;
         color: $color-white;
+        text-transform: capitalize;
     }
     &__inner {
         display: grid;

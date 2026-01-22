@@ -74,6 +74,9 @@
         text-align: center;
         padding-top: 0.75em;
         position: relative;
+        @media (max-width: $w-m) {
+            padding-top: 1em;
+        }
         &::before {
             content: '';
             position: absolute;

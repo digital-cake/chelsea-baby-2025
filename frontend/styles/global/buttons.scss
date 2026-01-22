@@ -29,6 +29,7 @@
     }
     &--no-styling {
         padding: 0;
+        height: fit-content;
     }
     &--full-width {
         width: 100%;
@@ -121,7 +122,6 @@
         letter-spacing: 0.6px;
         display: block;
         color: $color-primary;
-        text-transform: capitalize;
     }
     &:hover {
         text-decoration-thickness: 2px;

@@ -36,7 +36,7 @@
             </div>
             <div class="drawer__footer drawer-filters__footer" id="drawer-filters-footer">
                 <div class="drawer-filters__footer-wrap">
-                    <span class="drawer-filters__footer-count">{{ collection.products | size }} {{ 'sections.search.results' | t }}</span>
+                    <span class="drawer-filters__footer-count">{{ collection.products | size }} {{ 'sections.collection.matching_products' | t }}</span>
                     <a class="button-text button-text--underline button-text--black" href="{{ collection.url }}"><span>{{ "accessibility.clear_all" | t }}</span></a>
                 </div>
                 <button 
@@ -76,7 +76,7 @@
             </div>
             <div class="drawer__footer drawer-filters__footer" id="drawer-filters-footer">
                 <div class="drawer-filters__footer-wrap">
-                    <span class="drawer-filters__footer-count">{{ search.results | where: "object_type", "product" | size }} {{ 'sections.search.results' | t }}</span>
+                    <span class="drawer-filters__footer-count">{{ search.results | where: "object_type", "product" | size }} {{ 'sections.collection.matching_products' | t }}</span>
                     <a class="button-text" href="{{ routes.search_url }}?q={{ search.terms }}&type=product"><span>{{ "accessibility.clear_all" | t }}</span></a>
                 </div>
                 <button class="button button--primary apply-drawer-filters" 

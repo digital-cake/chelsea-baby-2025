@@ -3,7 +3,7 @@ const handle_header_scroll = () => {
     const announcementBar = document.querySelector('.section-announcement-bar');
     if (!header) return;
 
-    header.style.top = (announcementBar ? announcementBar.offsetHeight : 0) + 'px';
+    header.style.top = (announcementBar ? announcementBar.offsetHeight + 2 : 0) + 'px';
 
     let lastScrollTop = 0;
     let ticking = false;
@@ -15,7 +15,7 @@ const handle_header_scroll = () => {
     }
 
     const updateHeader = () => {
-        header.style.top = (announcementBar ? announcementBar.offsetHeight : 0) + 'px';
+        header.style.top = (announcementBar ? announcementBar.offsetHeight + 2 : 0) + 'px';
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
         if (Math.abs(scrollTop - lastScrollTop) < directionThreshold) {

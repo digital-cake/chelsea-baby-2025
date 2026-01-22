@@ -10,6 +10,9 @@
     width: 100%;
     background-color: rgba(255,255,255, 0.93);
     backdrop-filter: blur(2px);
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
     @media (min-width: $w-l) {
         width: calc(100% - 2em);
         border-radius: 100px;
@@ -77,5 +80,9 @@
         .savings-badge {
             display: none;
         }
+    }
+    &.show {
+        visibility: visible;
+        opacity: 1;
     }
 }

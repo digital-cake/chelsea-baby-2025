@@ -43,7 +43,7 @@
         &-title-price {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             gap: 2em;
             .price-display {
                 flex-direction: column;
@@ -74,6 +74,7 @@
                 .from {
                     font-size: 10px;
                     text-transform: uppercase;
+                    line-height: 1;
                 }
             }
         }

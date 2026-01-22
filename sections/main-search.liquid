@@ -23,18 +23,18 @@
 <div class="wrap wrap--x-large wrap--{{ section_id }}">
 
     <div class="section-search__inner">
-
-        {% if search.performed and search.results.size > 0 %}
-            <div class="search-term">
-                <h1 class="large">{{ 'sections.search.results' | t }}</h1>
-                <span> {{ 'sections.search.showing' | t }} {{ search.results | where: "object_type", "product" | size }} {{ 'sections.search.results_for' | t }} '{{ search.terms }}'</span>
-            </div>
-        {% endif %}
-
         {% if search.performed and search.terms.size > 0 %}
             <div class="section-search__content">
                 {% if search.results.size > 0 %}
                     {% paginate search.results by products_per_page %}
+
+                    {% if search.performed and search.results.size > 0 %}
+                        <div class="search-term">
+                            <h1 class="large">{{ 'sections.search.results' | t }}</h1>
+                            <span> {{ 'sections.search.showing' | t }} {{ search.results | size }} {{ 'sections.search.results_for' | t }} '{{ search.terms }}'</span>
+                        </div>
+                    {% endif %}
+
                         <ul class="section-search__products">
                             {% for item in search.results %}
                                   {% if item.object_type != 'product' %}{% continue %}{% endif %}

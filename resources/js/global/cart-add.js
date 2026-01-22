@@ -173,10 +173,10 @@ window.updateProductMainStickyButton = () => {
 		entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
-					stickyModalContainerEl.style.display = 'none';
+					stickyModalContainerEl.classList.remove('show')
 					document.body.classList.remove('show-mobile-quick-add');
 				} else {
-					stickyModalContainerEl.style.display = 'grid';
+					stickyModalContainerEl.classList.add('show')
 				}
 			});
 		},
