@@ -6,6 +6,6 @@
     <div class="card-article__content">
         <span>{{ article.published_at | date: "%Y-%m-%d" }}</span>
         <h4 class="x-small">{{ article.title }}</h4>
-        <div class="card-article__content-text">{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</div>
+        <div class="card-article__content-text">{{ article.excerpt_or_content | strip_html | truncatewords: 10 }}</div>
     </div>
 </a>

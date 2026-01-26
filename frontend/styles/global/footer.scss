@@ -21,7 +21,7 @@
             }
         }
         @media (max-width: $w-m) {
-            right: -170px;
+            right: -125px;
             top: 40%;
         }
     }
@@ -89,6 +89,14 @@
             p {
                 line-height: 140%;
                 font-size: 14px;
+                @media (max-width: $w-m) {
+                    padding-bottom: 0.5em;
+                }
+            }
+            @media (max-width: $w-m) {
+                br {
+                    display: none;
+                }
             }
         }
     }

@@ -19,11 +19,13 @@
 		height: 100%;
 		display: grid;
 		grid-template-columns: 100%;
+		overflow-y: auto;
 	}
 	&__content {
 		padding: 0;
 		height: 100%;
-		overflow-y: auto;
+		overflow-y: unset;
+		overflow: unset;
 		@media (max-width: $w-s) {
 			padding: 0;
 		}

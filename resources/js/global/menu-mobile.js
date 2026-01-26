@@ -14,12 +14,12 @@ const init_menu_mobile = () => {
 				e.preventDefault();
 				if (megaMenuLinks) for (const link of megaMenuLinks) link.parentNode.classList.remove('active');
 			});
-	const megaMenuChildTitles = document.querySelectorAll('.menu-child__title');
-	if (megaMenuChildTitles)
-		for (const title of megaMenuChildTitles)
-			title.addEventListener('click', e => {
-				e.preventDefault();
-				title.parentNode.classList.toggle('open');
-			});
+	// const megaMenuChildTitles = document.querySelectorAll('.menu-child__title');
+	// if (megaMenuChildTitles)
+	// 	for (const title of megaMenuChildTitles)
+	// 		title.addEventListener('click', e => {
+	// 			e.preventDefault();
+	// 			title.parentNode.classList.toggle('open');
+	// 		});
 };
 document.addEventListener('DOMContentLoaded', init_menu_mobile);

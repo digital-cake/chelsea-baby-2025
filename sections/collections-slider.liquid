@@ -14,7 +14,7 @@
                     {% else %}
                         <{{ section.settings.tag }} class="medium">{{ section.settings.collection.title }}</{{ section.settings.tag }}>   
                     {% endif %}
-                    {% if section.settings.label != blank %}
+                    {% if section.settings.link_label != blank %}
                         <a class="button-text button-text--primary" aria-label="{{ section.settings.link_label }}" href="{{ section.settings.link }}"><span>{{ section.settings.link_label }}</span></a>
                     {% endif %}
                 </div>

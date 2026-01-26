@@ -277,7 +277,7 @@
         "email": "Email address",
         "phone": "Phone number",
         "order": "Order number",
-        "if_applicable": "If applicable",
+        "if_applicable": "(If applicable)",
         "message": "Message",
         "subject": "Subject",
         "send": "Send message",

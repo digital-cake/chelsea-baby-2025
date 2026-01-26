@@ -63,27 +63,45 @@
         }
         .navigation-zoom {
             padding: 0;
-            width: 2.5em;
-            height: 2.5em;
-            min-width: 2.5em;
-            min-height: 2.5em;
+            width: 1.875em;
+            height: 1.875em;
+            min-width: 1.875em;
+            min-height: 1.875em;
+            @media (min-width: $w-l) {
+                width: 2.5em;
+                height: 2.5em;
+                min-width: 2.5em;
+                min-height: 2.5em;
+            }
             svg {
-                width: 18px;
+                width: 13px;
                 path {
                     stroke: $color-white;
+                }
+                @media (min-width: $w-l) {
+                    width: 18px;
                 }
             }
         }
         .navigation-button {
-            width: 2.5em;
-            height: 2.5em;
-            min-width: 2.5em;
-            min-height: 2.5em;
             border-radius: 50%;
             border: 1px solid $color-primary;
+            width: 1.875em;
+            height: 1.875em;
+            min-width: 1.875em;
+            min-height: 1.875em;
+            @media (min-width: $w-l) {
+                width: 2.5em;
+                height: 2.5em;
+                min-width: 2.5em;
+                min-height: 2.5em;
+            }
             svg {
-                width: 18px;
+                width: 10px;
                 pointer-events: none;
+                @media (min-width: $w-l) {
+                    width: 18px;
+                }
             }
             &.prev {
                 transform: rotate(90deg);

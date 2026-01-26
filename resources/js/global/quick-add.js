@@ -71,8 +71,12 @@ document.addEventListener('click', function (e) {
 window.handle_product_read_more_button = () => {
   const toggle = document.getElementById('product-description-toggle');
   const descriptionAccordion = document.querySelector('.accordion-toggle--description');
+  const content = document.querySelector('.section-main-product__content');
+  const headerHeight = document.querySelector('.section-header')?.offsetHeight;
+  const announcementBarHeight = document.querySelector('.section-announcement-bar')?.offsetHeight;
+  let totalOffsetHeight = headerHeight + announcementBarHeight;
 
-  if (!toggle) return;
+  if (!toggle || !content || !descriptionAccordion) return;
 
   toggle.addEventListener('click', function(e) {
     e.preventDefault();
@@ -82,15 +86,20 @@ window.handle_product_read_more_button = () => {
 
     if (!window.location.pathname.includes('/products/')) {
       window.location.href = window.Shopify.routes.root + "products/" + productUrl;
-    } else {
-      descriptionAccordion.click();
-      descriptionAccordion.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest'
-      });
+      return;
     }
+
+    descriptionAccordion.click();
+
+    setTimeout(() => {
+      const accordionOffsetTop = descriptionAccordion.offsetTop;
+      content.scrollTo({
+        top: accordionOffsetTop - totalOffsetHeight,
+        behavior: 'smooth'
+      });
+    }, 100);
   });
 };
 
 window.addEventListener('DOMContentLoaded', window.handle_product_read_more_button);
+
