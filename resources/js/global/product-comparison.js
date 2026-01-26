@@ -41,6 +41,7 @@ const store_comparison_products = () => {
 		} else {
 			comparisonProductHandlesArray.push(productHandle);
 			update_comparison_counter();
+			update_comparison_toggle_states();
 		}
 
 		try {
@@ -51,6 +52,19 @@ const store_comparison_products = () => {
 
     });
 }
+
+const update_comparison_toggle_states = () => {
+    document.querySelectorAll('.product-comparison-toggle').forEach(btn => {
+        btn.classList.remove('added');
+    });
+    
+    comparisonProductHandlesArray.forEach(handle => {
+        document.querySelectorAll(`.product-comparison-toggle[data-product-handle="${handle}"]`).forEach(btn => {
+            btn.classList.add('added');
+        });
+    });
+};
+
 
 const update_comparison_counter = () => {
 	const comparisonCounters = document.querySelectorAll('#comparison-count');
@@ -151,6 +165,7 @@ const handle_remove_product = () => {
 			localStorage.setItem("cake_comparison_products_CB",JSON.stringify(comparisonProductHandlesArray));
 			render_product_comparison_items();
 			update_comparison_counter();
+			update_comparison_toggle_states();
 		}
 	});
 };
@@ -160,4 +175,5 @@ window.addEventListener('DOMContentLoaded', function() {
 	render_product_comparison_items();
 	handle_remove_product();
 	update_comparison_counter();
+	update_comparison_toggle_states();
 });

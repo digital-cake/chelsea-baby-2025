@@ -201,6 +201,16 @@
     svg {
         pointer-events: none;
     }
+    &.added {
+        svg {
+            circle {
+                fill: $color-primary !important;
+            }
+            path {
+                stroke: $color-white;
+            }
+        }
+    }
 }
 
 .wishlist-toggle {
