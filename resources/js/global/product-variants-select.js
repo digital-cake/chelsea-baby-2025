@@ -87,7 +87,11 @@ async function handleOptionSelectionChange($selector) {
 	$variantIdInput.value = $productOptionsResponseRoot.querySelector('input[name="id"]').value;
 
 	const variant = JSON.parse($productOptionsResponseRoot.getElementById('variantjson').innerText);
-	const variantPreorder = JSON.parse($productOptionsResponseRoot.getElementById('variantjsonpreorder').innerText);
+	let variantPreorderEl = $productOptionsResponseRoot?.getElementById('variantjsonpreorder');
+	let variantPreorder = null;
+	if (variantPreorderEl) {
+		variantPreorder = JSON.parse(variantPreorderEl.innerText);
+	}
 
 	if (window.location.pathname.includes(productHandle)) {
 		window.history.pushState({}, null, `?variant=${variant.id}`);

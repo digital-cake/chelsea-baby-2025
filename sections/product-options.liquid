@@ -3,6 +3,8 @@
 {{ product.selected_variant | json }}
 </script>
 
-<script id="variantjsonpreorder" type="application/json">
-{{ product.selected_variant.metafields.cake.preorder | default: false }}
-</script>
+{% if product.selected_variant.metafields.cake.preorder %}
+    <script id="variantjsonpreorder" type="application/json">
+    {{ product.selected_variant.metafields.cake.preorder | json }}
+    </script>
+{% endif %}
