@@ -8,7 +8,7 @@
         <div class="wrap wrap--no-padding wrap--{{ section_id }}">
             <div class="section-brands-logo-slider__inner">
                 {% if section.settings.title != blank %}
-                    <{{ section.settings.tag }} class="small section-brands-logo-slider__inner-header">{{ section.settings.title }}</{{ section.settings.tag }}>
+                    <{{ section.settings.tag }} style="color: {{ section.settings.title_color }}" class="small section-brands-logo-slider__inner-header">{{ section.settings.title }}</{{ section.settings.tag }}>
                 {% endif %}
                 <div class="section-brands-logo-slider__marquee">
                     <div class="section-brands-logo-slider__track">
@@ -96,6 +96,38 @@
                 }
             ],
             "default": "h4"
+        },
+         {
+            "type": "select",
+            "id": "title_color",
+            "label": "Title Colour",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-primary)"
         },
         {
             "type": "select",

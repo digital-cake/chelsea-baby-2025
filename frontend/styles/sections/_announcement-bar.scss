@@ -47,6 +47,10 @@
                 color: $color-primary;
                 text-transform: uppercase;
             }
+            a {
+                display: block;
+                width: 100%;
+            }
         }
     }
     @media (min-width: 900px) {

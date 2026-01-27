@@ -31,7 +31,7 @@
             </div>
             <div class="section-media-text__inner-text">
                 {% if section.settings.title != blank %}
-                    <{{ section.settings.tag }} class="section-media-text__inner-title">{{ section.settings.title }}</{{ section.settings.tag }}>
+                    <{{ section.settings.tag }} style="color: {{ section.settings.title_color }}" class="section-media-text__inner-title">{{ section.settings.title }}</{{ section.settings.tag }}>
                 {% endif %}
                 {% if section.settings.text != blank %}
                     <div style="color: {{ section.settings.text_color }};">{{ section.settings.text }}</div>
@@ -80,6 +80,38 @@
                 }
             ],
             "default": "h3"
+        },
+        {
+            "type": "select",
+            "id": "title_color",
+            "label": "Title Colour",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-primary)"
         },
         {
             "type": "richtext",

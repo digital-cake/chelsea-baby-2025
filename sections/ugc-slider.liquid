@@ -10,7 +10,7 @@
             <div class="section-ugc-slider__inner">
                 <div class="section-ugc-slider__header">
                     {% if section.settings.title != blank %}
-                        <{{ section.settings.tag }} class="medium">{{ section.settings.title }}</{{ section.settings.tag }}>
+                        <{{ section.settings.tag }} style="color: {{ section.settings.title_color }}" class="medium">{{ section.settings.title }}</{{ section.settings.tag }}>
                     {% endif %}
                     {% if section.settings.label != blank and section.settings.label_link != blank %}
                         <a class="section-ugc-slider__header-label" aria-label="{{ section.settings.label }}" href="{{ section.settings.label_link }}">
@@ -137,6 +137,38 @@
             "type": "url",
             "id": "label_link",
             "label": "Label Link"
+        },
+        {
+            "type": "select",
+            "id": "title_color",
+            "label": "Title Colour",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "var(--color-white)"
+                },
+                {
+                    "label": "Grey",
+                    "value": "var(--color-grey)"
+                },
+                {
+                    "label": "Primary",
+                    "value": "var(--color-primary)"
+                },
+                {
+                    "label": "Secondary",
+                    "value": "var(--color-secondary)"
+                },
+                {
+                    "label": "Tertiary",
+                    "value": "var(--color-tertiary)"
+                },
+                {
+                    "label": "Heritage",
+                    "value": "var(--color-heritage)"
+                }
+            ],
+            "default": "var(--color-primary)"
         },
         {
             "type": "select",
