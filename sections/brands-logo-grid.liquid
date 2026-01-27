@@ -8,7 +8,7 @@
         <div class="wrap wrap--medium-large wrap--{{ section_id }}">
             <div class="section-brands-logo-grid__inner">
                 {% if section.settings.title != blank %}
-                    <p class="small section-brands-logo-grid__inner-header">{{ section.settings.title }}</p>
+                    <p class="small section-brands-logo-grid__inner-header" style="color: {{ section.settings.text_color }}">{{ section.settings.title }}</p>
                 {% endif %}
                 <div class="section-brands-logo-grid__entries">
                     {% for block in section.blocks %}

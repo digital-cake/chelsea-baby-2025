@@ -16,7 +16,11 @@
         <div class="section-recommendations-tab-slider__header">
             <div class="section-recommendations-tab-slider__tabs">
                 {% if recommendations_products != null %}
-                    <button class="button button--no-styling active" type="button" data-swiper-target="yaml"><span>{% if section.settings.title %}{{ section.settings.title }}{% else %}{{ 'general.yaml.title' | t }}{% endif %}</span></button>
+                    <button class="button button--no-styling active" type="button" data-swiper-target="yaml">
+                        <span>
+                        {% if section.settings.title != blank %}{{ section.settings.title }}{% elsif section.settings.you_may_also_like_collection != blank %}{{ section.settings.you_may_also_like_collection.title }}{% else %}{{ 'general.yaml.title' | t }}{% endif %}
+                        </span>
+                    </button>
                 {% endif %}
                 <button class="button button--no-styling button-recently-viewed hidden{% if recommendations_products == null %} active{% endif %}" type="button" data-swiper-target="recent"><span>{{ 'general.recently_viewed.title' | t }}</span></button>
             </div>
