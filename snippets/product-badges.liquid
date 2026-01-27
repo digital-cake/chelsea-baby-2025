@@ -11,9 +11,11 @@
 {% assign badge_object_oos = shop.metaobjects.default_badges.sold-out %}
 {% capture badge_sold_out %}
 {% assign opacity = badge_object_oos.opacity.value | default: 1 %}
-<div class="product-badges__badge product-badges__badge--oos" style="order: {{ badge_object_oos.order }}; background-color: {{ badge_object_oos.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge_object_oos.text_color }};">
-    <span>{{ badge_object_oos.text }}</span>
-</div>
+    {% unless product.metafields.cake.in_store_exclusive %}
+        <div class="product-badges__badge product-badges__badge--oos" style="order: {{ badge_object_oos.order }}; background-color: {{ badge_object_oos.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge_object_oos.text_color }};">
+            <span>{{ badge_object_oos.text }}</span>
+        </div>
+    {% endunless %}
 {% endcapture %}
 
 {% assign badge_object_new = shop.metaobjects.default_badges.new %}

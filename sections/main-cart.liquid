@@ -47,22 +47,24 @@
                             </button>
                         {% endform %}
                     </div>
-                    <div class="cart-totals__icons">
-                        {% render "payment-icons" %}
-                    </div>
-                </div>
-                <div class="cart-totals__usps cart-totals__usps--desktop">
-                  {% if section.settings.service_usps != blank %}
-                    {% for usp in section.settings.service_usps.usps.value %}
-                          <div class="service-usp">
-                              {{ usp.icon | image_url: width: 60, crop: "center" | image_tag: alt: usp.text, width: 18 }}
-                              <span>{{ usp.text }}</span>
-                          </div>
-                      {% endfor %}
+                    {% if settings.show_payment_icons == true %}
+                        <div class="cart-totals__icons">
+                            {% render "payment-icons" %}
+                        </div>
                     {% endif %}
                 </div>
-                <div class="cart-totals__usps--mobile">
-                  {% if section.settings.service_usps != blank %}
+                {% if section.settings.service_usps != blank %}
+                    <div class="cart-totals__usps cart-totals__usps--desktop">
+                        {% for usp in section.settings.service_usps.usps.value %}
+                            <div class="service-usp">
+                                {{ usp.icon | image_url: width: 60, crop: "center" | image_tag: alt: usp.text, width: 18 }}
+                                <span>{{ usp.text }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if section.settings.service_usps != blank %}
+                    <div class="cart-totals__usps--mobile">
                         <div class="swiper swiper-cart-usps">
                             <div class="swiper-wrapper">
                                 {% for usp in section.settings.service_usps.usps.value %}
@@ -76,8 +78,8 @@
                             </div>
                             <div class="swiper-pagination swiper-pagination--white swiper-pagination-cart-usps"></div>
                         </div>
-                    {% endif %}
-                </div>
+                    </div>
+                {% endif %}
             </div>
             {% else %}
             <!--[cart-empty]-->

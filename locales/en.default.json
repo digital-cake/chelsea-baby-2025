@@ -231,7 +231,8 @@
             "harness_positions": "Harness Positions",
             "i_size_compliant": "i-Size Compliant",
             "add_another_product": "+ Add Another Product",
-            "view_product": "View full product"
+            "view_product": "View full product",
+            "in_store_exclusive": "In-store Exclusive"
         },
         "gift_voucher": {
             "name": "Recipient Name",

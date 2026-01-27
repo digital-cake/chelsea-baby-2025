@@ -10,7 +10,7 @@
 {% endfor %}
 
 {% if product.metafields.cake.in_store_exclusive != blank %}
-    <button type="button" name="add" data-handle="{{ product.handle }}" aria-label="{{ 'products.product.in_store_exclusive' | t }}" class="button button--transactional button--full-width button--add-to-cart">
+    <button type="button" disabled name="add" data-handle="{{ product.handle }}" aria-label="{{ 'products.product.in_store_exclusive' | t }}" class="button button--primary button--full-width button--add-to-cart">
         {% render 'icon-cart.svg' %}
         <span class="button-label">{{ 'products.product.in_store_exclusive' | t }}</span>
     </button>

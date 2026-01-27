@@ -10,9 +10,9 @@
                             {% render 'responsive-image', width: 240, source: product_option.images[0].src, alt: product_option.images[0].alt, class: 'media' %}
                             <div class="details__inner">
                                 <span class="details__inner-title">{{ product_option.title }}</span>
-                            {% if product_option.metafields.cake.product_option_short_description != blank %}
+                                {% if product_option.metafields.cake.product_option_short_description != blank %}
                                     <span class="details__inner-description">{{ product_option.metafields.cake.product_option_short_description }}</span>
-                            {% endif %}
+                                {% endif %}
                                 {% render 'product-price', product: product_option %}
                             </div>
                         </a>

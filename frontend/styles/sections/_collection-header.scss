@@ -48,11 +48,13 @@
         gap: 0.5em;
         position: relative;
         z-index: 3;
-        //max-width: 450px;
         h1 {
             display: flex;
             align-items: center;
             gap: 0.5em;
+        }
+        p {
+            max-width: 450px;
         }
         a.button {
             width: fit-content;

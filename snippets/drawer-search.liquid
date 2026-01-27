@@ -7,7 +7,7 @@
                 <label class="drawer-search__input--label" for="drawer-search-input">{{ "sections.search.drawer.label" | t }}</label>
                 <div class="drawer-search__input-wrap">
                     {% render 'icon-search.svg' %}
-                    <input class="drawer-search__input--input" maxlength="32" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ "sections.search.drawer.placeholder" | t }}" id="drawer-search-input" autocomplete="off">
+                    <input class="drawer-search__input--input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ "sections.search.drawer.placeholder" | t }}" id="drawer-search-input" autocomplete="off">
                 </div>
                 <div class="drawer-search__input-actions">
                     <button class="drawer-search__input--clear button-text button-text--primary" aria-label="{{ "accessibility.clear_search" | t }}">
