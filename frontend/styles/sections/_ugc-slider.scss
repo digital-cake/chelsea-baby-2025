@@ -9,11 +9,11 @@
                 align-items: center;
             }
             .swiper-slide {
-                width: 252px;
-                height: 252px;
                 position: relative;
                 overflow: hidden;
                 border-radius: $radius-small;
+                width: 252px;
+                height: 252px;
                 &-active {
                     width: 323px;
                     height: 323px;
@@ -26,6 +26,8 @@
                     display: block;
                     object-fit: cover;
                     border-radius: $radius-small;
+                    height: 100%;
+                    width: 100%;
                 }
             }
             .slide-label {

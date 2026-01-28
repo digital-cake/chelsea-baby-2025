@@ -46,6 +46,9 @@
             section_id: {{ section_id | json }},
             size: {{ section.blocks.size | json }},
             enable_pagination: {{ section.settings.enable_pagination | json }},
+            autoplay: {{ section.settings.autoplay | json }},
+            delay: {{ section.settings.delay | json }},
+            speed: {{ section.settings.speed | json }}
         };
 
         window.addEventListener('DOMContentLoaded', function() {
@@ -206,6 +209,27 @@
             "id": "enable_pagination",
             "label": "Enable Pagination",
             "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Autoplay",
+            "default": false
+        },
+        {
+            "type": "number",
+            "id": "delay",
+            "label": "Autoplay Delay",
+            "default": 3,
+            "info": "Time delay between slide transitions, in seconds."
+        },
+        {
+            "type": "range",
+            "min": 1,
+            "max": 10,
+            "default": 7,
+            "id": "speed",
+            "label": "Autoplay Speed"
         },
         {
             "type": "header",
