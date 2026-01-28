@@ -35,14 +35,15 @@
                         line-height: 140%;
                         text-transform: uppercase;
                         font-weight: $weight-display;
+                        width: fit-content;
                     }
                     @media (max-width: 550px) {
-                        max-width: none;
-                        padding: 0 3.625em;
+                        max-width: 230px;
+                        //padding: 0 3.625em;
                     }
                 }
                 @media (max-width: $w-m) {
-                    padding: 1.875em 0 1.375em 0;
+                    padding: 1.875em 0;
                 }
                 @media (min-width: $w-m) {
                     &:nth-of-type(2) {

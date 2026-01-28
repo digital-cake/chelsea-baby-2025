@@ -13,3 +13,4 @@ import '../../resources/js/global/recently-viewed-products.js';
 import '../../resources/js/global/sort-by-handlers.js';
 import '../../resources/js/global/product-comparison.js';
 import '../../resources/js/global/wishlist.js';
+import '../../resources/js/global/hls-video.js';

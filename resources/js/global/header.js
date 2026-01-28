@@ -43,6 +43,7 @@ const handle_header_scroll = () => {
     };
 
     window.addEventListener('scroll', () => {
+        if (document.body.classList.contains('drawer-mobile-open')) return;
         if (!ticking) {
             window.requestAnimationFrame(updateHeader);
             ticking = true;

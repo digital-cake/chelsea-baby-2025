@@ -61,6 +61,10 @@
         max-height: 562px;
         min-height: 562px;
         height: 100%;
+        @media (max-width: $w-m) {
+            max-height: 592px;
+            min-height: 592px;
+        }
     }
     &__articles {
         display: flex;
@@ -75,7 +79,7 @@
         padding-top: 0.75em;
         position: relative;
         @media (max-width: $w-m) {
-            padding-top: 1em;
+            padding-top: 2em;
         }
         &::before {
             content: '';
