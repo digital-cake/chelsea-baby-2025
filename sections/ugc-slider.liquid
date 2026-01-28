@@ -25,14 +25,12 @@
                             {% for block in section.blocks %}
                                 {% if block.settings.image == blank %}{% continue %}{% endif %}
                                     <div class="swiper-slide">
-                                        <div class="section-ugc-slider__slider-slide">
-                                            {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
-                                                {% if block.settings.label != blank %}
-                                                    <span class="slide-label">{{ block.settings.label }}</span>
-                                                {% endif %}
-                                                {% render 'responsive-image', width: 900, source: block.settings.image.src, alt: block.settings.image.alt %}
-                                            {% if block.settings.link != blank %}</a>{% endif %}
-                                        </div>
+                                        {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+                                            {% if block.settings.label != blank %}
+                                                <span class="slide-label">{{ block.settings.label }}</span>
+                                            {% endif %}
+                                            {% render 'responsive-image', width: 900, source: block.settings.image.src, alt: block.settings.image.alt %}
+                                        {% if block.settings.link != blank %}</a>{% endif %}
                                     </div>
                             {% endfor %}
                         </div>
@@ -47,9 +45,6 @@
         const swiperUgcData = {
             section_id: {{ section_id | json }},
             size: {{ section.blocks.size | json }},
-            autoplay: {{ section.settings.autoplay | json }},
-            delay: {{ section.settings.delay | json }},
-            speed: {{ section.settings.speed | json }},
             enable_pagination: {{ section.settings.enable_pagination | json }},
         };
 
@@ -211,27 +206,6 @@
             "id": "enable_pagination",
             "label": "Enable Pagination",
             "default": true
-        },
-        {
-            "type": "checkbox",
-            "id": "autoplay",
-            "label": "Autoplay",
-            "default": false
-        },
-        {
-            "type": "number",
-            "id": "delay",
-            "label": "Autoplay Delay",
-            "default": 3,
-            "info": "Time delay between slide transitions, in seconds."
-        },
-        {
-            "type": "range",
-            "min": 1,
-            "max": 10,
-            "default": 7,
-            "id": "speed",
-            "label": "Autoplay Speed"
         },
         {
             "type": "header",
