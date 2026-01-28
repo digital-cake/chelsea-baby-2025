@@ -32,9 +32,15 @@
             </div>
             <div class="section-blog-showcase__wrap">
                 <div class="section-blog-showcase__articles">
-                    {% for article in section.settings.blog.articles limit: 3 %}
-                        {% render 'card-article-condensed', article: article %}
-                    {% endfor %}
+                    {% if section.settings.showcase_articles != blank %}
+                        {% for article in section.settings.showcase_articles %}
+                            {% render 'card-article-condensed', article: article %}
+                        {% endfor %}
+                        {% else %}
+                            {% for article in section.settings.blog.articles limit: 3 %}
+                                {% render 'card-article-condensed', article: article %}
+                            {% endfor %}
+                    {% endif %}
                 </div>
                 <div class="section-blog-showcase__action">
                     <a class="button-text button-text--black" aria-label="{{ section.settings.blog.title }}" href="{{ section.settings.blog.url }}">{{ section.settings.blog_link_title }}</a>
@@ -120,6 +126,13 @@
             "type": "blog",
             "id": "blog",
             "label": "Blog"
+        },
+        {
+            "type": "article_list",
+            "id": "showcase_articles",
+            "label": "Articles",
+            "limit": 3,
+            "info": "Will override blog articles if set"
         },
         {
             "type": "text",
