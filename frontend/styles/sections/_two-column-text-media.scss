@@ -72,6 +72,7 @@
                 border-bottom-left-radius: $radius-small;
             }
             .image-overlay {
+                pointer-events: none;
                 display: block;
                 position: absolute;
                 left: 0;
