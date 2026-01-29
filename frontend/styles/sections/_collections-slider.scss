@@ -61,12 +61,14 @@
             gap: 1em;
             .image-wrapper {
                 position: relative;
+                overflow: hidden;
                 img {
                     display: block;
                     object-fit: cover;
                     min-height: 466px;
                     max-height: 466px;
                     border-radius: $radius-small;
+                    transition: all 0.3s ease-in-out;
                     @media (max-width: $w-m) {
                         max-height: 400px;
                         min-height: 400px;
@@ -81,6 +83,11 @@
                     height: 100%;
                     z-index: 1;
                     border-radius: $radius-small;
+                }
+                &:hover {
+                    img {
+                        transform: scale(1.1);
+                    }
                 }
             }
             .slide-footer {

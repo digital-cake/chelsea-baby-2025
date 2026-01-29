@@ -9,18 +9,25 @@
                 align-items: center;
             }
             .swiper-slide {
+                flex-shrink: 0; 
                 position: relative;
                 overflow: hidden;
                 border-radius: $radius-small;
                 width: 252px;
                 height: 252px;
+                min-width: 252px;
+                min-height: 252px;
                 &-active {
                     width: 323px;
                     height: 323px;
+                    min-width: 323px;
+                    min-height: 323px;
                 }
                 &-prev, &-next {
                     width: 293px;
                     height: 300px;
+                    min-width: 293px;
+                    min-height: 300px;
                 }
                 img {
                     display: block;

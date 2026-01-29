@@ -8,21 +8,22 @@
     overflow: hidden;
     .stamp-logo {
         position: absolute;
-        right: -335px;
-        top: 50%;
+        right: -280px;
+        top: 47%;
         transform: translate(-50%, -50%);
         img {
             display: block;
             object-fit: cover;
             width: 100%;
-            max-width: 400px;
+            max-width: 350px;
+            transform: rotate(15deg);
             @media (max-width: $w-m) {
-               max-width: 250px;
+                max-width: 200px;
             }
         }
         @media (max-width: $w-m) {
-            right: -125px;
-            top: 40%;
+            right: -120px;
+            top: 42%;
         }
     }
     a {

@@ -35,15 +35,6 @@
             {% form 'contact', class: "form form--contact" %}
                 {% if form.posted_successfully? %}
                     <p class="success"><strong>{{ 'forms.success' | t }}</strong></p>
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                        window.scrollTo({
-                            top: 0,
-                            left: 0,
-                            behavior: 'smooth'
-                        });
-                        });
-                    </script>
                 {% else %}
                     {{ form.errors | default_errors }}
                     <div class="form-row form-row--split">
