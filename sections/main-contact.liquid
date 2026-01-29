@@ -33,8 +33,18 @@
                 <h2>{{ section.settings.form_title }}</h2>
             {% endif %}
             {% form 'contact', class: "form form--contact" %}
-                {% if form.posted_successfully? %}
+                {% if form.posted_successfully? %} 
                     <p class="success"><strong>{{ 'forms.success' | t }}</strong></p>
+                       <script>
+                            window.scrollTo(0, 0);
+                            document.documentElement.scrollTop = 0;
+                            document.body.scrollTop = 0;
+                        </script>
+                        <script>
+                            window.addEventListener('load', function() {
+                                window.scrollTo(0, 0);
+                            });
+                        </script>
                 {% else %}
                     {{ form.errors | default_errors }}
                     <div class="form-row form-row--split">
