@@ -124,8 +124,8 @@
         color: $color-primary;
     }
     &:hover {
-        text-decoration-thickness: 2px;
-        text-decoration: underline;
+        text-decoration: underline !important;
+        text-decoration-thickness: 2px !important;
     }
     &--primary {
         text-decoration-color: $color-primary !important;

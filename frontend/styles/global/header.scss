@@ -1,7 +1,7 @@
 @use "../abstracts/variables.scss" as *;
 
 main {
-    padding-top: 101px;
+    padding-top: 90px;
     @media (min-width: $w-l) {
         padding-top: 138px;
     }
