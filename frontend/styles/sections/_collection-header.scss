@@ -3,6 +3,29 @@
 .section-collection-header {
     overflow: hidden;
     position: relative;
+    .wrap {
+        display: flex;
+        &.m-position-left {
+            justify-content: flex-start;
+        }
+        &.m-position-center {
+            justify-content: center;
+        }
+        &.m-position-right {
+            justify-content: flex-end;
+        }
+        @media (min-width: $w-l) {
+            &.d-position-left {
+                justify-content: flex-start;
+            }
+            &.d-position-center {
+                justify-content: center;
+            }
+            &.d-position-right {
+                justify-content: flex-end;
+            }
+        }
+    }
     &__overlay {
         position: absolute;
         width: 100%;
@@ -10,6 +33,9 @@
         top: 0;
         left: 0;
         z-index: 2;
+    }
+    &__inner {
+        max-width: 450px;
     }
     &__image {
         position: absolute;
@@ -49,12 +75,17 @@
         position: relative;
         z-index: 3;
         h1 {
-            display: flex;
-            align-items: center;
-            gap: 0.5em;
-        }
-        p {
-            max-width: 450px;
+            display: block;
+            position: relative;
+            margin-right: 1.25em;
+            button {
+                margin-left: 0.5em;
+                position: absolute;
+                top: 45%;
+                transform: translateY(-50%);
+                width: 24px;
+                height: 24px;
+            }
         }
         a.button {
             width: fit-content;

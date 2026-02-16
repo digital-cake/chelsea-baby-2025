@@ -3,8 +3,19 @@
 
 {%- render 'vite' with '@sectionStyles/_collection-header.scss' -%}
 
+{% style %}
+    .wrap--{{ section_id }} .section-collection-header__header {
+        text-align: {{ section.settings.mobile_alignment }};
+    }
+    @media (min-width: 1024px) {
+        .wrap--{{ section_id }} .section-collection-header__header {
+            text-align: {{ section.settings.desktop_alignment }};
+        }
+    }
+{% endstyle %}
+
 <div class="section-collection-header__container" style="background-color: {{ section.settings.background_color }};">
-    <div class="wrap wrap--{{ section_id }}">
+    <div class="wrap wrap--{{ section_id }} d-position-{{ section.settings.desktop_position }} m-position-{{ section.settings.mobile_position }}">
         <div class="section-collection-header__inner">
             {% if collection.metafields.cake.background_image_desktop != blank %}
                 {% render 'responsive-image', width: 3840, source: collection.metafields.cake.background_image_desktop.src, alt: collection.metafields.cake.background_image_desktop.alt, class: "section-collection-header__image desktop" %}
@@ -147,6 +158,66 @@
             "id": "image_overlay",
             "label": "Image Overlay",
             "default": "linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 100%)"
+        },
+        {
+            "type": "header",
+            "content": "Desktop Text Settings"
+        },
+        {
+            "type": "select",
+            "id": "desktop_position",
+            "label": "Position",
+            "options": [
+                {
+                    "label": "Left",
+                    "value": "left"
+                },
+                {
+                    "label": "Center",
+                    "value": "center"
+                },
+                {
+                    "label": "Right",
+                    "value": "right"
+                }
+            ],
+            "default": "left"
+        },
+        {
+            "type": "text_alignment",
+            "id": "desktop_alignment",
+            "label": "Alignment",
+            "default": "left"
+        },
+        {
+            "type": "header",
+            "content": "Mobile Text Settings"
+        },
+        {
+            "type": "select",
+            "id": "mobile_position",
+            "label": "Position",
+            "options": [
+                {
+                    "label": "Left",
+                    "value": "left"
+                },
+                {
+                    "label": "Center",
+                    "value": "center"
+                },
+                {
+                    "label": "Right",
+                    "value": "right"
+                }
+            ],
+            "default": "left"
+        },
+        {
+            "type": "text_alignment",
+            "id": "mobile_alignment",
+            "label": "Alignment",
+            "default": "left"
         }
     ],
     "presets": [
