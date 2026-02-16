@@ -32,12 +32,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 3.25em 4.75em;
+            padding: 3.25em 5.75em;
             border-right: 1px solid $color-grey;
             max-height: 164px;
             transition: all 0.3s ease-in-out;
             @media (max-width: $w-l) {
-                padding: 4.25em 1.875em;
+                padding: 4.25em 3.875em;
             }
             img {
                 display: block;

@@ -60,6 +60,11 @@
             width: fit-content;
             margin-top: 0.5em;
         }
+        &-actions {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
     }
     &__links {
         position: absolute;

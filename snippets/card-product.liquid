@@ -43,6 +43,9 @@
             <button id="quick-add" data-product-handle="{{ product.handle }}" aria-label="{{ 'products.product.add' | t }}" class="card-product__quick-add button-text button-text--transactional"><span>{{ 'products.product.add' | t }} +</span></button>
             <button id="compare-remove" data-product-handle="{{ product.handle }}" aria-label="{{ 'products.product.remove' | t }}" class="card-product__compare-remove button-text button-text--primary"><span>- {{ 'products.product.remove' | t }}</span></button>
         </div>
+        {% if product.metafield.cake.announcement_text != blank %}
+            <span class="card-product__footer-announcement">{{ product.metafield.cake.announcement_text }}</span>
+        {% endif %}
     </div>
 </div>
 

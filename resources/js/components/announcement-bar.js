@@ -21,9 +21,6 @@ window.init_announcement_bar_slider = function(swiperAnnouncementBarData) {
             forceToAxis: true,
         },
         breakpoints: {
-            650: {
-                slidesPerView: 2,
-            },
             900: {
                 slidesPerView: swiperAnnouncementBarData.size,
             }

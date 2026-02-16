@@ -70,6 +70,13 @@
                 text-decoration: line-through;
             }
         }
+        &-announcement {
+            font-size: 0.75em;
+            padding: 0.25em 0.5em;
+            background-color: var(--color-tertiary);
+            border-radius: 4px;
+            display: block;
+        }
     }
     .compare-was, .savings-badge {
         display: none;
