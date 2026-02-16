@@ -34,6 +34,9 @@
             max-height: 350px;
         }
         & > div {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1em;
             font-size: 0.875em;
             padding: 4.875em 3em;
             @media (max-width: $w-m) {

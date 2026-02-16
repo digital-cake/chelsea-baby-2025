@@ -9,7 +9,7 @@
                     <div>{{ collection.metafields.cake.collection_header_description_drawer_content | metafield_tag }}</div>
                 {% else %}
                     {% if collection.description %}
-                        <div>{{ collection.description | strip_html }}</div>
+                        <div>{{ collection.description }}</div>
                     {% endif %}
             {% endif %}
 
