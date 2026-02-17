@@ -1,10 +1,11 @@
-<li class="card-product-bundle-item{% unless item.available %} unavailable{% endunless %}" data-id="{{ item.selected_or_first_available_variant.id }}" data-price="{{ item.price }}">
-    <div class="details">
-        {% render 'responsive-image', width: 240, source: item.images[0].src, alt: item.images[0].alt, class: 'media' %}
-        <div class="details__inner">
-            <span class="details__inner-title">{{ item.title }}</span>
-            {% render 'bundle-item-colour-swatches', product: item %}
-            {% render 'product-price', product: item %}
+<li class="card-product-bundle-item{% if product.id == item.product_link.value.id %} selected{% endif %}">
+    <a href="{{ item.product_link.value.url }}" aria-label="{{ item.product_link.value.title }}" {% if product.id == item.product_link.value.id %}style="pointer-events:none;"{% endif %}>
+        <div class="details">
+            {% render 'responsive-image', width: 240, source: item.product_image, alt: item.product_title, class: 'media' %}
+            <div class="details__inner">
+                <span class="details__inner-title">{{ item.product_title }}</span>
+                {% render 'product-price', product: item.product_link.value %}
+            </div>
         </div>
-    </div>
+    </a>
 </li>

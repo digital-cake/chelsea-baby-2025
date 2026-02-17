@@ -1,10 +1,10 @@
 
-<div class="product-bundle-car-seats" data-is-bundle-product="{{ is_bundle_product }}" data-main-product-price="{{ main_product_price }}" data-main-product-id="{{ main_product_id }}">
+<div class="product-bundle-car-seats" data-is-bundle-product="{{ is_bundle_product }}">
     <span>{{ 'products.product.select_car_seat' | t }}:</span>
-    {% assign car_seat_products = product.metafields.cake.bundle_car_seats.value %}
+    {% assign alternative_bundle_products = product.metafields.cake.alternative_car_seat_bundles.value %}
     <ul class="product-bundle-car-seats__list">
-        {% for item in car_seat_products.products.value %}
-            {% render 'bundle-item', item: item %}
+        {% for item in alternative_bundle_products.products.value %}
+           {% render 'bundle-item', item: item %}
         {% endfor %}
     </ul>
 </div>
