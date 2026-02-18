@@ -97,6 +97,13 @@
             align-items: center;
             gap: 1em;
         }
+        & > div {
+            a {
+                color: $color-white;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+            }
+        }
     }
     &__links {
         position: absolute;

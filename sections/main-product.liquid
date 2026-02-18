@@ -63,7 +63,7 @@
                                 </div>
                             {% endif %}
                         {% when "colours" %}
-                            {% render "product-colour-swatches", product: product %}
+                            {% render "product-colour-swatches", incoming_product: product %}
                         {% when "variants" %}
                             {% if product.has_only_default_variant %}
                                 <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">

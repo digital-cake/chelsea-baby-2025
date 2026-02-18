@@ -37,7 +37,7 @@
     </a>
     <div class="card-product__footer">
         <p class="card-product__title">{{ product.title | truncatewords: 10 }}</p>
-        {% render "product-colour-swatches", product: product, is_product_card: true %}
+        {% render "product-colour-swatches", incoming_product: product, is_product_card: true %}
         <div class="card-product__footer-inner">
             {% render 'product-price', product: product %}
             <button id="quick-add" data-product-handle="{{ product.handle }}" aria-label="{{ 'products.product.add' | t }}" class="card-product__quick-add button-text button-text--transactional"><span>{{ 'products.product.add' | t }} +</span></button>

@@ -358,6 +358,7 @@
                     display: flex;
                     padding-bottom: 1em;
                     .card-product-bundle-item {
+                        max-width: 400px;
                         width: 100%;
                         min-width: 340px;
                         margin-right: 1em;
@@ -386,24 +387,27 @@
                                     font-size: 13px;
                                     line-height: 150%;
                                 }
-                                .bundle-item-colour-swatches {
-                                    margin: 0;
-                                    .colour-label {
-                                        display: none;
+                                &-swatches {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 0.25em;
+                                    .swatch {
+                                        display: block;
+                                        display: flex;
+                                        width: 1.25em;
+                                        height: 1.25em;
+                                        border-radius: 50%;
+                                        position: relative;
                                     }
-                                    .swatches {
+                                    .current {
                                         display: flex;
                                         align-items: center;
-                                        gap: 1em;
-                                        .swatch {
-                                            width: 0.875em;
-                                            height: 0.875em;
-                                            cursor: pointer;
-                                        }
-                                        .current {
-                                            width: 1.375em;
-                                            height: 1.375em;
-                                        }
+                                        justify-content: center;
+                                        border: 1px solid $color-primary;
+                                        width: 1.75em;
+                                        height: 1.75em;
+                                        border-radius: 50%;
+                                        pointer-events: none;
                                     }
                                 }
                             }
@@ -432,10 +436,6 @@
                             .details {
                                 pointer-events: none;
                             }
-                        }
-                        &.loading {
-                            opacity: 0.5;
-                            pointer-events: none;
                         }
                     }
                 }

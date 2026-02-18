@@ -1,11 +1,55 @@
-<li class="card-product-bundle-item{% if product.id == item.product_link.value.id %} selected{% endif %}">
-    <a href="{{ item.product_link.value.url }}" aria-label="{{ item.product_link.value.title }}" {% if product.id == item.product_link.value.id %}style="pointer-events:none;"{% endif %}>
-        <div class="details">
-            {% render 'responsive-image', width: 240, source: item.product_image, alt: item.product_title, class: 'media' %}
-            <div class="details__inner">
-                <span class="details__inner-title">{{ item.product_title }}</span>
-                {% render 'product-price', product: item.product_link.value %}
+{% assign hex_codes = settings.product_colours | newline_to_br | strip_newlines | split: "<br />" %}
+{% assign matching_product_to_car_seat_colour = false %}
+
+{% assign matched_product = false %}
+{% assign colour_variations = item.colour_variations.value %}
+{% assign display_product = nil %}
+
+{% for prod_colour in colour_variations %}
+  {% unless display_product %}
+    {% assign display_product = prod_colour %}
+  {% endunless %}
+  
+  {% if prod_colour.id == product.id %}
+    {% assign matched_product = true %}
+    {% assign display_product = prod_colour %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% unless colour_variations.size > 0 or display_product %}
+  {% assign display_product = item %}
+{% endunless %}
+
+<li class="card-product-bundle-item{% if matched_product %} selected{% endif %}">
+    <div class="details">
+        {% render 'responsive-image', 
+            width: 240, 
+            source: display_product.images[0].src, 
+            alt: display_product.images[0].alt, 
+            class: 'media' 
+        %}
+        <div class="details__inner">
+            <span class="details__inner-title">{{ item.product_title }}</span>
+            <div class="details__inner-swatches">
+                {% for prod_colour in colour_variations %}
+                    {% assign prod_colour_label = prod_colour.metafields.cake.colour_name | downcase %}
+                    {% assign alt_hex = '#000000' %}
+                    {% for color in hex_codes %}
+                        {%- assign label = color | split: ':' | first | downcase -%}
+                        {%- assign code = color | split: ':' | last -%}
+                        {% if label == prod_colour_label %}
+                            {% assign alt_hex = code %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if prod_colour.id == product.id %}<div class="current">{% endif %}
+                        <a href="{{ prod_colour.url }}" aria-label="{{ prod_colour.title }}">
+                            <a aria-label="{{ prod_colour_label }}" id="{{ prod_colour.id }}" class="swatch{% unless prod_colour.available %} unavailable{% endunless %}" href="{{ prod_colour.url }}" style="background-color: {{ alt_hex }}"></a>
+                        </a>
+                    {% if prod_colour.id == product.id %}</div>{% endif %}
+                {% endfor %}
             </div>
+            {% render 'product-price', product: display_product %}
         </div>
-    </a>
+    </div>
 </li>

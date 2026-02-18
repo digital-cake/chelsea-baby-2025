@@ -62,7 +62,7 @@
                             <p>{{ feature_product.title }}</p>
                             <div class="price-swatches-wrap">
                                 {% render 'product-price', product: feature_product %}
-                                {% render "product-colour-swatches", product: feature_product, is_product_feature: true %}
+                                {% render "product-colour-swatches", incoming_product: feature_product, is_product_feature: true %}
                             </div>
                             <button id="quick-add" data-product-handle="{{ feature_product }}" aria-label="{{ 'products.product.add' | t }}" class="card-product__quick-add button button--transactional"><span>{{ feature_product.price | money }} - {{ 'products.product.add_to_cart' | t }}</span></button>
                         </div>
