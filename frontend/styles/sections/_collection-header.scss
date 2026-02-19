@@ -82,7 +82,7 @@
                 margin-left: 0.5em;
                 position: absolute;
                 top: 45%;
-                right: 0;
+                right: -0.5em;
                 transform: translateY(-50%);
                 width: 24px;
                 height: 24px;
@@ -98,10 +98,17 @@
             gap: 1em;
         }
         & > div {
-            a {
-                color: $color-white;
-                text-decoration: underline;
-                text-underline-offset: 3px;
+            & > div {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 0.5em;
+                p, a, span, h2, h3, h4, h5, h6 {
+                    color: $color-white;
+                }
+                a {
+                    text-decoration: underline;
+                    text-underline-offset: 3px;
+                }
             }
         }
     }
