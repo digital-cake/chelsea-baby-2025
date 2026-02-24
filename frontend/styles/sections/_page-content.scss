@@ -1,0 +1,54 @@
+@use "../abstracts/variables.scss" as *;
+
+.section-page-content {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+    p, a, span, li {
+        margin-bottom: 1em;
+    }
+    p {
+        &:empty {
+            display: none;
+        }
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 1em;
+    }
+    ol {
+        list-style-type: decimal;
+        padding-left: 1em;
+    }
+    h2 {
+        font-size: 2.5em; //40px
+        font-weight: $weight-display;
+        @media (max-width: $w-l) {
+            font-size: 1.75em; //28px
+        }
+    }
+    h3 {
+        font-size: 1.75em; //28px
+        font-weight: $weight-display;
+        @media (max-width: $w-l) {
+            font-size: 1.25em; //20px
+        }
+    }
+    h4 {
+        font-size: 1.375em; //22px
+        font-weight: $weight-display;
+        @media (max-width: $w-l) {
+            font-size: 1.125em; //18px
+        }
+    }
+    h5, h6 {
+        font-size: 1.125em; //18px
+        font-weight: $weight-display;
+        @media (max-width: $w-l) {
+            font-size: 0.875em; //14px
+        }
+    }
+    h2,h3,h4,h5,h6 {
+        margin: 16px 0;
+    }
+}

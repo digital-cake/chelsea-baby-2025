@@ -59,6 +59,9 @@
                     {% if settings.pinterest_link != blank %}
                         <li><a href="{{ settings.pinterest_link }}" aria-label="Pinterest">{% render 'icon-pinterest.svg' %}</a></li>
                     {% endif %}
+                    {% if settings.tiktok_link != blank %}
+                        <li><a href="{{ settings.tiktok_link }}" aria-label="TikTok">{% render 'icon-tiktok.svg' %}</a></li>
+                    {% endif %}
                 </ul>
             </div>
         {% endif %}

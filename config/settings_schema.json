@@ -307,6 +307,11 @@
           "type": "url",
           "label": "Pinterest Link",
           "id": "pinterest_link"
+        },
+         {
+          "type": "url",
+          "label": "TikTok Link",
+          "id": "tiktok_link"
         }
       ]
     },
