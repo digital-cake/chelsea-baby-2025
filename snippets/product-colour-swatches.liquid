@@ -28,7 +28,7 @@
                 {% endif %}
                 {% endfor %}
                 {% if alt_colour_product.id == incoming_product.id %}<div class="current">{% endif %}
-                <a aria-label="{{ alt_colour }}" id="{{ alt_colour_product.id }}" class="swatch{% unless product.available %} unavailable{% endunless %}" href="{{ alt_colour_product.url }}" style="background-color: {{ alt_hex }}"></a>
+                <a aria-label="{{ alt_colour }}" id="{{ alt_colour_product.id }}" class="swatch{% unless alt_colour_product.available %} unavailable{% endunless %}" href="{{ alt_colour_product.url }}" style="background-color: {{ alt_hex }}"></a>
                 {% if alt_colour_product.id == incoming_product.id %}</div>{% endif %}
             {% endfor %}
         </ul>
