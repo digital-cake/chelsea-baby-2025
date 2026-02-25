@@ -20,6 +20,8 @@
     </div>
 {% endif %}
 
-<div class="product-notification">
-    {% render 'store-availability', product: product, current_variant: product.selected_or_first_available_variant %}
-</div>
+{% if product.available %}
+    <div class="product-notification">
+        {% render 'store-availability', product: product, current_variant: product.selected_or_first_available_variant %}
+    </div>
+{% endif %}

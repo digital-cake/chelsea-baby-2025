@@ -43,8 +43,6 @@ document.addEventListener('click', function (e) {
         .finally(() => {
             window.initProductAddToWishlist();
             window.handle_product_read_more_button();
-            window.handleProductCarSeatBundle();
-            window.handleProductCarSeatBundleItemColourSwatches();
 
             const productMediaEl = document.querySelector('.drawer-quick-add .section-main-product__media');
 	        if (productMediaEl) window.init_product_media(productMediaEl);

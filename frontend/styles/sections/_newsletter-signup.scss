@@ -62,16 +62,18 @@
                     border: none;
                     text-transform: initial !important;
                     background-color: transparent !important;
+                    color: $color-white;
                     &::placeholder {
                         color: $color-white;
                         text-transform: uppercase;
                     }
-                    &:focus, &:valid, &:focus-visible {
-                        background-color: transparent !important;
-                        outline: none;
-                        appearance: none;
-                        box-shadow: none;
-                    } 
+                }
+                input:-webkit-autofill,
+                input:-webkit-autofill:hover,
+                input:-webkit-autofill:focus {
+                    -webkit-box-shadow: 0 0 0px 1000px #54697F inset;
+                    box-shadow: 0 0 0px 1000px #54697F inset;
+                    -webkit-text-fill-color: $color-white;
                 }
                 input, label {
                     text-transform: uppercase;

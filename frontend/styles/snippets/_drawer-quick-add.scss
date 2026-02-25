@@ -135,6 +135,11 @@
             min-width: 304px;
             max-width: 304px;
             pointer-events: none;
+            img {
+                max-height: 304px;
+                object-fit: cover;
+                height: 100%;
+            }
         }
     }
 }

@@ -4,7 +4,6 @@ import 'swiper/css/pagination';
 import { Pagination, Mousewheel, Autoplay } from 'swiper/modules';
 
 window.init_ugc_slider = function(swiperUgcData) {
-    console.log('swiperUgcData', swiperUgcData);
     const swiper = new Swiper('.swiper-' + swiperUgcData.section_id, {
         modules: [Pagination, Mousewheel, Autoplay],
         slidesPerView: 1.2,
