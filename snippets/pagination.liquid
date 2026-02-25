@@ -1,11 +1,22 @@
 {%- render 'vite' with '@snippetStyles/_pagination.scss' -%}
 
 {%- if paginate.pages > 1 -%}
-    <nav role="navigation">
+  <nav role="navigation">
     <div class="pagination">
-      <span class="pagination__counter">{{ "sections.search.showing" | t }} {% if request.page_type == 'blog' %}{{ blog.articles | size }}{% else %}{{ search.results | size }}{% endif %} of {{ paginate.items }}</span>
+      <span class="pagination__counter">
+        {{ "sections.search.showing" | t }}
+        {{ paginate.page_size }}
+        of &nbsp;
+        {%- if request.page_type == 'blog' -%}
+          {{ blog.articles_count }}
+        {%- elsif request.page_type == 'search' -%}
+          {{ search.results_count }}
+        {%- else -%}
+          {{ collection.all_products_count }}
+        {%- endif -%}
+      </span>
       <ol>
-        {%- if paginate.previous-%}
+        {%- if paginate.previous -%}
           <li>
             <a href="{{ paginate.previous.url }}">
               <span aria-hidden="true">{% render 'icon-chevron-left.svg' %}</span>
@@ -53,20 +64,20 @@
           </li>
         {%- endif -%}
       </ol>
-      </div>
-    </nav>
+    </div>
+  </nav>
 {%- endif -%}
 
 <style>
-    .visuallyhidden {
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-        white-space: nowrap;
-    }
+  .visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+  }
 </style>
