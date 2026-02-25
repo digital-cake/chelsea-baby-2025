@@ -117,7 +117,7 @@ async function handleOptionSelectionChange($selector) {
 			$button.style.display = 'flex';
 			$button.classList.add('button--transactional');
 			$button.disabled = false;
-			$klaviyoButton.style.display = 'none';
+			if($klaviyoButton) $klaviyoButton.style.display = 'none';
 			if (variantPreorder) {
 				$buttonLabel.innerHTML = label_preorder;
 				const preorderInput = document.createElement('input');
@@ -126,10 +126,10 @@ async function handleOptionSelectionChange($selector) {
 				preorderInput.type = 'hidden';
 				preorderInput.value = true;
 				$button.closest('form').append(preorderInput);
-				$klaviyoButton.style.display = 'none';
+				if($klaviyoButton) $klaviyoButton.style.display = 'none';
 			} else {
 				$buttonLabel.innerHTML = label_add_to_cart;
-				$klaviyoButton.style.display = 'none';
+				if($klaviyoButton) $klaviyoButton.style.display = 'none';
 				const predorderInput = $button.closest('form').querySelector('input#preorder');
 				if (predorderInput) predorderInput.remove();
 			}
@@ -137,7 +137,7 @@ async function handleOptionSelectionChange($selector) {
 			window.updateProductMainStickyButton();
 		} else {
 			$button.style.display = 'none';
-			$klaviyoButton.style.display = 'flex';
+			if($klaviyoButton) $klaviyoButton.style.display = 'flex';
 			$button.disabled = true;
 			$buttonLabel.innerHTML = label_sold_out;
 			window.updateProductMainStickyButton();
