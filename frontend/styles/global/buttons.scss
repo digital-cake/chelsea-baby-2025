@@ -259,10 +259,11 @@ a.klaviyo-bis-trigger {
     transition: all 0.3s ease-in-out;
     border: none;
     appearance: none;
+    height: 50px;
     outline: none;
     background-color: transparent;
     cursor: pointer;
-    font-size: 0.75em;
+    font-size: 12px;
     font-weight: 600;
     color: $color-white !important;
     font-family: $font-base;
@@ -272,5 +273,8 @@ a.klaviyo-bis-trigger {
     background-color: $color-transactional;
     &:hover {
         background-color: $color-transactional-hover;
+    }
+    span {
+        font-size: 12px;
     }
 }
