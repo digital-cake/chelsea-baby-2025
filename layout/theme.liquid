@@ -66,7 +66,9 @@
 
   <body class="template-{{ template | handleize }}">
 
-    {% sections 'header-group' %}
+    {% unless request.page_type == 'password' %}
+      {% sections 'header-group' %}
+    {% endunless %}
     {% section "cart-drawer" %}
   
     <main>
