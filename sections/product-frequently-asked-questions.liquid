@@ -4,59 +4,62 @@
 {%- render 'vite' with '@sectionStyles/_frequently-asked-questions.scss' -%}
 {%- render 'vite' with '@@/components/frequently-asked-questions.js' -%}
 
-<div class="section-frequently-asked-questions__container" style="background-color: {{ section.settings.background_color }};">
-    <div class="wrap wrap--x-large wrap--{{ section_id }}">
-        <div class="section-frequently-asked-questions__inner">
-            <div class="section-frequently-asked-questions__faqs">
-                <div class="section-frequently-asked-questions__faqs-header">
-                    {% if section.settings.title != blank %}
-                        <h4>{{ section.settings.title }}</h4>
-                    {% endif %}
-                    {% if section.settings.label != blank %}
-                        <div class="header-label">{% if section.settings.label_icon != blank %}{{ section.settings.label_icon.src | image_url: width: 50, crop: "center" | image_tag: alt: section.settings.label_icon.alt, width: 18 }}{% endif %}{{ section.settings.label }}</div> 
-                    {% endif %}
-                </div>
-                <div class="section-frequently-asked-questions__faqs-entries">
-                    {% assign faq_group = product.metafields.cake.faqs.value %}
-                    {% if faq_group != blank %}
-                        {% for faq_entry in faq_group.entries.value %}
-                            <div class="faqs-item faqs-item--{{ section_id }}">
-                                <div class="faqs-item__question"><span>{{ faq_entry.question }}</span>{% render 'icon-chevron.svg' %}</div>
-                                <div class="faqs-item__answer">{{ faq_entry.answer | metafield_tag }}</div>
-                            </div>
-                        {% endfor %}
-                    {% elsif section.blocks.size > 1 %}
-                        {% for block in section.blocks %}
-                            <div class="faqs-item faqs-item--{{ section_id }}">
-                                <div class="faqs-item__question"><span>{{ block.settings.question }}</span>{% render 'icon-chevron.svg' %}</div>
-                                <div class="faqs-item__answer">{{ block.settings.answer }}</div>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-            <div class="section-frequently-asked-questions__media">
-                {% if section.settings.image != blank %}
-                    <div class="image-wrapper">
-                        {% render 'responsive-image', width: 2028, source: section.settings.image.src, alt: section.settings.image.alt %}
+{% assign faq_group = product.metafields.cake.faqs.value %}
+
+{% if faq_group != blank or section.blocks.size > 0 %}
+    <div class="section-frequently-asked-questions__container" style="background-color: {{ section.settings.background_color }};">
+        <div class="wrap wrap--x-large wrap--{{ section_id }}">
+            <div class="section-frequently-asked-questions__inner">
+                <div class="section-frequently-asked-questions__faqs">
+                    <div class="section-frequently-asked-questions__faqs-header">
+                        {% if section.settings.title != blank %}
+                            <h4>{{ section.settings.title }}</h4>
+                        {% endif %}
+                        {% if section.settings.label != blank %}
+                            <div class="header-label">{% if section.settings.label_icon != blank %}{{ section.settings.label_icon.src | image_url: width: 50, crop: "center" | image_tag: alt: section.settings.label_icon.alt, width: 18 }}{% endif %}{{ section.settings.label }}</div> 
+                        {% endif %}
                     </div>
-                    <div class="image-overlay" style="background:{{ section.settings.image_overlay }}"></div>
-                {% endif %}
+                    <div class="section-frequently-asked-questions__faqs-entries">
+                        {% if faq_group != blank %}
+                            {% for faq_entry in faq_group.entries.value %}
+                                <div class="faqs-item faqs-item--{{ section_id }}">
+                                    <div class="faqs-item__question"><span>{{ faq_entry.question }}</span>{% render 'icon-chevron.svg' %}</div>
+                                    <div class="faqs-item__answer">{{ faq_entry.answer | metafield_tag }}</div>
+                                </div>
+                            {% endfor %}
+                        {% elsif section.blocks.size > 1 %}
+                            {% for block in section.blocks %}
+                                <div class="faqs-item faqs-item--{{ section_id }}">
+                                    <div class="faqs-item__question"><span>{{ block.settings.question }}</span>{% render 'icon-chevron.svg' %}</div>
+                                    <div class="faqs-item__answer">{{ block.settings.answer }}</div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="section-frequently-asked-questions__media">
+                    {% if section.settings.image != blank %}
+                        <div class="image-wrapper">
+                            {% render 'responsive-image', width: 2028, source: section.settings.image.src, alt: section.settings.image.alt %}
+                        </div>
+                        <div class="image-overlay" style="background:{{ section.settings.image_overlay }}"></div>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    window.addEventListener('DOMContentLoaded', function() {
-        window.handle_faqs({{ section_id | json }});
-    });
-    if (Shopify.designMode) {
-        document.addEventListener('shopify:section:load', function() {
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
             window.handle_faqs({{ section_id | json }});
         });
-    };
-</script>
+        if (Shopify.designMode) {
+            document.addEventListener('shopify:section:load', function() {
+                window.handle_faqs({{ section_id | json }});
+            });
+        };
+    </script>
+{% endif %}
 
 {% schema %}
 {
