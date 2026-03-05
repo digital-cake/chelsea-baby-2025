@@ -431,6 +431,12 @@
             "info": "This image will appear as the thumbnail when a non-product\/non-article page is shared on social media (size: 1200x1200)."
           },
           {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo",
+            "info": "For schema markup"
+          },
+          {
             "type": "text",
             "id": "shop_name",
             "label": "Shop Name",
