@@ -27,7 +27,7 @@
         {% assign chars = temp %}
         {% endunless %}
         {% assign vendor_name= vendor | handle %}
-        {% unless vendor_name == "route" %}
+        {% unless vendor_name == "route" or vendor_name == 'chelsea-baby' %}
         <li><a href="{{ routes.root_url }}collections/{{ vendor | handle }}">{{ vendor }}</a></li>
         {% endunless %}
     {% endfor %}
