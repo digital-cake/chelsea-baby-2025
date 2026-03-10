@@ -26,6 +26,11 @@
             <div class="menu-mega menu-mega-brands">
                 <div class="menu-mega__menus mega-menus">
                     {% assign chars = '' %}
+                    {% assign brands_to_exclude = null %}
+
+                    {% if settings.brands_to_exclude != blank  %}
+                        {% assign brands_to_exclude = settings.brands_to_exclude | newline_to_br %}
+                    {% endif %}
                     {% for vendor in shop.vendors %}
                         {% capture first_char %}{{ vendor | truncate: 1, '' | upcase }}{% endcapture %}
                     
@@ -46,8 +51,9 @@
                         {% capture temp %}{{ chars }}{{ first_char }}{% endcapture %}
                         {% assign chars = temp %}
                         {% endunless %}
-                        {% assign vendor_name= vendor | handle %}
-                        {% unless vendor_name == "route" or vendor_name == 'chelsea-baby' %}
+                        {% assign vendor_name = vendor | handle %}
+                        
+                        {% unless vendor_name == "route" or brands_to_exclude contains vendor_name %}
                         <li><a href="{{ routes.root_url }}collections/{{ vendor | handle }}">{{ vendor }}</a></li>
                         {% endunless %}
                     {% endfor %}

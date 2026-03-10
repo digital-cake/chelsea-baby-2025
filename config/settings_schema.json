@@ -416,6 +416,17 @@
       ]
     },
     {
+      "name": "Brands",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "brands_to_exclude",
+          "label": "Brands To Exclude",
+          "info": "One handelized brand name per line to be excluded from brands menu and page"
+        }
+      ]
+    },
+    {
         "name": "SEO",
         "settings": [
           {
