@@ -2,7 +2,7 @@
   {{- group.user_agent }}
 
   {%- for rule in group.rules -%}
-    {%- unless rule.directive == 'Disallow' and rule.value == '/policies/' -%}
+    {%- unless rule.directive == 'Disallow' and rule.value contains 'policies' -%}
       {{ rule }}
     {%- endunless -%}
   {%- endfor -%}

@@ -5,9 +5,6 @@
 {%- assign canonicalUrl = canonical_url -%}
 {%- assign canonicalUrl = canonicalUrl | split: '?' | first %}
 <link rel="canonical" href="{{ canonicalUrl }}" />
-{%- if canonicalUrl contains "tagged" %}
-<meta name="robots" content="noindex">
-{%- endif %}
 
 {%- if settings.shop_name != blank -%}
 {%- assign store = settings.shop_name -%}
