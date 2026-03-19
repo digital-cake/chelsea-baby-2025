@@ -16,7 +16,7 @@ export default defineConfig({
   plugins: [
     cleanup(),
     shopify({
-      tunnel: 'https://maxdev.ngrok.app:5173',
+      tunnel: 'https://precontinental-nonsyllogistically-shira.ngrok-free.dev:5173',
       //tunnel: process.env.TUNNEL_URL, // https://maxdev.ngrok.app:5173 npm run
       snippetFile: 'vite.liquid',
       additionalEntrypoints: [
