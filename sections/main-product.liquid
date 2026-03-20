@@ -72,7 +72,7 @@
                                 {% endif %}
                             {% else %}
                                 <div class="section-main-product__content-variants">
-                                    {% if product.type == "Gift Card" or product.type == "GIFTCARD" %}
+                                    {% if product.gift_card? %}
                                         {% render 'product-variants-radios', product: product %}
                                     {% else %}
                                         {% render 'product-variants-select', product: product %}
@@ -94,7 +94,7 @@
                                 {% render 'payment-icons' %} 
                             </div>
                         {% when "gift_card" %} 
-                            {% if product.type == "Gift Card" or product.type == "GIFTCARD" %}
+                            {% if product.gift_card? %}
 
                                 {% assign current_day = "now" | date: "%s" %}
                                 {% assign future_day = current_day | plus: 7689600 %}

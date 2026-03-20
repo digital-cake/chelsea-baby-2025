@@ -5,13 +5,16 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 4.875em;
-		@media (max-width: $w-l) {
-			display: block; 
-		}
+
+        @media (max-width: $w-l) {
+            display: block;
+        }
     }
+
     &__media {
         position: relative;
     }
+
     &__badges {
         position: absolute;
         top: 0;
@@ -22,57 +25,73 @@
         z-index: 2;
         width: 100%;
         padding: 2.25em 2em;
+
         @media(max-width: $w-l) {
             padding: 1em;
+
             .wishlist-toggle {
                 width: 1.875em;
                 height: 1.875em;
                 min-width: 1.875em;
                 min-height: 1.875em;
+
                 svg {
                     width: 18px;
                 }
             }
         }
     }
+
     &__content {
         padding: 2.125em 0 3.5em 0;
+
         @media(min-width: $w-l) {
             max-height: 932px;
             overflow-y: auto;
         }
+
         form {
             display: flex;
             flex-direction: column;
             gap: 1em;
         }
+
         @media (max-width: $w-l) {
             padding: 0 0.875em;
         }
+
         &-title-price {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 2em;
+
             .price-display {
                 flex-direction: column;
                 align-items: flex-end;
-                ins, .label-price, .price {
+
+                ins,
+                .label-price,
+                .price {
                     font-size: 22px;
                     font-family: $font-display;
                     color: $color-primary;
                     line-height: 140%;
+
                     @media (max-width: $w-m) {
                         font-size: 18px;
                     }
                 }
+
                 .compare {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-end;
                     gap: 0.25em;
                 }
-                del, .savings-badge {
+
+                del,
+                .savings-badge {
                     font-family: $font-base;
                     color: $color-heritage;
                     opacity: 1;
@@ -80,6 +99,7 @@
                     line-height: 1;
                     text-transform: uppercase;
                 }
+
                 .from {
                     font-size: 10px;
                     text-transform: uppercase;
@@ -87,12 +107,24 @@
                 }
             }
         }
-        &-breadcrumbs, &-title-price, &-description, &-colours, &-usps, &-actions, &-variants, &-notifications, &-gift-card, &-payment {
+
+        &-breadcrumbs,
+        &-title-price,
+        &-description,
+        &-colours,
+        &-usps,
+        &-actions,
+        &-variants,
+        &-notifications,
+        &-gift-card,
+        &-payment {
             margin-right: 2em;
+
             @media (max-width: $w-l) {
                 margin-right: 0;
             }
         }
+
         &-actions {
             #view-product {
                 display: none;
@@ -100,18 +132,22 @@
                 min-width: fit-content;
             }
         }
+
         &-payment {
             .payment-icons {
                 max-width: none;
+
                 ul {
                     justify-content: center;
                 }
             }
         }
+
         &-notifications {
             display: flex;
             justify-content: space-between;
             gap: 2.375em;
+
             .product-notification {
                 background-color: $color-grey;
                 border-radius: $radius-small;
@@ -125,49 +161,60 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
                 span {
                     line-height: 140%;
                     display: block;
                 }
+
                 .store-availability-information {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     gap: 1em;
+
                     .store-availability-icon {
                         width: 10px;
                         height: 10px;
                         border-radius: 50%;
+
                         &--available {
                             background-color: #32C079;
                         }
+
                         &--unavailable {
                             background-color: $color-heritage;
                         }
                     }
+
                     p {
                         line-height: 140%;
                         display: block;
                     }
                 }
             }
+
             @media (max-width: 550px) {
                 flex-direction: column;
                 gap: 0.5em;
             }
         }
+
         &-variants {
             display: flex;
             flex-direction: column;
             gap: 0.25em;
+
             .option-name {
                 font-size: 0.75em;
                 text-transform: uppercase;
                 display: block;
                 margin-bottom: 0.25em;
             }
+
             .select-wrap {
                 position: relative;
+
                 select {
                     width: 100%;
                     height: 40px;
@@ -178,6 +225,7 @@
                     font-size: 0.75em;
                     color: $color-black;
                 }
+
                 .icon {
                     position: absolute;
                     right: 1em;
@@ -186,38 +234,50 @@
                     pointer-events: none;
                 }
             }
+
             .variant-error {
                 color: $color-failure;
+
                 span {
                     font-size: 0.75em;
                 }
+
                 &.hidden {
                     display: none;
                 }
             }
+
             //Radios
             .variant-radios {
                 display: flex;
                 flex-flow: row wrap;
                 gap: 0.5em;
+
+                border: none;
+             
+
                 .variant-radio-label {
-                    border: 1px solid #1F25354D;
-                    position: relative;
-                    padding: 0.5em;
+
                     input {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        opacity: 0;
+                        display: none;
                     }
+
                     span {
+                        border: 1px solid #1F25354D;
+                        position: relative;
+                        padding: 0.5em;
+                        display: block;
                         font-size: 0.875em;
+                    }
+
+                    input:checked+span {
+                        background-color: $color-black;
+                        color: $color-white;
                     }
                 }
             }
         }
+
         &-usps {
             padding: 0.375em 0.625em;
             display: flex;
@@ -227,13 +287,16 @@
             gap: 1em;
             background-color: $color-tertiary;
             margin-bottom: 1em;
+
             li {
                 display: flex;
                 align-items: center;
                 gap: 0.5em;
+
                 img {
                     width: 0.875em;
                 }
+
                 span {
                     font-size: 0.625em;
                     text-transform: uppercase;
@@ -243,37 +306,46 @@
                     line-height: 140%;
                 }
             }
+
             @media (max-width: 550px) {
                 flex-flow: row wrap;
                 gap: 0.625em;
                 padding: 0.75em 0.875em;
+
                 li {
                     justify-content: center;
+
                     &:last-of-type {
                         width: 100%;
                     }
                 }
             }
         }
+
         &-description {
             max-width: 90%;
+
             p {
                 font-size: 0.875em;
             }
+
             button {
                 margin-top: 0.5em;
             }
         }
+
         &-message {
             font-size: 0.625em;
             text-transform: uppercase;
             text-align: center;
+
             a {
                 text-decoration: underline;
             }
         }
+
         &-options {
-            & > span {
+            &>span {
                 text-transform: uppercase;
                 font-size: 0.625em;
                 letter-spacing: 1px;
@@ -281,14 +353,16 @@
                 display: block;
                 margin-bottom: 0.75em;
             }
+
             .product-options {
                 &__list {
                     scroll-snap-type: x mandatory;
-                    overflow-x: auto; 
+                    overflow-x: auto;
                     grid-template-columns: auto;
                     display: flex;
                     padding-bottom: 1em;
                 }
+
                 &__item {
                     width: 100%;
                     min-width: 340px;
@@ -297,10 +371,12 @@
                     background-color: $color-white;
                     border: 1px solid $color-grey;
                     position: relative;
+
                     .details {
                         display: flex;
                         padding: 0.75em 1.5em 0.75em 0.75em;
                         gap: 1em;
+
                         img {
                             object-fit: cover;
                             display: block;
@@ -308,22 +384,27 @@
                             width: 100%;
                             max-width: 110px;
                         }
+
                         &__inner {
                             display: flex;
                             flex-direction: column;
                             justify-content: center;
                             gap: 1em;
+
                             &-title {
                                 font-size: 13px;
                                 line-height: 150%;
                             }
                         }
+
                         .savings-badge {
                             display: none;
                         }
                     }
+
                     &.current {
                         border: 1px solid $color-transactional;
+
                         &::after {
                             content: "";
                             position: absolute;
@@ -341,9 +422,10 @@
                 }
             }
         }
+
         &-bundle {
             .product-bundle-car-seats {
-                & > span {
+                &>span {
                     text-transform: uppercase;
                     font-size: 0.625em;
                     letter-spacing: 1px;
@@ -351,12 +433,14 @@
                     display: block;
                     margin-bottom: 0.75em;
                 }
+
                 &__list {
                     scroll-snap-type: x mandatory;
-                    overflow-x: auto; 
+                    overflow-x: auto;
                     grid-template-columns: auto;
                     display: flex;
                     padding-bottom: 1em;
+
                     .card-product-bundle-item {
                         max-width: 400px;
                         width: 100%;
@@ -367,10 +451,12 @@
                         border: 1px solid $color-grey;
                         position: relative;
                         cursor: pointer;
+
                         .details {
                             display: flex;
                             padding: 0.75em 1.5em 0.75em 0.75em;
                             gap: 1em;
+
                             img {
                                 object-fit: cover;
                                 display: block;
@@ -378,19 +464,23 @@
                                 width: 100%;
                                 max-width: 110px;
                             }
+
                             &__inner {
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: center;
                                 gap: 1em;
+
                                 &-title {
                                     font-size: 13px;
                                     line-height: 150%;
                                 }
+
                                 &-swatches {
                                     display: flex;
                                     align-items: center;
                                     gap: 0.25em;
+
                                     .swatch {
                                         display: block;
                                         display: flex;
@@ -399,6 +489,7 @@
                                         border-radius: 50%;
                                         position: relative;
                                     }
+
                                     .current {
                                         display: flex;
                                         align-items: center;
@@ -411,12 +502,15 @@
                                     }
                                 }
                             }
+
                             .savings-badge {
                                 display: none;
                             }
                         }
+
                         &.selected {
                             border: 1px solid $color-transactional;
+
                             &::after {
                                 content: "";
                                 position: absolute;
@@ -431,8 +525,10 @@
                                 border-bottom-left-radius: $radius-small;
                             }
                         }
+
                         &.unavailable {
                             opacity: 0.5;
+
                             .details {
                                 pointer-events: none;
                             }
@@ -441,8 +537,10 @@
                 }
             }
         }
+
         &-colours {
             margin: 1em 0;
+
             .colour-label {
                 font-size: 0.625em;
                 text-transform: uppercase;
@@ -450,23 +548,29 @@
                 display: block;
                 margin-bottom: 0.5em;
             }
+
             &.card {
                 margin: 0;
+
                 .colour-label {
                     display: none;
                 }
+
                 .swatch {
                     width: 1.25em;
                     height: 1.25em;
                 }
+
                 .current {
                     width: 1.75em;
                     height: 1.75em;
                 }
+
                 .swatches {
                     display: flex;
                     align-items: center;
                     gap: 1em;
+
                     .product-colour-swatches {
                         &__extra {
                             color: $color-primary;
@@ -478,6 +582,7 @@
                 }
             }
         }
+
         &-gift-card {
             .recipient-select {
                 display: flex;
@@ -485,21 +590,26 @@
                 align-items: center;
                 gap: 0.5em;
                 margin: 1.25em 0;
+
                 p {
                     text-transform: uppercase;
                     font-size: 0.75em;
                     letter-spacing: 1.2px;
                 }
+
                 &__buttons {
                     display: flex;
                     align-items: center;
                     gap: 0.75em;
+
                     button {
                         text-decoration: none;
                         opacity: 0.5;
+
                         span {
                             font-size: 14px;
                         }
+
                         &.active {
                             opacity: 1;
                             text-decoration: underline;
@@ -507,32 +617,41 @@
                     }
                 }
             }
+
             .recipient-details {
                 display: none;
                 margin-top: 1em;
                 flex-direction: column;
                 flex-flow: row wrap;
                 gap: 0.75em;
+
                 &.active {
                     display: flex;
                 }
+
                 .alert {
                     border-color: $color-warning;
                 }
-                input, textarea, select {
+
+                input,
+                textarea,
+                select {
                     font-size: 10px !important;
                     color: $color-primary;
                 }
             }
+
             .email-alert {
                 display: none;
                 font-size: 0.875em;
                 margin: 0;
             }
+
             .date-message {
                 margin: 0.75em 0 0 0;
                 font-size: 0.875em;
             }
+
             label {
                 display: block;
             }

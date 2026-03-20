@@ -1,10 +1,15 @@
-{% render 'product-variants-select', with_additional_price: true %}
+{% if product.gift_card? %}
+  {% render 'product-variants-radios' %}
+{% else %}
+  {% render 'product-variants-select', with_additional_price: true %}
+{% endif %}
+
 <script id="variantjson" type="application/json">
-{{ product.selected_variant | json }}
+  {{ product.selected_variant | json }}
 </script>
 
 {% if product.selected_variant.metafields.cake.preorder %}
-    <script id="variantjsonpreorder" type="application/json">
+  <script id="variantjsonpreorder" type="application/json">
     {{ product.selected_variant.metafields.cake.preorder | json }}
-    </script>
+  </script>
 {% endif %}
