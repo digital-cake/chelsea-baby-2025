@@ -1,5 +1,29 @@
+{% assign sizes = sizes | default: '(min-width: 1920px) 19200px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, 100vw' %}
+
 {% if lazy %}
-    {{ source | image_url: width: width, crop: "center" | image_tag: class: class, widths: '360,520,768,1024,1440,1920', alt: alt, loading: "lazy" }}
+  {{
+    source
+    | image_url: width: width, crop: 'center'
+    | image_tag:
+      class: class,
+      widths: '180,360,520,768,1024,1440,1920',
+      sizes: sizes,
+      alt: alt,
+      loading: 'lazy',
+      fetchpriority: 'low',
+      width: source.width
+  }}
 {% else %}
-    {{ source | image_url: width: width, crop: "center" | image_tag: class: class, widths: '360,520,768,1024,1440,1920', alt: alt }}
+  {{
+    source
+    | image_url: width: width, crop: 'center'
+    | image_tag:
+      class: class,
+      widths: '180,360,520,768,1024,1440,1920',
+      sizes: sizes,
+      alt: alt,
+      loading: 'eager',
+      fetchpriority: 'high',
+      width: source.width
+  }}
 {% endif %}

@@ -24,7 +24,7 @@
                 <div class="section-featured-product__inner-media">
                     {% if section.settings.image != blank %}
                     <div class="image-wrapper">
-                        {% render 'responsive-image', width: 1800, source: section.settings.image.src, alt: section.settings.image.alt %}
+                        {% render 'responsive-image', width: 800, source: section.settings.image.src, alt: section.settings.image.alt, lazy: true %}
                     </div>
                     {% elsif section.settings.video != blank %}
                         <div class="video-wrapper">
@@ -33,7 +33,7 @@
                                 loop
                                 playsinline
                                 autoplay
-                                poster="{{ section.settings.video.preview_image.src | img_url: 'master' }}"
+                                poster="{{ section.settings.video.preview_image.src | img_url: '800x' }}"
                                 width="{{ section.settings.video.sources[1].width }}"
                                 height="{{ section.settings.video.sources[1].height }}"
                                 data-video

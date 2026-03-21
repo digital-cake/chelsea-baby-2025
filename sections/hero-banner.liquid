@@ -4,20 +4,35 @@
 {%- render 'vite' with '@@/components/hero-banner.js' -%}
 
 {% for block in section.blocks %}
-    {% if forloop.first %}
-        {% if block.settings.image_desktop != blank %}
-            {% assign file_path = block.settings.image_desktop.src | img_url: "1920x" %}
-            {% assign file_type = file_path | split: "." | last %}
-            {% assign clean_file_type = file_type | split: "?" | first %}
-            <link rel="preload" fetchpriority="high" as="image" href="{{ block.settings.image_desktop.src | img_url: "1920x" }}" type="image/{{ clean_file_type }}">
-        {% endif %}
-        {% if block.settings.image_mobile != blank %}
-            {% assign file_path = block.settings.image_mobile.src | img_url: "900x" %}
-            {% assign file_type = file_path | split: "." | last %}
-            {% assign clean_file_type = file_type | split: "?" | first %}
-            <link rel="preload" fetchpriority="high" as="image" href="{{ block.settings.image_mobile.src | img_url: "900x" }}" type="image/{{ clean_file_type }}">
-        {% endif %}
+  {% if forloop.first %}
+    {% if block.settings.image_desktop != blank %}
+      <link
+        rel="preload"
+        as="image"
+        fetchpriority="high"
+        href="{{ block.settings.image_desktop | image_url: width: 1440 }}"
+        imagesrcset="
+          {{ block.settings.image_desktop | image_url: width: 768 }} 768w,
+          {{ block.settings.image_desktop | image_url: width: 1024 }} 1024w,
+          {{ block.settings.image_desktop | image_url: width: 1440 }} 1440w"
+        imagesizes="100vw"
+        media="(min-width: 768px)"
+      >
     {% endif %}
+    {% if block.settings.image_mobile != blank %}
+      <link
+        rel="preload"
+        as="image"
+        fetchpriority="high"
+        href="{{ block.settings.image_mobile | image_url: width: 900 }}"
+        imagesrcset="
+          {{ block.settings.image_mobile | image_url: width: 480 }} 480w,
+          {{ block.settings.image_mobile | image_url: width: 768 }} 768w"
+        imagesizes="100vw"
+        media="(max-width: 767px)"
+      >
+    {% endif %}
+  {% endif %}
 {% endfor %}
 
 <h1 style="display: none;">{{ page_title }}</h1>
@@ -47,12 +62,20 @@
                             <div class="slide__inner pos-d-v-{{ block.settings.pos_d_v }} pos-d-h-{{ block.settings.pos_d_h }} pos-m-v-{{ block.settings.pos_m_v }}">
 
                                 <div class="slide__media">
+                                    {% if forloop.first %}
+                                        {% assign fetchPriority = "high" %}
+                                        {% assign isLazy = false %}
+                                    {% else %}
+                                        {% assign fetchPriority = "low" %}
+                                        {% assign isLazy = true %}
+                                    {% endif %}
                                     {% render 'responsive-image',
                                         width: 1920,
                                         source: block.settings.image_desktop.src,
                                         alt: block.settings.image_desktop.alt,
                                         class: 'slide__image',
-                                        lazy: false
+                                        lazy: isLazy,
+                                        fetchpriority: fetchPriority
                                     %}
                                     {% if block.settings.image_mobile != blank %}
                                         {% render 'responsive-image',
@@ -60,7 +83,8 @@
                                         source: block.settings.image_mobile.src,
                                         alt: block.settings.image_mobile.alt,
                                         class: 'slide__image--mobile',
-                                        lazy: false
+                                        lazy: isLazy,
+                                        fetchpriority: fetchPriority
                                         %}
                                     {% endif %}
                                 </div>
@@ -110,7 +134,7 @@
                                     width="{{ block.settings.video_desktop.sources[1].width }}"
                                     height="{{ block.settings.video_desktop.sources[1].height }}"
                                     class="desktop hls-video"
-                                    poster="{{ block.settings.video_desktop.preview_image | img_url: '1920x1080', crop: 'center' }}"
+                                    poster="{{ block.settings.video_desktop.preview_image | img_url: width: 1920, crop: 'center' }}"
                                     data-streamable-src="{{ desktop_streamable_src.url }}"
                                     data-standard-src="{{ desktop_standard_src.url }}"
                                     preload="metadata"
@@ -133,7 +157,7 @@
                                     width="{{ block.settings.video_mobile.sources[1].width }}"
                                     height="{{ block.settings.video_mobile.sources[1].height }}"
                                     class="mobile hls-video"
-                                    poster="{{ block.settings.video_mobile.preview_image | img_url: '1920x1080', crop: 'center' }}"
+                                    poster="{{ block.settings.video_mobile.preview_image | img_url: width: 1920, crop: 'center' }}"
                                     data-streamable-src="{{ mobile_streamable_src.url }}"
                                     data-standard-src="{{ mobile_standard_src.url }}"
                                     preload="metadata"
