@@ -18,16 +18,29 @@
     {% endif %}
 {% endif %}
 
+{% assign enable_comparison = false %}
+    {% for collection in product.collections %}
+    {% if collection.metafields.cake.enable_product_comparison == true %}
+        {% assign enable_comparison = true %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
 <div class="wrap wrap--no-padding wrap--{{ section_id }}">
     <div class="section-main-product__inner">
         <div class="section-main-product__media{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
             <!--[product-media]-->
             <div class="section-main-product__badges">
                 {% render 'product-badges', product: product, unlimited: true %}
-                <button class="wishlist-toggle{% if customer %} active{% endif %}{% if productInWishlist == true %} added{% endif %}" data-id="{{ product.id }}" type="button" aria-label="{{ "products.product.wishlist" | t }}">
-                    {% render "icon-heart.svg" %}
-                    <span>{{ "products.product.wishlist" | t }}</span>
-                </button>
+                <div>
+                    {% if enable_comparison %}
+                        <button class="product-comparison-toggle" type="button" data-product-handle="{{ product.handle }}" aria-label="Compare"><span>Compare</span>{% render 'icon-comparison.svg' %}</button>
+                    {% endif %}
+                    <button class="wishlist-toggle{% if customer %} active{% endif %}{% if productInWishlist == true %} added{% endif %}" data-id="{{ product.id }}" type="button" aria-label="{{ "products.product.wishlist" | t }}">
+                        {% render "icon-heart.svg" %}
+                        <span>{{ "products.product.wishlist" | t }}</span>
+                    </button>
+                </div>
             </div>
             {% render 'main-product-media', product: product %}
             <!--[/product-media]-->

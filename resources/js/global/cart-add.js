@@ -166,11 +166,14 @@ window.updateProductMainStickyButton = () => {
 	const observer = new IntersectionObserver(
 		entries => {
 			entries.forEach(entry => {
+				const compareFloatingWidget = document.querySelector('.floating-product-comparison-counter');
 				if (entry.isIntersecting) {
 					stickyModalContainerEl.classList.remove('show')
 					document.body.classList.remove('show-mobile-quick-add');
+					if (compareFloatingWidget) compareFloatingWidget.style.display = 'flex';
 				} else {
 					stickyModalContainerEl.classList.add('show')
+					if (compareFloatingWidget) compareFloatingWidget.style.display = 'none';
 				}
 			});
 		},

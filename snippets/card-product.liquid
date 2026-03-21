@@ -23,8 +23,8 @@
     <div class="card-product__header">
         {% render 'product-badges', product: product %}
         <div>
-            {% if enable_comparison and request.page_type == 'collection' %}
-                <button class="product-comparison-toggle" type="button" data-product-handle="{{ product.handle }}" aria-label="{{ "products.product.comparison-toggle" | t }}">{% render 'icon-comparison.svg' %}</button>
+            {% if enable_comparison and request.page_type == 'collection' or enable_comparison and request.page_type == 'product' %}
+                <button class="product-comparison-toggle" type="button" data-product-handle="{{ product.handle }}" aria-label="Compare"><span>Compare</span>{% render 'icon-comparison.svg' %}</button>
             {% endif %}
             <button class="wishlist-toggle{% if customer %} active{% endif %}{% if productInWishlist == true %} added{% endif %}" data-id="{{ product.id }}" type="button" aria-label="{{ "products.product.wishlist" | t }}">
                 {% render "icon-heart.svg" %}

@@ -20,11 +20,11 @@
                 <span>{{ item.product.title }}</span>
             </a>
             <div class="cart-item__price">
-                {% if item.original_line_price != item.final_line_price %}
-                    <del>{{ item.original_line_price | money }}</del>
-                    <ins>{{ item.final_line_price | money }}</ins>
+                {% if item.product.compare_at_price > item.final_line_price %}    
+                    <span><ins>{{ item.final_line_price | money }}</ins></span>
+                    <span><del>Was {{ item.product.compare_at_price | money }}</del></span>
                     {% else %}
-                    <span class="product-price" data-price="{{ item.final_line_price }}">{{ item.final_line_price | money }}</span>
+                    <span>{{ item.final_line_price | money }}</span>
                 {% endif %}
             </div>
         </div>

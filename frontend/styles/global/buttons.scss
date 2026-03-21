@@ -188,24 +188,33 @@
 }
 
 .product-comparison-toggle {
-    width: 24px;
-    height: 24px;
     appearance: none;
     outline: none;
     border: none;
     background-color: transparent;
     cursor: pointer;
-    circle {
-        stroke-width: 1px;
-    }
+    border: 1px solid $color-black;
+    background-color: $color-white;
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+    border-radius: 1.5em;
+    padding: 0 0.25em 0 0.5em;
     svg {
+        pointer-events: none;
+        circle {
+            stroke: none;
+            fill: none;
+        }
+    }
+    span {
+        font-size: 0.625em;
         pointer-events: none;
     }
     &.added {
+        background-color: $color-primary;
+        color: $color-white;
         svg {
-            circle {
-                fill: $color-primary !important;
-            }
             path {
                 stroke: $color-white;
             }

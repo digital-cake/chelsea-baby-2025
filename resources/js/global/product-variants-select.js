@@ -9,7 +9,7 @@
 
 document.addEventListener('change', (e) => {
 	const $option = e.target.closest('select.variant-group-select[data-option-position], input.variant-group-radio[data-option-position]');
-	handleOptionSelectionChange($option);
+	if ($option) handleOptionSelectionChange($option);
 });
 
 let originalPrice = null;

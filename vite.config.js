@@ -16,7 +16,7 @@ export default defineConfig({
   plugins: [
     cleanup(),
     shopify({
-      tunnel: process.env.TUNNEL_URL,
+      tunnel: 'https://maxdev.ngrok.app:5173',
       snippetFile: 'vite.liquid',
       additionalEntrypoints: [
         'frontend/theme.js', // relative to sourceCodeDir

@@ -155,6 +155,7 @@
 					accent-color: $color-primary;
 					&:checked {
                         border-color: $color-transactional;
+						background-color: $color-transactional;
 					}
 				}
 				.filter-colour-swatch {

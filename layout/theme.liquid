@@ -91,7 +91,7 @@
       {% section "drawer-filters" %}
     {% endif %} 
 
-    {% if request.page_type == "collection" %}
+    {% if request.page_type == "collection" or request.page_type == "product" %}
       {% render "floating-product-comparison-counter" %}
     {% endif %} 
 
