@@ -53,7 +53,7 @@
                             </button>
                         {% if feature_product.images != blank %}
                             <a href="{{ feature_product.url }}" aria-label="{{ produce.title }}">
-                                {% render 'responsive-image', width: 800, source: feature_product.images[0].src, alt: feature_product.images[0].alt %}
+                                {% render 'responsive-image', width: 800, source: feature_product.images[0].src, alt: feature_product.images[0].alt, lazy: true %}
                             </a>
                         {% endif %}
                         </div>
