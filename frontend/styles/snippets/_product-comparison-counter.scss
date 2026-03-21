@@ -16,6 +16,11 @@
     @media (max-width: 950px) {
         bottom: 6.25em;
     }
+    &--product {
+        @media (max-width: 950px) {
+            bottom: 2.25em;
+        }
+    }
     span {
         font-size: 0.625em;
         letter-spacing: 1px;

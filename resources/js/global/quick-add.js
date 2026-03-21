@@ -69,33 +69,44 @@ document.addEventListener('click', function (e) {
 window.handle_product_read_more_button = () => {
   const toggle = document.getElementById('product-description-toggle');
   const descriptionAccordion = document.querySelector('.accordion-toggle--description');
-  const content = document.querySelector('.section-main-product__content');
-  const headerHeight = document.querySelector('.section-header')?.offsetHeight;
-  const announcementBarHeight = document.querySelector('.section-announcement-bar')?.offsetHeight;
-  let totalOffsetHeight = headerHeight + announcementBarHeight;
+  const header = document.querySelector('.section-header');
+  const announcementBar = document.querySelector('.section-announcement-bar');
 
-  if (!toggle || !content || !descriptionAccordion) return;
+  if (!toggle || !descriptionAccordion) return;
 
-  toggle.addEventListener('click', function(e) {
+  toggle.addEventListener('click', function (e) {
     e.preventDefault();
 
     const productUrl = toggle.dataset.productUrl;
     if (!productUrl) return;
 
     if (!window.location.pathname.includes('/products/')) {
-      window.location.href = window.Shopify.routes.root + "products/" + productUrl;
+      window.location.href = window.Shopify.routes.root + 'products/' + productUrl;
       return;
     }
 
     descriptionAccordion.click();
 
     setTimeout(() => {
-      const accordionOffsetTop = descriptionAccordion.offsetTop;
-      content.scrollTo({
-        top: accordionOffsetTop - totalOffsetHeight,
-        behavior: 'smooth'
-      });
-    }, 100);
+      const targetRect = descriptionAccordion.getBoundingClientRect();
+      const headerHeight = header?.offsetHeight || 0;
+      const announcementBarHeight = announcementBar?.offsetHeight || 0;
+      const totalOffsetHeight = headerHeight + announcementBarHeight;
+
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const newScrollTop = scrollTop + targetRect.top - totalOffsetHeight;
+
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      
+      if (isIOS) {
+        window.scrollTo(0, Math.max(0, newScrollTop));
+      } else {
+        window.scrollTo({
+          top: Math.max(0, newScrollTop),
+          behavior: 'smooth'
+        });
+      }
+    }, 350);
   });
 };
 

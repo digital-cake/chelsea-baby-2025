@@ -210,10 +210,13 @@
     span {
         font-size: 0.625em;
         pointer-events: none;
+        color: $color-primary;
     }
     &.added {
         background-color: $color-primary;
-        color: $color-white;
+        span {
+            color: $color-white;
+        }
         svg {
             path {
                 stroke: $color-white;
