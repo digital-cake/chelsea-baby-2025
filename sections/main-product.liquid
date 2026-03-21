@@ -28,7 +28,7 @@
 
 <div class="wrap wrap--no-padding wrap--{{ section_id }}">
     <div class="section-main-product__inner">
-        <div class="section-main-product__media{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
+        <div class="section-main-product__media{% if product.gift_card %} gift-card{% endif %}">
             <!--[product-media]-->
             <div class="section-main-product__badges">
                 {% render 'product-badges', product: product, unlimited: true %}

@@ -33,7 +33,7 @@
         </div>
     </div>
     <a href="{{ product.url | within: 'collection' }}" class="card-product__media">
-        {% render 'responsive-image', width: 640, source: product.images[0].src, alt: product.images[0].alt %}
+        {% render 'responsive-image', width: 400, source: product.images[0].src, alt: product.images[0].alt, lazy: true %}
     </a>
     <div class="card-product__footer">
         <p class="card-product__title">{{ product.title | truncatewords: 10 }}</p>

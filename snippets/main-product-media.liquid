@@ -2,24 +2,33 @@
 {%- render 'vite' with '@snippetStyles/_main-product-media.scss' -%}
 
 {% if product.images.size > 1 or product.media.size > 1 %}
-  <div class="main-product-media__navigation{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
+  <div class="main-product-media__navigation{% if product.gift_card %} gift-card{% endif %}">
     <button class="button button--no-styling navigation-button prev">{% render 'icon-chevron.svg' %}</button>
     <button class="button button--no-styling navigation-button next">{% render 'icon-chevron.svg' %}</button>
     <button class="button button--no-styling button--primary navigation-zoom">{% render 'icon-search.svg' %}</button>
   </div>
 {% endif %}
 
-<div class="main-product-media{% if product.type == "Gift Card" or product.type == "GIFTCARD" %} gift-card{% endif %}">
+{% assign sizes = sizes | default: '(min-width: 1920px) 19200px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, 100vw' %}
+
+<div class="main-product-media{% if product.gift_card %} gift-card{% endif %}">
   {% if product.images.size > 0 or product.media.size > 0 %}
       {% for media_item in product.media %}
+        {% if forloop.index0 == 0 %}
+          {% assign fetchPriority = "high" %}
+          {% assign isLazy = "eager" %}
+        {% else %}
+          {% assign fetchPriority = "low" %}
+          {% assign isLazy = "lazy" %}
+        {% endif %}
         {% if media_item.media_type == 'image' %}
           <a
-            href="{{ media_item.image | image_url: width: 5760, crop: 'center' }}"
+            href="{{ media_item.image | image_url: width: 1920, crop: 'center' }}"
             data-fancybox="product-gallery"
             data-type="image"
             class="main-product-media__image"
           >
-            {{ media_item.image | image_url: width: 5760, crop: "center" | image_tag }}
+            {{ media_item.image | image_url: width: 1920, crop: "center" | image_tag: loading: isLazy, fetchpriority: fetchPriority, widths: '180,360,520,768,1024,1440,1920', sizes: sizes }}
           </a>
         {% elsif media_item.media_type == 'video' %}
           <a
@@ -33,9 +42,11 @@
               autoplay
               playsinline 
               loop
-              poster="{{ media_item.preview_image.src | image_url: width: 5760, crop: 'center' }}"
+              poster="{{ media_item.preview_image.src | image_url: width: 1920, crop: 'center' }}"
               width="100%" 
               height="auto"
+              loading: isLazy
+              fetchpriority: fetchPriority
             >
               <source 
                 src="{{ media_item.sources[1].url }}"

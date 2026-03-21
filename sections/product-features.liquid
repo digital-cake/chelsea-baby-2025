@@ -21,7 +21,7 @@
                         {% for feature_entry in features_group.entries.value %}
                             <div class="swiper-slide">
                                 {% if feature_entry.image != blank %}
-                                    <img src="{{ feature_entry.image.value.src | img_url: '395x450', crop: "center" }}" alt="{{ feature_entry.image.alt }}">
+                                    {% render 'responsive-image', width: 400, source: feature_entry.image.value.src, alt: eature_entry.image.alt, lazy: true %}
                                 {% elsif feature_entry.video != blank %}
                                     <div class="video-wrapper">
                                         <video loop muted controls playsinline poster="{{ feature_entry.video.value.preview_image | image_url: width: 500 }}">
