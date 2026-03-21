@@ -155,6 +155,9 @@ window.updateProductMainStickyButton = () => {
 	const atcButtonContainerEl = document.querySelector('.section-main-product__content-actions');
 	if (!atcButtonContainerEl) return;
 	const clone = atcButtonContainerEl.cloneNode(true);
+	
+	const compareFloatingWidget = document.querySelector('.floating-product-comparison-counter');
+	if (compareFloatingWidget) compareFloatingWidget.style.display = 'none';
 
 	const stickyModalContainerEl = document.querySelector('.main-product-sticky-add');
 	if (!stickyModalContainerEl) return;
@@ -166,7 +169,6 @@ window.updateProductMainStickyButton = () => {
 	const observer = new IntersectionObserver(
 		entries => {
 			entries.forEach(entry => {
-				const compareFloatingWidget = document.querySelector('.floating-product-comparison-counter');
 				if (entry.isIntersecting) {
 					stickyModalContainerEl.classList.remove('show')
 					document.body.classList.remove('show-mobile-quick-add');
