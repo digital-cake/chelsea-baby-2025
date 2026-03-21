@@ -10,7 +10,7 @@
                     <div class="featured-brands__items">
                         {% for brand in block.featured_brands %}
                             <a href="{{ brand.link }}" aria-label="{{ brand.name }}">
-                                {% render 'responsive-image', width: 300, source: brand.logo, alt: brand.name %}
+                                {% render 'responsive-image', width: 300, source: brand.logo, alt: brand.name, lazy: true %}
                             </a>
                         {% endfor %}
                     </div>
