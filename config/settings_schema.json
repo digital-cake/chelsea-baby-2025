@@ -213,6 +213,10 @@
       "name": "Cart Drawer",
       "settings": [
         {
+          "type": "header",
+          "content": "Upsells"
+        },
+        {
           "type": "text",
           "id": "cart_drawer_upsells_title",
           "label": "Title",
@@ -223,6 +227,38 @@
           "id": "cart_drawer_upsells",
           "label": "Upsells",
           "info": "Single variant products only"
+        },
+        {
+          "type": "header",
+          "content": "Usps"
+        },
+        {
+          "type": "checkbox",
+          "id": "cart_drawer_usps",
+          "label": "Show USPS",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "cart_drawer_usp_one_text",
+          "label": "USP Text One",
+          "default": "Try it at home. 30-day returns if it’s not right."
+        },
+        {
+          "type": "image_picker",
+          "id": "cart_drawer_usp_one_icon",
+          "label": "USP Icon One"
+        },
+        {
+          "type": "text",
+          "id": "cart_drawer_usp_two_text",
+          "label": "USP Text Two",
+          "default": "Free delivery when you spend £50"
+        },
+        {
+          "type": "image_picker",
+          "id": "cart_drawer_usp_two_icon",
+          "label": "USP Icon Twp"
         }
       ]
     },

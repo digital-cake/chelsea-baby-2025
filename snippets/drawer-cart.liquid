@@ -55,6 +55,26 @@
                     </div>
                 </div>
             {% endif %}
+            {% if settings.cart_drawer_usps != blank %}
+                <div class="cart-drawer-usps">
+                    {% if settings.cart_drawer_usp_one_text != blank %}
+                        <div class="cart-drawer-usps__usp">
+                            {% if settings.cart_drawer_usp_one_icon != blank %}
+                                {{ settings.cart_drawer_usp_one_icon | image_url: width: 40, crop: "center" | image_tag: alt: settings.cart_drawer_usp_one_text, width: 40  }}
+                            {% endif %}
+                            <span>{{ settings.cart_drawer_usp_one_text }}</span>
+                        </div>
+                    {% endif %}
+                    {% if settings.cart_drawer_usp_two_text != blank %}
+                        <div class="cart-drawer-usps__usp">
+                            {% if settings.cart_drawer_usp_two_icon != blank %}
+                                {{ settings.cart_drawer_usp_two_icon | image_url: width: 40, crop: "center" | image_tag: alt: settings.cart_drawer_usp_two_text, width: 40  }}
+                            {% endif %}
+                            <span>{{ settings.cart_drawer_usp_two_text }}</span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
             <form class="drawer-cart__footer__form" action="{{ routes.cart_url }}" method="post">
                 <div class="cart-totals" id="drawer-cart-totals"></div>
                 <div class="drawer-cart__footer__text"><span>{{ 'cart.shipping_label_calculated' | t }}</span></div>
