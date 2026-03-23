@@ -150,8 +150,8 @@
 
         &-notifications {
             display: flex;
-            justify-content: space-between;
-            gap: 2.375em;
+            flex-direction: column;
+            gap: 0.5em;
 
             .product-notification {
                 background-color: $color-grey;
@@ -196,6 +196,9 @@
                         line-height: 140%;
                         display: block;
                     }
+                }
+                &--threshold-met {
+                    background-color: $color-tertiary;
                 }
             }
 

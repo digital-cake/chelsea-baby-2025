@@ -167,6 +167,12 @@
         },
         {
           "type": "text",
+          "id": "product_pre_threshold_message",
+          "label": "Product Pre Theshold Message",
+          "default": "Free delivery over £50 • 30-day returns"
+        },
+        {
+          "type": "text",
           "id": "product_threshold_message",
           "label": "Product Theshold Message",
           "default": "You’ve qualified for free shipping!"
