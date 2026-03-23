@@ -166,12 +166,16 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
                 span {
                     line-height: 140%;
                     display: block;
+                    &.product-notification__message {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.5em;
+                    }
                 }
-
                 .store-availability-information {
                     display: flex;
                     align-items: center;

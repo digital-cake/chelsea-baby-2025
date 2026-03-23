@@ -17,11 +17,11 @@
 {% if free_delivery_threshold != blank and allowed_countries contains current_country %}
     {% if product.price >= free_delivery_threshold_converted %}
             <div class="product-notification product-notification--threshold-met">
-                <span>{{ settings.product_threshold_message }}</span>
+                <span class="product-notification__message">{% render 'icon-truck.svg' %}{{ settings.product_threshold_message }}</span>
             </div>
         {% else %}
             <div class="product-notification">
-                <span>{{ settings.product_pre_threshold_message }}</span>
+                <span class="product-notification__message">{% render 'icon-truck.svg' %}{{ settings.product_pre_threshold_message }}</span>
             </div>
     {% endif %}
 {% endif %}
