@@ -6,9 +6,13 @@
         {% for block in section.blocks %}
             {% case block.type %}
                 {% when "link" %}
+                    {% assign highlightLink = false %}
+                    {% if block.settings.highlight_link %} 
+                        {% assign highlightLink = true %}
+                    {% endif %}
                     <li class="menu-mobile__item menu-mobile__item--link">
-                        <a href="{{ block.settings.url }}" class="menu-mobile__link" aria-label="{{ block.settings.title }}">
-                            <span>{{ block.settings.title }}</span>
+                        <a href="{{ block.settings.url }}" class="menu-mobile__link{% if highlightLink %} menu-mobile__link--highlight{% endif %}" aria-label="{{ block.settings.title }}" {% if highlightLink %} style="background-color:{{ block.settings.highlight_link_bg_color }}"{% endif %}>
+                            <span {% if highlightLink %} style="color:{{ block.settings.highlight_link_text_color }}"{% endif %}>{{ block.settings.title }}</span>
                             {% render "icon-chevron-right.svg" %}
                         </a>
                     </li>

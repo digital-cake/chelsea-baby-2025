@@ -79,6 +79,14 @@
 			width: 1.25em;
 			height: auto;
 		}
+		&--highlight {
+			border-radius: 30px;
+			padding: 0 1.5em;
+			width: fit-content;
+			svg {
+				display: none;
+			}
+		}
 	}
 	&__item {
 		&.active {
