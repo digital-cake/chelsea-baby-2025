@@ -19,7 +19,7 @@
             data-type="image"
             class="main-product-media__image"
           >
-            {{ media_item.image | image_url: width: 5760, crop: "center" | image_tag }}
+            {{ media_item.image | image_url: width: 5760, crop: "center" | image_tag: alt: media_item.image.alt }}
           </a>
         {% elsif media_item.media_type == 'video' %}
           <a

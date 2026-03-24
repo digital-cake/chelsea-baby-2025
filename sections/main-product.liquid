@@ -46,7 +46,7 @@
                                 {% assign usps = product.metafields.cake.product_usps.value.entries.value %}
                                 <ul class="section-main-product__content-usps">
                                     {% for usp in usps %}
-                                        <li>{{ usp.icon | image_url: width: 42 | image_tag }}<span>{{ usp.text }}</span></li>
+                                        <li>{{ usp.icon | image_url: width: 42 | image_tag: alt: usp.text }}<span>{{ usp.text }}</span></li>
                                     {% endfor %}
                                 </ul>
                             {% endif %}   
