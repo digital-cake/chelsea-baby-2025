@@ -15,17 +15,41 @@
 
     <div class="section-richtext__container" style="background-color: {{ section.settings.background_color }};">
 
-        <div class="wrap wrap--{{ section.settings.width }} wrap--{{ section_id }}">
+        {% assign count = 1 %}
+        {% assign has_images = false %}
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when "image" %}
+                    {% if block.settings.image == blank %}{% continue %}{% endif %}
+                    <span class="section-richtext__image-wrap section-richtext__image-wrap--{{ count }}">
+                        {% render 'responsive-image', width: 284, source: block.settings.image, alt: block.settings.image.alt %}
+                    </span>
+                {% assign count = count | plus: 1 %}
+                {% assign has_images = true %}
+            {% endcase %}
+        {% endfor %}
+
+        <div class="wrap wrap--{{ section.settings.width }} wrap--{{ section_id }}{% if has_images %} has-images{% endif %}">
 
             <div class="section-richtext__inner">
 
-                <div class="section-richtext__content section-richtext__content--{{ section.settings.alignment }}">
+                <div class="section-richtext__content section-richtext__content--{{ section.settings.alignment }} section-richtext__content--{{ section_id }}">
 
                 {% for block in section.blocks %}
                     {% case block.type %}
                         {% when "heading" %}
                             <{{ block.settings.tag }} class="{{ block.settings.size }}" style="color: {{ section.settings.text_color }}">{{ block.settings.title | newline_to_br }}</{{ block.settings.tag }}>
                         {% when "text" %}
+                            {% style %}
+                                .section-richtext__content--{{ section_id }} p {
+                                    font-size: {{ block.settings.text_size_desktop }}px;
+                                }
+                                @media (max-width: 1024px) {
+                                    .section-richtext__content--{{ section_id }} p {
+                                        font-size: {{ block.settings.text_size_mobile }}px;
+                                    }
+                                }
+                            {% endstyle %}
                             <p style="color: {{ section.settings.text_color }}">{{ block.settings.text }}</p>
                     {% endcase %}
                 {% endfor %}
@@ -134,6 +158,24 @@
                     "id": "text",
                     "label": "Text",
                     "default": "Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+                },
+                {
+                    "type": "range",
+                    "id": "text_size_desktop",
+                    "label": "Text Size Desktop",
+                    "min": 10,
+                    "max": 32,
+                    "default": 16,
+                    "step": 2
+                },
+                {
+                    "type": "range",
+                    "id": "text_size_mobile",
+                    "label": "Text Size Mobile",
+                    "min": 10,
+                    "max": 32,
+                    "default": 16,
+                    "step": 2
                 }
             ]
         },
@@ -204,6 +246,18 @@
                         }
                     ],
                     "default": "white"
+                }
+            ]
+        },
+        {
+            "type": "image",
+            "name": "Image",
+            "limit": 4,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
                 }
             ]
         }

@@ -6,7 +6,20 @@
             padding-left: 0;
             padding-right: 0;
         }
+		&.has-images {
+			@media (max-width: $w-l) {
+				padding-top: 12em;
+				padding-bottom: 9em;
+			}
+			@media (max-width: 600px) {
+				padding-top: 21em;
+				padding-bottom: 18em;
+			}
+		}
     }
+	&__container {
+		position: relative;
+	}
 	&__content {
         position: relative;
 		text-align: center;
@@ -21,6 +34,60 @@
 		&--right {
 			text-align: right;
             align-items: flex-end;
+		}
+		p {
+			padding: 0 2em;
+    		line-height: 140%;
+		}
+	}
+	&__image-wrap {
+		position: absolute;
+		img {
+			display: block;
+			object-fit: cover;
+			border-radius: 4px;
+			width: 100%;
+			height: auto;
+			aspect-ratio: 1 / 1;
+			max-width: 142px;
+		}
+		&--1 {
+			top: 5%;
+			left: 6%;
+			@media (min-width: 1200px) {
+				top: 10%;
+				left: 5%;
+			}
+		}
+		&--2 {
+			top: 5%;
+			right: 6%;
+			@media (max-width: 600px) {
+				top: calc(5% + 70px);
+			}
+			@media (min-width: 1200px) {
+				top: 10%;
+				right: 5%;
+			}
+		}
+		&--3 {
+			bottom: 5%;
+			left: 10%;
+			@media (min-width: 1200px) {
+				bottom: 10%;
+				left: 12%;
+			}
+		}
+		&--4 {
+			bottom: 5%;
+			right: 10%;
+			@media (max-width: 600px) {
+				bottom: calc(5% - 70px);
+			}
+			@media (min-width: 1200px) {
+				bottom: 10%;
+				right: 12%;
+			}
 		}
 	}
 	&__actions {
