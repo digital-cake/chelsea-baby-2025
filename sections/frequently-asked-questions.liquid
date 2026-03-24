@@ -6,7 +6,7 @@
 
 <div class="section-frequently-asked-questions__container" style="background-color: {{ section.settings.background_color }};">
     <div class="wrap wrap--x-large wrap--{{ section_id }}">
-        <div class="section-frequently-asked-questions__inner">
+        <div class="section-frequently-asked-questions__inner{% if section.settings.image != blank %} has-image{% endif %}">
             <div class="section-frequently-asked-questions__faqs">
                 <div class="section-frequently-asked-questions__faqs-header">
                     {% if section.settings.title != blank %}
