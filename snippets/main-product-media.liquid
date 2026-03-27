@@ -23,12 +23,12 @@
         {% endif %}
         {% if media_item.media_type == 'image' %}
           <a
-            href="{{ media_item.image | image_url: width: 1920, crop: 'center' }}"
+            href="{{ media_item.image | image_url: width: 1440, crop: 'center' }}"
             data-fancybox="product-gallery"
             data-type="image"
             class="main-product-media__image"
           >
-            {{ media_item.image | image_url: width: 1920, crop: "center" | image_tag: loading: isLazy, fetchpriority: fetchPriority, widths: '180,360,520,768,1024,1440,1920', sizes: sizes }}
+            {{ media_item.image | image_url: width: 1440, crop: "center" | image_tag: loading: isLazy, fetchpriority: fetchPriority, widths: '360,520,768,1024,1440,1920', sizes: sizes }}
           </a>
         {% elsif media_item.media_type == 'video' %}
           <a
@@ -42,7 +42,7 @@
               autoplay
               playsinline 
               loop
-              poster="{{ media_item.preview_image.src | image_url: width: 1920, crop: 'center' }}"
+              poster="{{ media_item.preview_image.src | image_url: width: 1440, crop: 'center' }}"
               width="100%" 
               height="auto"
               loading: isLazy

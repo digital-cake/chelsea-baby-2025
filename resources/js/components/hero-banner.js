@@ -2,12 +2,12 @@ import Swiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import 'swiper/css/mousewheel';
-import { Pagination, Mousewheel, Navigation, Autoplay } from 'swiper/modules';
+// import 'swiper/css/mousewheel';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 window.init_hero_banner_slider = function(swiperData) {
     const swiper = new Swiper('.swiper-' + swiperData.section_id, {
-        modules: [Navigation, Mousewheel, Pagination, Autoplay],
+        modules: [Navigation, Pagination, Autoplay],
         speed: parseInt(swiperData.speed) * 100,
         spaceBetween: 0,
         slidesPerView: 1,
@@ -25,11 +25,7 @@ window.init_hero_banner_slider = function(swiperData) {
         pagination: swiperData.enable_pagination && swiperData.size > 1 ? {
             el: '.swiper-pagination-' + swiperData.section_id,
             clickable: true,
-        } : false,
-        mousewheel: {
-            invert: false,
-            forceToAxis: true,
-        },
+        } : false
     });
     swiper.init();
 };
