@@ -27,19 +27,24 @@
                         {% render 'responsive-image', width: 800, source: section.settings.image.src, alt: section.settings.image.alt, lazy: true %}
                     </div>
                     {% elsif section.settings.video != blank %}
+                        {% assign desktop_streamable_src = section.settings.video.sources | where: 'format', 'm3u8' | first %}
+                        {% assign desktop_standard_src = section.settings.video.sources | where: 'format', 'mp4' | first %}
                         <div class="video-wrapper">
                             <video
+                                crossOrigin="anonymous"
                                 muted
                                 loop
                                 playsinline
                                 autoplay
-                                poster="{{ section.settings.video.preview_image.src | img_url: '800x' }}"
+                                poster="{{ section.settings.video.preview_image.src | image_url: width: 800 }}"
                                 width="{{ section.settings.video.sources[1].width }}"
                                 height="{{ section.settings.video.sources[1].height }}"
-                                data-video
-                            >
-                                <source src="{{ section.settings.video.sources[1].url }}" type="video/mp4">
-                            </video>
+                                data-streamable-src="{{ desktop_streamable_src.url }}"
+                                data-standard-src="{{ desktop_standard_src.url }}"
+                                preload="metadata"
+                                loading="lazy"
+                                class="hls-video"
+                            ></video>
                         </div>
                     {% endif %}
                     <div class="image-overlay" style="background:{{ section.settings.image_overlay }}"></div>
