@@ -123,7 +123,7 @@ async function handleOptionSelectionChange($selector) {
 			$button.disabled = false;
 			if ($klaviyoButton) $klaviyoButton.style.display = 'none';
 			if (variantPreorder) {
-				$buttonLabel.innerHTML = label_preorder;
+				if ($buttonLabel) $buttonLabel.innerHTML = label_preorder;
 				const preorderInput = document.createElement('input');
 				preorderInput.id = 'preorder';
 				preorderInput.setAttribute('name', 'properties[_preorder]');
@@ -132,7 +132,7 @@ async function handleOptionSelectionChange($selector) {
 				$button.closest('form').append(preorderInput);
 				if ($klaviyoButton) $klaviyoButton.style.display = 'none';
 			} else {
-				$buttonLabel.innerHTML = label_add_to_cart;
+				if ($buttonLabel) $buttonLabel.innerHTML = label_add_to_cart;
 				if ($klaviyoButton) $klaviyoButton.style.display = 'none';
 				const predorderInput = $button.closest('form').querySelector('input#preorder');
 				if (predorderInput) predorderInput.remove();
@@ -143,7 +143,7 @@ async function handleOptionSelectionChange($selector) {
 			$button.style.display = 'none';
 			if ($klaviyoButton) $klaviyoButton.style.display = 'flex';
 			$button.disabled = true;
-			$buttonLabel.innerHTML = label_sold_out;
+			if ($buttonLabel) $buttonLabel.innerHTML = label_sold_out;
 			window.updateProductMainStickyButton();
 		}
 	}
@@ -173,3 +173,39 @@ async function handleOptionSelectionChange($selector) {
 	}
 
 }
+
+function updateProductImagesOnVariantSelect() {
+    document.addEventListener('variantSelected', function(e) {
+        console.log('e.detail.variant', e.detail.variant);
+        let variantImagePos = e.detail.variant.featured_media.position;
+        if (!variantImagePos) return;
+        const matchingMediaImageWrapper = document.querySelector(`.main-product-media a[data-position="${variantImagePos}"]`);
+        if (matchingMediaImageWrapper) {
+            // Scroll image into view
+            matchingMediaImageWrapper.scrollIntoView({ 
+                behavior: "smooth", 
+                block: "nearest",
+                inline: "start" 
+            });
+            
+            if (window.innerWidth <= 1023) {
+				// mobile scroll to top
+				const announcementBarHeight = document.querySelector('.section-announcement-bar');
+				const headerHeight = document.querySelector('.section-header');
+				const totalHeight = (announcementBarHeight ? announcementBarHeight.offsetHeight : 0) + (headerHeight ? headerHeight.offsetHeight : 0);
+				const rect = matchingMediaImageWrapper.getBoundingClientRect();
+				const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+				const imageTop = rect.top + scrollTop - totalHeight;
+				
+				window.scrollTo({
+					top: imageTop,
+					behavior: "smooth"
+				});
+			}
+        }
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+	updateProductImagesOnVariantSelect();
+});

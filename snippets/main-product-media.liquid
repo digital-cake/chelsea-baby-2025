@@ -27,6 +27,7 @@
             data-fancybox="product-gallery"
             data-type="image"
             class="main-product-media__image"
+            data-position="{{ forloop.index }}"
           >
             {{ media_item.image | image_url: width: 1920, crop: "center" | image_tag: loading: isLazy, fetchpriority: fetchPriority, widths: '180,360,520,768,1024,1440,1920', sizes: sizes }}
           </a>
@@ -36,6 +37,7 @@
             data-fancybox="product-gallery"
             data-type="video"
             class="main-product-media__video"
+            data-position="{{ forloop.index }}"
           >
             <video 
               muted
