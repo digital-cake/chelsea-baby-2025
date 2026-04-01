@@ -19,7 +19,28 @@
     {% endif %}
 {% endfor %}
 
-<div class="card-product">
+{% assign is_best_seller = false %}
+
+{% for product_collection in product.collections %}
+    {% if product_collection.handle == 'best-sellers' %}
+        {% assign is_best_seller = true %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% if settings.enable_product_highlight == false %}
+    {% assign is_best_seller = false %}
+{% endif %}
+
+{% if is_best_seller %}
+    {% style %}
+        .card-product-{{ product.id }} {
+            border-color: {{ settings.product_highlight_colour }};
+        }
+    {% endstyle %}
+{% endif %}
+
+<div class="card-product card-product-{{ product.id }}">
     <div class="card-product__header">
         {% render 'product-badges', product: product %}
         <div>
