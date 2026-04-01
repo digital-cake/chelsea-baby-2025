@@ -10,7 +10,7 @@
 
 <div class="cart-item">
     <div class="cart-item__media">
-        <a href="{{ item.url | within: collection }}" aria-label="{{ item.product.title }}">
+        <a href="{{ item.url }}" aria-label="{{ item.product.title }}">
              {% render 'responsive-image', width: 400, source: item.product.images[0].src, alt: item.product.title %}
         </a>
     </div>

@@ -32,11 +32,11 @@
             </button>
         </div>
     </div>
-    <a href="{{ product.url | within: 'collection' }}" class="card-product__media">
+    <a href="{{ product.url }}" class="card-product__media">
         {% render 'responsive-image', width: 400, source: product.images[0].src, alt: product.images[0].alt, lazy: true %}
     </a>
     <div class="card-product__footer">
-        <p class="card-product__title">{{ product.title | truncatewords: 10 }}</p>
+        <a href="{{ product.url }}" class="card-product__title">{{ product.title | truncatewords: 10 }}</a>
         {% render "product-colour-swatches", incoming_product: product, is_product_card: true %}
         <div class="card-product__footer-inner">
             {% render 'product-price', product: product %}
