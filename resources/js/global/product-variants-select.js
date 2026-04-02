@@ -80,7 +80,7 @@ async function handleOptionSelectionChange($selector) {
 	const $productOptionsResponseRoot = new DOMParser().parseFromString(response['product-options'], 'text/html');
 
 	if ($nextGroup) {
-		$innerHtml = $productOptionsResponseRoot.querySelector(`fieldset[data-option-position="${$nextGroup.dataset.optionPosition}"],select[name="${$nextSelect.name}"]`).innerHTML
+		//const $innerHtml = $productOptionsResponseRoot.querySelector(`fieldset[data-option-position="${$nextGroup.dataset.optionPosition}"],select[name="${$nextGroup.name}"]`).innerHTML
 		$nextGroup.disabled = false;
 	}
 
@@ -176,7 +176,7 @@ async function handleOptionSelectionChange($selector) {
 
 function updateProductImagesOnVariantSelect() {
     document.addEventListener('variantSelected', function(e) {
-        let variantImagePos = e.detail.variant.featured_media.position;
+        let variantImagePos = e.detail.variant.featured_media?.position;
         if (!variantImagePos) return;
         const matchingMediaImageWrapper = document.querySelector(`.main-product-media a[data-position="${variantImagePos}"]`);
 
