@@ -184,8 +184,7 @@ function updateProductImagesOnVariantSelect() {
             // Scroll image into view
             matchingMediaImageWrapper.scrollIntoView({ 
                 behavior: "smooth", 
-                block: "nearest",
-                inline: "start" 
+                block: "start"
             });
             
             if (window.innerWidth <= 1023) {

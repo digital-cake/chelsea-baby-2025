@@ -47,9 +47,10 @@
         {% render 'icon-cart.svg' %}
         <span>{{ 'products.product.sold_out' | t }}</span>
     </button>
-    <a class="klaviyo-bis-trigger button button--transactional button--full-width" href="#" aria-label="{{ "products.product.notify_me" | t }}" data-url="{{ product.url }}">
-        <span>{{ "products.product.notify_me" | t }}</span>
-    </a>
 {% endif %}
+
+<a style="display:none;" class="klaviyo-bis-trigger button button--transactional button--full-width" href="#" aria-label="{{ "products.product.notify_me" | t }}" data-url="{{ product.url }}">
+    <span>{{ "products.product.notify_me" | t }}</span>
+</a>
 
 <a href="{{ product.url }}" id="view-product" type="button" class="button button--primary" aria-label="{{ 'quick_add.view_product' | t }}"><span>{{ 'quick_add.view_product' | t }}</span></a>
