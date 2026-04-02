@@ -176,10 +176,17 @@ async function handleOptionSelectionChange($selector) {
 
 function updateProductImagesOnVariantSelect() {
     document.addEventListener('variantSelected', function(e) {
-        console.log('e.detail.variant', e.detail.variant);
         let variantImagePos = e.detail.variant.featured_media.position;
         if (!variantImagePos) return;
         const matchingMediaImageWrapper = document.querySelector(`.main-product-media a[data-position="${variantImagePos}"]`);
+
+		const announcementBarSection = document.querySelector('.section-announcement-bar');
+		const headerSection = document.querySelector('.section-header');
+		if (headerSection && announcementBarSection) {
+			headerSection.classList.add('scrolling');
+			announcementBarSection.classList.add('scrolling');
+		}
+
         if (matchingMediaImageWrapper) {
             // Scroll image into view
             matchingMediaImageWrapper.scrollIntoView({ 
