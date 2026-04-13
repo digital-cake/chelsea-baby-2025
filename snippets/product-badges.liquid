@@ -4,6 +4,15 @@
     {% assign limit = 20 %}
 {% endif %}
 
+{% assign is_best_seller = false %}
+
+{% for product_collection in product.collections %}
+    {% if product_collection.handle == 'best-sellers' %}
+        {% assign is_best_seller = true %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
 {% assign product_published_at = product.published_at | date: '%s' %}
 {% assign time_to_show = 60 %}
 {% assign time_ago = 'now' | date: '%s' | minus: product_published_at | divided_by: 86400 %}
@@ -52,6 +61,13 @@
     </div>
 {% endcapture %}
 
+{% assign badge_object_best_seller = shop.metaobjects.default_badges.best-seller %}
+{% capture badge_best_seller %}
+    <div class="product-badges__badge product-badges__badge--best" style="order: {{ badge_object_best_seller.order }}; background-color: {{ badge_object_best_seller.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge_object_best_seller.text_color }};">
+        <div class="best-seller">Best Seller</div>
+    </div>
+{% endcapture %}
+
 {% if product.available %}
 {% assign badges = '<div class="product-badges">' %}
 {% else %}
@@ -96,6 +112,13 @@
 {% if badge_low_stock %}
      {% unless badge_count == limit %}
         {% assign badges = badges | append: badge_low_stock %}
+        {% assign badge_count = badge_count | plus: 1 %}
+    {% endunless %}
+{% endif %}
+
+{% if badge_best_seller and is_best_seller %}
+     {% unless badge_count == limit %}
+        {% assign badges = badges | append: badge_best_seller %}
         {% assign badge_count = badge_count | plus: 1 %}
     {% endunless %}
 {% endif %}
