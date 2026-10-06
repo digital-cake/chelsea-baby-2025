@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1146.0",
     "@by-association-only/vite-plugin-shopify-clean": "^2.2.0",
     "@shopify/prettier-plugin-liquid": "^1.9.0",
     "lightningcss": "^1.29.3",

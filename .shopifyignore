@@ -4,3 +4,4 @@ config/settings_data.json
 locales/*
 assets/.vite/manifest.json
 sections/*.json
+plugins/*.json

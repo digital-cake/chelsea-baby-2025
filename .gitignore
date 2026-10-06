@@ -24,3 +24,5 @@ templates/*.json
 
 .shopify
 shopify.theme.toml
+
+.env
