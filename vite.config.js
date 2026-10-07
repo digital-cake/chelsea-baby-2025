@@ -21,8 +21,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       cleanup(),
       shopify({
-        tunnel: 'https://precontinental-nonsyllogistically-shira.ngrok-free.dev:5173',
-        //tunnel: process.env.TUNNEL_URL, // https://maxdev.ngrok.app:5173 npm run
+        tunnel: 'https://maxdev.ngrok.app:5173',
         snippetFile: 'vite.liquid',
         additionalEntrypoints: [
           'frontend/theme.js', // relative to sourceCodeDir
