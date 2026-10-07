@@ -101,23 +101,23 @@ del {
 	color: $color-primary;
 	text-decoration: line-through;
 	text-decoration-thickness: 1px;
-	font-size: 0.75em;
+	font-size: 14px;
 	opacity: 0.5;
 	color: $color-white;
 }
 ins {
 	border: none;
-	font-size: 0.875em;
+	font-size: 16px;
 	color: $color-white;
 
 }
 .price {
-	font-size: 13px;
+	font-size: 14px;
 	display: flex;
     gap: 0.5em;
 	del {
-		font-size: 10px;
-		opacity: 0.5;
+		font-size: 16px;
+		opacity: 0.75;
 		color: $color-primary;
 		text-decoration: none;
 		text-transform: uppercase;
@@ -125,7 +125,7 @@ ins {
 	}
 	ins {
 		border: none;
-		font-size: 14px;
+		font-size: 16px;
 		color: $color-heritage;
 	}
 }
