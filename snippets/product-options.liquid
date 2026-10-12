@@ -1,4 +1,31 @@
-{% if product.metafields.cake.product_options != blank %}        
+{% if product.metafields.cake.product_options != blank %}
+    
+    {% style %}
+        .product-options__item .details__inner-title {
+            font-size: {{ section.settings.product_option_title_size }}px;
+            {% if section.settings.product_option_title_colour != blank %}
+                color: {{ section.settings.product_option_title_colour }};
+            {% endif %}
+        }
+        .product-options__item .price ins {
+            font-size: {{ section.settings.product_option_compare_price_size }}px;
+            {% if section.settings.product_option_compare_price_colour != blank %}
+                color: {{ section.settings.product_option_compare_price_colour }};
+            {% endif %}
+        }
+        .product-options__item .product-options__item .price {
+            {% if section.settings.product_option_price_colour != blank %}
+                color: {{ section.settings.product_option_price_colour }};
+            {% endif %}
+        }
+        .product-options__item .price del, .product-options__item .compare-was {
+            font-size: {{ section.settings.product_option_price_size }}px;
+            {% if section.settings.product_option_price_colour != blank %}
+                color: {{ section.settings.product_option_price_colour }};
+            {% endif %}
+        }
+    {% endstyle %}
+    
     <div class="section-main-product__content-options">
         <span>{{ 'products.product.choose_your_options' | t }}</span>
         {% assign product_options = product.metafields.cake.product_options.value %}
