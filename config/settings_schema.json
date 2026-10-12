@@ -316,6 +316,64 @@
       ]
     },
     {
+      "name": "Product Card",
+      "settings": [
+          {
+            "type": "header",
+            "content": "Colours"
+          },
+          {
+            "type": "color",
+            "id": "product_card_title_colour",
+            "label": "Product Card Title Colour"
+          },
+          {
+            "type": "color",
+            "id": "product_card_price_colour",
+            "label": "Product Card Price Colour"
+          },
+          {
+            "type": "color",
+            "id": "product_card_compare_price_colour",
+            "label": "Product Card Compare Price Colour"
+          },
+          {
+            "type": "header",
+            "content": "Sizes"
+          },
+          {
+            "type": "range",
+            "min": 12,
+            "step": 2,
+            "max": 32,
+            "label": "Product Card Title Size",
+            "id": "product_card_title_size",
+            "default": 16,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "min": 12,
+            "step": 2,
+            "max": 32,
+            "label": "Product Card Price Size",
+            "id": "product_card_price_size",
+            "default": 16,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "min": 12,
+            "step": 2,
+            "max": 32,
+            "label": "Product Card Compare Price Size",
+            "id": "product_card_compare_price_size",
+            "default": 16,
+            "unit": "px"
+          }
+      ]
+    },
+    {
       "name": "Products",
       "settings": [
         {

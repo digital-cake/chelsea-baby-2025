@@ -40,6 +40,27 @@
     {% endstyle %}
 {% endif %}
 
+{% style %}
+    .card-product .card-product__title {
+        font-size: {{ settings.product_card_title_size }}px;
+        {% if settings.product_card_title_colour != blank %}
+            color: {{ settings.product_card_title_colour }};
+        {% endif %}
+    }
+    .card-product .price ins {
+        font-size: {{ settings.product_card_compare_price_size }}px;
+        {% if settings.product_card_compare_price_colour != blank %}
+            color: {{ settings.product_card_compare_price_colour }};
+        {% endif %}
+    }
+    .card-product .price del, .card-product .price {
+        font-size: {{ settings.product_card_price_size }}px;
+        {% if settings.product_card_price_colour != blank %}
+            color: {{ settings.product_card_price_colour }};
+        {% endif %}
+    }
+{% endstyle %}
+
 <div class="card-product card-product-{{ product.id }}">
     <div class="card-product__header">
         {% render 'product-badges', product: product %}

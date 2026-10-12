@@ -26,6 +26,27 @@
     {% endif %}
 {% endfor %}
 
+{% style %}
+    .section-main-product__content-title-price h1 {
+        font-size: {{ section.settings.product_title_size }}px !important;
+        {% if section.settings.product_title_colour != blank %}
+            color: {{ section.settings.product_title_colour }} !important;
+        {% endif %}
+    }
+    .section-main-product__content-title-price .price-display .price ins {
+        font-size: {{ section.settings.product_compare_price_size }}px !important;
+        {% if section.settings.product_compare_price_colour != blank %}
+            color: {{ section.settings.product_compare_price_colour }} !important;
+        {% endif %}
+    }
+    .section-main-product__content-title-price .price del, .section-main-product__content-title-price .price-display .price, .section-main-product__content-title-price .price-display .savings-badge {
+        font-size: {{ section.settings.product_price_size }}px !important;
+        {% if section.settings.product_price_colour != blank %}
+            color: {{ section.settings.product_price_colour }} !important;
+        {% endif %}
+    }
+{% endstyle %}
+
 <div class="wrap wrap--no-padding wrap--{{ section_id }}">
     <div class="section-main-product__inner">
         <div class="section-main-product__media{% if product.gift_card %} gift-card{% endif %}">
@@ -312,6 +333,59 @@
         }
     ],
     "settings": [
+        {
+        "type": "header",
+        "content": "Title / Price Colours"
+        },
+        {
+            "type": "color",
+            "id": "product_title_colour",
+            "label": "Product Title Colour"
+        },
+        {
+            "type": "color",
+            "id": "product_price_colour",
+            "label": "Product Price Colour"
+        },
+        {
+            "type": "color",
+            "id": "product_compare_price_colour",
+            "label": "Product Compare Price Colour"
+        },
+        {
+            "type": "header",
+            "content": "Title / Price Sizes"
+        },
+        {
+            "type": "range",
+            "min": 12,
+            "step": 2,
+            "max": 42,
+            "label": "Product Title Size",
+            "id": "product_title_size",
+            "default": 28,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "min": 10,
+            "step": 2,
+            "max": 42,
+            "label": "Product Price Size",
+            "id": "product_price_size",
+            "default": 22,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "min": 10,
+            "step": 2,
+            "max": 42,
+            "label": "Product Compare Price Size",
+            "id": "product_compare_price_size",
+            "default": 22,
+            "unit": "px"
+        },
         {
             "type": "header",
             "content": "Desktop padding"

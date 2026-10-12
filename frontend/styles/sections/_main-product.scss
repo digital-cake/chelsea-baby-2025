@@ -67,14 +67,15 @@
 
         &-title-price {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2em;
+            flex-direction: column;
+            gap: 1em;
+
+            .price {
+                align-items: center;
+                gap: 1em;
+            }
 
             .price-display {
-                flex-direction: column;
-                align-items: flex-end;
-
                 ins,
                 .label-price,
                 .price {
@@ -86,13 +87,6 @@
                     @media (max-width: $w-m) {
                         font-size: 18px;
                     }
-                }
-
-                .compare {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end;
-                    gap: 0.25em;
                 }
 
                 del,
