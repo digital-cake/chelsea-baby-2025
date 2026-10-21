@@ -20,7 +20,7 @@
         top: 0;
         left: 0;
         display: flex;
-        align-items: center;
+        align-items: baseline;
         justify-content: space-between;
         z-index: 2;
         width: 100%;
@@ -28,7 +28,7 @@
         & > div {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 0.5em;
         }
         @media(max-width: $w-l) {

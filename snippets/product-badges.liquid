@@ -27,6 +27,14 @@
     {% endunless %}
 {% endcapture %}
 
+{% assign badge_object_in_stock = shop.metaobjects.default_badges.in-stock %}
+{% capture badge_in_stock %}
+{% assign opacity = badge_object_in_stock.opacity.value | default: 1 %}
+    <div class="product-badges__badge product-badges__badge--oos" style="order: {{ badge_object_in_stock.order }}; background-color: {{ badge_object_in_stock.background_color.value | color_modify: 'alpha', opacity }}; color: {{ badge_object_in_stock.text_color }};">
+        <span>{{ badge_object_in_stock.text }}</span>
+    </div>
+{% endcapture %}
+
 {% assign badge_object_new = shop.metaobjects.default_badges.new %}
 {% capture badge_new %}
 {% assign opacity = badge_object_new.opacity.value | default: 1 %}
@@ -144,6 +152,11 @@
     {% assign badges = badges | append: badge_sold_out %}
     {% assign badge_count = badge_count | plus: 1 %}
 {% endunless %}
+
+{% if product.available %}
+    {% assign badges = badges | append: badge_in_stock %}
+    {% assign badge_count = badge_count | plus: 1 %}
+{% endif %}
 
 {% assign badges = badges | append: '</div>' %}
 

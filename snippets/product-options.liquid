@@ -1,27 +1,27 @@
 {% if product.metafields.cake.product_options != blank %}
     
     {% style %}
-        .product-options__item .details__inner-title {
-            font-size: {{ section.settings.product_option_title_size }}px;
+        .product-options__item .details__inner-title, .card-product-bundle-item .details__inner-title {
+            font-size: {{ section.settings.product_option_title_size }}px !important;
             {% if section.settings.product_option_title_colour != blank %}
-                color: {{ section.settings.product_option_title_colour }};
+                color: {{ section.settings.product_option_title_colour }} !important;
             {% endif %}
         }
-        .product-options__item .price ins {
-            font-size: {{ section.settings.product_option_compare_price_size }}px;
+        .product-options__item .price ins, .card-product-bundle-item .price ins {
+            font-size: {{ section.settings.product_option_compare_price_size }}px !important;
             {% if section.settings.product_option_compare_price_colour != blank %}
-                color: {{ section.settings.product_option_compare_price_colour }};
+                color: {{ section.settings.product_option_compare_price_colour }} !important;
             {% endif %}
         }
-        .product-options__item .product-options__item .price {
+        .product-options__item .price, .card-product-bundle-item .price {
             {% if section.settings.product_option_price_colour != blank %}
-                color: {{ section.settings.product_option_price_colour }};
+                color: {{ section.settings.product_option_price_colour }} !important;
             {% endif %}
         }
-        .product-options__item .price del, .product-options__item .compare-was {
-            font-size: {{ section.settings.product_option_price_size }}px;
+        .product-options__item .price del, .product-options__item .compare-was, .card-product-bundle-item .price del, .card-product-bundle-item .compare-was {
+            font-size: {{ section.settings.product_option_price_size }}px !important;
             {% if section.settings.product_option_price_colour != blank %}
-                color: {{ section.settings.product_option_price_colour }};
+                color: {{ section.settings.product_option_price_colour }} !important;
             {% endif %}
         }
     {% endstyle %}

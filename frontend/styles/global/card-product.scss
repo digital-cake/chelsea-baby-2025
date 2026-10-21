@@ -15,16 +15,19 @@
         top: 0;
         left: 0;
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        display: grid;
+        align-items: baseline;
+        grid-template-columns: 1fr 1fr;
         padding: 0.875em 0.75em;
         z-index: 3;
         & > div {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
             gap: 0.5em;
+        }
+        .product-badges {
+            justify-content: flex-start;
         }
     }
     &__media {
