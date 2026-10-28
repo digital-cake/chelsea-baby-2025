@@ -84,8 +84,14 @@
 
 {% assign custom_badges = product.metafields.cake.custom_badges.value %}
 
+{% assign has_preorder_badge = false %}
 {% if custom_badges != blank %}
     {% for badge in custom_badges %}
+        {% assign custom_badge_handle = badge.name | handle %}
+        {% if custom_badge_handle == 'pre-order' %}
+            {% assign has_preorder_badge = true %}
+            {% break %}
+        {% endif %}
         {% if badge.default_override == true %}
             {% capture badge_custom %}
             {% assign opacity = badge.opacity.value | default: 1 %}
@@ -153,7 +159,7 @@
     {% assign badge_count = badge_count | plus: 1 %}
 {% endunless %}
 
-{% if product.available %}
+{% if product.available and has_preorder_badge == false %}
     {% assign badges = badges | append: badge_in_stock %}
     {% assign badge_count = badge_count | plus: 1 %}
 {% endif %}
