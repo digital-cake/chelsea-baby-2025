@@ -23,6 +23,9 @@
             display: block;
             line-height: 1;
             margin-top: 1px;
+            @media (max-width: $w-m) {
+                font-size: 10px;
+            }
         }
     }
 }

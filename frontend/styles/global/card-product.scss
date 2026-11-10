@@ -20,11 +20,17 @@
         grid-template-columns: 1fr 1fr;
         padding: 0.875em 0.75em;
         z-index: 3;
+        @media (max-width: $w-s) {
+            gap: 0.25em;
+        }
         & > div {
             display: flex;
             align-items: center;
             justify-content: flex-end;
             gap: 0.5em;
+            @media (max-width: $w-s) {
+                gap: 0.25em;
+            }
         }
         .product-badges {
             justify-content: flex-start;
